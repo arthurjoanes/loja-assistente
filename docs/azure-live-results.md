@@ -54,7 +54,7 @@ O adaptador v5 usa Responses, `reasoning=none`, contrato JSON estrito, até 1.00
 
 Também foram corrigidos os relatórios de falhas de preparação do banco, lock, conexão e seed: registram etapa, classe do erro, resultado reprovado e limpeza, sem texto de exceção que possa conter segredo. 313 testes backend passaram, mais Ruff/formato/mypy e 57/57 regressões já incluídas na suíte. [Log dos testes](evidence/azure-live/backend-checks.log). A suíte de navegador tem 47 casos; esta integração não mudou o frontend.
 
-A configuração local está habilitada para o modelo real. Abra [o aplicativo](http://localhost:3102/) e selecione Modelo de IA no campo Interpretador. O parser continua disponível como Demonstração (sem IA). O teto de US$ 15 valeu só para esta avaliação; não é uma quota global da conta Azure nem um limite monetário da interface. Chamadas posteriores pela interface usam a credencial local.
+Na instância usada nesta avaliação, o modelo real estava habilitado e disponível no campo Interpretador. Um novo clone inicia com `LLM_ENABLED=false` e oferece o parser como Demonstração (sem IA). Para habilitar o modelo, siga a [configuração OpenAI/Azure](llm-integration.md). O teto de US$ 15 valeu só para esta avaliação; não é uma quota global da conta Azure nem um limite monetário da interface. Com o modelo habilitado, chamadas posteriores pela interface usam a credencial local.
 
 Código, prompt e schema foram congelados às 12:11:13 UTC, antes do smoke; os 24 casos finais foram escritos antes do freeze e só executados depois. O freeze anterior foi guardado. A base ilustrativa da interface é diferente da fixture manual usada na avaliação; seus valores não devem ser comparados diretamente.
 
