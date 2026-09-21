@@ -1,0 +1,42 @@
+name: Local stack checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify published evidence without API calls
+        run: python3 scripts/verify_evidence.py
+      - name: Configure isolated local demo
+        run: python3 scripts/setup_env.py
+      - name: Build
+        run: |
+          docker compose build backend
+          docker compose build frontend
+      - name: PostgreSQL integration, contracts, lint, types and evaluations
+        run: docker compose --profile test run --rm test
+      - name: Frontend checks
+        run: |
+          docker compose --profile test build frontend-check
+          docker compose --profile test run --rm frontend-check
+      - name: Browser journeys
+        run: |
+          docker compose -f compose.e2e.yaml build backend
+          docker compose -f compose.e2e.yaml build frontend
+          docker compose -f compose.e2e.yaml build e2e
+          docker compose -f compose.e2e.yaml up --abort-on-container-exit --exit-code-from e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-evidence
+          path: |
+            evals/reports
+            docs/screenshots
+      - name: Stop project containers
+        if: always()
+        run: |
+          docker compose -f compose.e2e.yaml down --volumes
+          docker compose --profile test down

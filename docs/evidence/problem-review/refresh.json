@@ -1,0 +1,19 @@
+{
+  "demo_preserved": true,
+  "live_calls": 0,
+  "exit_code": 0,
+  "frontend_status": 200,
+  "finished_at": "2026-09-21T06:37:15.9652434Z",
+  "api_health": {
+    "status": "ok"
+  },
+  "started_at": "2026-09-21T06:36:48.2185765Z",
+  "steps": [
+    "build backend",
+    "build frontend",
+    "up -d --wait db backend frontend",
+    "fingerprint demo",
+    "freeze evaluation",
+    "stop test-db"
+  ]
+}

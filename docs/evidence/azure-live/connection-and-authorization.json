@@ -1,0 +1,83 @@
+{
+  "timestamp_utc": "2026-09-21T12:09:12.275354+00:00",
+  "models_catalog_request": {
+    "timestamp_utc": "2026-09-21T12:02:26.918908+00:00",
+    "method": "GET",
+    "url": "https://agentes-sol-foundry.openai.azure.com/openai/v1/models",
+    "http_status": 200,
+    "metadata": {
+      "apim-request-id": "7fa9f814-6260-4faf-ac6a-da3079a5a361",
+      "x-ms-region": "East US 2"
+    },
+    "inference_call": false
+  },
+  "catalog_count": 434,
+  "deployments_request": {
+    "timestamp_utc": "2026-09-21T12:03:04.118198+00:00",
+    "method": "GET",
+    "url": "https://agentes-sol-foundry.services.ai.azure.com/api/projects/agentes-sol/deployments?api-version=v1",
+    "inference_call": false,
+    "http_status": 200,
+    "deployments": {
+      "value": [
+        {
+          "name": "gpt-5.6-luna",
+          "type": "ModelDeployment",
+          "modelName": "gpt-5.6-luna",
+          "modelVersion": "2026-07-09",
+          "modelPublisher": "OpenAI",
+          "capabilities": {
+            "chat_completion": "true"
+          },
+          "sku": {
+            "name": "GlobalStandard",
+            "capacity": 50
+          }
+        },
+        {
+          "name": "gpt-5.6-terra",
+          "type": "ModelDeployment",
+          "modelName": "gpt-5.6-terra",
+          "modelVersion": "2026-07-09",
+          "modelPublisher": "OpenAI",
+          "capabilities": {
+            "chat_completion": "true"
+          },
+          "sku": {
+            "name": "GlobalStandard",
+            "capacity": 50
+          }
+        }
+      ]
+    }
+  },
+  "azure_cli_session_available": false,
+  "azd_installed": false,
+  "path_used": "REST data-plane discovery and existing OpenAI SDK inference",
+  "authorization": {
+    "authorized": true,
+    "approval_id": "arthur-20260921-azure-usd15-luna-r1",
+    "endpoint": "https://agentes-sol-foundry.openai.azure.com/openai/v1/",
+    "deployment": "gpt-5.6-luna",
+    "stages": [
+      "smoke",
+      "development",
+      "final"
+    ],
+    "expires_at": "2026-09-22T12:09:12.275354+00:00",
+    "max_calls": 61,
+    "max_input_tokens": 1220000,
+    "max_output_tokens": 61000,
+    "input_usd_per_million": "0.25",
+    "output_usd_per_million": "1.20",
+    "price_source": "https://prices.azure.com/api/retail/prices?api-version=2023-01-01-preview&meterRegion=%27primary%27&currencyCode=%27USD%27&%24filter=serviceName+eq+%27Foundry+Models%27+and+armRegionName+eq+%27eastus2%27+and+%28contains%28meterName%2C%275.6+luna%27%29+or+contains%28meterName%2C%275.6+terra%27%29%29+and+contains%28meterName%2C%27ShortCo%27%29+and+contains%28meterName%2C%27Std+Gl%27%29",
+    "price_checked_at": "2026-09-21T12:06:31.219778+00:00",
+    "max_estimated_usd": "15.00",
+    "user_authorization": "User explicitly authorized USD 15 and delegated deployment selection and execution.",
+    "price_policy": "Conservative input reserve uses cache-write rate 0.25 rather than normal 0.20; no cache-read discounts applied. Not an invoice.",
+    "deployment_version": "2026-07-09",
+    "sku": "GlobalStandard",
+    "resource_region_observed": "East US 2",
+    "reasoning_effort": "none"
+  }
+}

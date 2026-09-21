@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-09-21T05:52:30.004800+00:00",
+  "mode": "offline",
+  "interpreter": "demo-patterns-v3",
+  "transport": "current Docker image / production interpreter function",
+  "results": [
+    {
+      "question": "Quanto vendi ontem?",
+      "observed": {
+        "status": "ready",
+        "plan": {
+          "intent": "aggregate",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "message": ""
+      }
+    },
+    {
+      "question": "Quanto eu vendi ontem?",
+      "observed": {
+        "status": "needs_clarification",
+        "plan": null,
+        "message": "Há termos ou filtros que o modo demonstração não reconhece. Reformule com indicador, loja e período, como: receita da loja Centro ontem. Nenhum total foi consultado."
+      }
+    },
+    {
+      "question": "Me mostra o faturamento de ontem",
+      "observed": {
+        "status": "needs_clarification",
+        "plan": null,
+        "message": "Há termos ou filtros que o modo demonstração não reconhece. Reformule com indicador, loja e período, como: receita da loja Centro ontem. Nenhum total foi consultado."
+      }
+    },
+    {
+      "question": "Oi, qual a receita de ontem?",
+      "observed": {
+        "status": "needs_clarification",
+        "plan": null,
+        "message": "Há termos ou filtros que o modo demonstração não reconhece. Reformule com indicador, loja e período, como: receita da loja Centro ontem. Nenhum total foi consultado."
+      }
+    },
+    {
+      "question": "Só queria saber a receita de ontem",
+      "observed": {
+        "status": "needs_clarification",
+        "plan": null,
+        "message": "Exclusões e condições adicionais não são suportadas nesta consulta. Use o filtro de loja e um período; as métricas incluem os pedidos concluídos com seus descontos."
+      }
+    },
+    {
+      "question": "Receita ontem somente em dinheiro",
+      "observed": {
+        "status": "needs_clarification",
+        "plan": null,
+        "message": "Não há filtro por pagamento, vendedor, categoria, canal ou cupom. Posso consultar indicadores por loja e período completo de dias; não vou substituir esse recorte pelo total geral."
+      }
+    },
+    {
+      "question": "Oi",
+      "observed": {
+        "status": "needs_clarification",
+        "plan": null,
+        "message": "Há termos ou filtros que o modo demonstração não reconhece. Reformule com indicador, loja e período, como: receita da loja Centro ontem. Nenhum total foi consultado."
+      }
+    }
+  ]
+}

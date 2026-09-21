@@ -1,0 +1,6 @@
+{
+  "finished_at": "2026-09-21T06:36:27.4410239Z",
+  "started_at": "2026-09-21T06:36:19.7026164Z",
+  "command": "docker compose --profile evaluation run --rm evaluator python -m evals.live_runner --mode offline --stage development",
+  "exit_code": 0
+}

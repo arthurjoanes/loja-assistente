@@ -1,0 +1,32 @@
+ Container pf-loja-assistente-test-db-1 Starting 
+ Container pf-loja-assistente-test-db-1 Started 
+ Container pf-loja-assistente-test-db-1 Waiting 
+ Container pf-loja-assistente-test-db-1 Healthy 
+ Container pf-loja-assistente-test-run-3ca2dbf95667 Creating 
+ Container pf-loja-assistente-test-run-3ca2dbf95667 Created 
+
+Executando: ruff check src tests
+All checks passed!
+
+Executando: ruff format --check src tests
+unformatted: File would be reformatted
+  --> src/loja_assistente/assistant/interpreters/demo_language.py:29:18
+   |
+28 |     metrics: set[Literal["revenue", "orders", "average_ticket", "units"]] = set()
+   -     if re.search(r"\b(?:receita|faturamento|quanto (?:eu )?vend\w*|quanto entrou|valor vendido)\b", text):
+29 +     if re.search(
+30 +         r"\b(?:receita|faturamento|quanto (?:eu )?vend\w*|quanto entrou|valor vendido)\b", text
+31 +     ):
+32 |         metrics.add("revenue")
+   |
+
+1 file would be reformatted, 48 files already formatted
+Traceback (most recent call last):
+  File "/app/scripts/check.py", line 41, in <module>
+    main()
+  File "/app/scripts/check.py", line 37, in main
+    subprocess.run(command, check=True, env=environment)
+  File "/usr/local/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ruff', 'format', '--check', 'src', 'tests']' returned non-zero exit status 1.
+

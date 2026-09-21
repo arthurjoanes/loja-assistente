@@ -1,0 +1,60 @@
+{
+  "at": "2026-09-21T12:14:31.662180+00:00",
+  "tables": [
+    {
+      "table": "organizations",
+      "count": 2,
+      "checksum": "10cddc0dd608839b54c303f6734763cb"
+    },
+    {
+      "table": "stores",
+      "count": 6,
+      "checksum": "81e27fbcd325eebd6fd3fbf8cc9f8a64"
+    },
+    {
+      "table": "users",
+      "count": 3,
+      "checksum": "253660d33d850e9ac77874e949e1b3cf"
+    },
+    {
+      "table": "store_permissions",
+      "count": 4,
+      "checksum": "ec93a8707a9681df8ebde4e024e4e5d3"
+    },
+    {
+      "table": "products",
+      "count": 40,
+      "checksum": "b97cef653ca6cfc2e50d1ca71ee9d63b"
+    },
+    {
+      "table": "orders",
+      "count": 6316,
+      "checksum": "53f33bfbfdc7b78a3b871c9e70c9155f"
+    },
+    {
+      "table": "order_items",
+      "count": 15683,
+      "checksum": "342343a5a089b3338a151d9a085726db"
+    },
+    {
+      "table": "coverage",
+      "count": 538,
+      "checksum": "3a28c7367bdf1d1fe091d6bc2213d9ce"
+    },
+    {
+      "table": "datasets",
+      "count": 1,
+      "checksum": "9598613371d12f6a045d0df35566cbce"
+    },
+    {
+      "table": "conversations",
+      "count": 74,
+      "checksum": "3e93d5242459267e6e37fb29c63549ed"
+    },
+    {
+      "table": "answers",
+      "count": 118,
+      "checksum": "ea8f1438a1e264c1e54da3772522fe42"
+    }
+  ]
+}

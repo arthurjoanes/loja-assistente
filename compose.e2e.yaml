@@ -1,0 +1,70 @@
+name: pf-loja-assistente-e2e
+services:
+  db:
+    image: postgres:17.11-bookworm
+    environment:
+      POSTGRES_DB: loja_assistente_e2e_test
+      POSTGRES_USER: loja_assistente
+      POSTGRES_PASSWORD: isolated-e2e-only
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U loja_assistente -d loja_assistente_e2e_test']
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    mem_limit: 512m
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://loja_assistente:isolated-e2e-only@db:5432/loja_assistente_e2e_test
+      SESSION_SECRET: isolated-e2e-session-key-never-used-by-demo
+      DEMO_MODE: 'true'
+      COOKIE_SECURE: 'false'
+      ALLOWED_ORIGINS: '["http://frontend:3102"]'
+      REFERENCE_DATE: '2026-08-17'
+      DATASET_VERSION: synthetic-v1
+      LLM_ENABLED: 'false'
+      OPENAI_API_KEY: ''
+    command: [sh, -c, 'alembic upgrade head && python -m loja_assistente.seed && exec uvicorn loja_assistente.app:app --host 0.0.0.0 --port 8102']
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8102/api/health')"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    mem_limit: 768m
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      BACKEND_URL: http://backend:8102
+      PORT: 3102
+      HOSTNAME: 0.0.0.0
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://localhost:3102').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    mem_limit: 512m
+  e2e:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.e2e
+    environment:
+      E2E_BASE_URL: http://frontend:3102
+      SCREENSHOT_DIR: /app/screenshots
+    volumes:
+      - ./docs/screenshots:/app/screenshots
+      - ./frontend/test-results:/app/test-results
+    depends_on:
+      frontend:
+        condition: service_healthy
+    shm_size: 256m
+    mem_limit: 1536m

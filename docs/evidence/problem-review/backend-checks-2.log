@@ -1,0 +1,129 @@
+ Container pf-loja-assistente-test-db-1 Running 
+ Container pf-loja-assistente-test-db-1 Waiting 
+ Container pf-loja-assistente-test-db-1 Healthy 
+ Container pf-loja-assistente-test-run-9f82e4adb7f0 Creating 
+ Container pf-loja-assistente-test-run-9f82e4adb7f0 Created 
+
+Executando: ruff check src tests
+All checks passed!
+
+Executando: ruff format --check src tests
+49 files already formatted
+
+Executando: mypy src
+Success: no issues found in 33 source files
+
+Executando: alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001, initial_schema
+INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, Avoid bigint overflow when validating quantity times unit price.
+
+Executando: /opt/venv/bin/python -m pytest -q
+........................................................................ [ 23%]
+........................................................................ [ 47%]
+........................................................................ [ 71%]
+...........................................F............................ [ 95%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+_ test_provider_hooks_follow_real_http_authorization_and_calculation[a001-200] _
+
+manager_client = <starlette.testclient.TestClient object at 0x7d163e413b60>
+db = <sqlalchemy.orm.session.Session object at 0x7d163e72b920>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d163e405520>
+store_id = 'a001', expected_status = 200
+
+    @pytest.mark.parametrize("store_id,expected_status", [("a001", 200), ("b001", 403)])
+    def test_provider_hooks_follow_real_http_authorization_and_calculation(
+        manager_client: TestClient,
+        db: Session,
+        monkeypatch: pytest.MonkeyPatch,
+        store_id: str,
+        expected_status: int,
+    ) -> None:
+        from loja_assistente.assistant import interpretation
+        from loja_assistente.config import settings
+    
+        records = []
+        reservations = []
+        statements = []
+        monkeypatch.setattr(settings, "llm_enabled", True)
+        monkeypatch.setattr(settings, "openai_api_key", "simulated-contract-only")
+        payload = response_body(
+            {
+                "type": "output_text",
+                "text": json.dumps(
+                    {
+                        "status": "ready",
+                        "plan": {**PLAN, "store_references": [store_id]},
+                        "message": "",
+                    }
+                ),
+                "annotations": [],
+            }
+        )
+    
+        def client_factory(**kwargs):
+            return OpenAI(
+                **kwargs,
+                http_client=httpx.Client(
+                    transport=httpx.MockTransport(
+                        lambda request: httpx.Response(
+                            200, json=payload, headers={"x-request-id": "simulated-http-proof"}
+                        ),
+                    )
+                ),
+            )
+    
+        def inspect_sql(_conn, _cursor, statement, _params, _context, _many):
+            statements.append(statement.casefold())
+    
+        monkeypatch.setattr(interpretation, "OpenAI", client_factory)
+        connection = db.connection()
+        event.listen(connection, "before_cursor_execute", inspect_sql)
+        try:
+            with observe_provider(
+                EvaluationHooks(reserve=lambda *args: reservations.append(args), record=records.append)
+            ):
+                response = manager_client.post(
+                    "/api/assistant/query", json={"question": "Quanto eu vendi ontem?", "mode": "llm"}
+                )
+        finally:
+            event.remove(connection, "before_cursor_execute", inspect_sql)
+        assert response.status_code == expected_status
+        assert len(reservations) == len(records) == 1
+        assert records[0].provider_request_id == "simulated-http-proof"
+        if expected_status == 200:
+            result = response.json()["result"]
+>           assert result["totals"] == {
+                "revenue_cents": "3000",
+                "orders": 2,
+                "units": 8,
+                "average_ticket_cents": "1500",
+            }
+E           AssertionError: assert {'revenue_cen...s': '1500.00'} == {'revenue_cen...ents': '1500'}
+E             
+E             Omitting 3 identical items, use -vv to show
+E             Differing items:
+E             {'average_ticket_cents': '1500.00'} != {'average_ticket_cents': '1500'}
+E             Use -v to get more diff
+
+tests/test_provider_evidence.py:249: AssertionError
+=============================== warnings summary ===============================
+../../opt/venv/lib/python3.12/site-packages/starlette/testclient.py:53
+  /opt/venv/lib/python3.12/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_provider_evidence.py::test_provider_hooks_follow_real_http_authorization_and_calculation[a001-200]
+1 failed, 302 passed, 1 warning in 18.75s
+Traceback (most recent call last):
+  File "/app/scripts/check.py", line 41, in <module>
+    main()
+  File "/app/scripts/check.py", line 37, in main
+    subprocess.run(command, check=True, env=environment)
+  File "/usr/local/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '-m', 'pytest', '-q']' returned non-zero exit status 1.
+

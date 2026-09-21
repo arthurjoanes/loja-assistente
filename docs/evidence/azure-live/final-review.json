@@ -1,0 +1,31 @@
+{
+  "at": "2026-09-21T12:22:15.877222+00:00",
+  "freeze_consistent": true,
+  "stage_statuses": [
+    "live_smoke_passed",
+    "live_development_passed",
+    "live_final_approved"
+  ],
+  "distinct_final_questions": 24,
+  "final_repetitions": 2,
+  "final_rows": 48,
+  "final_passed": 47,
+  "critical_failures": 0,
+  "all_live_calls": 55,
+  "all_usage": {
+    "input_tokens": 45307,
+    "output_tokens": 3481,
+    "total_tokens": 48788,
+    "unknown_usage_calls": 0
+  },
+  "conservative_estimated_usd": "0.01550395",
+  "public_files_scanned_for_provided_key": 198,
+  "secret_matches": [],
+  "local_document_links_checked": 103,
+  "missing_links": [],
+  "independent_review": "Confirmed final counts, fixture literals, schema/domain distinction, freeze and the documented clarification failure.",
+  "backend_checks_exit_code": 0,
+  "backend_test_count": 313,
+  "ui_check": "Model option enabled and selected, no inference submitted",
+  "remaining_required_live_work": []
+}

@@ -1,0 +1,82 @@
+{
+  "at": "2026-09-21T12:21:15.784426+00:00",
+  "table_snapshots_equal": true,
+  "after_tables": [
+    {
+      "table": "organizations",
+      "count": 2,
+      "checksum": "10cddc0dd608839b54c303f6734763cb"
+    },
+    {
+      "table": "stores",
+      "count": 6,
+      "checksum": "81e27fbcd325eebd6fd3fbf8cc9f8a64"
+    },
+    {
+      "table": "users",
+      "count": 3,
+      "checksum": "253660d33d850e9ac77874e949e1b3cf"
+    },
+    {
+      "table": "store_permissions",
+      "count": 4,
+      "checksum": "ec93a8707a9681df8ebde4e024e4e5d3"
+    },
+    {
+      "table": "products",
+      "count": 40,
+      "checksum": "b97cef653ca6cfc2e50d1ca71ee9d63b"
+    },
+    {
+      "table": "orders",
+      "count": 6316,
+      "checksum": "53f33bfbfdc7b78a3b871c9e70c9155f"
+    },
+    {
+      "table": "order_items",
+      "count": 15683,
+      "checksum": "342343a5a089b3338a151d9a085726db"
+    },
+    {
+      "table": "coverage",
+      "count": 538,
+      "checksum": "3a28c7367bdf1d1fe091d6bc2213d9ce"
+    },
+    {
+      "table": "datasets",
+      "count": 1,
+      "checksum": "9598613371d12f6a045d0df35566cbce"
+    },
+    {
+      "table": "conversations",
+      "count": 74,
+      "checksum": "3e93d5242459267e6e37fb29c63549ed"
+    },
+    {
+      "table": "answers",
+      "count": 118,
+      "checksum": "ea8f1438a1e264c1e54da3772522fe42"
+    }
+  ],
+  "http": {
+    "http://localhost:3102/": 200,
+    "http://localhost:8102/api/health": 200
+  },
+  "runtime": {
+    "llm_enabled": true,
+    "credential_present": true,
+    "model": "gpt-5.6-luna",
+    "endpoint": "https://agentes-sol-foundry.openai.azure.com/openai/v1/",
+    "reasoning_effort": "none",
+    "adapter": "openai-structured-v5"
+  },
+  "backend_image_id": "sha256:1ae38cc442b44a0805d0d8549f504b03c4797319ee1d6ac84d59c90f9e1c175d",
+  "image_source_check": {
+    "files_checked": 61,
+    "mismatches": [],
+    "root_env_in_image": false,
+    "runtime_directory_in_image": false
+  },
+  "freeze_consistent": true,
+  "browser_observed": "Interpretador selected Modelo de IA; Interpreta\u00e7\u00e3o com IA visible; no new query submitted during UI availability check."
+}
