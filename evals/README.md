@@ -2,13 +2,13 @@
 
 ## Interpretação natural e Azure
 
-`live_runner.py` compara demo, plano estruturado e, somente com autorização, o modelo real. Usa `development-v1.json` (12 casos) e `final-v1.json` (24 casos de revisor independente, duas repetições). A rodada Azure de 21/09/2026 foi aprovada: **47/48 no caminho modelo + backend**, contra 24/48 do parser. [Resultados e limites](../docs/azure-live-results.md), [tabela por pergunta](../docs/evidence/azure-live/cases.md) e [chamadas com tokens](../docs/evidence/azure-live/calls.md).
+`live_runner.py` compara demo, plano estruturado e, somente com autorização, o modelo real. Usa `development-v1.json` (12 casos) e `final-v1.json` (24 casos escritos antes do freeze e só executados depois, duas repetições). A avaliação Azure de 21/09/2026 foi aprovada: 47/48 no caminho modelo + backend, contra 24/48 do parser. [Resultados e limites](../docs/azure-live-results.md), [tabela por pergunta](../docs/evidence/azure-live/cases.md) e [chamadas com tokens](../docs/evidence/azure-live/calls.md).
 
-O holdout desta rodada já está publicado e deve ser tratado como regressão em trabalhos futuros. Uma nova avaliação independente exige novos casos e novo freeze. Freeze das fontes/casos, uso medido, reserva persistente e comandos em [live-evaluation.md](../docs/live-evaluation.md). O modo padrão continua offline.
+O holdout dessa avaliação já está publicado e deve ser tratado como regressão em trabalhos futuros. Uma nova avaliação exige novos casos e novo freeze. Freeze das fontes/casos, uso medido, reserva persistente e comandos em [live-evaluation.md](../docs/live-evaluation.md). O modo padrão continua offline.
 
-`reports/<UTC-id>/` preserva cada rodada, esperado/observado, falhas e hashes; o resumo não sobrescreve outra execução. A suíte histórica abaixo continua verificando regressões de segurança/financeiro e declara seus modos simulados.
+`reports/<UTC-id>/` preserva cada execução, esperado/observado, falhas e hashes; o resumo não sobrescreve outra execução. A suíte abaixo continua verificando regressões de segurança/financeiro e declara seus modos simulados.
 
-| Rodada preservada | Natureza | Relatório |
+| Execução preservada | Natureza | Relatório |
 |---|---|---|
 | `20260921T063624Z-d4d4fcdb` | Preparação offline, sem inferência | [Resumo](reports/20260921T063624Z-d4d4fcdb/summary.md) |
 | `20260921T121119Z-883376fa` | Smoke Azure, 1 chamada | [Resumo](reports/20260921T121119Z-883376fa/summary.md) |
@@ -34,7 +34,7 @@ docker compose --profile test up -d test-db
 docker compose --profile test run --rm test python /app/evals/runner.py
 ~~~
 
-No pytest, os mesmos casos são parametrizados em backend/tests/test_evals.py. Testes adicionais em test_security.py exercitam a barreira de acesso aos dados, CSRF, relógio de expiração, duas sessões alternadas, revogação, respostas/evidências/histórico pessoais e colisões de IDs. Os contratos do adaptador LLM têm testes específicos separados.
+No pytest, os mesmos casos são parametrizados em backend/tests/test_evals.py. Testes adicionais em test_security.py exercitam a barreira de acesso aos dados, CSRF, relógio de expiração, duas sessões alternadas, revogação, respostas/cálculos/histórico pessoais e colisões de IDs. Os contratos do adaptador LLM têm testes específicos separados.
 
 O runner grava `reports/latest.json` e `reports/latest.md` com data, ambiente e resultado por caso. `category` agrupa o caso; `failure_stage` indica a checagem que falhou. Exceções sem classificação usam `infrastructure/unknown`. O processo retorna 1 se algum caso falhar.
 
