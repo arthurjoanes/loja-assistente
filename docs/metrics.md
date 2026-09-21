@@ -7,7 +7,7 @@ Intervalos comerciais: America/Sao_Paulo, início incluído e fim excluído; con
 - Ticket: receita/pedidos com Decimal, string Decimal em centavos sem arredondamento intermediário; apresentação em reais arredondada HALF_UP para duas casas; sem pedidos, null (indisponível).
 - Unidades: soma quantity dos mesmos itens elegíveis.
 - Ranking: por receita ou unidades decrescente, desempate product_id crescente. Limite entre 1 e 20. Nome do produto é dado não confiável, sempre escapado.
-- Evolução diária: mesma receita/pedidos/ticket/unidades por data local; dias comprovadamente cobertos sem vendas aparecem como zero, dias ausentes não viram zero.
+- Evolução diária: mesma receita/pedidos/ticket/unidades por data local; dias cobertos sem vendas aparecem como zero, dias ausentes não viram zero.
 - Comparação: janela anterior contígua com o mesmo número de dias, mesmas lojas. Variação percentual (atual-anterior)/anterior*100, Decimal com duas casas HALF_UP. Base zero retorna null e explicação. Comparação só ocorre com cobertura completa nas duas janelas.
 
 Períodos de 1–90 dias, em BRL. Cobertura conta pares loja/data. Ausência retorna números indisponíveis; cobertura parcial calcula os dias carregados e bloqueia comparação.

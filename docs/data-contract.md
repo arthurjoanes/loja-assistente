@@ -32,7 +32,7 @@ Todos os itens da massa possuem quantidade, preço unitário em centavos e desco
 
 O gerador produz volume variável por loja, concentração em itens populares, reforço de vendas de sexta a domingo, descontos e aproximadamente 7% de cancelamentos. Alguns dias carregados não têm vendas. Nas lojas Norte, um dia não é carregado deliberadamente; nenhuma venda é gerada nesse dia. A consulta também associa os pedidos à cobertura, portanto uma linha de venda acidental num dia não carregado não entra nos valores.
 
-Cobertura conta pares loja/data. Completa permite comparação. Parcial mostra somente os dias carregados e lista os pares ausentes; a comparação é recusada. Ausente retorna `value=null`, `totals=null`, série e evidências vazias. Uma janela coberta sem pedidos tem receita/pedidos/unidades zero e ticket indisponível.
+Cobertura conta pares loja/data. Completa permite comparação. Parcial mostra somente os dias carregados e lista os pares ausentes; a comparação é recusada. Ausente retorna `value=null`, `totals=null`, série e `evidence` vazios. Uma janela coberta sem pedidos tem receita/pedidos/unidades zero e ticket indisponível.
 
 ## Repetição e limites
 
