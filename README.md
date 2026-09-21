@@ -1,10 +1,10 @@
 # Loja Assistente
 
-Um gestor precisa perguntar "quanto vendi ontem?" e confiar no número, sem perder filtro, sem confundir ausência de dado com zero e sem ver venda de outra empresa. Fiz um assistente que transforma a pergunta em um plano limitado, autoriza no servidor e calcula no PostgreSQL, mostrando o mesmo cálculo que usou na resposta. Dados fictícios, roda local.
+Consulte vendas em português e confira a origem de cada número. O assistente transforma a pergunta em um plano limitado, autoriza o acesso às lojas e calcula no PostgreSQL. A resposta inclui período, filtros, cobertura dos dados e cálculo. A demonstração roda localmente com dados fictícios.
 
 ![Consulta de vendas](docs/screenshots/consulta-com-evidencia.png)
 
-Usei FastAPI, PostgreSQL, SQLAlchemy/Alembic e Next.js/TypeScript. Avaliei o adaptador de linguagem ao vivo no Azure Foundry com o GPT-5.6 Luna: 47/48 respostas corretas, contra 24/48 do parser determinístico, em 24 perguntas repetidas duas vezes. As chamadas foram reais; os dados comerciais são sintéticos.
+FastAPI, PostgreSQL, SQLAlchemy/Alembic e Next.js/TypeScript. Na avaliação com GPT-5.6 Luna no Azure Foundry, o caminho modelo + backend acertou 47/48 tentativas, contra 24/48 do parser determinístico, em 24 perguntas repetidas duas vezes. As chamadas foram reais; os dados comerciais são sintéticos e a falha está documentada.
 
 ## Dá pra conferir sem rodar
 
@@ -18,7 +18,7 @@ O script usa só a biblioteca padrão do Python 3.11+ e recalcula as contagens a
 
 ## Por que a IA não inventa o total
 
-A IA só interpreta a pergunta. O servidor valida o plano, checa a autorização e faz a conta no banco; o número que aparece na tela é o mesmo que respondi. Isso está em [analytics/contracts.py](backend/src/loja_assistente/analytics/contracts.py), [auth/service.py](backend/src/loja_assistente/auth/service.py) e [analytics/queries.py](backend/src/loja_assistente/analytics/queries.py). [Arquitetura](docs/architecture.md).
+A IA interpreta a pergunta. O servidor valida o plano, checa a autorização e faz a conta no banco; texto, tabela e gráfico usam o mesmo resultado. Isso está em [analytics/contracts.py](backend/src/loja_assistente/analytics/contracts.py), [auth/service.py](backend/src/loja_assistente/auth/service.py) e [analytics/queries.py](backend/src/loja_assistente/analytics/queries.py). [Arquitetura](docs/architecture.md).
 
 ## Rodar
 
@@ -29,7 +29,9 @@ Docker Desktop com engine Linux e PowerShell 7+:
 .\scripts\dev.ps1 start
 ```
 
-[App](http://localhost:3102) · [API](http://localhost:8102/docs). O setup cria `.env`, faz o build, migra e carrega o seed. As contas de demonstração (`gerente.a@demo.local`, senha `LojaDemo!2026`) só autenticam com `DEMO_MODE=true`. O relógio analítico é 17/08/2026. No Linux, os comandos equivalentes estão no CI.
+[App](http://localhost:3102) · [API](http://localhost:8102/docs). O setup cria `.env`, faz o build, migra e carrega o seed. Entre com `gerente.a@demo.local`, senha `LojaDemo!2026`, e pergunte **Quanto vendi ontem?**. Abra **Cálculo** para conferir o resultado. As contas de demonstração só autenticam com `DEMO_MODE=true`; o relógio analítico é 17/08/2026.
+
+O modo Demo funciona sem chave nem chamadas pagas. Para habilitar o modelo, siga a [configuração OpenAI/Azure](docs/llm-integration.md). [Instalação no Linux e comandos de operação](docs/local-setup.md).
 
 ## Testes
 

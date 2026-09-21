@@ -46,9 +46,8 @@ with httpx.Client(base_url=base, headers={"Origin": origin}, timeout=20) as mana
     assert first["status"] == "ready"
     evidence = manager.get(f"/api/answers/{first['id']}/evidence")
     evidence.raise_for_status()
-    assert (
-        sum(row["revenue_cents"] for row in evidence.json()["evidence"])
-        == first["result"]["totals"]["revenue_cents"]
+    assert sum(int(row["revenue_cents"]) for row in evidence.json()["evidence"]) == int(
+        first["result"]["totals"]["revenue_cents"]
     )
     ranking = ask(
         manager,

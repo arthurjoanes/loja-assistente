@@ -1,0 +1,109 @@
+{
+  "checked_at_utc": "2026-09-21T23:22:29.721053+00:00",
+  "source_head_before_release": "b4bed37475d8fc07fd77f657430c49ad2152bb37",
+  "scope": "Local Linux containers, synthetic fixtures, no hosted deployment and no paid inference in this publication run.",
+  "application_source": {
+    "frozen_files_verified": 62,
+    "changed_domain_sources": 0
+  },
+  "checks": {
+    "backend_passed": 313,
+    "backend_skipped": 0,
+    "offline_evaluations_passed": 57,
+    "offline_evaluations_already_included_in_backend": true,
+    "backend_seconds": 26.28,
+    "frontend": [
+      "production build",
+      "ESLint",
+      "TypeScript",
+      "Prettier"
+    ],
+    "playwright": {
+      "startTime": "2026-09-21T23:15:40.834Z",
+      "duration": 37123.564999999995,
+      "expected": 47,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "documented_http_demo": "passed after correcting string-cent arithmetic",
+    "evidence_before_and_after_tests": "passed",
+    "actionlint": "1.7.12 passed; external shellcheck and pyflakes disabled"
+  },
+  "security": {
+    "scanner": "aquasec/trivy:0.74.0@sha256:62b1e65e8869bc4b4c6aa4fa2b21595256c7c2f6018a9d9ad61caf87187c1969",
+    "database": {
+      "Version": 2,
+      "NextUpdate": "2026-09-22T07:13:21.41309079Z",
+      "UpdatedAt": "2026-09-21T07:13:21.413091201Z",
+      "DownloadedAt": "2026-09-21T12:51:37.17585292Z"
+    },
+    "database_sha256": "a325c841036f662fee39ed929422f113030cd36ca71c55f6192cbc5f2d5d01b1",
+    "scanners": [
+      "vuln"
+    ],
+    "offline_scan": true,
+    "ignorefile": "/dev/null",
+    "ignore_unfixed": false,
+    "images": [
+      {
+        "service": "backend",
+        "image_id": "sha256:8119e17282d5d774de32caffe17633e5930607800e74df96ef0d4f278cbf0258",
+        "configuration_digest": "sha256:fcbe146d6b2ccdb913f88a37186f809555d9436d53ff40a36e734b7d3bb9ec50",
+        "os": {
+          "Family": "alpine",
+          "Name": "3.24.2"
+        },
+        "inventory": [
+          {
+            "type": "alpine",
+            "packages": 38
+          },
+          {
+            "type": "python-pkg",
+            "packages": 46
+          }
+        ],
+        "findings_all_severities": 0
+      },
+      {
+        "service": "frontend",
+        "image_id": "sha256:47427e88d7b4cca507111a07c46dbf3da689c1ad1c4c2cfe0e8209ef0486eb50",
+        "configuration_digest": "sha256:3eb9a0ade0b40dc9fd4cec54e68e04b2727d3556cb5fe7d89630094189bf20cd",
+        "os": {
+          "Family": "alpine",
+          "Name": "3.24.1"
+        },
+        "inventory": [
+          {
+            "type": "alpine",
+            "packages": 18
+          },
+          {
+            "type": "node-pkg",
+            "packages": 20
+          }
+        ],
+        "findings_all_severities": 0
+      }
+    ],
+    "scope_excluded": [
+      "PostgreSQL service image",
+      "Playwright test-tool image"
+    ],
+    "limitations": [
+      "Findings are bounded by package inventory and the database date.",
+      "Trivy reports Alpine 3.24 absent from its EOL table; package analysis completed."
+    ],
+    "gitleaks_history": {
+      "version": "8.30.1",
+      "unresolved_findings": 0,
+      "reviewed_false_positives": 15,
+      "categories": [
+        "13 exact SHA-256 occurrences for test_auth.py",
+        "1 exact SHA-256 for api.ts",
+        "1 exact historical APIM correlation identifier"
+      ]
+    }
+  }
+}

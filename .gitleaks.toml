@@ -1,0 +1,28 @@
+title = "Loja Assistente secret scanning"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "SHA-256 of the frozen authentication test, verified against its bytes"
+condition = "AND"
+regexTarget = "match"
+paths = ['''^(evals/freeze\.json|evals/reports/[^/]+/(manifest|summary)\.json|docs/evidence/azure-live/freeze-(before-azure-configuration|azure-luna-r1)\.json)$''']
+regexes = ['''test_auth\.py"\s*:\s*"dc4934eca4461da4c6f9b705af261d65f5fb8ab9ffa35de1147a68513e6c7d86"''']
+
+[[rules.allowlists]]
+description = "SHA-256 of the versioned HTTP client, verified against its bytes"
+condition = "AND"
+regexTarget = "match"
+paths = ['''^docs/evidence/problem-review/frontend-and-scripts-fingerprint\.json$''']
+regexes = ['''api\.ts"\s*:\s*"1ca31a7e1bfd0e0629b57d574ef99856987de1a20ed1b7d3594188bc0e415ff0"''']
+
+[[rules.allowlists]]
+description = "Historical Azure request correlation ID, not an authentication credential"
+condition = "AND"
+regexTarget = "match"
+paths = ['''^docs/evidence/azure-live/connection-and-authorization\.json$''']
+regexes = ['''apim-request-id"\s*:\s*"7fa9f814-6260-4faf-ac6a-da3079a5a361"''']
