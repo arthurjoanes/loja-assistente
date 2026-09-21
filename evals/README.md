@@ -31,11 +31,11 @@ Execução no serviço de testes:
 
 ~~~text
 docker compose --profile test up -d test-db
-docker compose --profile test run --rm test python /app/evals/runner.py
+docker compose --profile test run --rm test python /app/evals/runner.py --output-dir /app/evals/reports/local
 ~~~
 
 No pytest, os mesmos casos são parametrizados em backend/tests/test_evals.py. Testes adicionais em test_security.py exercitam a barreira de acesso aos dados, CSRF, relógio de expiração, duas sessões alternadas, revogação, respostas/cálculos/histórico pessoais e colisões de IDs. Os contratos do adaptador LLM têm testes específicos separados.
 
-O runner grava `reports/latest.json` e `reports/latest.md` com data, ambiente e resultado por caso. `category` agrupa o caso; `failure_stage` indica a checagem que falhou. Exceções sem classificação usam `infrastructure/unknown`. O processo retorna 1 se algum caso falhar.
+O comando grava `reports/local/latest.json` e `reports/local/latest.md`, ignorados pelo Git, com data, ambiente e resultado por caso. Os atalhos `dev.ps1 test` e `dev.ps1 eval` usam o mesmo diretório, preservando os relatórios históricos verificados por `verify_evidence.py`. Ao chamar o runner diretamente, informe `--output-dir`: o default histórico `reports/` sobrescreve os arquivos `latest.*` publicados. `category` agrupa o caso; `failure_stage` indica a checagem que falhou. Exceções sem classificação usam `infrastructure/unknown`. O processo retorna 1 se algum caso falhar.
 
 Os testes usam o parser demo e transporte simulado. Não chamam o LLM.

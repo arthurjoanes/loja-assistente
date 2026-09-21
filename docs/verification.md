@@ -1,5 +1,7 @@
 # Testes locais
 
+Para a publicação, a instalação e as suítes foram repetidas em uma cópia somente com arquivos Git, agora em Python 3.12.14 e imagens Alpine. Os 313 testes backend, 57 avaliações e 47 casos Playwright passaram. Consulte a [revalidação e correções](publication-check.md). Os registros abaixo preservam a execução anterior e sua configuração.
+
 Execução de 21/09/2026 UTC, Windows/PowerShell 7 e containers Linux: Python 3.12.12, Node 24.19.0 e PostgreSQL 17.11. Locks: `backend/uv.lock` e `frontend/package-lock.json`. Execute os comandos na raiz do clone.
 
 ## Comandos e resultados

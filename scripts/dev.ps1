@@ -31,7 +31,7 @@ try {
         'start' { Invoke-Compose up -d --wait }
         'seed' { Invoke-Compose run --rm backend python -m loja_assistente.seed }
         'test' { Invoke-Compose --profile test run --rm test }
-        'eval' { Invoke-Compose --profile test run --rm test python -m evals.runner }
+        'eval' { Invoke-Compose --profile test run --rm test python -m evals.runner --output-dir /app/evals/reports/local }
         'check-frontend' {
             Invoke-Compose --profile test build frontend-check
             Invoke-Compose --profile test run --rm frontend-check
