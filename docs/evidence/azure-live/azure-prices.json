@@ -1,0 +1,103 @@
+{
+  "checked_at": "2026-09-21T12:06:31.219778+00:00",
+  "source": "https://prices.azure.com/api/retail/prices?api-version=2023-01-01-preview&meterRegion=%27primary%27&currencyCode=%27USD%27&%24filter=serviceName+eq+%27Foundry+Models%27+and+armRegionName+eq+%27eastus2%27+and+%28contains%28meterName%2C%275.6+luna%27%29+or+contains%28meterName%2C%275.6+terra%27%29%29+and+contains%28meterName%2C%27ShortCo%27%29+and+contains%28meterName%2C%27Std+Gl%27%29",
+  "items": [
+    {
+      "meterId": "0edf673f-01f3-55db-b300-3aaf436652c8",
+      "meterName": "5.6 luna ShortCo Opt Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 luna ShortCo Opt Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 1.2,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "1e606a78-a5c9-5eaf-8d82-4144957c289d",
+      "meterName": "5.6 luna ShortCo Inp Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 luna ShortCo Inp Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 0.2,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "23202329-568f-5ee3-b4fd-dd49947f5efb",
+      "meterName": "5.6 terra ShortCo Inp Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 terra ShortCo Inp Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 2.0,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "52393741-2230-5f8f-b556-5a268d8ac304",
+      "meterName": "5.6 terra ShortCo Opt Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 terra ShortCo Opt Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 12.0,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "6042645e-38b6-5698-b773-5e24b299cb75",
+      "meterName": "5.6 terra ShortCo Cd Inp Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 terra ShortCo Cd Inp Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 0.2,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "97d64f6e-0ace-5c93-80b2-815c38b4cfaf",
+      "meterName": "5.6 luna ShortCo Cd Inp Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 luna ShortCo Cd Inp Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 0.02,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "a3ce2ae6-355b-56f2-9e76-8baa4c68e264",
+      "meterName": "5.6 terra ShortCo Cd Wr Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 terra ShortCo Cd Wr Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 2.5,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    },
+    {
+      "meterId": "bd1a96f4-50ec-52f1-afb3-8a7e7b8a2eee",
+      "meterName": "5.6 luna ShortCo Cd Wr Std Gl 1M Tokens",
+      "productName": "Azure OpenAI GPT5",
+      "skuName": "5.6 luna ShortCo Cd Wr Std Gl",
+      "armRegionName": "eastus2",
+      "currencyCode": "USD",
+      "unitOfMeasure": "1M",
+      "retailPrice": 0.25,
+      "type": "Consumption",
+      "effectiveStartDate": "2026-08-01T00:00:00Z"
+    }
+  ],
+  "next_page": null
+}

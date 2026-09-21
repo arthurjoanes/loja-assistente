@@ -1,0 +1,62 @@
+{
+  "version": "final-v1",
+  "dataset": "manual-v1",
+  "reference_date": "2026-08-17",
+  "created_at_utc": "2026-09-21T06:13:36.1677500Z",
+  "cases_path": "evals/cases/final-v1.json",
+  "cases_sha256": "558a032290fa926943187c55e2a48ed130d02192dfe3bdc0fa093004d125b128",
+  "case_count": 24,
+  "categories": {
+    "ambiguity_greeting": 4,
+    "boundary_finance": 4,
+    "natural_language": 4,
+    "period_context": 4,
+    "scope": 4,
+    "unsupported_filters": 4
+  },
+  "expected_executable_count": 15,
+  "expected_refusal_count": 9,
+  "planned_repeats": 2,
+  "live_executed": false,
+  "offline_executed": false,
+  "prepared_by": "independent acceptance_review agent; implementer has not inspected this set before freeze",
+  "sources": [
+    {
+      "path": "backend/tests/manual_fixture.py",
+      "sha256": "e21a85d424cebb9de7fc6d6e073a137c57b3352972f1672eefe97fd1653175bc"
+    },
+    {
+      "path": "docs/manual-fixture.md",
+      "sha256": "2e2de2f757fc39859da91372710cfb8446cde56474f1f98168f29981cd7e72f4"
+    },
+    {
+      "path": "docs/api-contract.md",
+      "sha256": "b1c1abf33bfc2db35215141ebec0dba695472868005564d4c4fb46d02f39f7ba"
+    },
+    {
+      "path": "docs/metrics.md",
+      "sha256": "a35b9485c446c3ea23a1f2bbe6b1572e3901793dbd9a315ffeaaed679de09459"
+    },
+    {
+      "path": "backend/src/loja_assistente/analytics/contracts.py",
+      "sha256": "611abdf692ab70db137ffecb1e126ac8dbcf1b195e8a97fae6613dfd1db6a308"
+    }
+  ],
+  "oracle_review": [
+    "Literal expectations derived from manual-v1 orders and coverage, independently of analytics functions",
+    "UTC business-day boundary, item-total discounts, excluded cancellation and distinct orders checked by hand",
+    "Ranking tie follows ascending product_id; coverage counts store-date pairs",
+    "Decimal string equivalence allowed; repeating average_ticket not asserted where unnecessary",
+    "All 24 cases stay in denominator; infrastructure failures and refusals must be reported"
+  ],
+  "separation": [
+    "Current interpreter implementation, new provider prompt and development-v1 cases were not read",
+    "Only contracts, fixture, metrics and preregistered criteria were consulted for this preparation",
+    "Reviewer knows historical project requirements; this is not a sample collected from target users"
+  ],
+  "evaluation_rules": [
+    "No live calls or paid resources used to prepare cases",
+    "Do not change expected values to match observed behavior",
+    "If this final set informs a correction, retain its result and treat it as regression; a new final set requires a new identified version"
+  ]
+}

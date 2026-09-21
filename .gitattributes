@@ -1,0 +1,12 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+
+# Preserve the exact bytes recorded by the Azure evaluation before the first commit.
+backend/src/loja_assistente/assistant/interpreters/store_mentions.py -text
+backend/src/loja_assistente/assistant/service.py -text
+backend/tests/test_filter_limits.py -text
+evals/cases/** -text
+evals/freeze.json -text
+evals/reports/** -text
+docs/evidence/** -text

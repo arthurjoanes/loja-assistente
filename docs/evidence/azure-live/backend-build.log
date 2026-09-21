@@ -1,0 +1,73 @@
+ Image pf-loja-assistente-backend:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 732B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 648B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.12-slim-bookworm
+#3 DONE 0.1s
+
+#4 [internal] load metadata for ghcr.io/astral-sh/uv:0.12.17
+#4 DONE 0.1s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 163B done
+#5 DONE 0.0s
+
+#6 FROM ghcr.io/astral-sh/uv:0.12.17@sha256:10787c682e4184e4f290de1171fd4703dc63de99221f10fe1c99002ce7fa9acc
+#6 resolve ghcr.io/astral-sh/uv:0.12.17@sha256:10787c682e4184e4f290de1171fd4703dc63de99221f10fe1c99002ce7fa9acc 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-0  1/10] FROM docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+#7 resolve docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c 0.0s done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 519.78kB 0.0s done
+#8 DONE 0.1s
+
+#9 [stage-0  2/10] COPY --from=ghcr.io/astral-sh/uv:0.12.17 /uv /usr/local/bin/uv
+#9 CACHED
+
+#10 [stage-0  3/10] WORKDIR /app/backend
+#10 CACHED
+
+#11 [stage-0  4/10] COPY backend/pyproject.toml backend/uv.lock ./
+#11 CACHED
+
+#12 [stage-0  5/10] RUN uv sync --frozen --no-install-project
+#12 CACHED
+
+#13 [stage-0  6/10] COPY backend ./
+#13 DONE 0.1s
+
+#14 [stage-0  7/10] COPY evals /app/evals
+#14 DONE 0.1s
+
+#15 [stage-0  8/10] COPY data /app/data
+#15 DONE 0.1s
+
+#16 [stage-0  9/10] COPY scripts /app/scripts
+#16 DONE 0.1s
+
+#17 [stage-0 10/10] RUN useradd --create-home app && chown -R app:app /app
+#17 DONE 0.7s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 0.3s done
+#18 exporting manifest sha256:c66d4d12e92d6325c24112fd9d77b19a518f6232a0bb5c02ba81a7ab99477c44 0.0s done
+#18 exporting config sha256:1d2b31c893e72c484d4f414e7b0352604afc0651a770fa705778cd3c410bc09c 0.0s done
+#18 exporting attestation manifest sha256:d77aec22df2ca8970abfe5ac2f6e8213ff08fde1a5e76c45408c73f2ccb6f6aa 0.0s done
+#18 exporting manifest list sha256:1ae38cc442b44a0805d0d8549f504b03c4797319ee1d6ac84d59c90f9e1c175d 0.0s done
+#18 naming to docker.io/library/pf-loja-assistente-backend:local done
+#18 unpacking to docker.io/library/pf-loja-assistente-backend:local
+#18 unpacking to docker.io/library/pf-loja-assistente-backend:local 0.2s done
+#18 DONE 0.5s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.0s
+ Image pf-loja-assistente-backend:local Built 

@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-09-21T12:11:14.3398133Z",
+  "finished_at": "2026-09-21T12:11:23.4563234Z",
+  "stage": "smoke",
+  "exit_code": 0,
+  "command": "docker compose --profile evaluation run --rm evaluator python -m evals.live_runner --mode live --stage smoke --authorization /app/.runtime/live-authorization.json"
+}

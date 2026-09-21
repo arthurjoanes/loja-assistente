@@ -1,0 +1,7 @@
+FROM mcr.microsoft.com/playwright:v1.63.0-noble
+WORKDIR /app
+ENV CI=1
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit --no-fund
+COPY . .
+CMD ["npm", "run", "test:e2e"]

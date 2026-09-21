@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "start": "2026-05-19",
+  "counts": {
+    "items": 15683,
+    "orders": 6316,
+    "stores": 6,
+    "coverage": 538,
+    "products": 40,
+    "organizations": 2
+  },
+  "source": "synthetic",
+  "version": "synthetic-v1",
+  "currency": "BRL",
+  "timezone": "America/Sao_Paulo",
+  "integrity": {
+    "integer_cents": true,
+    "tenant_foreign_keys": true,
+    "missing_coverage_rows": 2,
+    "external_ids_collide_across_tenants": true
+  },
+  "end_exclusive": "2026-08-17",
+  "content_sha256": "94ee88ffb0c49d4cc32472dca3904b60d39a536161ff856c170d9fdb2eab8815"
+}

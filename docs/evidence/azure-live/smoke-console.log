@@ -1,0 +1,11 @@
+ Container pf-loja-assistente-test-db-1 Running 
+ Container pf-loja-assistente-test-db-1 Waiting 
+ Container pf-loja-assistente-test-db-1 Healthy 
+ Container pf-loja-assistente-evaluator-run-0bd9b6bb0426 Creating 
+ Container pf-loja-assistente-evaluator-run-0bd9b6bb0426 Created 
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+dev-01 demo repetition=1 passed=True
+dev-01 structured repetition=1 passed=True
+dev-01 llm repetition=1 passed=True
+Relatório: /app/evals/reports/20260921T121119Z-883376fa; live_smoke_passed

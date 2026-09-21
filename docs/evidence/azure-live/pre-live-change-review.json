@@ -1,0 +1,17 @@
+{
+  "at": "2026-09-21T12:10:09.473988+00:00",
+  "changed_source_files": [
+    "backend/src/loja_assistente/assistant/interpretation.py",
+    "backend/src/loja_assistente/assistant/interpreters/openai_adapter.py",
+    "backend/src/loja_assistente/assistant/provider_trace.py",
+    "backend/src/loja_assistente/config.py",
+    "backend/tests/test_live_evaluation.py",
+    "backend/tests/test_provider_evidence.py",
+    "compose.yaml",
+    "evals/live_runner.py"
+  ],
+  "removed_source_files": [],
+  "domain_analytics_contract_unchanged": true,
+  "final_cases_not_opened": true,
+  "inference_calls_before_freeze": 0
+}

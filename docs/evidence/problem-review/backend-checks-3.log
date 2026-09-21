@@ -1,0 +1,37 @@
+ Container pf-loja-assistente-test-db-1 Running 
+ Container pf-loja-assistente-test-db-1 Waiting 
+ Container pf-loja-assistente-test-db-1 Healthy 
+ Container pf-loja-assistente-test-run-ffa87b8b0dfb Creating 
+ Container pf-loja-assistente-test-run-ffa87b8b0dfb Created 
+
+Executando: ruff check src tests
+All checks passed!
+
+Executando: ruff format --check src tests
+49 files already formatted
+
+Executando: mypy src
+Success: no issues found in 33 source files
+
+Executando: alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+
+Executando: /opt/venv/bin/python -m pytest -q
+........................................................................ [ 23%]
+........................................................................ [ 47%]
+........................................................................ [ 70%]
+........................................................................ [ 94%]
+.................                                                        [100%]
+=============================== warnings summary ===============================
+../../opt/venv/lib/python3.12/site-packages/starlette/testclient.py:53
+  /opt/venv/lib/python3.12/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+305 passed, 1 warning in 18.54s
+
+Executando: /opt/venv/bin/python -m evals.runner
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+Avaliações: 57/57 aprovadas; relatórios em /app/evals/reports

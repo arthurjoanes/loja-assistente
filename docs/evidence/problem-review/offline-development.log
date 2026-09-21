@@ -1,0 +1,29 @@
+ Container pf-loja-assistente-test-db-1 Running 
+ Container pf-loja-assistente-test-db-1 Waiting 
+ Container pf-loja-assistente-test-db-1 Healthy 
+ Container pf-loja-assistente-evaluator-run-872b83431d80 Creating 
+ Container pf-loja-assistente-evaluator-run-872b83431d80 Created 
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+dev-01 demo repetition=1 passed=True
+dev-01 structured repetition=1 passed=True
+dev-02 demo repetition=1 passed=True
+dev-02 structured repetition=1 passed=True
+dev-03 demo repetition=1 passed=True
+dev-03 structured repetition=1 passed=True
+dev-04 demo repetition=1 passed=True
+dev-05 demo repetition=1 passed=True
+dev-06 demo repetition=1 passed=True
+dev-07 demo repetition=1 passed=True
+dev-07 structured repetition=1 passed=True
+dev-08 demo repetition=1 passed=True
+dev-08 structured repetition=1 passed=True
+dev-09 demo repetition=1 passed=True
+dev-09 structured repetition=1 passed=True
+dev-10 demo repetition=1 passed=True
+dev-10 structured repetition=1 passed=True
+dev-11 demo repetition=1 passed=True
+dev-11 structured repetition=1 passed=True
+dev-12 demo repetition=1 passed=True
+dev-12 structured repetition=1 passed=True
+Relatório: /app/evals/reports/20260921T063624Z-d4d4fcdb; offline_only

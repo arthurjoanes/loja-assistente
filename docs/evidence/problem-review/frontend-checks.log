@@ -1,0 +1,65 @@
+ Image pf-loja-assistente-frontend-check Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 791B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 685B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.19.0-bookworm-slim
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 105B done
+#4 DONE 0.0s
+
+#5 [dependencies 1/4] FROM docker.io/library/node:24.19.0-bookworm-slim@sha256:a9f5f7c91a432850b2a8a7797adf5eadb6c733ceed61167806cee7ea7fbc29df
+#5 resolve docker.io/library/node:24.19.0-bookworm-slim@sha256:a9f5f7c91a432850b2a8a7797adf5eadb6c733ceed61167806cee7ea7fbc29df 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 384.17kB 0.1s done
+#6 DONE 0.1s
+
+#7 [dependencies 3/4] COPY package.json package-lock.json ./
+#7 CACHED
+
+#8 [dependencies 2/4] WORKDIR /app
+#8 CACHED
+
+#9 [dependencies 4/4] RUN npm ci --no-audit --no-fund
+#9 CACHED
+
+#10 [checks 1/1] COPY . .
+#10 DONE 0.0s
+
+#11 exporting to image
+#11 exporting layers 0.1s done
+#11 exporting manifest sha256:7bf2839cde903038a7a75aeaa54da6f8614cbc1285f656b75264f863d2b6bb9f 0.0s done
+#11 exporting config sha256:c33b837f266ae2870ba1d8a6223f8abc89017b2ff8a6eaefa226f47edec6f39f 0.0s done
+#11 exporting attestation manifest sha256:dc6ac0da5ce9d48f2d4f85f4ddf2ec715366cf5847d9d946530c0675a3759db7 0.0s done
+#11 exporting manifest list sha256:512183a84d7c2c045856a5de88d678eaf79aaab9f8079f697a2ce537ad352583 0.0s done
+#11 naming to docker.io/library/pf-loja-assistente-frontend-check:latest done
+#11 unpacking to docker.io/library/pf-loja-assistente-frontend-check:latest 0.0s done
+#11 DONE 0.3s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image pf-loja-assistente-frontend-check Built 
+ Container pf-loja-assistente-frontend-check-run-485b7a080a4d Creating 
+ Container pf-loja-assistente-frontend-check-run-485b7a080a4d Created 
+
+> loja-assistente-frontend@1.0.0 lint
+> eslint .
+
+
+> loja-assistente-frontend@1.0.0 typecheck
+> tsc --noEmit
+
+
+> loja-assistente-frontend@1.0.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!

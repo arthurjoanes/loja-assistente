@@ -1,0 +1,671 @@
+ Image pf-loja-assistente-e2e-backend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 734B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 648B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.12-slim-bookworm
+#3 DONE 0.0s
+
+#4 [internal] load metadata for ghcr.io/astral-sh/uv:0.12.17
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 163B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-0  1/10] FROM docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+#7 resolve docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c 0.0s done
+#7 DONE 0.0s
+
+#8 FROM ghcr.io/astral-sh/uv:0.12.17@sha256:10787c682e4184e4f290de1171fd4703dc63de99221f10fe1c99002ce7fa9acc
+#8 resolve ghcr.io/astral-sh/uv:0.12.17@sha256:10787c682e4184e4f290de1171fd4703dc63de99221f10fe1c99002ce7fa9acc 0.0s done
+#8 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 19.08kB done
+#6 DONE 0.0s
+
+#9 [stage-0  4/10] COPY backend/pyproject.toml backend/uv.lock ./
+#9 CACHED
+
+#10 [stage-0  3/10] WORKDIR /app/backend
+#10 CACHED
+
+#11 [stage-0  2/10] COPY --from=ghcr.io/astral-sh/uv:0.12.17 /uv /usr/local/bin/uv
+#11 CACHED
+
+#12 [stage-0  5/10] RUN uv sync --frozen --no-install-project
+#12 CACHED
+
+#13 [stage-0  6/10] COPY backend ./
+#13 DONE 0.0s
+
+#14 [stage-0  7/10] COPY evals /app/evals
+#14 DONE 0.1s
+
+#15 [stage-0  8/10] COPY data /app/data
+#15 DONE 0.0s
+
+#16 [stage-0  9/10] COPY scripts /app/scripts
+#16 DONE 0.0s
+
+#17 [stage-0 10/10] RUN useradd --create-home app && chown -R app:app /app
+#17 DONE 0.5s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 0.3s done
+#18 exporting manifest sha256:af440f0cf9810944eb220b22fd967110ff80b0fc9b9e942a7d55cb88380c0e95 0.0s done
+#18 exporting config sha256:d14e692ed64ad69560ad8417976860735ce8a6d3202330603df5adcb3c01d8e3 0.0s done
+#18 exporting attestation manifest sha256:f205208329ba8b0e15447818e3f46db7f5b02f926bb8d628b318092618b61097 0.0s done
+#18 exporting manifest list sha256:bd2ded7ab11a8913f2b5e2ebb6950835a9411efb10087553e7e9071aaf1cf6d4 0.0s done
+#18 naming to docker.io/library/pf-loja-assistente-e2e-backend:latest done
+#18 unpacking to docker.io/library/pf-loja-assistente-e2e-backend:latest
+#18 unpacking to docker.io/library/pf-loja-assistente-e2e-backend:latest 0.2s done
+#18 DONE 0.6s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.0s
+ Image pf-loja-assistente-e2e-backend Built 
+ Image pf-loja-assistente-e2e-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.38kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 685B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.19.0-bookworm-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 105B done
+#4 DONE 0.0s
+
+#5 [dependencies 1/4] FROM docker.io/library/node:24.19.0-bookworm-slim@sha256:a9f5f7c91a432850b2a8a7797adf5eadb6c733ceed61167806cee7ea7fbc29df
+#5 resolve docker.io/library/node:24.19.0-bookworm-slim@sha256:a9f5f7c91a432850b2a8a7797adf5eadb6c733ceed61167806cee7ea7fbc29df 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 2.17kB done
+#6 DONE 0.0s
+
+#7 [dependencies 2/4] WORKDIR /app
+#7 CACHED
+
+#8 [dependencies 3/4] COPY package.json package-lock.json ./
+#8 CACHED
+
+#9 [dependencies 4/4] RUN npm ci --no-audit --no-fund
+#9 CACHED
+
+#10 [build 1/2] COPY . .
+#10 CACHED
+
+#11 [build 2/2] RUN npm run build
+#11 0.305 
+#11 0.305 > loja-assistente-frontend@1.0.0 build
+#11 0.305 > next build
+#11 0.305 
+#11 0.644 ▲ Next.js 16.3.5 (Turbopack)
+#11 0.688 ✓ Running next.config.ts took 42ms
+#11 0.701 
+#11 0.724   Creating an optimized production build ...
+#11 3.551 ✓ Compiled successfully in 2.6s
+#11 3.552   Running TypeScript ...
+#11 6.597   Finished TypeScript in 3.0s ...
+#11 6.600   Collecting page data using 5 workers ...
+#11 7.138   Generating static pages using 5 workers (0/3) ...
+#11 7.636 ✓ Generating static pages using 5 workers (3/3) in 498ms
+#11 7.641   Finalizing page optimization ...
+#11 7.995 
+#11 7.999 Route (app)
+#11 7.999 ┌ ○ /
+#11 7.999 ├ ○ /_not-found
+#11 7.999 └ ƒ /api/[...path]
+#11 7.999 
+#11 7.999 
+#11 7.999 ○  (Static)   prerendered as static content
+#11 7.999 ƒ  (Dynamic)  server-rendered on demand
+#11 7.999 
+#11 DONE 8.1s
+
+#7 [dependencies 2/4] WORKDIR /app
+#7 CACHED
+
+#12 [runtime 3/4] COPY --from=build --chown=node:node /app/.next/standalone ./
+#12 DONE 0.4s
+
+#13 [runtime 4/4] COPY --from=build --chown=node:node /app/.next/static ./.next/static
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 1.3s done
+#14 exporting manifest sha256:73216b65ad508b0d2922948976206f43f944b4f0912beebe9573c715ef562d49 0.0s done
+#14 exporting config sha256:233c4bc96d6c4e38b1f7c8595f8fa6ff8f8ed125d7ffb0bc4169300f3e1168a0 0.0s done
+#14 exporting attestation manifest sha256:1bd8c729d96bfcc904c0235dd57657afc472cc77cdbd64c899ab2c16a15d8775 0.0s done
+#14 exporting manifest list sha256:bffb532021b03230eed37a98cad2e73a93fc749441d26242978d109211b0fca4 0.0s done
+#14 naming to docker.io/library/pf-loja-assistente-e2e-frontend:latest done
+#14 unpacking to docker.io/library/pf-loja-assistente-e2e-frontend:latest
+#14 unpacking to docker.io/library/pf-loja-assistente-e2e-frontend:latest 0.5s done
+#14 DONE 2.0s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image pf-loja-assistente-e2e-frontend Built 
+ Image pf-loja-assistente-e2e-e2e Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.00kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile.e2e
+#2 transferring dockerfile: 224B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for mcr.microsoft.com/playwright:v1.63.0-noble
+#3 DONE 0.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 105B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 2.17kB done
+#5 DONE 0.0s
+
+#6 [1/5] FROM mcr.microsoft.com/playwright:v1.63.0-noble@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+#6 resolve mcr.microsoft.com/playwright:v1.63.0-noble@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27 0.0s done
+#6 DONE 0.0s
+
+#7 [3/5] COPY package.json package-lock.json ./
+#7 CACHED
+
+#8 [2/5] WORKDIR /app
+#8 CACHED
+
+#9 [4/5] RUN npm ci --no-audit --no-fund
+#9 CACHED
+
+#10 [5/5] COPY . .
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers 0.1s done
+#11 exporting manifest sha256:5d02b0e84448fd9f9322dda0eb3e550327e81807d157d2c105229165b9ac6fa2 0.0s done
+#11 exporting config sha256:8d9d17297852d5b5d6eed56f4487fba641c793b961692e097ffadd8a27a66ad0
+#11 exporting config sha256:8d9d17297852d5b5d6eed56f4487fba641c793b961692e097ffadd8a27a66ad0 0.0s done
+#11 exporting attestation manifest sha256:c7760577e83ec518aab3a18141f831d61aaa8fc8af3ad389440d733993e8e41b 0.0s done
+#11 exporting manifest list sha256:723cfdb07c26e4a6fb29fe40fa6c8632a998e2f61e70a5349aab771df43af287 0.0s done
+#11 naming to docker.io/library/pf-loja-assistente-e2e-e2e:latest 0.0s done
+#11 unpacking to docker.io/library/pf-loja-assistente-e2e-e2e:latest 0.0s done
+#11 DONE 0.3s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image pf-loja-assistente-e2e-e2e Built 
+ Network pf-loja-assistente-e2e_default Creating 
+ Network pf-loja-assistente-e2e_default Creating 
+ Network pf-loja-assistente-e2e_default Created 
+ Network pf-loja-assistente-e2e_default Created 
+ Container pf-loja-assistente-e2e-db-1 Creating 
+ Container pf-loja-assistente-e2e-db-1 Created 
+ Container pf-loja-assistente-e2e-backend-1 Creating 
+ Container pf-loja-assistente-e2e-backend-1 Created 
+ Container pf-loja-assistente-e2e-frontend-1 Creating 
+ Container pf-loja-assistente-e2e-frontend-1 Created 
+ Container pf-loja-assistente-e2e-e2e-1 Creating 
+ Container pf-loja-assistente-e2e-e2e-1 Created 
+Attaching to backend-1, db-1, e2e-1, frontend-1
+ Container pf-loja-assistente-e2e-db-1 Starting 
+ Container pf-loja-assistente-e2e-db-1 Started 
+ Container pf-loja-assistente-e2e-db-1 Waiting 
+db-1  | The files belonging to this database system will be owned by user "postgres".
+db-1  | This user must also own the server process.
+db-1  | 
+db-1  | The database cluster will be initialized with locale "en_US.utf8".
+db-1  | The default database encoding has accordingly been set to "UTF8".
+db-1  | The default text search configuration will be set to "english".
+db-1  | 
+db-1  | Data page checksums are disabled.
+db-1  | 
+db-1  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+db-1  | creating subdirectories ... ok
+db-1  | selecting dynamic shared memory implementation ... posix
+db-1  | selecting default "max_connections" ... 100
+db-1  | selecting default "shared_buffers" ... 128MB
+db-1  | selecting default time zone ... Etc/UTC
+db-1  | creating configuration files ... ok
+db-1  | running bootstrap script ... ok
+db-1  | performing post-bootstrap initialization ... ok
+db-1  | syncing data to disk ... ok
+db-1  | 
+db-1  | 
+db-1  | Success. You can now start the database server using:
+db-1  | 
+db-1  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+db-1  | 
+db-1  | initdb: warning: enabling "trust" authentication for local connections
+db-1  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+db-1  | waiting for server to start....2026-09-21 06:33:48.220 UTC [50] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+db-1  | 2026-09-21 06:33:48.223 UTC [50] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1  | 2026-09-21 06:33:48.225 UTC [53] LOG:  database system was shut down at 2026-09-21 06:33:48 UTC
+db-1  | 2026-09-21 06:33:48.228 UTC [50] LOG:  database system is ready to accept connections
+db-1  |  done
+db-1  | server started
+db-1  | CREATE DATABASE
+db-1  | 
+db-1  | 
+db-1  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+db-1  | 
+db-1  | waiting for server to shut down...2026-09-21 06:33:48.391 UTC [50] LOG:  received fast shutdown request
+db-1  | .2026-09-21 06:33:48.391 UTC [50] LOG:  aborting any active transactions
+db-1  | 2026-09-21 06:33:48.393 UTC [50] LOG:  background worker "logical replication launcher" (PID 56) exited with exit code 1
+db-1  | 2026-09-21 06:33:48.393 UTC [51] LOG:  shutting down
+db-1  | 2026-09-21 06:33:48.393 UTC [51] LOG:  checkpoint starting: shutdown immediate
+db-1  | 2026-09-21 06:33:48.400 UTC [51] LOG:  checkpoint complete: wrote 921 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.006 s, sync=0.001 s, total=0.007 s; sync files=301, longest=0.001 s, average=0.000 s; distance=4238 kB, estimate=4238 kB; lsn=0/190A9D8, redo lsn=0/190A9D8
+db-1  | 2026-09-21 06:33:48.407 UTC [50] LOG:  database system is shut down
+db-1  |  done
+db-1  | server stopped
+db-1  | 
+db-1  | PostgreSQL init process complete; ready for start up.
+db-1  | 
+db-1  | 2026-09-21 06:33:48.514 UTC [1] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+db-1  | 2026-09-21 06:33:48.514 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1  | 2026-09-21 06:33:48.514 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1  | 2026-09-21 06:33:48.518 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1  | 2026-09-21 06:33:48.520 UTC [66] LOG:  database system was shut down at 2026-09-21 06:33:48 UTC
+db-1  | 2026-09-21 06:33:48.523 UTC [1] LOG:  database system is ready to accept connections
+ Container pf-loja-assistente-e2e-db-1 Healthy 
+ Container pf-loja-assistente-e2e-backend-1 Starting 
+ Container pf-loja-assistente-e2e-backend-1 Started 
+ Container pf-loja-assistente-e2e-backend-1 Waiting 
+backend-1  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+backend-1  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+backend-1  | INFO  [alembic.runtime.migration] Running upgrade  -> 0001, initial_schema
+backend-1  | INFO  [alembic.runtime.migration] Running upgrade 0001 -> 0002, Avoid bigint overflow when validating quantity times unit price.
+backend-1  | {"dataset": "synthetic-v1", "counts": {"organizations": 2, "stores": 6, "products": 40, "orders": 6316, "items": 15683, "coverage": 538}, "manifest": "/app/data/manifests/synthetic-v1.json"}
+backend-1  | INFO:     Started server process [1]
+backend-1  | INFO:     Waiting for application startup.
+backend-1  | INFO:     Application startup complete.
+backend-1  | INFO:     Uvicorn running on http://0.0.0.0:8102 (Press CTRL+C to quit)
+backend-1  | INFO:     127.0.0.1:46016 - "GET /api/health HTTP/1.1" 200 OK
+ Container pf-loja-assistente-e2e-backend-1 Healthy 
+ Container pf-loja-assistente-e2e-frontend-1 Starting 
+ Container pf-loja-assistente-e2e-frontend-1 Started 
+ Container pf-loja-assistente-e2e-frontend-1 Waiting 
+frontend-1  | ▲ Next.js 16.3.5
+frontend-1  | - Local:         http://localhost:3102
+frontend-1  | - Network:       http://0.0.0.0:3102
+frontend-1  | ✓ Ready in 0ms
+frontend-1  | ✓ Running next.config took 1.1ms
+backend-1   | INFO:     127.0.0.1:54076 - "GET /api/health HTTP/1.1" 200 OK
+ Container pf-loja-assistente-e2e-frontend-1 Healthy 
+ Container pf-loja-assistente-e2e-e2e-1 Starting 
+ Container pf-loja-assistente-e2e-e2e-1 Started 
+e2e-1       | 
+e2e-1       | > loja-assistente-frontend@1.0.0 test:e2e
+e2e-1       | > playwright test
+e2e-1       | 
+backend-1   | INFO:     127.0.0.1:54092 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:54106 - "GET /api/health HTTP/1.1" 200 OK
+e2e-1       | 
+e2e-1       | Running 47 tests using 1 worker
+e2e-1       | 
+e2e-1       |   ✓   1 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-08-16 / 2026-08-17 (6ms)
+e2e-1       |   ✓   2 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-05-19 / 2026-08-17 (1ms)
+e2e-1       |   ✓   3 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-05-18 / 2026-08-17 (1ms)
+e2e-1       |   ✓   4 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-08-17 / 2026-08-17 (1ms)
+e2e-1       |   ✓   5 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-08-18 / 2026-08-17 (2ms)
+e2e-1       |   ✓   6 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro vazio / 2026-08-17 (2ms)
+e2e-1       |   ✓   7 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-08-16 / vazio (2ms)
+e2e-1       |   ✓   8 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 0001-01-01 / 0001-01-02 (2ms)
+e2e-1       |   ✓   9 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 0000-01-01 / 0000-01-02 (1ms)
+e2e-1       |   ✓  10 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 9999-12-30 / 9999-12-31 (1ms)
+e2e-1       |   ✓  11 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2026-02-29 / 2026-03-01 (1ms)
+e2e-1       |   ✓  12 [chromium] › e2e/domain.spec.ts:32:7 › intervalo puro 2024-02-29 / 2024-03-01 (1ms)
+e2e-1       |   ✓  13 [chromium] › e2e/domain.spec.ts:37:5 › preset personalizado preserva edição e pergunta remove filtro (3ms)
+e2e-1       |   ✓  14 [chromium] › e2e/domain.spec.ts:44:5 › esclarecimento preserva filtros; troca de identidade limpa toda análise (5ms)
+e2e-1       |   ✓  15 [chromium] › e2e/domain.spec.ts:77:7 › proxy conta bytes do stream com Content-Length null (6ms)
+e2e-1       |   ✓  16 [chromium] › e2e/domain.spec.ts:77:7 › proxy conta bytes do stream com Content-Length 1 (1ms)
+e2e-1       |   ✓  17 [chromium] › e2e/domain.spec.ts:77:7 › proxy conta bytes do stream com Content-Length 16385 (1ms)
+e2e-1       |   ✓  18 [chromium] › e2e/domain.spec.ts:77:7 › proxy conta bytes do stream com Content-Length invalid (1ms)
+e2e-1       |   ✓  19 [chromium] › e2e/domain.spec.ts:97:5 › proxy preserva 16 KiB e centavos grandes formatam sem Number (15ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "f5b063ed-3797-4659-aadf-944de4a3896b", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 3, "query_ms": 20, "response_ms": 28}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/answers/193bffc9-b2ca-4084-9e7b-bf806d5e0fb8/evidence HTTP/1.1" 200 OK
+backend-1   | {"request_id": "8f645ee7-23f4-4fd3-a7a0-86af62e067f9", "mode": "demo", "capability": "ranking", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 69, "response_ms": 80}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:35294 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | {"request_id": "52c1cc14-24c7-4ef5-a458-4fdd0ccb92fe", "mode": "demo", "capability": "daily", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 9, "response_ms": 19}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "3f9b5121-1121-4b90-9a1a-a0185e923ace", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 14, "response_ms": 23}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "2c5d7544-439b-45e0-96d1-04dce63550fa", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 16}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/operations HTTP/1.1" 200 OK
+e2e-1       |   ✓  20 [chromium] › e2e/journeys.spec.ts:35:5 › gestor consulta receita, evidência, ranking, comparação e continuação (3.7s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "3f832806-9074-4690-b81c-77fdcd955e0b", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 12}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "3434052f-6393-44b8-a354-f6a5b9f2c80d", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 13}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "51ef3999-4256-42d0-9a2a-3823ce1db7c4", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 18}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "a45b200e-299c-488b-8bdf-c5a4c3a03a63", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 8, "response_ms": 19}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "f91fdeb1-2718-4473-a973-023e21854550", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 9}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:35300 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | {"request_id": "f2e7c020-8f92-49cb-88b4-eb430f1f43c0", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 7}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "854b2562-ab35-4b19-8d9e-c519eaadf752", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 10, "response_ms": 21}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  21 [chromium] › e2e/journeys.spec.ts:158:5 › paráfrase e cortesia preservam cálculo; qualificador recusado não vira total (1.5s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "73737bc6-33ff-47dd-9f7c-f42394f25889", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  22 [chromium] › e2e/journeys.spec.ts:197:5 › login e análise atendem verificações automatizadas de acessibilidade (2.1s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "10002147-00cc-43ff-8878-c434c6d657e8", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 8, "response_ms": 14}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/logout HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:35312 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations/d9208049-860c-4129-88a1-a9582c7bec82 HTTP/1.1" 404 Not Found
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/answers/3343b89f-8005-4aa0-a309-8051e1096b8e HTTP/1.1" 404 Not Found
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/answers/3343b89f-8005-4aa0-a309-8051e1096b8e/evidence HTTP/1.1" 404 Not Found
+backend-1   | {"request_id": "4480b132-ba24-4ce2-8324-6c761b3fe974", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 12}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  23 [chromium] › e2e/journeys.spec.ts:230:5 › troca de usuário isola histórico, resposta e evidência no backend (1.0s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "3ae484fc-5833-4100-9a1f-66bc6290b430", "mode": "demo", "capability": null, "status": "unsupported", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 3}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "dadfb2db-1cac-4108-98d6-70e7f719e5d3", "mode": "demo", "capability": "aggregate", "status": "no_data", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 4, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 401 Unauthorized
+e2e-1       |   ✓  24 [chromium] › e2e/journeys.spec.ts:270:5 › limitação, provedor indisponível e expiração têm estados recuperáveis (734ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "86687967-6877-4ff9-85aa-4f5f731b972a", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 1, "query_ms": 7, "response_ms": 13}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  25 [chromium] › e2e/journeys.spec.ts:303:5 › celular permite teclado, filtros e leitura sem overflow horizontal (871ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "101ccc7f-8c17-4cf7-979b-076d86ed8f15", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  26 [chromium] › e2e/quality.spec.ts:36:5 › histórico tardio não apaga a conversa recém-criada (585ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "868a21d3-e33a-4db8-bc9c-68cdd1b60cd8", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 3}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations/4de4d410-1e1e-4a9b-8454-36e4ec6e24f7 HTTP/1.1" 200 OK
+e2e-1       |   ✓  27 [chromium] › e2e/quality.spec.ts:84:5 › histórico distingue horários, revela título longo e drawer devolve foco (675ms)
+backend-1   | INFO:     127.0.0.1:40276 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "93149237-2bb6-48eb-8b13-62a181d15f21", "mode": "demo", "capability": "daily", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 9, "response_ms": 15}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/answers/2655194c-ce0f-4ef3-b967-82ccf5544dbc/evidence HTTP/1.1" 200 OK
+e2e-1       |   ✓  28 [chromium] › e2e/quality.spec.ts:129:5 › evidência, foco, alvos e refluxo permanecem acessíveis em seis geometrias (2.3s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "373d2d1e-bcf3-4fbd-ab13-d28d407cda8b", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "653d8fa2-59e2-404f-ae09-f986ad21d28e", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 12, "response_ms": 21}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "eaddb80a-ff97-4bca-8a60-8b6e9ea93e10", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 16}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:40284 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/answers/52b7978b-5580-4033-91f5-636451d4d091/evidence HTTP/1.1" 200 OK
+e2e-1       |   ✓  29 [chromium] › e2e/quality.spec.ts:404:5 › zero coberto, receita de 90 dias e cobertura parcial preservam o significado dos números (1.8s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "63f15340-b9ef-4416-94b3-3440a754c473", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  30 [chromium] › e2e/quality.spec.ts:468:5 › preferência de movimento reduzido evita rolagem animada da conversa (557ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "cc14fd1b-b436-4787-847a-fd1ff448a87f", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 3}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  31 [chromium] › e2e/review.spec.ts:3:5 › filtro não suportado não aparece como receita geral (500ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  32 [chromium] › e2e/review.spec.ts:30:7 › atalhos de análise aparecem cedo em 1280×720 (479ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  33 [chromium] › e2e/review.spec.ts:30:7 › atalhos de análise aparecem cedo em 390×844 (440ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:40304 - "GET /api/health HTTP/1.1" 200 OK
+e2e-1       |   ✓  34 [chromium] › e2e/round-2-fields.spec.ts:28:5 › senha vazia, incorreta e limite preservam validação e recuperação (633ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "9068b4bd-e48b-4669-881a-a48fe230ca4f", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 13, "response_ms": 18}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "8c4adb70-3b50-4807-869f-3cd04a25b9cb", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 10, "response_ms": 22}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  35 [chromium] › e2e/round-2-fields.spec.ts:62:5 › datas personalizadas mantêm edição real, bloqueiam inválidas e enviam recorte exato (1.1s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "b831a474-36a5-4f86-a6d7-2ed3d7f658bb", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "deab23f2-96b5-4b4a-a389-9baa346f6f07", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 18}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "e5e9c5b6-fe16-4e18-a103-0351363c2061", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 13, "response_ms": 21}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "87c38048-3481-475f-9f09-a7c817715a77", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 15}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "6dafba55-9684-4bc8-a267-37d33757f8dd", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 7}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  36 [chromium] › e2e/round-2-fields.spec.ts:112:5 › lojas e períodos rápidos refletem seleção e datas explícitas prevalecem (1.1s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "03e151b9-78a2-4dbc-bc4e-3edc8ca7ecbd", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 9, "response_ms": 15}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "fbab3ac0-7321-4cf7-aaaa-e0ab9df0fcb7", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 1, "query_ms": 0, "response_ms": 7}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "031784fd-7005-456c-8067-82aa0a95f6c9", "mode": "demo", "capability": null, "status": "needs_clarification", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 0, "response_ms": 8}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  37 [chromium] › e2e/round-2-fields.spec.ts:139:5 › pergunta respeita espaços, acentos, quebra de linha, tamanho e múltiplas métricas (905ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     127.0.0.1:48348 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "06741b03-6788-4474-a85e-c82349aec81d", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 8, "response_ms": 14}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "377973ad-2d68-4c6c-82a8-17e37ae7c306", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 17}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  38 [chromium] › e2e/round-2-fields.spec.ts:180:7 › falha network preserva pergunta, resultado anterior e permite tentar novamente (832ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "3904972d-d3fb-42b0-852a-cf4a077772a4", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 6, "response_ms": 11}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "7eb7261d-38d7-4286-be72-b121a925adf7", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 15}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  39 [chromium] › e2e/round-2-fields.spec.ts:180:7 › falha 409 preserva pergunta, resultado anterior e permite tentar novamente (736ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "60284825-0e8e-4343-92b0-e0d3a8fce8c3", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 9, "response_ms": 15}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "48bc965e-84f3-4274-a4d2-2733cc5b4203", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 8, "response_ms": 17}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  40 [chromium] › e2e/round-2-fields.spec.ts:180:7 › falha 503 preserva pergunta, resultado anterior e permite tentar novamente (820ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "04c39fb4-d4b7-4834-9a49-acc65f7c894c", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 9, "response_ms": 14}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  41 [chromium] › e2e/round-2-fields.spec.ts:216:5 › resposta lenta bloqueia envio duplicado e alterações de escopo (615ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "3df26cac-01ac-4edf-b097-55eed8ded9fd", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 11, "response_ms": 17}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/operations HTTP/1.1" 200 OK
+backend-1   | INFO:     127.0.0.1:48352 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/operations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations/4b4e8c4f-9641-451b-b4f0-31f65546b4d0 HTTP/1.1" 200 OK
+e2e-1       |   ✓  42 [chromium] › e2e/round-2-fields.spec.ts:246:5 › histórico, operação indisponível e nova análise mantêm contexto e foco (1.1s)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 200 OK
+e2e-1       |   ✓  43 [chromium] › e2e/round-2-fields.spec.ts:287:5 › sessão expirada entre identificação e histórico volta ao login (521ms)
+e2e-1       |   ✓  44 [chromium] › e2e/round-2-fields.spec.ts:306:5 › proxy recusa JSON grande com contexto público consistente (103ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "792dae2d-f577-4bec-8515-7305d5eb5305", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 9, "response_ms": 14}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/answers/522f4cb1-96cd-4913-89ca-b14d1521a748/evidence HTTP/1.1" 200 OK
+e2e-1       |   ✓  45 [chromium] › e2e/round-2-fields.spec.ts:321:5 › evidência com falha pode ser repetida sem perder o resultado (795ms)
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "bd66333a-a130-4c8a-9721-9acb6ef36338", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 7, "response_ms": 12}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/logout HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+backend-1   | {"request_id": "359ee04c-c539-4094-8c9f-0f57bd716688", "mode": "demo", "capability": "aggregate", "status": "ready", "interpreter_version": "demo-patterns-v4", "interpretation_ms": 0, "query_ms": 10, "response_ms": 17}
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/assistant/query HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  46 [chromium] › e2e/round-2-fields.spec.ts:341:5 › erro tardio de evidência antiga não expira a nova identidade (1.4s)
+backend-1   | INFO:     127.0.0.1:48378 - "GET /api/health HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+backend-1   | INFO:     172.21.0.4:35662 - "POST /api/auth/login HTTP/1.1" 200 OK
+backend-1   | INFO:     172.21.0.4:35662 - "GET /api/conversations HTTP/1.1" 200 OK
+e2e-1       |   ✓  47 [chromium] › e2e/round-2-fields.spec.ts:380:5 › falha de conexão no login não acusa senha inválida (777ms)
+e2e-1       | 
+e2e-1       |   47 passed (38.3s)
+backend-1   | INFO:     127.0.0.1:37040 - "GET /api/health HTTP/1.1" 200 OK
+
+[Ke2e-1 exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container pf-loja-assistente-e2e-e2e-1 Stopping 
+ Container pf-loja-assistente-e2e-e2e-1 Stopped 
+ Container pf-loja-assistente-e2e-frontend-1 Stopping 
+ Container pf-loja-assistente-e2e-frontend-1 Stopped 
+ Container pf-loja-assistente-e2e-backend-1 Stopping 
+
+[Kfrontend-1 exited with code 143
+backend-1   | INFO:     Shutting down
+backend-1   | INFO:     Waiting for application shutdown.
+backend-1   | INFO:     Application shutdown complete.
+backend-1   | INFO:     Finished server process [1]
+ Container pf-loja-assistente-e2e-backend-1 Stopped 
+ Container pf-loja-assistente-e2e-db-1 Stopping 
+
+[Kbackend-1 exited with code 0
+db-1        | 2026-09-21 06:34:48.865 UTC [1] LOG:  received fast shutdown request
+db-1        | 2026-09-21 06:34:48.865 UTC [1] LOG:  aborting any active transactions
+db-1        | 2026-09-21 06:34:48.868 UTC [1] LOG:  background worker "logical replication launcher" (PID 69) exited with exit code 1
+db-1        | 2026-09-21 06:34:48.869 UTC [64] LOG:  shutting down
+db-1        | 2026-09-21 06:34:48.869 UTC [64] LOG:  checkpoint starting: shutdown immediate
+db-1        | 2026-09-21 06:34:48.873 UTC [64] LOG:  checkpoint complete: wrote 636 buffers (3.9%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.005 s, sync=0.001 s, total=0.005 s; sync files=110, longest=0.001 s, average=0.000 s; distance=7575 kB, estimate=7575 kB; lsn=0/2070738, redo lsn=0/2070738
+db-1        | 2026-09-21 06:34:48.879 UTC [1] LOG:  database system is shut down
+ Container pf-loja-assistente-e2e-db-1 Stopped 
+
+[Kdb-1 exited with code 0
+ Container pf-loja-assistente-e2e-e2e-1 Stopping 
+ Container pf-loja-assistente-e2e-e2e-1 Stopped 
+ Container pf-loja-assistente-e2e-e2e-1 Removing 
+ Container pf-loja-assistente-e2e-e2e-1 Removed 
+ Container pf-loja-assistente-e2e-frontend-1 Stopping 
+ Container pf-loja-assistente-e2e-frontend-1 Stopped 
+ Container pf-loja-assistente-e2e-frontend-1 Removing 
+ Container pf-loja-assistente-e2e-frontend-1 Removed 
+ Container pf-loja-assistente-e2e-backend-1 Stopping 
+ Container pf-loja-assistente-e2e-backend-1 Stopped 
+ Container pf-loja-assistente-e2e-backend-1 Removing 
+ Container pf-loja-assistente-e2e-backend-1 Removed 
+ Container pf-loja-assistente-e2e-db-1 Stopping 
+ Container pf-loja-assistente-e2e-db-1 Stopped 
+ Container pf-loja-assistente-e2e-db-1 Removing 
+ Container pf-loja-assistente-e2e-db-1 Removed 
+ Network pf-loja-assistente-e2e_default Removing 
+ Network pf-loja-assistente-e2e_default Removed 

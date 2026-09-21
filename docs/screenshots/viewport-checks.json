@@ -1,0 +1,642 @@
+{
+  "capturedAt": "2026-09-21T06:34:29.364Z",
+  "mode": "verification",
+  "scenario": "Consulta diária real, evidência real aberta e navegação por teclado.",
+  "zoomMethod": "320×256 CSS px reproduz a geometria de 1280×1024 em 400%; zoom nativo da interface do navegador não foi medido.",
+  "chartControls": [
+    {
+      "name": "Gráfico",
+      "width": 74.6875,
+      "height": 28
+    },
+    {
+      "name": "Tabela",
+      "width": 71.375,
+      "height": 28
+    }
+  ],
+  "checks": [
+    {
+      "name": "1440x900",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "deviceScaleFactor": 1
+      },
+      "pageWidth": 1440,
+      "horizontalOverflow": false,
+      "scrollMode": "auto",
+      "main": {
+        "x": 240,
+        "y": 180,
+        "width": 1000,
+        "height": 501.625,
+        "bottom": 681.625,
+        "right": 1240
+      },
+      "evidenceEnd": {
+        "x": 293.5,
+        "y": 641.5625,
+        "width": 878,
+        "height": 40,
+        "bottom": 681.5625,
+        "right": 1171.5
+      },
+      "composer": {
+        "x": 240,
+        "y": 681.625,
+        "width": 1000,
+        "height": 218.375,
+        "bottom": 900,
+        "right": 1240
+      },
+      "evidenceEndReached": true,
+      "evidenceClearOfComposer": true,
+      "targets": [
+        {
+          "name": "Nova análise",
+          "width": 203,
+          "height": 45
+        },
+        {
+          "name": "Assistente",
+          "width": 215,
+          "height": 41
+        },
+        {
+          "name": "Atendimentos",
+          "width": 215,
+          "height": 41
+        },
+        {
+          "name": "Mostre a evolução diária da receita nos últimos 7 dias21/09/2026, 06:34",
+          "width": 213,
+          "height": 108
+        },
+        {
+          "name": "Mostre a evolução diária da receita nos últimos 7 dias para conferir os dias com",
+          "width": 213,
+          "height": 87
+        },
+        {
+          "name": "Quanto vendi em 2026-08-15?21/09/2026, 06:34",
+          "width": 213,
+          "height": 87
+        },
+        {
+          "name": "Qual foi o lucro ontem?21/09/2026, 06:34",
+          "width": 213,
+          "height": 66
+        },
+        {
+          "name": "Quanto vendi ontem?21/09/2026, 06:34",
+          "width": 213,
+          "height": 66
+        },
+        {
+          "name": "Quanto vendi ontem?21/09/2026, 06:34",
+          "width": 213,
+          "height": 66
+        },
+        {
+          "name": "Sair",
+          "width": 26,
+          "height": 32
+        },
+        {
+          "name": "Centro",
+          "width": 98,
+          "height": 32
+        },
+        {
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 203,
+          "height": 32
+        },
+        {
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 224,
+          "height": 32
+        },
+        {
+          "name": "E nos sete dias anteriores?",
+          "width": 211.421875,
+          "height": 32
+        },
+        {
+          "name": "TEXTAREA",
+          "width": 938,
+          "height": 71.375
+        },
+        {
+          "name": "Sobre os dados",
+          "width": 153,
+          "height": 28
+        },
+        {
+          "name": "Métricas disponíveis",
+          "width": 153,
+          "height": 28
+        }
+      ],
+      "smallTargets": [],
+      "keyboard": {
+        "role": "region",
+        "label": "Totais por dia",
+        "insideEvidence": true,
+        "visibleHeight": 360,
+        "uncovered": true,
+        "focusOutline": "solid"
+      },
+      "input": {
+        "visible": true,
+        "uncovered": true,
+        "focused": true
+      }
+    },
+    {
+      "name": "1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1
+      },
+      "pageWidth": 1366,
+      "horizontalOverflow": false,
+      "scrollMode": "auto",
+      "main": {
+        "x": 240,
+        "y": 180,
+        "width": 926,
+        "height": 369.625,
+        "bottom": 549.625,
+        "right": 1166
+      },
+      "evidenceEnd": {
+        "x": 286,
+        "y": 509.5625,
+        "width": 819,
+        "height": 40,
+        "bottom": 549.5625,
+        "right": 1105
+      },
+      "composer": {
+        "x": 240,
+        "y": 549.625,
+        "width": 926,
+        "height": 218.375,
+        "bottom": 768,
+        "right": 1166
+      },
+      "evidenceEndReached": true,
+      "evidenceClearOfComposer": true,
+      "targets": [
+        {
+          "name": "Nova análise",
+          "width": 203,
+          "height": 45
+        },
+        {
+          "name": "Assistente",
+          "width": 215,
+          "height": 41
+        },
+        {
+          "name": "Atendimentos",
+          "width": 215,
+          "height": 41
+        },
+        {
+          "name": "Mostre a evolução diária da receita nos últimos 7 dias21/09/2026, 06:34",
+          "width": 213,
+          "height": 108
+        },
+        {
+          "name": "Mostre a evolução diária da receita nos últimos 7 dias para conferir os dias com",
+          "width": 213,
+          "height": 87
+        },
+        {
+          "name": "Quanto vendi em 2026-08-15?21/09/2026, 06:34",
+          "width": 213,
+          "height": 87
+        },
+        {
+          "name": "Qual foi o lucro ontem?21/09/2026, 06:34",
+          "width": 213,
+          "height": 66
+        },
+        {
+          "name": "Sair",
+          "width": 26,
+          "height": 32
+        },
+        {
+          "name": "Centro",
+          "width": 98,
+          "height": 32
+        },
+        {
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 203,
+          "height": 32
+        },
+        {
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 224,
+          "height": 32
+        },
+        {
+          "name": "E nos sete dias anteriores?",
+          "width": 211.421875,
+          "height": 32
+        },
+        {
+          "name": "TEXTAREA",
+          "width": 864,
+          "height": 71.375
+        },
+        {
+          "name": "Sobre os dados",
+          "width": 153,
+          "height": 28
+        },
+        {
+          "name": "Métricas disponíveis",
+          "width": 153,
+          "height": 28
+        }
+      ],
+      "smallTargets": [],
+      "keyboard": {
+        "role": "region",
+        "label": "Totais por dia",
+        "insideEvidence": true,
+        "visibleHeight": 360,
+        "uncovered": true,
+        "focusOutline": "solid"
+      },
+      "input": {
+        "visible": true,
+        "uncovered": true,
+        "focused": true
+      }
+    },
+    {
+      "name": "768x1024",
+      "viewport": {
+        "width": 768,
+        "height": 1024,
+        "deviceScaleFactor": 1
+      },
+      "pageWidth": 768,
+      "horizontalOverflow": false,
+      "scrollMode": "auto",
+      "main": {
+        "x": 215,
+        "y": 216,
+        "width": 553,
+        "height": 589.625,
+        "bottom": 805.625,
+        "right": 768
+      },
+      "evidenceEnd": {
+        "x": 254,
+        "y": 765.75,
+        "width": 460,
+        "height": 40,
+        "bottom": 805.75,
+        "right": 714
+      },
+      "composer": {
+        "x": 215,
+        "y": 805.625,
+        "width": 553,
+        "height": 218.375,
+        "bottom": 1024,
+        "right": 768
+      },
+      "evidenceEndReached": true,
+      "evidenceClearOfComposer": true,
+      "targets": [
+        {
+          "name": "Nova análise",
+          "width": 178,
+          "height": 45
+        },
+        {
+          "name": "Assistente",
+          "width": 190,
+          "height": 41
+        },
+        {
+          "name": "Atendimentos",
+          "width": 190,
+          "height": 41
+        },
+        {
+          "name": "Mostre a evolução diária da receita nos últimos 7 dias21/09/2026, 06:34",
+          "width": 188,
+          "height": 108
+        },
+        {
+          "name": "Mostre a evolução diária da receita nos últimos 7 dias para conferir os dias com",
+          "width": 188,
+          "height": 87
+        },
+        {
+          "name": "Quanto vendi em 2026-08-15?21/09/2026, 06:34",
+          "width": 188,
+          "height": 87
+        },
+        {
+          "name": "Qual foi o lucro ontem?21/09/2026, 06:34",
+          "width": 188,
+          "height": 87
+        },
+        {
+          "name": "Quanto vendi ontem?21/09/2026, 06:34",
+          "width": 188,
+          "height": 66
+        },
+        {
+          "name": "Quanto vendi ontem?21/09/2026, 06:34",
+          "width": 188,
+          "height": 66
+        },
+        {
+          "name": "Quanto vendi ontem?21/09/2026, 06:34",
+          "width": 188,
+          "height": 66
+        },
+        {
+          "name": "Quanto vendi ontem?21/09/2026, 06:34",
+          "width": 188,
+          "height": 66
+        },
+        {
+          "name": "Sair",
+          "width": 26,
+          "height": 32
+        },
+        {
+          "name": "Centro",
+          "width": 98,
+          "height": 32
+        },
+        {
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 203,
+          "height": 32
+        },
+        {
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 220,
+          "height": 32
+        },
+        {
+          "name": "E nos sete dias anteriores?",
+          "width": 211.421875,
+          "height": 32
+        },
+        {
+          "name": "TEXTAREA",
+          "width": 505,
+          "height": 71.375
+        }
+      ],
+      "smallTargets": [],
+      "keyboard": {
+        "role": "region",
+        "label": "Totais por dia",
+        "insideEvidence": true,
+        "visibleHeight": 360,
+        "uncovered": true,
+        "focusOutline": "solid"
+      },
+      "input": {
+        "visible": true,
+        "uncovered": true,
+        "focused": true
+      }
+    },
+    {
+      "name": "390x844",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "deviceScaleFactor": 1
+      },
+      "pageWidth": 390,
+      "horizontalOverflow": false,
+      "scrollMode": "auto",
+      "main": {
+        "x": 0,
+        "y": 238,
+        "width": 390,
+        "height": 395.625,
+        "bottom": 633.625,
+        "right": 390
+      },
+      "evidenceEnd": {
+        "x": 32,
+        "y": 593.421875,
+        "width": 311,
+        "height": 40,
+        "bottom": 633.421875,
+        "right": 343
+      },
+      "composer": {
+        "x": 0,
+        "y": 633.625,
+        "width": 390,
+        "height": 210.375,
+        "bottom": 844,
+        "right": 390
+      },
+      "evidenceEndReached": true,
+      "evidenceClearOfComposer": true,
+      "targets": [
+        {
+          "name": "Abrir menu",
+          "width": 34,
+          "height": 34
+        },
+        {
+          "name": "Centro",
+          "width": 98,
+          "height": 30
+        },
+        {
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 203,
+          "height": 30
+        },
+        {
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 250.828125,
+          "height": 30
+        },
+        {
+          "name": "E nos sete dias anteriores?",
+          "width": 211.421875,
+          "height": 32
+        },
+        {
+          "name": "TEXTAREA",
+          "width": 358,
+          "height": 68.375
+        }
+      ],
+      "smallTargets": [],
+      "keyboard": {
+        "role": "region",
+        "label": "Totais por dia",
+        "insideEvidence": true,
+        "visibleHeight": 360,
+        "uncovered": true,
+        "focusOutline": "solid"
+      },
+      "input": {
+        "visible": true,
+        "uncovered": true,
+        "focused": true
+      }
+    },
+    {
+      "name": "320x844",
+      "viewport": {
+        "width": 320,
+        "height": 844,
+        "deviceScaleFactor": 1
+      },
+      "pageWidth": 320,
+      "horizontalOverflow": false,
+      "scrollMode": "auto",
+      "main": {
+        "x": 0,
+        "y": 238,
+        "width": 320,
+        "height": 377.625,
+        "bottom": 615.625,
+        "right": 320
+      },
+      "evidenceEnd": {
+        "x": 32,
+        "y": 575.421875,
+        "width": 241,
+        "height": 40,
+        "bottom": 615.421875,
+        "right": 273
+      },
+      "composer": {
+        "x": 0,
+        "y": 615.625,
+        "width": 320,
+        "height": 228.375,
+        "bottom": 844,
+        "right": 320
+      },
+      "evidenceEndReached": true,
+      "evidenceClearOfComposer": true,
+      "targets": [
+        {
+          "name": "Abrir menu",
+          "width": 34,
+          "height": 34
+        },
+        {
+          "name": "Centro",
+          "width": 98,
+          "height": 30
+        },
+        {
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 203,
+          "height": 30
+        },
+        {
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 180.828125,
+          "height": 30
+        },
+        {
+          "name": "E nos sete dias anteriores?",
+          "width": 211.421875,
+          "height": 32
+        },
+        {
+          "name": "TEXTAREA",
+          "width": 288,
+          "height": 68.375
+        }
+      ],
+      "smallTargets": [],
+      "keyboard": {
+        "role": "region",
+        "label": "Totais por dia",
+        "insideEvidence": true,
+        "visibleHeight": 360,
+        "uncovered": true,
+        "focusOutline": "solid"
+      },
+      "input": {
+        "visible": true,
+        "uncovered": true,
+        "focused": true
+      }
+    },
+    {
+      "name": "320x256-zoom-equivalent",
+      "viewport": {
+        "width": 320,
+        "height": 256,
+        "deviceScaleFactor": 1
+      },
+      "pageWidth": 320,
+      "horizontalOverflow": false,
+      "scrollMode": "visible",
+      "main": {
+        "x": 0,
+        "y": -1431,
+        "width": 320,
+        "height": 1710.421875,
+        "bottom": 279.421875,
+        "right": 320
+      },
+      "evidenceEnd": {
+        "x": 32,
+        "y": 216.421875,
+        "width": 256,
+        "height": 40,
+        "bottom": 256.421875,
+        "right": 288
+      },
+      "composer": {
+        "x": 0,
+        "y": 279.421875,
+        "width": 320,
+        "height": 228.375,
+        "bottom": 507.796875,
+        "right": 320
+      },
+      "evidenceEndReached": true,
+      "evidenceClearOfComposer": true,
+      "targets": [],
+      "smallTargets": [],
+      "keyboard": {
+        "role": "region",
+        "label": "Totais por dia",
+        "insideEvidence": true,
+        "visibleHeight": 256,
+        "uncovered": true,
+        "focusOutline": "solid"
+      },
+      "input": {
+        "visible": true,
+        "uncovered": true,
+        "focused": true
+      }
+    }
+  ]
+}
