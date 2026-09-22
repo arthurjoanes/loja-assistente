@@ -1,7 +1,5 @@
 # Testes locais
 
-> Histórico de execuções: cada seção conserva sua data, versão e limites. Fontes: [recibo de CI](evidence/frontend-ci-20260922.json), [índice de provas locais](evidence/operational-proof-20260922/index.json) e [workflow](../.github/workflows/ci.yml). Conferência documental: **22/09/2026**.
-
 ## Auditoria final sobre d702d127 — 22/09/2026
 
 Baseline: `origin=https://github.com/arthurjoanes/loja-assistente.git`, branch `main`, SHA `d702d12774bd1c69a58c881eb26058dd2385a41e`, árvore rastreada limpa em 22/09/2026, por volta de 13:00 −03. Inventário: 398 arquivos rastreados, 36 Markdown e 35 PNG/SVG; nenhum novo arquivo não ignorado. `.env`, caches e `.runtime` estavam ignorados. Credenciais existentes não foram copiadas. Foram lidos README, instruções, contratos, arquitetura, decisões, CI e caminhos críticos de autorização, cálculo, orçamento, proxy e estado da interface; testes, scripts e imagens foram amostrados. Inventário não significa leitura de cada fonte histórica.
@@ -234,3 +232,7 @@ E2E tem projeto/rede/segredo/DB próprios, sem portas host; backend pytest usa u
 `/operations` mede serviço até gravar registro, excluindo commit/rede; falhas que impedem persistir aparecem apenas em logs sanitizados. Não há custo/tokens medidos, teste de carga ou recuperação de desastre. [EXPLAIN](query-plan.md) e setup inicial foram registrados em PostgreSQL 17.6: contexto histórico, não benchmark atual.
 
 [Organização da interface](quality-review.md).
+
+## Código e evidências relacionados
+
+[workflow](../.github/workflows/ci.yml).

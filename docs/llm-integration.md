@@ -1,7 +1,5 @@
 # Integração OpenAI / Azure
 
-> Configuração e limites implementados; disponibilidade depende do provedor. Fontes: [lock](../backend/uv.lock), [adaptador](../backend/src/loja_assistente/assistant/interpreters/openai_adapter.py) e [configuração](../backend/src/loja_assistente/config.py). Conferência documental: **22/09/2026**.
-
 Um único adaptador usa SDK OpenAI 3.16.2 e `responses.with_raw_response.create`, com JSON Schema em `text.format` e `strict: true`. A saída é validada por `Interpretation.model_validate_json`. O servidor autoriza e calcula; o modelo recebe só pergunta, referência analítica, lojas permitidas, filtros e último plano validado. Não recebe vendas, sessão ou histórico textual completo.
 
 `OPENAI_BASE_URL` aceita `https://api.openai.com/v1/` ou `https://SEU-RECURSO.openai.azure.com/openai/v1/` (também o domínio Azure `services.ai.azure.com`). `OPENAI_MODEL` contém o snapshot no OpenAI ou **nome do deployment** no Azure. Configure `OPENAI_API_KEY` apenas no `.env` ignorado. Endpoint de projeto `/api/projects/...` não é endpoint de inferência. Suporte de Responses/saída estruturada depende do deployment real.
@@ -30,4 +28,8 @@ A única falha LLM foi `final-bf-04`, repetição 2: esclarecimento desnecessár
 
 Smoke, desenvolvimento e final somaram 55 chamadas e 48.788 tokens, com estimativa conservadora de US$ 0,01550395. Para a reserva e a estimativa, a entrada foi avaliada a US$ 0,25/milhão (maior tarifa de entrada entre os medidores normais e de escrita em cache conferidos), e a saída a US$ 1,20/milhão. Não é fatura nem medição do gasto total do recurso. A avaliação verifica interpretação, autorização e cálculo em fixture sintética, com ASGI e PostgreSQL real; utilidade com usuários, latência do navegador e produção ficam fora dela. [Protocolo e comandos](live-evaluation.md), [problema e critérios](problem-solution.md).
 
-Referências conferidas em 21/09/2026: [Azure endpoints](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/endpoints) (consulta: 22/09/2026), [Azure Structured Outputs](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs) (consulta: 22/09/2026), [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+Referências: [Azure endpoints](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/endpoints), [Azure Structured Outputs](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs), [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+
+## Código e evidências relacionados
+
+[lock](../backend/uv.lock) · [adaptador](../backend/src/loja_assistente/assistant/interpreters/openai_adapter.py) · [configuração](../backend/src/loja_assistente/config.py).

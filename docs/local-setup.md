@@ -1,7 +1,5 @@
 # Executar localmente
 
-> Comandos e portas da composição local. Fontes: [Compose](../compose.yaml), [gerador de configuração](../scripts/setup_env.py), [PowerShell](../scripts/dev.ps1) e [Compose E2E](../compose.e2e.yaml). Conferência documental: **22/09/2026**.
-
 Requisitos: Docker com containers Linux e Compose v2. No Windows, use PowerShell 7; no Linux, Python 3.11 ou posterior para criar a configuração. As portas 3102 e 8102 precisam estar livres. A aplicação e os dados de demonstração são locais; nenhum recurso de nuvem é criado.
 
 ## Windows
@@ -49,3 +47,7 @@ Os testes usam bancos exclusivos; o banco E2E fica em memória. Não alteram o b
 Para parar a demonstração e manter seus dados: `docker compose --profile test down`, ou `dev.ps1 stop` no Windows. Para iniciá-la novamente: `docker compose up -d --wait`. O volume `postgres_data` conserva o histórico entre reinícios.
 
 Este ambiente publica portas somente em `127.0.0.1`. Disponibilizar a aplicação na internet exige configuração própria de HTTPS, cookies seguros, identidade e proteção operacional; o Compose entregue é a demonstração local.
+
+## Código e evidências relacionados
+
+[Compose](../compose.yaml) · [gerador de configuração](../scripts/setup_env.py) · [PowerShell](../scripts/dev.ps1) · [Compose E2E](../compose.e2e.yaml).

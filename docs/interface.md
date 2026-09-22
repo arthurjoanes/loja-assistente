@@ -1,7 +1,5 @@
 # Ler e conferir uma análise
 
-> Comportamento implementado da interface. Fontes: [estado da conversa](../frontend/src/features/assistant/conversation-state.ts), [série diária](../frontend/src/features/analytics/daily-series.ts) e [operações](../backend/src/loja_assistente/observability/routes.py). Conferência documental: **22/09/2026**.
-
 Consulte a [jornada histórica com três capturas verificadas](operational-story.md) para acompanhar consulta, recusa e nova tentativa válida. Os [resultados de validação](verification.md) identificam as versões e as correções de contraste/foco.
 
 Os filtros definem lojas e período para a próxima consulta. Datas escritas na pergunta têm precedência; as lojas continuam sujeitas à autorização no servidor. O resultado conserva o recorte efetivamente consultado, mesmo depois de mudar um filtro.
@@ -42,3 +40,7 @@ O menu lateral abre pelo botão **Abrir menu**, mantém o foco dentro da navega�
 ## Atendimentos
 
 Mostra até 100 consultas da conta, com modo, capacidade, status e durações registradas. **Ver detalhes** apresenta o ID e a versão do interpretador. Esses tempos medem o serviço antes da gravação do log, não a latência completa percebida no navegador. Tokens e custo continuam indisponíveis nesse painel.
+
+## Código e evidências relacionados
+
+[estado da conversa](../frontend/src/features/assistant/conversation-state.ts) · [série diária](../frontend/src/features/analytics/daily-series.ts) · [operações](../backend/src/loja_assistente/observability/routes.py).

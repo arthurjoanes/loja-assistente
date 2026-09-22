@@ -1,7 +1,5 @@
 # Robustez do proxy e limites da revisão
 
-> Contrato local de transporte e resultados históricos de 22/09/2026. Fontes: [limite de corpo](../frontend/src/lib/server/request-body.ts), [prazo do proxy](../frontend/src/lib/server/proxy-lifetime.ts) e [jornadas](../frontend/e2e/proxy-streams.spec.ts). Conferência documental: **22/09/2026**.
-
 ## Prazo de leitura e resposta
 
 A inspeção do proxy mostrou que `readRequestBody(request)` era aguardado antes
@@ -80,3 +78,7 @@ têm seus próprios artefatos e escopos em [verificação](verification.md) e
 rodada. Identidade de produção, política de requisições, papel SQL, backup/restore
 e custo global de uso do modelo continuam requisitos a definir antes de ampliar
 a demonstração local.
+
+## Código e evidências relacionados
+
+[limite de corpo](../frontend/src/lib/server/request-body.ts) · [prazo do proxy](../frontend/src/lib/server/proxy-lifetime.ts) · [jornadas](../frontend/e2e/proxy-streams.spec.ts).

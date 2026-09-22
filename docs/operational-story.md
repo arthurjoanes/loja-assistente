@@ -1,7 +1,5 @@
 # Conferir a pergunta, o recorte e a conta
 
-> História das execuções identificadas, sem nova jornada nesta revisão. Fontes: [índice primário](evidence/operational-proof-20260922/index.json) e [recibo do CI](evidence/frontend-ci-20260922.json). Conferência documental: **22/09/2026**.
-
 Para o layout atual, veja a [galeria local de 22/09/2026](image-captures.md). As imagens abaixo permanecem inalteradas como prova da execução histórica identificada.
 
 Uma soma pode estar correta e ainda responder à pergunta errada. Se a pessoa pedir receita somente em dinheiro, devolver a receita geral esconderia uma limitação dos dados. Esta jornada mostra a consulta válida, a recusa de um filtro não representável e uma nova pergunta válida com o mesmo recorte.
@@ -45,3 +43,7 @@ A rodada final `f98ee94864384422bd835bcabd8f3a11` foi somente de frontend: os 10
 A entrega permite seguir a capacidade suportada, a autorização do recorte, a conta apresentada, a recusa e a recuperação da interação. As capturas foram feitas na aplicação real, sem substituir conteúdo no DOM. Build, testes e fotografias têm versões e resultados identificados; as falhas anteriores permanecem no índice.
 
 Não houve estudo de produtividade, teste com leitor de tela ou certificação de acessibilidade. O [protocolo de comparação preparado](usage-comparison.md) ainda precisa de participantes. A auditoria adversarial anterior de autenticação/RBAC continua incompleta; estes ensaios não a reclassificam. Os recursos próprios da prova foram encerrados. A última rodada não observou containers externos antes/depois; rodadas anteriores registraram um serviço externo. Outras cargas do computador não foram controladas, e os tempos não são benchmark de capacidade.
+
+## Código e evidências relacionados
+
+[recibo do CI](evidence/frontend-ci-20260922.json).

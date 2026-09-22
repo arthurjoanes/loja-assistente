@@ -1,6 +1,6 @@
 # Avaliação com Azure Foundry
 
-> Resultados históricos de 21/09/2026; verificador offline novamente aprovado em 22/09/2026, sem reavaliar o modelo. Fontes: [summary.json](../evals/reports/20260921T121255Z-a9c11d1f/summary.json), [cases.jsonl](../evals/reports/20260921T121255Z-a9c11d1f/cases.jsonl) e [verificador](../scripts/verify_evidence.py). Conferência documental: **22/09/2026**.
+Resultados da avaliação de 21/09/2026. O [verificador offline](../scripts/verify_evidence.py) passou novamente em 22/09/2026, sem reavaliar o modelo.
 
 Este relatório descreve a **versão avaliada em 21/09/2026**. O orçamento persistente foi acrescentado depois e tem [prova própria, com provedor simulado](provider-budget.md). Os 47/48 abaixo não são uma nova avaliação semântica do código atual.
 

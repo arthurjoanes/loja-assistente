@@ -1,7 +1,5 @@
 # Avaliações
 
-> Casos e runners locais; avaliação paga pertence a 21/09/2026. Fontes: [runner](live_runner.py), [casos manuais](cases/manual-v1.json) e [resultado histórico](reports/20260921T121255Z-a9c11d1f/summary.json). Conferência documental: **22/09/2026**.
-
 ## Interpretação natural e Azure
 
 `live_runner.py` compara demo, plano estruturado e, somente com autorização, o modelo real. Usa `development-v1.json` (12 casos) e `final-v1.json` (24 casos escritos antes do freeze e só executados depois, duas repetições). A avaliação Azure de 21/09/2026 foi aprovada: 47/48 no caminho modelo + backend, contra 24/48 do parser. [Resultados e limites](../docs/azure-live-results.md), [tabela por pergunta](../docs/evidence/azure-live/cases.md) e [chamadas com tokens](../docs/evidence/azure-live/calls.md).
@@ -41,3 +39,7 @@ No pytest, os mesmos casos são parametrizados em backend/tests/test_evals.py. T
 O comando grava `reports/local/latest.json` e `reports/local/latest.md`, ignorados pelo Git, com data, ambiente e resultado por caso. Os atalhos `dev.ps1 test` e `dev.ps1 eval` usam o mesmo diretório, preservando os relatórios históricos verificados por `verify_evidence.py`. Ao chamar o runner diretamente, informe `--output-dir`: o default histórico `reports/` sobrescreve os arquivos `latest.*` publicados. `category` agrupa o caso; `failure_stage` indica a checagem que falhou. Exceções sem classificação usam `infrastructure/unknown`. O processo retorna 1 se algum caso falhar.
 
 Os testes usam o parser demo e transporte simulado. Não chamam o LLM.
+
+## Código e evidências relacionados
+
+[runner](live_runner.py) · [casos manuais](cases/manual-v1.json) · [resultado histórico](reports/20260921T121255Z-a9c11d1f/summary.json).

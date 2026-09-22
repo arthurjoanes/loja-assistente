@@ -1,6 +1,6 @@
 # Métricas
 
-> Definições financeiras deste projeto, não convenções universais de contabilidade. Fontes: [consultas](../backend/src/loja_assistente/analytics/queries.py), [contrato](../backend/src/loja_assistente/analytics/contracts.py) e [testes de dinheiro](../backend/tests/test_money_contract.py). Conferência documental: **22/09/2026**.
+Estas são as definições financeiras adotadas pelo projeto; não representam convenções universais de contabilidade.
 
 Intervalos comerciais: America/Sao_Paulo, início incluído e fim excluído; convertidos para UTC antes do filtro. Referência analítica padrão 2026-08-17; ontem é [2026-08-16,2026-08-17). Autenticação e logs usam horário real.
 
@@ -19,3 +19,7 @@ Intervalos comerciais: America/Sao_Paulo, início incluído e fim excluído; con
 Períodos de 1–90 dias, em BRL. Cobertura conta pares loja/data. Ausência retorna números indisponíveis; cobertura parcial calcula os dias carregados e bloqueia comparação.
 
 Receita é acumulada exatamente: a expressão SQL converte a quantidade para NUMERIC antes da multiplicação por preço BIGINT. O CHECK de desconto usa a mesma promoção, inclusive quando o produto supera BIGINT. Python soma inteiros; JSON serializa `revenue_cents` como string. A precisão Decimal para razão/apresentação/comparação aumenta com a magnitude, mantendo HALF_UP apenas na apresentação monetária. Testes cobrem preço acima de 2^53 e preço/quantidade nos limites BIGINT/INTEGER do banco. Valores desse tamanho são fronteiras de contrato, não dados realistas do varejo de demonstração.
+
+## Código e evidências relacionados
+
+[consultas](../backend/src/loja_assistente/analytics/queries.py) · [contrato](../backend/src/loja_assistente/analytics/contracts.py) · [testes de dinheiro](../backend/tests/test_money_contract.py).

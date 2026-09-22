@@ -1,7 +1,5 @@
 # Capturas da interface
 
-> Proveniência das imagens, conservando a data da execução original. Fontes: [manifesto](screenshots/current-20260922/capture.json) e [coletor](../scripts/capture_docs.cjs). Conferência documental: **22/09/2026**.
-
 As seis capturas de `screenshots/current-20260922/` vieram do Chromium/Playwright 1.63.0 acessando a aplicação local em 22/09/2026. As telas autenticadas correspondem à fonte `6361280d`; o [registro](screenshots/current-20260922/capture.json) contém horário, viewports, respostas reais e SHA-256. Uma alteração concorrente posterior de login não faz parte desta captura: nenhuma imagem de login é apresentada. São recortes nativos de componentes e de coordenadas do navegador, sem edição de pixels: viewport desktop 1440×1000 ou móvel 390×844. O registro identifica o seletor e as dimensões; os recortes móveis têm no máximo 650 px de altura. As provas históricas completas ficam apenas em links.
 
 | Tela atual                                                                    | O que conferir                                                                  |
