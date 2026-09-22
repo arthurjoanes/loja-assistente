@@ -1,16 +1,18 @@
 # Comparar a consulta em português com os controles
 
+> Protocolo proposto, sem participantes ou resultados humanos. Fontes: [casos de treino](../evals/cases/manual-v1.json), [formulário da rodada](user-study/round.template.json) e [formulário de observação](user-study/observation.template.json). Conferência documental: **22/09/2026**.
+
 **Pergunta central:** uma pessoa consegue chegar ao recorte correto e conferir o cálculo com menos esforço? Acertar um plano em teste automático é necessário, mas não responde essa pergunta de uso.
 
 **Estado: protocolo preparado, sem participantes ou resultados.** Não houve medição de produtividade nesta rodada. A avaliação histórica de 47/48 tentativas trata interpretação e cálculo em 24 perguntas repetidas duas vezes; não mede tempo humano e não será reapresentada como estudo novo. A falha `final-bf-04`, repetição 2, permanece no [resultado original](azure-live-results.md).
 
 ## O que comparar
 
-| Condição | Tarefa da pessoa | Limite da comparação |
-| --- | --- | --- |
-| Pergunta em português | Formular a pergunta, conferir lojas/período aplicados e abrir o cálculo | Registrar se usou parser demo ou modelo, com versão e configuração |
-| Controles da interface | Escolher lojas/período nos controles e usar uma pergunta canônica previamente fixada para a métrica | A aplicação ainda exige uma pergunta; esta é uma baseline de controles no mesmo produto, não um dashboard independente já implementado |
-| Consulta estruturada de referência | Avaliador confere plano e resultado contra o esperado | É oráculo de correção; não mede o esforço de uma pessoa |
+| Condição                           | Tarefa da pessoa                                                                                    | Limite da comparação                                                                                                                   |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Pergunta em português              | Formular a pergunta, conferir lojas/período aplicados e abrir o cálculo                             | Registrar se usou parser demo ou modelo, com versão e configuração                                                                     |
+| Controles da interface             | Escolher lojas/período nos controles e usar uma pergunta canônica previamente fixada para a métrica | A aplicação ainda exige uma pergunta; esta é uma baseline de controles no mesmo produto, não um dashboard independente já implementado |
+| Consulta estruturada de referência | Avaliador confere plano e resultado contra o esperado                                               | É oráculo de correção; não mede o esforço de uma pessoa                                                                                |
 
 As duas condições de uso precisam oferecer a mesma informação, permissão e tarefa. Um dashboard externo só entra na comparação depois de implementado/configurado e conferido com a mesma base; não usar um tempo imaginado para ele. Nenhuma condição pode receber uma loja ou data pronta que a outra precise descobrir, salvo se essa diferença for o objeto explícito do experimento.
 
@@ -26,12 +28,12 @@ As duas condições de uso precisam oferecer a mesma informação, permissão e 
 
 Estes exemplos usam a [fixture manual](manual-fixture.md), **não a carteira grande do setup**. Referência comercial: 17/08/2026, `America/Sao_Paulo`. São exercícios conhecidos para preparar a rodada, não resultados de participantes.
 
-| Objetivo | Identidade/recorte | Esperado independente |
-| --- | --- | --- |
-| Conferir receita e cálculo de ontem | Gerente A, Centro A, 16/08 com fim exclusivo 17/08 | 3.000 centavos, 2 pedidos e 8 unidades; ticket 1.500 centavos |
-| Entender a evolução sem mudar a métrica | Gerente A, Centro A, 14–16/08 | Série de receita `[2500, 1600, 3000]` centavos |
-| Distinguir ausência de zero | Centro A, 09/08 versus 10/08 | 09/08 sem cobertura: indisponível; 10/08 carregado sem vendas: zero |
-| Reconhecer limite do produto | Pedido de lucro | Recusa/esclarecimento explícito; não substituir lucro por receita silenciosamente |
+| Objetivo                                | Identidade/recorte                                 | Esperado independente                                                             |
+| --------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Conferir receita e cálculo de ontem     | Gerente A, Centro A, 16/08 com fim exclusivo 17/08 | 3.000 centavos, 2 pedidos e 8 unidades; ticket 1.500 centavos                     |
+| Entender a evolução sem mudar a métrica | Gerente A, Centro A, 14–16/08                      | Série de receita `[2500, 1600, 3000]` centavos                                    |
+| Distinguir ausência de zero             | Centro A, 09/08 versus 10/08                       | 09/08 sem cobertura: indisponível; 10/08 carregado sem vendas: zero               |
+| Reconhecer limite do produto            | Pedido de lucro                                    | Recusa/esclarecimento explícito; não substituir lucro por receita silenciosamente |
 
 A pessoa deve apontar o recorte **do resultado executado**, não apenas os filtros atualmente selecionados para a próxima pergunta. Abrir gráfico, texto e tabela deve permitir conferir o mesmo cálculo, sem tratar três apresentações como três respostas independentes.
 

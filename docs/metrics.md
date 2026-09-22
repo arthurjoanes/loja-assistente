@@ -1,6 +1,10 @@
 # Métricas
 
+> Definições financeiras deste projeto, não convenções universais de contabilidade. Fontes: [consultas](../backend/src/loja_assistente/analytics/queries.py), [contrato](../backend/src/loja_assistente/analytics/contracts.py) e [testes de dinheiro](../backend/tests/test_money_contract.py). Conferência documental: **22/09/2026**.
+
 Intervalos comerciais: America/Sao_Paulo, início incluído e fim excluído; convertidos para UTC antes do filtro. Referência analítica padrão 2026-08-17; ontem é [2026-08-16,2026-08-17). Autenticação e logs usam horário real.
+
+## Definições
 
 - Receita líquida: soma(quantity * unit_price_cents - discount_cents) de itens de pedidos completed. Desconto é total do item, não por unidade. Cancelamento completo exclui todos os itens.
 - Pedidos: COUNT DISTINCT do identificador composto tenant/pedido, após filtros.
@@ -9,6 +13,8 @@ Intervalos comerciais: America/Sao_Paulo, início incluído e fim excluído; con
 - Ranking: por receita ou unidades decrescente, desempate product_id crescente. Limite entre 1 e 20. Nome do produto é dado não confiável, sempre escapado.
 - Evolução diária: mesma receita/pedidos/ticket/unidades por data local; dias cobertos sem vendas aparecem como zero, dias ausentes não viram zero.
 - Comparação: janela anterior contígua com o mesmo número de dias, mesmas lojas. Variação percentual (atual-anterior)/anterior*100, Decimal com duas casas HALF_UP. Base zero retorna null e explicação. Comparação só ocorre com cobertura completa nas duas janelas.
+
+## Cobertura e precisão
 
 Períodos de 1–90 dias, em BRL. Cobertura conta pares loja/data. Ausência retorna números indisponíveis; cobertura parcial calcula os dias carregados e bloqueia comparação.
 

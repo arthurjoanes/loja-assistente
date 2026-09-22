@@ -1,5 +1,7 @@
 # Avaliações
 
+> Casos e runners locais; avaliação paga pertence a 21/09/2026. Fontes: [runner](live_runner.py), [casos manuais](cases/manual-v1.json) e [resultado histórico](reports/20260921T121255Z-a9c11d1f/summary.json). Conferência documental: **22/09/2026**.
+
 ## Interpretação natural e Azure
 
 `live_runner.py` compara demo, plano estruturado e, somente com autorização, o modelo real. Usa `development-v1.json` (12 casos) e `final-v1.json` (24 casos escritos antes do freeze e só executados depois, duas repetições). A avaliação Azure de 21/09/2026 foi aprovada: 47/48 no caminho modelo + backend, contra 24/48 do parser. [Resultados e limites](../docs/azure-live-results.md), [tabela por pergunta](../docs/evidence/azure-live/cases.md) e [chamadas com tokens](../docs/evidence/azure-live/calls.md).
@@ -8,11 +10,11 @@ O holdout dessa avaliação já está publicado e deve ser tratado como regress�
 
 `reports/<UTC-id>/` preserva cada execução, esperado/observado, falhas e hashes; o resumo não sobrescreve outra execução. A suíte abaixo continua verificando regressões de segurança/financeiro e declara seus modos simulados.
 
-| Execução preservada | Natureza | Relatório |
-|---|---|---|
-| `20260921T063624Z-d4d4fcdb` | Preparação offline, sem inferência | [Resumo](reports/20260921T063624Z-d4d4fcdb/summary.md) |
-| `20260921T121119Z-883376fa` | Smoke Azure, 1 chamada | [Resumo](reports/20260921T121119Z-883376fa/summary.md) |
-| `20260921T121149Z-c53a402a` | Desenvolvimento Azure, 12 chamadas | [Resumo](reports/20260921T121149Z-c53a402a/summary.md) |
+| Execução preservada         | Natureza                                    | Relatório                                              |
+| --------------------------- | ------------------------------------------- | ------------------------------------------------------ |
+| `20260921T063624Z-d4d4fcdb` | Preparação offline, sem inferência          | [Resumo](reports/20260921T063624Z-d4d4fcdb/summary.md) |
+| `20260921T121119Z-883376fa` | Smoke Azure, 1 chamada                      | [Resumo](reports/20260921T121119Z-883376fa/summary.md) |
+| `20260921T121149Z-c53a402a` | Desenvolvimento Azure, 12 chamadas          | [Resumo](reports/20260921T121149Z-c53a402a/summary.md) |
 | `20260921T121255Z-a9c11d1f` | Final Azure, 42 chamadas + 6 guardas locais | [Resumo](reports/20260921T121255Z-a9c11d1f/summary.md) |
 
 Para conferir os arquivos publicados sem chave ou chamadas pagas: `python scripts/verify_evidence.py`. Para regenerar somente as tabelas a partir dos JSONL existentes: `python scripts/render_evidence.py --write`.
@@ -29,10 +31,10 @@ O runner usa exclusivamente TEST_DATABASE_URL com banco PostgreSQL cujo nome ter
 
 Execução no serviço de testes:
 
-~~~sh
+```sh
 docker compose --profile test up -d test-db
 docker compose --profile test run --rm test python /app/evals/runner.py --output-dir /app/evals/reports/local
-~~~
+```
 
 No pytest, os mesmos casos são parametrizados em backend/tests/test_evals.py. Testes adicionais em test_security.py exercitam a barreira de acesso aos dados, CSRF, relógio de expiração, duas sessões alternadas, revogação, respostas/cálculos/histórico pessoais e colisões de IDs. Os contratos do adaptador LLM têm testes específicos separados.
 

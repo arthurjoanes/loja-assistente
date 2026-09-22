@@ -1,19 +1,21 @@
 # O que o modo demo entende
 
+> Capacidades implementadas do parser, não promessa de compreensão aberta. Fontes: [parser](../backend/src/loja_assistente/assistant/interpreters/demo.py) e [testes](../backend/tests/test_interpreters.py). Conferência documental: **22/09/2026**.
+
 Modo **Demo sem IA**: parser de padrões.
 
 Versão `demo-patterns-v4`. Termos e números desconhecidos pedem reformulação antes da consulta. Paráfrases fora do vocabulário também são recusadas. “Quanto eu vendi ontem?”, “Me mostra o faturamento de ontem” e “Só queria saber a receita de ontem” agora preservam o plano. Saudações isoladas recebem ajuda sem consulta. Prefixos de cortesia só são removidos no início: “Só queria saber a receita somente em dinheiro” continua recusada. Isso corrige casos conhecidos; compreensão aberta depende do modelo e da avaliação separada.
 
-| Capacidade | Exemplos e variações |
-|---|---|
-| Receita | Quanto vendi ontem?; Qual o faturamento?; Quanto entrou ontem? |
-| Pedidos | Quantos pedidos concluídos ontem?; Quantas vendas nos últimos 7 dias? |
-| Ticket | Qual o ticket médio ontem? |
-| Unidades | Quantas unidades vendi ontem? |
-| Ranking | Ranking de produtos por receita ontem; Quais os 5 produtos com maior receita nos últimos 7 dias?; Top 3 produtos por quantidade ontem |
-| Evolução | Evolução diária da receita nos últimos 7 dias; Pedidos por dia de 2026-08-10 a 2026-08-16 |
-| Comparação | Compare a receita dos últimos 7 dias com o período anterior; Compare o faturamento de ontem com anteontem |
-| Continuação | E nos sete dias anteriores?; E no período anterior? |
+| Capacidade  | Exemplos e variações                                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Receita     | Quanto vendi ontem?; Qual o faturamento?; Quanto entrou ontem?                                                                        |
+| Pedidos     | Quantos pedidos concluídos ontem?; Quantas vendas nos últimos 7 dias?                                                                 |
+| Ticket      | Qual o ticket médio ontem?                                                                                                            |
+| Unidades    | Quantas unidades vendi ontem?                                                                                                         |
+| Ranking     | Ranking de produtos por receita ontem; Quais os 5 produtos com maior receita nos últimos 7 dias?; Top 3 produtos por quantidade ontem |
+| Evolução    | Evolução diária da receita nos últimos 7 dias; Pedidos por dia de 2026-08-10 a 2026-08-16                                             |
+| Comparação  | Compare a receita dos últimos 7 dias com o período anterior; Compare o faturamento de ontem com anteontem                             |
+| Continuação | E nos sete dias anteriores?; E no período anterior?                                                                                   |
 
 Datas reconhecidas: ontem, anteontem, hoje, últimos N dias (1–90, completos), semana passada (segunda a domingo), este mês (até a véspera da referência), ISO `2026-08-16` e `16/08/2026`. Em intervalos humanos `de X a Y`, Y é incluído; a API transforma para fim exclusivo Y+1. Hoje pode estar fora da cobertura, o que é informado.
 
@@ -26,6 +28,8 @@ Menções repetidas não multiplicam o escopo. Um nome composto conhecido tem pr
 Continuação é resolvida pelo último plano validado da mesma conversa, conservando indicador e lojas e deslocando a janela. Não utiliza conversas alheias nem texto do histórico como instrução. Nenhum padrão deste arquivo concede permissão de loja.
 
 ## Filtros e ambiguidades recusados
+
+Fontes do contrato local: [`filter_limits.py`](../backend/src/loja_assistente/assistant/filter_limits.py), [`demo.py`](../backend/src/loja_assistente/assistant/interpreters/demo.py), [`demo_language.py`](../backend/src/loja_assistente/assistant/interpreters/demo_language.py), [`demo_periods.py`](../backend/src/loja_assistente/assistant/interpreters/demo_periods.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 Pagamento (`dinheiro`, `Pix`, cartão), categoria, vendedor, canal, produto individual, horário, exclusões (`exceto`, `sem`, `apenas`, `somente`) e condições de valor não fazem parte do contrato. A guarda explícita também roda antes do adaptador LLM. Exemplos: “Quanto vendi ontem somente em dinheiro?”, “Receita de canecas ontem”, “Receita por vendedor ontem”, “Receita das 10 às 14 ontem”. Resposta de esclarecimento: `plan=null`, `result=null`, sem SQL de vendas. O produto pode aparecer em ranking; isso não implementa filtro de produto.
 

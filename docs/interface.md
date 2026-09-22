@@ -1,5 +1,7 @@
 # Ler e conferir uma análise
 
+> Comportamento implementado da interface. Fontes: [estado da conversa](../frontend/src/features/assistant/conversation-state.ts), [série diária](../frontend/src/features/analytics/daily-series.ts) e [operações](../backend/src/loja_assistente/observability/routes.py). Conferência documental: **22/09/2026**.
+
 Consulte a [jornada histórica com três capturas verificadas](operational-story.md) para acompanhar consulta, recusa e nova tentativa válida. Os [resultados de validação](verification.md) identificam as versões e as correções de contraste/foco.
 
 Os filtros definem lojas e período para a próxima consulta. Datas escritas na pergunta têm precedência; as lojas continuam sujeitas à autorização no servidor. O resultado conserva o recorte efetivamente consultado, mesmo depois de mudar um filtro.

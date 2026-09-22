@@ -1,15 +1,17 @@
 # Capturas da interface
 
+> Proveniência das imagens, conservando a data da execução original. Fontes: [manifesto](screenshots/current-20260922/capture.json) e [coletor](../scripts/capture_docs.cjs). Conferência documental: **22/09/2026**.
+
 As seis capturas de `screenshots/current-20260922/` vieram do Chromium/Playwright 1.63.0 acessando a aplicação local em 22/09/2026. As telas autenticadas correspondem à fonte `6361280d`; o [registro](screenshots/current-20260922/capture.json) contém horário, viewports, respostas reais e SHA-256. Uma alteração concorrente posterior de login não faz parte desta captura: nenhuma imagem de login é apresentada. São recortes nativos de componentes e de coordenadas do navegador, sem edição de pixels: viewport desktop 1440×1000 ou móvel 390×844. O registro identifica o seletor e as dimensões; os recortes móveis têm no máximo 650 px de altura. As provas históricas completas ficam apenas em links.
 
-| Tela atual | O que conferir |
-| --- | --- |
-| [Início](screenshots/current-20260922/inicio.png) | Seis consultas disponíveis, em 1392×329 px |
-| [Início no celular](screenshots/current-20260922/inicio-mobile.png) | As seis consultas em 370×506 px, sem corte horizontal global |
-| [Evolução diária](screenshots/current-20260922/evolucao-diaria.png) | Centro, 10–16/08/2026: R$ 10.810,95, 56 pedidos, 227 unidades, cobertura 7/7 |
-| [Consulta com cálculo](screenshots/current-20260922/consulta-com-calculo.png) | Fórmula, fim exclusivo, fonte e as sete linhas que somam o total |
-| [Consulta no celular](screenshots/current-20260922/consulta-mobile.png) | Somente os quatro indicadores, em 346×273 px; o gráfico fica no recorte desktop |
-| [Filtro não suportado](screenshots/current-20260922/filtro-nao-suportado.png) | Pergunta por dinheiro pede esclarecimento; nenhum total geral é inventado |
+| Tela atual                                                                    | O que conferir                                                                  |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [Início](screenshots/current-20260922/inicio.png)                             | Seis consultas disponíveis, em 1392×329 px                                      |
+| [Início no celular](screenshots/current-20260922/inicio-mobile.png)           | As seis consultas em 370×506 px, sem corte horizontal global                    |
+| [Evolução diária](screenshots/current-20260922/evolucao-diaria.png)           | Centro, 10–16/08/2026: R$ 10.810,95, 56 pedidos, 227 unidades, cobertura 7/7    |
+| [Consulta com cálculo](screenshots/current-20260922/consulta-com-calculo.png) | Fórmula, fim exclusivo, fonte e as sete linhas que somam o total                |
+| [Consulta no celular](screenshots/current-20260922/consulta-mobile.png)       | Somente os quatro indicadores, em 346×273 px; o gráfico fica no recorte desktop |
+| [Filtro não suportado](screenshots/current-20260922/filtro-nao-suportado.png) | Pergunta por dinheiro pede esclarecimento; nenhum total geral é inventado       |
 
 As telas foram inspecionadas visualmente. A automação conferiu HTTP 200, modo `demo`, escopo `a001`, sete linhas e soma em centavos igual ao total, cálculo disponível, recusa com resultado nulo, ausência de erro JavaScript e overflow nas seis vistas. O coletor seleciona Demo antes de enviar e bloqueia qualquer consulta com outro modo. Nenhuma chamada Azure/LLM foi feita. As consultas sintéticas permanecem no histórico da conta; não houve reset. O caso não substitui suíte completa, avaliação de linguagem, comparação pixel a pixel, zoom nativo ou auditoria integral de acessibilidade.
 

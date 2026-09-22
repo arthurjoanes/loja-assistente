@@ -1,10 +1,14 @@
 # Limitar chamadas sem esquecer o consumo incerto
 
+> Contrato operacional local, sem novas chamadas pagas. Fontes: [orçamento](../backend/src/loja_assistente/assistant/budget.py), [testes PostgreSQL](../backend/tests/test_budget_postgres.py) e [provas históricas](evidence/operational-proof-20260922/index.json). Conferência documental: **22/09/2026**.
+
 Uma requisição pode chegar ao provedor e perder a resposta por timeout. Reiniciar a API ou desfazer a transação da conversa não deve devolver automaticamente esse saldo. O controle da aplicação agora registra uma reserva por organização antes do despacho e mantém a reserva quando não consegue determinar o uso.
 
 O objetivo é limitar a admissão de chamadas pelo caminho LLM da API. **Não é uma fatura, um teto monetário do Azure/OpenAI nem uma garantia de tokenização exata.** A reserva usa bytes UTF-8 de prompt/contexto/schema mais margem de 8.192 unidades; a saída reserva 1.000 unidades, conforme o limite solicitado ao adaptador. Uso real informado pelo provedor substitui essa estimativa quando está completo e consistente. Se exceder a reserva, o excesso é registrado e novas admissões são bloqueadas; isso não desfaz uma cobrança já ocorrida.
 
 ## Por que persistir fora da conversa
+
+Fontes do contrato local: [`budget.py`](../backend/src/loja_assistente/assistant/budget.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 A [conta de orçamento](../backend/src/loja_assistente/assistant/budget.py) usa transações PostgreSQL curtas e um bloqueio de linha por organização. Reserva e marca de despacho são confirmadas antes da chamada ao SDK. A transação HTTP pode falhar depois, preservando esse registro. O bloqueio da conta não fica aberto durante a comunicação com o provedor.
 
@@ -28,19 +32,23 @@ As reservas guardam organização, usuário, request e call ID. O caminho do ada
 
 ## Estados e consequências
 
-| Estado | O que significa | Efeito sobre o saldo |
-| --- | --- | --- |
-| `reserved` | Reserva confirmada, sem marca de despacho | Pode ser cancelada pelo caminho que comprovadamente não despachou |
-| `dispatched` | Marca durável anterior à chamada ao SDK; não comprova recepção pelo provedor | Continua comprometida mesmo que o processo termine antes de receber resposta |
-| `unknown` | Não há uso completo e consistente | Mantém a reserva; não expira nem vira custo zero |
-| `reconciled` | Uso completo registrado | Troca a estimativa pelo uso observado; repetição idêntica não altera o saldo novamente |
-| `canceled` | Cancelamento anterior ao despacho | Devolve a reserva uma única vez |
+Fontes do contrato local: [`budget.py`](../backend/src/loja_assistente/assistant/budget.py), [`budget_policy.py`](../backend/src/loja_assistente/assistant/budget_policy.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
+| Estado       | O que significa                                                              | Efeito sobre o saldo                                                                   |
+| ------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `reserved`   | Reserva confirmada, sem marca de despacho                                    | Pode ser cancelada pelo caminho que comprovadamente não despachou                      |
+| `dispatched` | Marca durável anterior à chamada ao SDK; não comprova recepção pelo provedor | Continua comprometida mesmo que o processo termine antes de receber resposta           |
+| `unknown`    | Não há uso completo e consistente                                            | Mantém a reserva; não expira nem vira custo zero                                       |
+| `reconciled` | Uso completo registrado                                                      | Troca a estimativa pelo uso observado; repetição idêntica não altera o saldo novamente |
+| `canceled`   | Cancelamento anterior ao despacho                                            | Devolve a reserva uma única vez                                                        |
 
 Contagem de chamadas permanece comprometida após o despacho. Reconciliação conflitante é recusada. Uso parcial acima da reserva também bloqueia novas chamadas. O bloqueio por excesso não é limpo por aumento de teto. Não há renovação diária, reset automático ou conciliação automática com uma API de faturamento.
 
 Uma interrupção entre reserva e despacho pode conservar saldo em `reserved`. O método de cancelamento exige ausência de despacho; o CLI atual não expõe esse cancelamento. Esse caso requer revisão operacional específica, sem editar contadores ou apagar o ledger para liberar crédito. Na dúvida sobre despacho, manter a reserva é a escolha conservadora.
 
 ## Configuração e inspeção
+
+Fontes do contrato local: [`budget_admin.py`](../backend/src/loja_assistente/budget_admin.py), [`budget.py`](../backend/src/loja_assistente/assistant/budget.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 A migração [0003](../backend/migrations/versions/0003_provider_budget.py) acrescenta conta e reservas sem conceder saldo por padrão. O modo Demo continua sem chamar o provedor. Para LLM, chave e ativação da integração precisam ser acompanhadas de uma conta de orçamento para a organização. Sem conta ou sem saldo, o despacho é recusado.
 
@@ -69,16 +77,18 @@ O teto de US$ 15 da avaliação de 21/09 não foi transformado em limite global 
 
 Na rodada local `30792079e0d948258f4ab91d767529c0`, os 353 testes de backend passaram, incluindo 40 novos casos ligados ao orçamento e seu executor; 12 deles estão no [módulo PostgreSQL/API](../backend/tests/test_budget_postgres.py). O provedor foi simulado com `httpx.MockTransport`, sem chamada paga. A aprovação do backend é separada das falhas de interface daquela mesma rodada.
 
-| Situação verificada | Resultado observado |
-| --- | --- |
-| Oito sessões concorrem por teto de duas chamadas | Dois despachos ao transporte simulado; seis recusas, com duas reservas conciliadas |
-| Duas chamadas terminam em timeout e outro processo consulta o ledger | Duas reservas `unknown` permanecem: 24.262 unidades de entrada e 2.000 de saída; terceiro despacho recusado |
-| A gravação da resposta falha depois do despacho | HTTP 500 seguro, sem conversa/resposta persistida; uma reserva desconhecida permanece, com 12.131 unidades de entrada e 1.000 de saída |
-| Repetir o uso conhecido da mesma chamada | Contadores permanecem em uma chamada, 100 tokens de entrada e 10 de saída; uso conflitante recusado |
+| Situação verificada                                                  | Resultado observado                                                                                                                    |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Oito sessões concorrem por teto de duas chamadas                     | Dois despachos ao transporte simulado; seis recusas, com duas reservas conciliadas                                                     |
+| Duas chamadas terminam em timeout e outro processo consulta o ledger | Duas reservas `unknown` permanecem: 24.262 unidades de entrada e 2.000 de saída; terceiro despacho recusado                            |
+| A gravação da resposta falha depois do despacho                      | HTTP 500 seguro, sem conversa/resposta persistida; uma reserva desconhecida permanece, com 12.131 unidades de entrada e 1.000 de saída |
+| Repetir o uso conhecido da mesma chamada                             | Contadores permanecem em uma chamada, 100 tokens de entrada e 10 de saída; uso conflitante recusado                                    |
 
 As unidades dos casos incertos são reservas daquela pergunta/schema, não tokens medidos. Os testes também verificam isolamento entre organizações e entre usuário/request, ausência de lock da conta durante a rede, cancelamento anterior ao despacho e bloqueio após excesso observado. Os arquivos de teste e os resultados JUnit definem os critérios; as observações de saldo complementam essa evidência, sem substituir os testes.
 
 ## Escolha e limites operacionais
+
+Fontes do contrato local: [`budget.py`](../backend/src/loja_assistente/assistant/budget.py), [`budget_policy.py`](../backend/src/loja_assistente/assistant/budget_policy.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 Um contador em memória seria menor, mas esqueceria reservas no reinício e não coordenaria processos. Uma quota apenas no runner deixaria as chamadas da interface fora desse controle. PostgreSQL já é parte do produto e permite persistência e exclusão mútua sem adicionar outro serviço; o custo é uma transação e conexão extra por transição, além da operação de casos incertos.
 
