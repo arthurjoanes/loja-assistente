@@ -1,0 +1,76 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "blocked": false,
+    "blocked_reason": null,
+    "committed": {
+      "calls": 2,
+      "input_units": 200,
+      "output_units": 20
+    },
+    "contract": "Cumulative operational allowance. Known reported tokens replace reservations; unknown calls remain reserved. No prices, invoice guarantee or automatic expiry.",
+    "limits": {
+      "calls": 2,
+      "input_units": 200000,
+      "output_units": 2000
+    },
+    "reservations": [
+      {
+        "call_id": "0644f933-5151-4f33-bde1-c5c0de04cb0c",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": {
+          "attempts": 1,
+          "call_id": "0644f933-5151-4f33-bde1-c5c0de04cb0c",
+          "duration_ms": 540,
+          "input_tokens": 100,
+          "model_requested": "gpt-4.1-mini-2025-04-14",
+          "model_returned": "gpt-4.1-mini",
+          "output_tokens": 10,
+          "prompt_sha256": "2ca81cee3f1762dad0334e12a759fe5a9d6bc46bcdd1e8652a9093c4e31e031e",
+          "provider_request_id": "provider-budget-1",
+          "reasoning_effort": null,
+          "response_id": "response-budget-1",
+          "schema_sha256": "34bbe594dac0f803b64f06208a1250680e63a49193e422b2773dd05ab574eea3",
+          "status": "completed",
+          "total_tokens": 110
+        },
+        "observation_source": "adapter",
+        "request_id": "c44bbc5d-498c-4e24-a9ae-6c164372eb19",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "reconciled"
+      },
+      {
+        "call_id": "d14c6757-5c06-4612-8c11-ca1adbc90fff",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": {
+          "attempts": 1,
+          "call_id": "d14c6757-5c06-4612-8c11-ca1adbc90fff",
+          "duration_ms": 437,
+          "input_tokens": 100,
+          "model_requested": "gpt-4.1-mini-2025-04-14",
+          "model_returned": "gpt-4.1-mini",
+          "output_tokens": 10,
+          "prompt_sha256": "2ca81cee3f1762dad0334e12a759fe5a9d6bc46bcdd1e8652a9093c4e31e031e",
+          "provider_request_id": "provider-budget-2",
+          "reasoning_effort": null,
+          "response_id": "response-budget-2",
+          "schema_sha256": "34bbe594dac0f803b64f06208a1250680e63a49193e422b2773dd05ab574eea3",
+          "status": "completed",
+          "total_tokens": 110
+        },
+        "observation_source": "adapter",
+        "request_id": "5192fa46-2f4b-4af9-ad1b-811ea434126a",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "reconciled"
+      }
+    ],
+    "tenant_id": "budget-51394b2a1e40419598393b4e6624251e"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 2,
+  "test": "tests/test_budget_postgres.py::test_eight_real_api_sessions_can_dispatch_only_two_calls",
+  "transport": "httpx.MockTransport; no paid provider"
+}

@@ -1,0 +1,10 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "account_absent": true,
+    "tenant_id": "budget-4192faa3d5aa456fb167f51273518569"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 0,
+  "test": "tests/test_budget_postgres.py::test_missing_account_fails_closed_and_unsupported_filter_needs_no_reservation",
+  "transport": "httpx.MockTransport; no paid provider"
+}

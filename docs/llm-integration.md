@@ -6,6 +6,8 @@ Um único adaptador usa SDK OpenAI 3.16.2 e `responses.with_raw_response.create`
 
 `LLM_ENABLED=false` é o padrão. Com o provedor configurado e o LLM habilitado na aplicação, é possível selecionar LLM na interface, o que permite chamadas cobradas. O [runner de avaliação com autorização e teto](live-evaluation.md) ativa seu próprio processo isolado e mantém um ledger específico da execução. O teto de US$ 15 usado na avaliação não é quota Azure nem limite global da interface. Nenhum recurso Azure é criado pelo projeto.
 
+O caminho LLM da API exige ainda uma [conta de orçamento por organização](provider-budget.md), criada pelo CLI local após a migração 0003. Não há saldo concedido automaticamente. Reserva e despacho são persistidos antes do SDK; uso desconhecido mantém saldo comprometido. O controle local não abrange outras aplicações que compartilhem a credencial nem garante um teto monetário do recurso.
+
 Versão `openai-structured-v5`: saída até 1.000 tokens, `store=false`, timeout de comunicação de 12 s e zero retries. Timeout de comunicação não é deadline total. Schema inválido, recusa, incompleta, quota e conexão têm categorias próprias no registro; a UI apresenta erro do provedor sem resposta silenciosa do parser. Campos extras, como SQL/tenant/usuário, são rejeitados.
 
 O schema de transporte usa o subconjunto strict do Azure: retira `default`, `format` e constraints de tamanho/limites que o provedor não aceita, exige todas as propriedades e define `additionalProperties: false`. Essa adaptação não remove validações do domínio: o contrato Pydantic continua rejeitando limites, datas e combinações inválidas antes de autorização ou consulta. O prompt e o contrato de negócio permaneceram congelados durante a avaliação.

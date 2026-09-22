@@ -33,15 +33,25 @@ def fixture_password_hash() -> str:
     return hash_password(PASSWORD)
 
 
-def seed_manual(db: Session) -> None:
+def seed_manual(db: Session, *, organizations_preseeded: bool = False) -> None:
     if db.scalar(select(User.id).limit(1)) is not None:
         raise RuntimeError("A fixture manual exige banco de testes vazio.")
-    db.add_all(
-        [
-            Organization(id="org_a", name="Aurora Comércio"),
-            Organization(id="org_b", name="Brisa Comércio"),
-        ]
-    )
+    if organizations_preseeded:
+        for identity, name in (("org_a", "Aurora Comércio"), ("org_b", "Brisa Comércio")):
+            organization = db.get(Organization, identity)
+            if organization is None or organization.name != name:
+                raise RuntimeError("Organizações confirmadas diferem do contrato de avaliação.")
+    else:
+        if db.scalar(select(Organization.id).limit(1)) is not None:
+            raise RuntimeError(
+                "A fixture exige organizações vazias ou contrato explícito preseeded."
+            )
+        db.add_all(
+            [
+                Organization(id="org_a", name="Aurora Comércio"),
+                Organization(id="org_b", name="Brisa Comércio"),
+            ]
+        )
     db.flush()
     db.add_all(
         [

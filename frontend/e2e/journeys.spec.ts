@@ -18,6 +18,8 @@ async function login(page: Page, profile = "Gerente · Aurora Casa") {
   ).toBeVisible();
 }
 async function ask(page: Page, question: string): Promise<Answer> {
+  if (!(await page.getByLabel("Pergunta", { exact: true }).isVisible()))
+    await page.getByRole("button", { name: "Editar pergunta" }).click();
   const response = page.waitForResponse(
     (response) =>
       response.url().endsWith("/api/assistant/query") &&
@@ -51,7 +53,7 @@ test("gestor consulta receita, evidência, ranking, comparação e continuação
     page
       .getByTestId("answer")
       .last()
-      .getByRole("heading", { name: "Resumo do período", exact: true }),
+      .getByRole("heading", { name: revenue.question, exact: true }),
   ).toBeVisible();
   expect(revenue.result?.scope.map((store) => store.id)).toEqual(["a001"]);
   expect(revenue.result?.period).toEqual({
@@ -108,10 +110,10 @@ test("gestor consulta receita, evidência, ranking, comparação e continuação
   ).toBe(daily.result?.totals?.revenue_cents);
   const dailyCard = page.getByTestId("answer").last();
   await expect(
-    dailyCard.getByRole("heading", { name: "Evolução diária", exact: true }),
+    dailyCard.getByRole("heading", { name: daily.question, exact: true }),
   ).toBeVisible();
   await expect(
-    dailyCard.getByRole("img", { name: /^Evolução:/ }),
+    dailyCard.getByRole("img", { name: /^Evolução diária\./ }),
   ).toBeVisible();
   await dailyCard.getByRole("button", { name: "Tabela", exact: true }).click();
   await expect(
@@ -199,32 +201,38 @@ test("login e análise atendem verificações automatizadas de acessibilidade", 
 }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Entrar" })).toBeVisible();
-  expect(
-    (
-      await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-        .analyze()
-    ).violations,
-  ).toEqual([]);
+  expect
+    .soft(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze()
+      ).violations,
+    )
+    .toEqual([]);
   await page.getByRole("button", { name: "Entrar" }).click();
   await expect(
     page.getByRole("heading", { name: "Análise de vendas" }),
   ).toBeVisible();
-  expect(
-    (
-      await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-        .analyze()
-    ).violations,
-  ).toEqual([]);
+  expect
+    .soft(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze()
+      ).violations,
+    )
+    .toEqual([]);
   await ask(page, "Quanto vendi ontem?");
-  expect(
-    (
-      await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-        .analyze()
-    ).violations,
-  ).toEqual([]);
+  expect
+    .soft(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze()
+      ).violations,
+    )
+    .toEqual([]);
 });
 
 test("troca de usuário isola histórico, resposta e evidência no backend", async ({
@@ -282,9 +290,13 @@ test("limitação, provedor indisponível e expiração têm estados recuperáve
     "Sem dados carregados",
   );
   await page.getByLabel("Interpretador", { exact: true }).selectOption("llm");
-  await expect(
-    page.getByText(/Provedor indisponível. Configure/),
-  ).toBeVisible();
+  const unavailable = page
+    .getByRole("status")
+    .filter({ hasText: "A interpretação com IA não está disponível" });
+  await expect(unavailable).toBeVisible();
+  await expect(unavailable).toContainText(
+    "Selecione demonstração para continuar consultando os dados.",
+  );
   await expect(
     page.getByRole("button", { name: "Enviar pergunta" }),
   ).toBeDisabled();
@@ -306,6 +318,9 @@ test("celular permite teclado, filtros e leitura sem overflow horizontal", async
   await page.setViewportSize({ width: 390, height: 844 });
   await login(page, "Supervisor · Aurora Casa");
   await expect(page.getByRole("button", { name: "Abrir menu" })).toBeVisible();
+  await expect(page.getByLabel("Pergunta", { exact: true })).toBeHidden();
+  await page.getByRole("button", { name: "Editar pergunta" }).press("Enter");
+  await expect(page.getByLabel("Pergunta", { exact: true })).toBeFocused();
   await page.getByLabel("Loja", { exact: true }).selectOption("a002");
   await page.getByLabel("Período", { exact: true }).selectOption("week");
   const response = page.waitForResponse((response) =>
@@ -322,6 +337,11 @@ test("celular permite teclado, filtros e leitura sem overflow horizontal", async
     end: "2026-08-17",
   });
   await expect(page.getByTestId("answer")).toBeVisible();
+  await page.getByRole("button", { name: "Recolher próxima consulta" }).click();
+  await expect(page.getByLabel("Pergunta", { exact: true })).toBeHidden();
+  await expect(
+    page.getByRole("button", { name: "Editar pergunta" }),
+  ).toBeFocused();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,

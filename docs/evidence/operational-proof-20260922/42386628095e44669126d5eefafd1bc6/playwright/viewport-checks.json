@@ -1,0 +1,683 @@
+{
+  "capturedAt": "2026-09-22T08:05:53.494Z",
+  "chartControls": [
+    {
+      "height": 30,
+      "name": "Gráfico",
+      "width": 76.6875
+    },
+    {
+      "height": 30,
+      "name": "Tabela",
+      "width": 73.375
+    }
+  ],
+  "checks": [
+    {
+      "composer": {
+        "bottom": 641.734375,
+        "height": 325.609375,
+        "right": 315,
+        "width": 290,
+        "x": 25,
+        "y": 316.125
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 1318.453125,
+        "height": 33.046875,
+        "right": 1391,
+        "width": 1030,
+        "x": 361,
+        "y": 1285.40625
+      },
+      "evidenceEndReached": false,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 496.8125,
+        "top": 402.8125,
+        "viewportHeight": 900
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 1342.453125,
+        "height": 1344.859375,
+        "right": 1415,
+        "width": 1078,
+        "x": 337,
+        "y": -2.40625
+      },
+      "name": "1440x900",
+      "pageWidth": 1440,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 30,
+          "name": "Gráfico",
+          "width": 76.6875
+        },
+        {
+          "height": 30,
+          "name": "Tabela",
+          "width": 73.375
+        },
+        {
+          "height": 38.59375,
+          "name": "Resumo em texto",
+          "width": 1030
+        },
+        {
+          "height": 40,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 1030
+        },
+        {
+          "height": 38,
+          "name": "Centro",
+          "width": 254
+        },
+        {
+          "height": 38,
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 254
+        },
+        {
+          "height": 38,
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 254
+        },
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 254
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 254
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "composer": {
+        "bottom": 575.734375,
+        "height": 325.609375,
+        "right": 315,
+        "width": 290,
+        "x": 25,
+        "y": 250.125
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 1250.390625,
+        "height": 33.046875,
+        "right": 1317,
+        "width": 956,
+        "x": 361,
+        "y": 1217.34375
+      },
+      "evidenceEndReached": false,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 455.8125,
+        "top": 361.8125,
+        "viewportHeight": 768
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 1274.390625,
+        "height": 1342.796875,
+        "right": 1341,
+        "width": 1004,
+        "x": 337,
+        "y": -68.40625
+      },
+      "name": "1366x768",
+      "pageWidth": 1366,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 30,
+          "name": "Gráfico",
+          "width": 76.6875
+        },
+        {
+          "height": 30,
+          "name": "Tabela",
+          "width": 73.375
+        },
+        {
+          "height": 38.59375,
+          "name": "Resumo em texto",
+          "width": 956
+        },
+        {
+          "height": 40,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 956
+        },
+        {
+          "height": 38,
+          "name": "Centro",
+          "width": 254
+        },
+        {
+          "height": 38,
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 254
+        },
+        {
+          "height": 38,
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 254
+        },
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 254
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 254
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 768,
+        "width": 1366
+      }
+    },
+    {
+      "composer": {
+        "bottom": 688.484375,
+        "height": 298.015625,
+        "right": 999,
+        "width": 487,
+        "x": 512,
+        "y": 390.46875
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 280.1875,
+        "height": 33.046875,
+        "right": 975,
+        "width": 926,
+        "x": 49,
+        "y": 247.140625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 566.15625,
+        "top": 472.15625,
+        "viewportHeight": 768
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 368.484375
+      },
+      "main": {
+        "bottom": 304.1875,
+        "height": 1397.59375,
+        "right": 999,
+        "width": 974,
+        "x": 25,
+        "y": -1093.40625
+      },
+      "name": "1024x768",
+      "pageWidth": 1024,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 34,
+          "name": "Recolher próxima consulta",
+          "width": 34
+        },
+        {
+          "height": 38,
+          "name": "Centro",
+          "width": 455
+        },
+        {
+          "height": 38,
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 455
+        },
+        {
+          "height": 38,
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 455
+        },
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 454
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 938
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 768,
+        "width": 1024
+      }
+    },
+    {
+      "composer": {
+        "bottom": 952.109375,
+        "height": 298.015625,
+        "right": 751,
+        "width": 367,
+        "x": 384,
+        "y": 654.09375
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 543.8125,
+        "height": 33.046875,
+        "right": 727,
+        "width": 686,
+        "x": 41,
+        "y": 510.765625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 829.78125,
+        "top": 735.78125,
+        "viewportHeight": 1024
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 368.859375
+      },
+      "main": {
+        "bottom": 567.8125,
+        "height": 1519.96875,
+        "right": 751,
+        "width": 734,
+        "x": 17,
+        "y": -952.15625
+      },
+      "name": "768x1024",
+      "pageWidth": 768,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 34,
+          "name": "Recolher próxima consulta",
+          "width": 34
+        },
+        {
+          "height": 38,
+          "name": "Centro",
+          "width": 335
+        },
+        {
+          "height": 38,
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 335
+        },
+        {
+          "height": 38,
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 335
+        },
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 334
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 698
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 1024,
+        "width": 768
+      }
+    },
+    {
+      "composer": {
+        "bottom": 776.171875,
+        "height": 255.96875,
+        "right": 379,
+        "width": 368,
+        "x": 11,
+        "y": 520.203125
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 227.953125,
+        "height": 53.09375,
+        "right": 367,
+        "width": 344,
+        "x": 23,
+        "y": 174.859375
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 681.890625,
+        "top": 587.890625,
+        "viewportHeight": 844
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 368.765625
+      },
+      "main": {
+        "bottom": 245.953125,
+        "height": 1652.40625,
+        "right": 379,
+        "width": 368,
+        "x": 11,
+        "y": -1406.453125
+      },
+      "name": "390x844",
+      "pageWidth": 390,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 34,
+          "name": "Recolher próxima consulta",
+          "width": 34
+        },
+        {
+          "height": 38,
+          "name": "Centro",
+          "width": 167
+        },
+        {
+          "height": 38,
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 167
+        },
+        {
+          "height": 38,
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 344
+        },
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 344
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 344
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "composer": {
+        "bottom": 776.40625,
+        "height": 274.5625,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": 501.84375
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 191,
+        "height": 53.09375,
+        "right": 297,
+        "width": 274,
+        "x": 23,
+        "y": 137.90625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 663.53125,
+        "top": 569.53125,
+        "viewportHeight": 844
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 368.71875
+      },
+      "main": {
+        "bottom": 209,
+        "height": 1699.953125,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": -1490.953125
+      },
+      "name": "320x844",
+      "pageWidth": 320,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 34,
+          "name": "Recolher próxima consulta",
+          "width": 34
+        },
+        {
+          "height": 38,
+          "name": "Centro",
+          "width": 132
+        },
+        {
+          "height": 38,
+          "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado10 de ago. ",
+          "width": 132
+        },
+        {
+          "height": 38,
+          "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+          "width": 274
+        },
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 274
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 274
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "composer": {
+        "bottom": 287.40625,
+        "height": 274.5625,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": 12.84375
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": -298,
+        "height": 53.09375,
+        "right": 297,
+        "width": 274,
+        "x": 23,
+        "y": -351.09375
+      },
+      "evidenceEndReached": false,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 199.53125,
+        "top": 105.53125,
+        "viewportHeight": 256
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 256
+      },
+      "main": {
+        "bottom": -280,
+        "height": 1699.953125,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": -1979.953125
+      },
+      "name": "320x256-zoom-equivalent",
+      "pageWidth": 320,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 34,
+          "name": "E nos sete dias anteriores?",
+          "width": 187.421875
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 274
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 256,
+        "width": 320
+      }
+    }
+  ],
+  "mode": "verification",
+  "scenario": "Consulta diária real, evidência real aberta e navegação por teclado.",
+  "zoomMethod": "320×256 CSS px reproduz a geometria de 1280×1024 em 400%; zoom nativo da interface do navegador não foi medido."
+}

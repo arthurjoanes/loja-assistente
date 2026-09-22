@@ -5,6 +5,7 @@ from uuid import uuid4
 
 from sqlalchemy import (
     BigInteger,
+    Boolean,
     CheckConstraint,
     DateTime,
     ForeignKey,
@@ -31,6 +32,63 @@ class Organization(Base):
     __tablename__ = "organizations"
     id: Mapped[str] = mapped_column(String(64), primary_key=True)
     name: Mapped[str] = mapped_column(String(120))
+
+
+class ProviderBudgetAccount(Base):
+    __tablename__ = "provider_budget_accounts"
+    tenant_id: Mapped[str] = mapped_column(ForeignKey("organizations.id"), primary_key=True)
+    calls_limit: Mapped[int] = mapped_column(BigInteger)
+    input_limit: Mapped[int] = mapped_column(BigInteger)
+    output_limit: Mapped[int] = mapped_column(BigInteger)
+    committed_calls: Mapped[int] = mapped_column(BigInteger, default=0)
+    committed_input: Mapped[int] = mapped_column(BigInteger, default=0)
+    committed_output: Mapped[int] = mapped_column(BigInteger, default=0)
+    blocked: Mapped[bool] = mapped_column(Boolean, default=False)
+    blocked_reason: Mapped[str | None] = mapped_column(String(160), nullable=True)
+    configured_reason: Mapped[str] = mapped_column(String(500))
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    __table_args__ = (
+        CheckConstraint(
+            "calls_limit >= 0 AND input_limit >= 0 AND output_limit >= 0 AND "
+            "committed_calls >= 0 AND committed_input >= 0 AND committed_output >= 0",
+            name="provider_budget_nonnegative",
+        ),
+    )
+
+
+class ProviderReservation(Base):
+    __tablename__ = "provider_reservations"
+    tenant_id: Mapped[str] = mapped_column(
+        ForeignKey("provider_budget_accounts.tenant_id"), primary_key=True
+    )
+    call_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    request_id: Mapped[str] = mapped_column(String(64))
+    user_id: Mapped[str] = mapped_column(String(64))
+    model_requested: Mapped[str] = mapped_column(String(200))
+    reserved_input: Mapped[int] = mapped_column(BigInteger)
+    reserved_output: Mapped[int] = mapped_column(BigInteger)
+    state: Mapped[str] = mapped_column(String(24), default="reserved")
+    observation: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
+    observation_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    evidence_reference: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    dispatched_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    observed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    __table_args__ = (
+        CheckConstraint(
+            "reserved_input > 0 AND reserved_output > 0", name="provider_reservation_positive"
+        ),
+        CheckConstraint(
+            "state IN ('reserved','dispatched','unknown','reconciled','canceled')",
+            name="provider_reservation_state",
+        ),
+        CheckConstraint(
+            "(state IN ('reserved','canceled') AND dispatched_at IS NULL) OR "
+            "(state IN ('dispatched','unknown','reconciled') AND dispatched_at IS NOT NULL)",
+            name="provider_reservation_dispatch_state",
+        ),
+        Index("ix_provider_reservations_request", "tenant_id", "request_id"),
+    )
 
 
 class Store(Base):

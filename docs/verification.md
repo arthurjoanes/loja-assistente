@@ -1,5 +1,88 @@
 # Testes locais
 
+## Validação final da candidata de interface
+
+A rodada `f98ee94864384422bd835bcabd8f3a11` exercitou o refinamento posterior de alinhamento, contornos/foco, navegação e Enter durante composição IME. Build, lint, formato, tipos e **68 casos** passaram: 38 puros e 30 de navegador/HTTP, em 38,441 s, sem falha, skip ou retry. As três capturas usam a mesma fixture e viewport 1440×1000, com transições concluídas pelo coletor. Os 158 arquivos congelados ficaram estáveis durante a execução; recursos próprios removidos.
+
+O [registro estático anterior](frontend-quality.md) e sua matriz mantêm o escopo da ocasião. Esta nova prova cobre as jornadas executadas e as três capturas; não substitui estudo com pessoas, leitor de tela ou toda a matriz de comparação visual proposta naquele documento.
+
+## Entrega de 22/09/2026 — orçamento e interface verificados
+
+O [índice desta entrega](evidence/operational-proof-20260922/index.json) identifica cada rodada e conserva as falhas. A [história com capturas](operational-story.md) mostra consulta, recusa e nova tentativa válida; o [contrato do orçamento](provider-budget.md) explica problema, escolhas, operação e limites.
+
+| Prova | Resultado e versão |
+| --- | --- |
+| Backend, rodada `30792079e0d948258f4ab91d767529c0` | 353 testes passaram em 24,486 s, sem erro/falha/skip; migração 0003, Ruff, formato e mypy passaram. |
+| Incremento de orçamento, incluído nos 353 | 40 casos novos: 14 de política, 6 de adaptador, 12 de PostgreSQL/API, 3 de preparação da avaliação e 5 do executor. A integração da preparação também usa PostgreSQL; são 13 casos de banco entre esses módulos. |
+| Avaliação offline | 57/57; não houve repetição da avaliação Azure paga. |
+| Frontend final, rodada `f98ee94864384422bd835bcabd8f3a11` | Build, lint, tipos e formato passaram; 68 verificações Playwright em 38,441 s, sem skip ou retry: 38 puros, 29 jornadas existentes e uma nova história. |
+| Associação entre rodadas | Os 100 arquivos anteriores de backend/evals/data permaneceram byte a byte iguais. O teste histórico acrescentado passou em 11 casos host; a rodada final de frontend não reexecutou os 353 casos. |
+| Interface e acessibilidade automatizada | Jornadas de seleção, recorte, cobertura, teclado, foco, reflow, sete geometrias e Axe passaram. Três capturas reais conferidas; isso não é estudo com usuários, teste de leitor de tela ou certificação. |
+
+O provedor dos testes de orçamento usa `httpx.MockTransport`. Foram conferidos oito concorrentes para duas admissões, reserva incerta após timeout, leitura do mesmo saldo por outro processo, rollback da resposta sem restituição, isolamento e reconciliação idempotente. O subprocesso lê o ledger; não é um restart completo da API. O índice separa observações auxiliares de saldo da autoridade dos resultados JUnit.
+
+As tentativas anteriores preservam falha de permissão do cache, uma expectativa incorreta do teste de rollback, contraste insuficiente, seletor antigo de mensagem e rolagem/foco. A aprovação corresponde à última fonte validada para cada componente, com hashes e diferenças registrados. O runtime usou rede interna, credenciais sintéticas e nenhuma porta publicada; cleanup encerrou apenas os recursos próprios. Rodadas anteriores observaram um serviço externo; a última teve snapshots Docker vazios antes/depois. Outras cargas do host não foram controladas; durações não são benchmark de desempenho.
+
+O [arquivo histórico](evidence/azure-live/historical-source-20260921.json) conserva 62 fontes e dois conjuntos de casos originais; o verificador exige esse inventário exato, recusa alteração/ausência/escape de caminho e preserva os 65 artefatos originais. O [suplemento](evidence/operational-proof-20260922/historical-source-supplement.json) registra 11 testes host e os controles de CLI, sem nova chamada paga.
+
+A avaliação histórica de linguagem, os scans anteriores e a auditoria adversarial incompleta mantêm seus próprios escopos. O [protocolo com pessoas](usage-comparison.md) foi preparado, sem participantes ou resultados.
+
+## Histórico da revisão da interface — estado anterior à prova completa
+
+Os parágrafos desta seção registram a etapa parcial que precedeu a entrega acima. Suas pendências de navegador foram tratadas na prova posterior; não são o estado atual da entrega.
+
+A interface passou a exibir um resultado selecionado por vez, com histórico,
+filtros, gráfico/tabela e cálculo preservados. Build de produção Next.js,
+TypeScript, ESLint, Prettier e 38 testes puros de domínio/transporte passaram
+(35 existentes e três casos de apresentação da série diária de 1, 7 e 30 dias).
+O verificador offline confirmou os 65 artefatos e 62 fontes congeladas da
+avaliação histórica, sem novas chamadas ao modelo.
+
+A composição foi reconstruída novamente nesta revisão: barra superior com
+histórico recolhível, controles da próxima consulta em coluna própria, resultado
+central, indicadores em faixa, gráfico diário em colunas e login em ficha
+centralizada. A descrição textual redundante é consultável sob demanda. As
+capturas anteriores e a inspeção preliminar não mostram essa reconstrução.
+
+O refinamento seguinte simplificou os títulos, distribuiu a série diária pela
+largura disponível e tornou o formulário recolhível até 1024 px. A pergunta é
+o título do resultado; seleção, recorte aplicado e cobertura foram preservados.
+Os casos puros verificam que a geometria não descarta dias nem converte os valores
+exatos da tabela, e que uma data sem linha mantém uma lacuna em vez de venda zero.
+Eles não verificam renderização, foco ou acessibilidade visual. As jornadas
+existentes foram ampliadas para conferir 1/7/30 dias, 1024 px, abertura/recolhimento
+do formulário com foco e tabela exata, sem reduzir os checks de sobreposição.
+
+Na limpeza posterior, foram retiradas somente as variáveis CSS `--surface` e
+`--danger`, sem consumidores nas fontes da interface. Seletores, declarações
+consumidas, implementação TypeScript e testes foram preservados. A verificação
+de formato confere essa edição; os resultados de build e testes acima pertencem
+à revisão imediatamente anterior, sem nova execução de navegador.
+
+Estão pendentes 29 jornadas de navegador/HTTP: as 28 existentes e a regressão
+da seleção de resultados, que verifica teclado, preservação da tabela e
+continuação pelo último plano válido. Também faltam as capturas finais de
+desktop, 1024, 768, 390 e 320 px e a conferência de teclado/reflow a 200% em produção.
+As imagens versionadas ainda mostram a interface anterior. A inspeção preliminar
+da nova interface em desenvolvimento não substitui esses checks.
+
+A revisão estática também posicionou o carregamento antes do resultado anterior,
+levou a rolagem ao aviso de erro e tornou o destino do atalho de conteúdo
+focável. Build, ESLint e Prettier passaram após esses ajustes. As asserções de
+visibilidade do carregamento/erro e de foco foram acrescentadas às jornadas;
+sua execução no navegador permanece pendente.
+
+As jornadas existentes também foram ajustadas à nova composição: os seis/quatro
+atalhos de início devem caber no viewport desktop/celular; a navegação de teclado
+entra na tabela pelo resumo de Cálculo; os checks de foco visível, hit-test,
+ausência de sobreposição e reflow permanecem. O teste de visibilidade dos atalhos
+agora mede a tela, em vez de comparar sua posição com o compositor. Nenhuma dessas
+asserções foi executada contra a composição reconstruída.
+
+Backend, autorização, cálculo e proxy não foram alterados. Os 313 testes backend
+e a avaliação paga pertencem às execuções históricas abaixo; não foram repetidos
+nesta revisão de apresentação.
+
 ## Revisão de transporte em 22/09/2026 UTC
 
 A correção de deadline/cancelamento do proxy foi validada com build de produção

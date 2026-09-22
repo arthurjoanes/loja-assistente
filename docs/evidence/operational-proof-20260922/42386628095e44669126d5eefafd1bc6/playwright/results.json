@@ -1,0 +1,2572 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "container-source/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "container-source/playwright.config.ts",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "id": "chromium",
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "outputDir": "container-source/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "testDir": "container-source/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "rootDir": "container-source/e2e",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "webServer": null,
+    "workers": 1
+  },
+  "errors": [],
+  "stats": {
+    "duration": 43226.161,
+    "expected": 66,
+    "flaky": 0,
+    "skipped": 0,
+    "startTime": "2026-09-22T08:05:32.482Z",
+    "unexpected": 2
+  },
+  "suites": [
+    {
+      "column": 0,
+      "file": "domain.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-e17e596d3ef95e4a1a08",
+          "line": 20,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 19,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.771Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "série de 1 dias preserva zero, indisponível e valores exatos"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-4c1cad70fa483f23b3a4",
+          "line": 20,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 8,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.824Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "série de 7 dias preserva zero, indisponível e valores exatos"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-f49b3e8ef84b0377cc7f",
+          "line": 20,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 38,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.843Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "série de 30 dias preserva zero, indisponível e valores exatos"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-b51ce7204b08b1d4cfdc",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.893Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-08-16 / 2026-08-17"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-40da48d36f031b2e646e",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.909Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-05-19 / 2026-08-17"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-6ad85a1106e6ad416cc1",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.924Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-05-18 / 2026-08-17"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-eed3b94ac3450c22ff70",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.937Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-08-17 / 2026-08-17"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-149d0097b5f04d54775d",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.948Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-08-18 / 2026-08-17"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-00707028a1b34838f2cf",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.956Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro vazio / 2026-08-17"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-2f97c01fa7bfa92a3ca6",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 0,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.965Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-08-16 / vazio"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-a257c39b9fff5223fbdc",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.973Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 0001-01-01 / 0001-01-02"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-7a89a5b009c1867ab56b",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 0,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.983Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 0000-01-01 / 0000-01-02"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-84e042ea36f19ae1fc7d",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 0,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.991Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 9999-12-30 / 9999-12-31"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-ff2c393a99583a04fcdf",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 0,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:38.998Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2026-02-29 / 2026-03-01"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-abd2044fae3b7e7d71ed",
+          "line": 91,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 0,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.005Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "intervalo puro 2024-02-29 / 2024-03-01"
+        },
+        {
+          "column": 5,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-c81f8b524a08f7d42679",
+          "line": 96,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.016Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "preset personalizado preserva edição e pergunta remove filtro"
+        },
+        {
+          "column": 5,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-8192dafd2fe2fde19e89",
+          "line": 103,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.024Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "esclarecimento preserva filtros; troca de identidade limpa toda análise"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-1fff4274c0e316803bca",
+          "line": 136,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 6,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.032Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "proxy conta bytes do stream com Content-Length null"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-86400de4347083bc59b3",
+          "line": 136,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.049Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "proxy conta bytes do stream com Content-Length 1"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-ba90bb05eccb54e05c18",
+          "line": 136,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.060Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "proxy conta bytes do stream com Content-Length 16385"
+        },
+        {
+          "column": 7,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-88e2a5f90b3ea610ad40",
+          "line": 136,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.068Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "proxy conta bytes do stream com Content-Length invalid"
+        },
+        {
+          "column": 5,
+          "file": "domain.spec.ts",
+          "id": "c6e9a6815fce29ff22b2-ce62cb7657d2c5b0b18a",
+          "line": 156,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 3,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.075Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "proxy preserva 16 KiB e centavos grandes formatam sem Number"
+        }
+      ],
+      "title": "domain.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "journeys.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "journeys.spec.ts",
+          "id": "aa09586c1d16412a1f00-7bf6b4790f27ad6022bb",
+          "line": 37,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2033,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:39.130Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "gestor consulta receita, evidência, ranking, comparação e continuação"
+        },
+        {
+          "column": 5,
+          "file": "journeys.spec.ts",
+          "id": "aa09586c1d16412a1f00-0170905ccc53e56b3928",
+          "line": 160,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1207,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:41.336Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "paráfrase e cortesia preservam cálculo; qualificador recusado não vira total"
+        },
+        {
+          "column": 5,
+          "file": "journeys.spec.ts",
+          "id": "aa09586c1d16412a1f00-c64fe66b90a8cfa83e41",
+          "line": 199,
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "contentType": "image/png",
+                      "name": "screenshot",
+                      "path": "private-attachments/journeys-login-e-análise-a-69321-matizadas-de-acessibilidade-chromium/test-failed-1.png"
+                    },
+                    {
+                      "contentType": "text/markdown",
+                      "name": "error-context",
+                      "path": "private-attachments/journeys-login-e-análise-a-69321-matizadas-de-acessibilidade-chromium/error-context.md"
+                    },
+                    {
+                      "contentType": "application/zip",
+                      "name": "trace",
+                      "path": "private-attachments/journeys-login-e-análise-a-69321-matizadas-de-acessibilidade-chromium/trace.zip"
+                    }
+                  ],
+                  "duration": 1601,
+                  "error": {
+                    "location": {
+                      "column": 5,
+                      "file": "container-source/e2e/journeys.spec.ts",
+                      "line": 221
+                    },
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -   1\u001b[39m\n\u001b[31m+ Received  + 233\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\u001b[39m\n\u001b[31m+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\u001b[39m\n\u001b[31m+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright\",\u001b[39m\n\u001b[31m+     \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+     \"impact\": \"serious\",\u001b[39m\n\u001b[31m+     \"nodes\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(1)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">01</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(1) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(2)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">02</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(2) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(3)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">03</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(3) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(4)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">04</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(4) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(5)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">05</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(5) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(6)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">06</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(6) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"tags\": Array [\u001b[39m\n\u001b[31m+       \"cat.color\",\u001b[39m\n\u001b[31m+       \"wcag2aa\",\u001b[39m\n\u001b[31m+       \"wcag143\",\u001b[39m\n\u001b[31m+       \"TTv5\",\u001b[39m\n\u001b[31m+       \"TT13.c\",\u001b[39m\n\u001b[31m+       \"EN-301-549\",\u001b[39m\n\u001b[31m+       \"EN-9.1.4.3\",\u001b[39m\n\u001b[31m+       \"ACT\",\u001b[39m\n\u001b[31m+       \"RGAAv4\",\u001b[39m\n\u001b[31m+       \"RGAA-3.2.1\",\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "snippet": "\u001b[0m \u001b[90m 219 |\u001b[39m         \u001b[33m.\u001b[39manalyze()\n \u001b[90m 220 |\u001b[39m     )\u001b[33m.\u001b[39mviolations\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 221 |\u001b[39m   )\u001b[33m.\u001b[39mtoEqual([])\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 222 |\u001b[39m   \u001b[36mawait\u001b[39m ask(page\u001b[33m,\u001b[39m \u001b[32m\"Quanto vendi ontem?\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 223 |\u001b[39m   expect(\n \u001b[90m 224 |\u001b[39m     (\u001b[0m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -   1\u001b[39m\n\u001b[31m+ Received  + 233\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\u001b[39m\n\u001b[31m+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\u001b[39m\n\u001b[31m+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright\",\u001b[39m\n\u001b[31m+     \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+     \"impact\": \"serious\",\u001b[39m\n\u001b[31m+     \"nodes\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(1)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">01</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(1) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(2)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">02</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(2) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(3)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">03</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(3) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(4)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">04</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(4) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(5)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">05</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(5) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(6)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">06</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(6) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"tags\": Array [\u001b[39m\n\u001b[31m+       \"cat.color\",\u001b[39m\n\u001b[31m+       \"wcag2aa\",\u001b[39m\n\u001b[31m+       \"wcag143\",\u001b[39m\n\u001b[31m+       \"TTv5\",\u001b[39m\n\u001b[31m+       \"TT13.c\",\u001b[39m\n\u001b[31m+       \"EN-301-549\",\u001b[39m\n\u001b[31m+       \"EN-9.1.4.3\",\u001b[39m\n\u001b[31m+       \"ACT\",\u001b[39m\n\u001b[31m+       \"RGAAv4\",\u001b[39m\n\u001b[31m+       \"RGAA-3.2.1\",\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at container-source/e2e/journeys.spec.ts:221:5"
+                  },
+                  "errorLocation": {
+                    "column": 5,
+                    "file": "container-source/e2e/journeys.spec.ts",
+                    "line": 221
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "column": 5,
+                        "file": "container-source/e2e/journeys.spec.ts",
+                        "line": 221
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -   1\u001b[39m\n\u001b[31m+ Received  + 233\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\u001b[39m\n\u001b[31m+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\u001b[39m\n\u001b[31m+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright\",\u001b[39m\n\u001b[31m+     \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+     \"impact\": \"serious\",\u001b[39m\n\u001b[31m+     \"nodes\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(1)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">01</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(1) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(2)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">02</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(2) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \".suggestions > button:nth-child(3)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">03</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(3) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(4)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">04</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(4) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(5)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">05</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(5) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"all\": Array [],\u001b[39m\n\u001b[31m+         \"any\": Array [\u001b[39m\n\u001b[31m+           Object {\u001b[39m\n\u001b[31m+             \"data\": Object {\u001b[39m\n\u001b[31m+               \"bgColor\": \"#ffffff\",\u001b[39m\n\u001b[31m+               \"contrastRatio\": 4.47,\u001b[39m\n\u001b[31m+               \"expectedContrastRatio\": \"4.5:1\",\u001b[39m\n\u001b[31m+               \"fgColor\": \"#647992\",\u001b[39m\n\u001b[31m+               \"fontSize\": \"8.3pt (11px)\",\u001b[39m\n\u001b[31m+               \"fontWeight\": \"normal\",\u001b[39m\n\u001b[31m+               \"messageKey\": null,\u001b[39m\n\u001b[31m+             },\u001b[39m\n\u001b[31m+             \"id\": \"color-contrast\",\u001b[39m\n\u001b[31m+             \"impact\": \"serious\",\u001b[39m\n\u001b[31m+             \"message\": \"Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+             \"relatedNodes\": Array [\u001b[39m\n\u001b[31m+               Object {\u001b[39m\n\u001b[31m+                 \"html\": \"<button>\",\u001b[39m\n\u001b[31m+                 \"target\": Array [\u001b[39m\n\u001b[31m+                   \"button:nth-child(6)\",\u001b[39m\n\u001b[31m+                 ],\u001b[39m\n\u001b[31m+               },\u001b[39m\n\u001b[31m+             ],\u001b[39m\n\u001b[31m+           },\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"failureSummary\": \"Fix any of the following:\u001b[39m\n\u001b[31m+   Element has insufficient color contrast of 4.47 (foreground color: #647992, background color: #ffffff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1\",\u001b[39m\n\u001b[31m+         \"html\": \"<span class=\\\"suggestion-icon\\\">06</span>\",\u001b[39m\n\u001b[31m+         \"impact\": \"serious\",\u001b[39m\n\u001b[31m+         \"none\": Array [],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           \"button:nth-child(6) > .suggestion-icon\",\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"tags\": Array [\u001b[39m\n\u001b[31m+       \"cat.color\",\u001b[39m\n\u001b[31m+       \"wcag2aa\",\u001b[39m\n\u001b[31m+       \"wcag143\",\u001b[39m\n\u001b[31m+       \"TTv5\",\u001b[39m\n\u001b[31m+       \"TT13.c\",\u001b[39m\n\u001b[31m+       \"EN-301-549\",\u001b[39m\n\u001b[31m+       \"EN-9.1.4.3\",\u001b[39m\n\u001b[31m+       \"ACT\",\u001b[39m\n\u001b[31m+       \"RGAAv4\",\u001b[39m\n\u001b[31m+       \"RGAA-3.2.1\",\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  219 |         .analyze()\n  220 |     ).violations,\n> 221 |   ).toEqual([]);\n      |     ^\n  222 |   await ask(page, \"Quanto vendi ontem?\");\n  223 |   expect(\n  224 |     (\n    at container-source/e2e/journeys.spec.ts:221:5"
+                    }
+                  ],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:42.551Z",
+                  "status": "failed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 0
+                }
+              ],
+              "status": "unexpected",
+              "timeout": 45000
+            }
+          ],
+          "title": "login e análise atendem verificações automatizadas de acessibilidade"
+        },
+        {
+          "column": 5,
+          "file": "journeys.spec.ts",
+          "id": "aa09586c1d16412a1f00-b7ff1bb545d249bcbc4d",
+          "line": 232,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1134,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:45.108Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "troca de usuário isola histórico, resposta e evidência no backend"
+        },
+        {
+          "column": 5,
+          "file": "journeys.spec.ts",
+          "id": "aa09586c1d16412a1f00-b84d0d057ca803ff6dff",
+          "line": 272,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 800,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:46.329Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "limitação, provedor indisponível e expiração têm estados recuperáveis"
+        },
+        {
+          "column": 5,
+          "file": "journeys.spec.ts",
+          "id": "aa09586c1d16412a1f00-511a4b8c4bf92a587320",
+          "line": 309,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 936,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:47.144Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "celular permite teclado, filtros e leitura sem overflow horizontal"
+        }
+      ],
+      "title": "journeys.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "operational-story.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "operational-story.spec.ts",
+          "id": "f9e67f5a1cf05963a2aa-f1c92a2477246a149b97",
+          "line": 23,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1304,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:48.095Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "operational story: calculation, unsupported dimension and valid recovery"
+        }
+      ],
+      "title": "operational-story.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "proxy-streams.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-4825cf3db2ed2aae5667",
+          "line": 28,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 21,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.438Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "leitura sem primeiro chunk expira e não espera cancel hook pendente"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-89ee8adb8ba4ca1e6add",
+          "line": 48,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 22,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.467Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "chunks intermediários não renovam o prazo total de leitura"
+        },
+        {
+          "column": 7,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-d8320333de70c71913cd",
+          "line": 76,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.497Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "excesso de bytes cancela sem esperar hook, declarado=undefined"
+        },
+        {
+          "column": 7,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-3b899930cbed1fb7a679",
+          "line": 76,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.505Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "excesso de bytes cancela sem esperar hook, declarado=16385"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-816790f49de8e88b0878",
+          "line": 95,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.514Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "aborto do chamador cancela leitura e remove listener"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-f5a31019f3797a50a531",
+          "line": 114,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.522Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "aborto anterior não é ignorado por chunks já disponíveis"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-82a47a6ead0c0889fc86",
+          "line": 131,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 29,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.530Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "sucesso libera listener e dispose remove o timer"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-115c3bae113c83d9db58",
+          "line": 149,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.570Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "resposta entrega primeiro chunk antes de EOF e libera prazo ao concluir"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-caf1d0ced9abe46286a9",
+          "line": 174,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 17,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.579Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "resposta incompleta expira após o primeiro chunk e cancela upstream"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-d14951f60bd4a6cee78e",
+          "line": 195,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 27,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.603Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "prazo da resposta vale mesmo sem consumo do downstream"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-989360dcb1f92cbcff27",
+          "line": 217,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.637Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "cancelamento downstream interrompe fetch e não aguarda cancel hook"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-f546c934d1fa3e8e0229",
+          "line": 236,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 27,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.650Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "erro upstream é propagado e resposta sem corpo não mantém deadline"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-eeafc41a4d92ac9589f1",
+          "line": 256,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 6,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.687Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "rota responde 408 com identificador e sem cache quando leitura expira"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-ee1e7045b041e9476d95",
+          "line": 278,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 2,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.700Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "rota preserva 413 e cabeçalhos ao recusar corpo excessivo"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-c4d58fe84efc203aae73",
+          "line": 291,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 3,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.708Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "rota mantém streaming e cabeçalhos; aborto fecha resposta já iniciada"
+        },
+        {
+          "column": 5,
+          "file": "proxy-streams.spec.ts",
+          "id": "247215c97324906c91c8-c1db22c3d0f91ad79dba",
+          "line": 339,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.718Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 3000
+            }
+          ],
+          "title": "cliente não trata JSON interrompido como resultado bem-sucedido"
+        }
+      ],
+      "title": "proxy-streams.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "quality.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "quality.spec.ts",
+          "id": "f46baca133b10bf87db1-b2777195e8d655eb7f92",
+          "line": 38,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 586,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:49.732Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "histórico tardio não apaga a conversa recém-criada"
+        },
+        {
+          "column": 5,
+          "file": "quality.spec.ts",
+          "id": "f46baca133b10bf87db1-7aab6c1554f04f9ceae4",
+          "line": 87,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 653,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:50.326Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "histórico distingue horários, revela título longo e drawer devolve foco"
+        },
+        {
+          "column": 5,
+          "file": "quality.spec.ts",
+          "id": "f46baca133b10bf87db1-0a3031b76315fc39d163",
+          "line": 135,
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "body": "ewogICJjYXB0dXJlZEF0IjogIjIwMjYtMDktMjJUMDg6MDU6NTMuNDk0WiIsCiAgIm1vZGUiOiAidmVyaWZpY2F0aW9uIiwKICAic2NlbmFyaW8iOiAiQ29uc3VsdGEgZGnDoXJpYSByZWFsLCBldmlkw6puY2lhIHJlYWwgYWJlcnRhIGUgbmF2ZWdhw6fDo28gcG9yIHRlY2xhZG8uIiwKICAiem9vbU1ldGhvZCI6ICIzMjDDlzI1NiBDU1MgcHggcmVwcm9kdXogYSBnZW9tZXRyaWEgZGUgMTI4MMOXMTAyNCBlbSA0MDAlOyB6b29tIG5hdGl2byBkYSBpbnRlcmZhY2UgZG8gbmF2ZWdhZG9yIG7Do28gZm9pIG1lZGlkby4iLAogICJjaGFydENvbnRyb2xzIjogWwogICAgewogICAgICAibmFtZSI6ICJHcsOhZmljbyIsCiAgICAgICJ3aWR0aCI6IDc2LjY4NzUsCiAgICAgICJoZWlnaHQiOiAzMAogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiVGFiZWxhIiwKICAgICAgIndpZHRoIjogNzMuMzc1LAogICAgICAiaGVpZ2h0IjogMzAKICAgIH0KICBdLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJuYW1lIjogIjE0NDB4OTAwIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDE0NDAsCiAgICAgICAgImhlaWdodCI6IDkwMCwKICAgICAgICAiZGV2aWNlU2NhbGVGYWN0b3IiOiAxCiAgICAgIH0sCiAgICAgICJwYWdlV2lkdGgiOiAxNDQwLAogICAgICAiaG9yaXpvbnRhbE92ZXJmbG93IjogZmFsc2UsCiAgICAgICJkYWlseUNoYXJ0Rml0cyI6IHRydWUsCiAgICAgICJzY3JvbGxNb2RlIjogInZpc2libGUiLAogICAgICAibWFpbiI6IHsKICAgICAgICAieCI6IDMzNywKICAgICAgICAieSI6IC0yLjQwNjI1LAogICAgICAgICJ3aWR0aCI6IDEwNzgsCiAgICAgICAgImhlaWdodCI6IDEzNDQuODU5Mzc1LAogICAgICAgICJib3R0b20iOiAxMzQyLjQ1MzEyNSwKICAgICAgICAicmlnaHQiOiAxNDE1CiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZCI6IHsKICAgICAgICAieCI6IDM2MSwKICAgICAgICAieSI6IDEyODUuNDA2MjUsCiAgICAgICAgIndpZHRoIjogMTAzMCwKICAgICAgICAiaGVpZ2h0IjogMzMuMDQ2ODc1LAogICAgICAgICJib3R0b20iOiAxMzE4LjQ1MzEyNSwKICAgICAgICAicmlnaHQiOiAxMzkxCiAgICAgIH0sCiAgICAgICJjb21wb3NlciI6IHsKICAgICAgICAieCI6IDI1LAogICAgICAgICJ5IjogMzE2LjEyNSwKICAgICAgICAid2lkdGgiOiAyOTAsCiAgICAgICAgImhlaWdodCI6IDMyNS42MDkzNzUsCiAgICAgICAgImJvdHRvbSI6IDY0MS43MzQzNzUsCiAgICAgICAgInJpZ2h0IjogMzE1CiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZFJlYWNoZWQiOiBmYWxzZSwKICAgICAgImV2aWRlbmNlQ2xlYXJPZkNvbXBvc2VyIjogdHJ1ZSwKICAgICAgInRhcmdldHMiOiBbCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiR3LDoWZpY28iLAogICAgICAgICAgIndpZHRoIjogNzYuNjg3NSwKICAgICAgICAgICJoZWlnaHQiOiAzMAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiVGFiZWxhIiwKICAgICAgICAgICJ3aWR0aCI6IDczLjM3NSwKICAgICAgICAgICJoZWlnaHQiOiAzMAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUmVzdW1vIGVtIHRleHRvIiwKICAgICAgICAgICJ3aWR0aCI6IDEwMzAsCiAgICAgICAgICAiaGVpZ2h0IjogMzguNTkzNzUKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkPDoWxjdWxvRsOzcm11bGEsIGNvYmVydHVyYSBlIHRvdGFpcyBwb3IgZGlhIiwKICAgICAgICAgICJ3aWR0aCI6IDEwMzAsCiAgICAgICAgICAiaGVpZ2h0IjogNDAKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiAyNTQsCiAgICAgICAgICAiaGVpZ2h0IjogMzgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlZmluaWRvIHBlbGEgcGVyZ3VudGFPbnRlbcOabHRpbW9zIDcgZGlhc8OabHRpbW9zIDMwIGRpYXNQZXJzb25hbGl6YWRvMTAgZGUgYWdvLiAiLAogICAgICAgICAgIndpZHRoIjogMjU0LAogICAgICAgICAgImhlaWdodCI6IDM4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZW1vbnN0cmHDp8OjbyAoc2VtIElBKU1vZGVsbyBkZSBJQSDCtyBpbmRpc3BvbsOtdmVsIiwKICAgICAgICAgICJ3aWR0aCI6IDI1NCwKICAgICAgICAgICJoZWlnaHQiOiAzOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRSBub3Mgc2V0ZSBkaWFzIGFudGVyaW9yZXM/IiwKICAgICAgICAgICJ3aWR0aCI6IDE4Ny40MjE4NzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlRFWFRBUkVBIiwKICAgICAgICAgICJ3aWR0aCI6IDI1NCwKICAgICAgICAgICJoZWlnaHQiOiA5NAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGFkb3MgZmljdMOtY2lvcyDCtyBhY2Vzc28gZSBtw6l0cmljYXMiLAogICAgICAgICAgIndpZHRoIjogMjU0LAogICAgICAgICAgImhlaWdodCI6IDQ2CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2OS42MjUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfSwKICAgICAgImlucHV0R2VvbWV0cnkiOiB7CiAgICAgICAgInRvcCI6IDQwMi44MTI1LAogICAgICAgICJib3R0b20iOiA0OTYuODEyNSwKICAgICAgICAidmlld3BvcnRIZWlnaHQiOiA5MDAKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiMTM2Nng3NjgiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMTM2NiwKICAgICAgICAiaGVpZ2h0IjogNzY4LAogICAgICAgICJkZXZpY2VTY2FsZUZhY3RvciI6IDEKICAgICAgfSwKICAgICAgInBhZ2VXaWR0aCI6IDEzNjYsCiAgICAgICJob3Jpem9udGFsT3ZlcmZsb3ciOiBmYWxzZSwKICAgICAgImRhaWx5Q2hhcnRGaXRzIjogdHJ1ZSwKICAgICAgInNjcm9sbE1vZGUiOiAidmlzaWJsZSIsCiAgICAgICJtYWluIjogewogICAgICAgICJ4IjogMzM3LAogICAgICAgICJ5IjogLTY4LjQwNjI1LAogICAgICAgICJ3aWR0aCI6IDEwMDQsCiAgICAgICAgImhlaWdodCI6IDEzNDIuNzk2ODc1LAogICAgICAgICJib3R0b20iOiAxMjc0LjM5MDYyNSwKICAgICAgICAicmlnaHQiOiAxMzQxCiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZCI6IHsKICAgICAgICAieCI6IDM2MSwKICAgICAgICAieSI6IDEyMTcuMzQzNzUsCiAgICAgICAgIndpZHRoIjogOTU2LAogICAgICAgICJoZWlnaHQiOiAzMy4wNDY4NzUsCiAgICAgICAgImJvdHRvbSI6IDEyNTAuMzkwNjI1LAogICAgICAgICJyaWdodCI6IDEzMTcKICAgICAgfSwKICAgICAgImNvbXBvc2VyIjogewogICAgICAgICJ4IjogMjUsCiAgICAgICAgInkiOiAyNTAuMTI1LAogICAgICAgICJ3aWR0aCI6IDI5MCwKICAgICAgICAiaGVpZ2h0IjogMzI1LjYwOTM3NSwKICAgICAgICAiYm90dG9tIjogNTc1LjczNDM3NSwKICAgICAgICAicmlnaHQiOiAzMTUKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kUmVhY2hlZCI6IGZhbHNlLAogICAgICAiZXZpZGVuY2VDbGVhck9mQ29tcG9zZXIiOiB0cnVlLAogICAgICAidGFyZ2V0cyI6IFsKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJHcsOhZmljbyIsCiAgICAgICAgICAid2lkdGgiOiA3Ni42ODc1LAogICAgICAgICAgImhlaWdodCI6IDMwCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJUYWJlbGEiLAogICAgICAgICAgIndpZHRoIjogNzMuMzc1LAogICAgICAgICAgImhlaWdodCI6IDMwCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJSZXN1bW8gZW0gdGV4dG8iLAogICAgICAgICAgIndpZHRoIjogOTU2LAogICAgICAgICAgImhlaWdodCI6IDM4LjU5Mzc1CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJDw6FsY3Vsb0bDs3JtdWxhLCBjb2JlcnR1cmEgZSB0b3RhaXMgcG9yIGRpYSIsCiAgICAgICAgICAid2lkdGgiOiA5NTYsCiAgICAgICAgICAiaGVpZ2h0IjogNDAKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiAyNTQsCiAgICAgICAgICAiaGVpZ2h0IjogMzgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlZmluaWRvIHBlbGEgcGVyZ3VudGFPbnRlbcOabHRpbW9zIDcgZGlhc8OabHRpbW9zIDMwIGRpYXNQZXJzb25hbGl6YWRvMTAgZGUgYWdvLiAiLAogICAgICAgICAgIndpZHRoIjogMjU0LAogICAgICAgICAgImhlaWdodCI6IDM4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZW1vbnN0cmHDp8OjbyAoc2VtIElBKU1vZGVsbyBkZSBJQSDCtyBpbmRpc3BvbsOtdmVsIiwKICAgICAgICAgICJ3aWR0aCI6IDI1NCwKICAgICAgICAgICJoZWlnaHQiOiAzOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRSBub3Mgc2V0ZSBkaWFzIGFudGVyaW9yZXM/IiwKICAgICAgICAgICJ3aWR0aCI6IDE4Ny40MjE4NzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlRFWFRBUkVBIiwKICAgICAgICAgICJ3aWR0aCI6IDI1NCwKICAgICAgICAgICJoZWlnaHQiOiA5NAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGFkb3MgZmljdMOtY2lvcyDCtyBhY2Vzc28gZSBtw6l0cmljYXMiLAogICAgICAgICAgIndpZHRoIjogMjU0LAogICAgICAgICAgImhlaWdodCI6IDQ2CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2OS42MjUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfSwKICAgICAgImlucHV0R2VvbWV0cnkiOiB7CiAgICAgICAgInRvcCI6IDM2MS44MTI1LAogICAgICAgICJib3R0b20iOiA0NTUuODEyNSwKICAgICAgICAidmlld3BvcnRIZWlnaHQiOiA3NjgKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiMTAyNHg3NjgiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMTAyNCwKICAgICAgICAiaGVpZ2h0IjogNzY4LAogICAgICAgICJkZXZpY2VTY2FsZUZhY3RvciI6IDEKICAgICAgfSwKICAgICAgInBhZ2VXaWR0aCI6IDEwMjQsCiAgICAgICJob3Jpem9udGFsT3ZlcmZsb3ciOiBmYWxzZSwKICAgICAgImRhaWx5Q2hhcnRGaXRzIjogdHJ1ZSwKICAgICAgInNjcm9sbE1vZGUiOiAidmlzaWJsZSIsCiAgICAgICJtYWluIjogewogICAgICAgICJ4IjogMjUsCiAgICAgICAgInkiOiAtMTA5My40MDYyNSwKICAgICAgICAid2lkdGgiOiA5NzQsCiAgICAgICAgImhlaWdodCI6IDEzOTcuNTkzNzUsCiAgICAgICAgImJvdHRvbSI6IDMwNC4xODc1LAogICAgICAgICJyaWdodCI6IDk5OQogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmQiOiB7CiAgICAgICAgIngiOiA0OSwKICAgICAgICAieSI6IDI0Ny4xNDA2MjUsCiAgICAgICAgIndpZHRoIjogOTI2LAogICAgICAgICJoZWlnaHQiOiAzMy4wNDY4NzUsCiAgICAgICAgImJvdHRvbSI6IDI4MC4xODc1LAogICAgICAgICJyaWdodCI6IDk3NQogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiA1MTIsCiAgICAgICAgInkiOiAzOTAuNDY4NzUsCiAgICAgICAgIndpZHRoIjogNDg3LAogICAgICAgICJoZWlnaHQiOiAyOTguMDE1NjI1LAogICAgICAgICJib3R0b20iOiA2ODguNDg0Mzc1LAogICAgICAgICJyaWdodCI6IDk5OQogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmRSZWFjaGVkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlQ2xlYXJPZkNvbXBvc2VyIjogdHJ1ZSwKICAgICAgInRhcmdldHMiOiBbCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUmVjb2xoZXIgcHLDs3hpbWEgY29uc3VsdGEiLAogICAgICAgICAgIndpZHRoIjogMzQsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiA0NTUsCiAgICAgICAgICAiaGVpZ2h0IjogMzgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlZmluaWRvIHBlbGEgcGVyZ3VudGFPbnRlbcOabHRpbW9zIDcgZGlhc8OabHRpbW9zIDMwIGRpYXNQZXJzb25hbGl6YWRvMTAgZGUgYWdvLiAiLAogICAgICAgICAgIndpZHRoIjogNDU1LAogICAgICAgICAgImhlaWdodCI6IDM4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZW1vbnN0cmHDp8OjbyAoc2VtIElBKU1vZGVsbyBkZSBJQSDCtyBpbmRpc3BvbsOtdmVsIiwKICAgICAgICAgICJ3aWR0aCI6IDQ1NSwKICAgICAgICAgICJoZWlnaHQiOiAzOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRSBub3Mgc2V0ZSBkaWFzIGFudGVyaW9yZXM/IiwKICAgICAgICAgICJ3aWR0aCI6IDE4Ny40MjE4NzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlRFWFRBUkVBIiwKICAgICAgICAgICJ3aWR0aCI6IDQ1NCwKICAgICAgICAgICJoZWlnaHQiOiA5NAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGFkb3MgZmljdMOtY2lvcyDCtyBhY2Vzc28gZSBtw6l0cmljYXMiLAogICAgICAgICAgIndpZHRoIjogOTM4LAogICAgICAgICAgImhlaWdodCI6IDQ2CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2OC40ODQzNzUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfSwKICAgICAgImlucHV0R2VvbWV0cnkiOiB7CiAgICAgICAgInRvcCI6IDQ3Mi4xNTYyNSwKICAgICAgICAiYm90dG9tIjogNTY2LjE1NjI1LAogICAgICAgICJ2aWV3cG9ydEhlaWdodCI6IDc2OAogICAgICB9CiAgICB9LAogICAgewogICAgICAibmFtZSI6ICI3Njh4MTAyNCIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiA3NjgsCiAgICAgICAgImhlaWdodCI6IDEwMjQsCiAgICAgICAgImRldmljZVNjYWxlRmFjdG9yIjogMQogICAgICB9LAogICAgICAicGFnZVdpZHRoIjogNzY4LAogICAgICAiaG9yaXpvbnRhbE92ZXJmbG93IjogZmFsc2UsCiAgICAgICJkYWlseUNoYXJ0Rml0cyI6IHRydWUsCiAgICAgICJzY3JvbGxNb2RlIjogInZpc2libGUiLAogICAgICAibWFpbiI6IHsKICAgICAgICAieCI6IDE3LAogICAgICAgICJ5IjogLTk1Mi4xNTYyNSwKICAgICAgICAid2lkdGgiOiA3MzQsCiAgICAgICAgImhlaWdodCI6IDE1MTkuOTY4NzUsCiAgICAgICAgImJvdHRvbSI6IDU2Ny44MTI1LAogICAgICAgICJyaWdodCI6IDc1MQogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmQiOiB7CiAgICAgICAgIngiOiA0MSwKICAgICAgICAieSI6IDUxMC43NjU2MjUsCiAgICAgICAgIndpZHRoIjogNjg2LAogICAgICAgICJoZWlnaHQiOiAzMy4wNDY4NzUsCiAgICAgICAgImJvdHRvbSI6IDU0My44MTI1LAogICAgICAgICJyaWdodCI6IDcyNwogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAzODQsCiAgICAgICAgInkiOiA2NTQuMDkzNzUsCiAgICAgICAgIndpZHRoIjogMzY3LAogICAgICAgICJoZWlnaHQiOiAyOTguMDE1NjI1LAogICAgICAgICJib3R0b20iOiA5NTIuMTA5Mzc1LAogICAgICAgICJyaWdodCI6IDc1MQogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmRSZWFjaGVkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlQ2xlYXJPZkNvbXBvc2VyIjogdHJ1ZSwKICAgICAgInRhcmdldHMiOiBbCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUmVjb2xoZXIgcHLDs3hpbWEgY29uc3VsdGEiLAogICAgICAgICAgIndpZHRoIjogMzQsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiAzMzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlZmluaWRvIHBlbGEgcGVyZ3VudGFPbnRlbcOabHRpbW9zIDcgZGlhc8OabHRpbW9zIDMwIGRpYXNQZXJzb25hbGl6YWRvMTAgZGUgYWdvLiAiLAogICAgICAgICAgIndpZHRoIjogMzM1LAogICAgICAgICAgImhlaWdodCI6IDM4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZW1vbnN0cmHDp8OjbyAoc2VtIElBKU1vZGVsbyBkZSBJQSDCtyBpbmRpc3BvbsOtdmVsIiwKICAgICAgICAgICJ3aWR0aCI6IDMzNSwKICAgICAgICAgICJoZWlnaHQiOiAzOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRSBub3Mgc2V0ZSBkaWFzIGFudGVyaW9yZXM/IiwKICAgICAgICAgICJ3aWR0aCI6IDE4Ny40MjE4NzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlRFWFRBUkVBIiwKICAgICAgICAgICJ3aWR0aCI6IDMzNCwKICAgICAgICAgICJoZWlnaHQiOiA5NAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGFkb3MgZmljdMOtY2lvcyDCtyBhY2Vzc28gZSBtw6l0cmljYXMiLAogICAgICAgICAgIndpZHRoIjogNjk4LAogICAgICAgICAgImhlaWdodCI6IDQ2CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2OC44NTkzNzUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfSwKICAgICAgImlucHV0R2VvbWV0cnkiOiB7CiAgICAgICAgInRvcCI6IDczNS43ODEyNSwKICAgICAgICAiYm90dG9tIjogODI5Ljc4MTI1LAogICAgICAgICJ2aWV3cG9ydEhlaWdodCI6IDEwMjQKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiMzkweDg0NCIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAzOTAsCiAgICAgICAgImhlaWdodCI6IDg0NCwKICAgICAgICAiZGV2aWNlU2NhbGVGYWN0b3IiOiAxCiAgICAgIH0sCiAgICAgICJwYWdlV2lkdGgiOiAzOTAsCiAgICAgICJob3Jpem9udGFsT3ZlcmZsb3ciOiBmYWxzZSwKICAgICAgImRhaWx5Q2hhcnRGaXRzIjogdHJ1ZSwKICAgICAgInNjcm9sbE1vZGUiOiAidmlzaWJsZSIsCiAgICAgICJtYWluIjogewogICAgICAgICJ4IjogMTEsCiAgICAgICAgInkiOiAtMTQwNi40NTMxMjUsCiAgICAgICAgIndpZHRoIjogMzY4LAogICAgICAgICJoZWlnaHQiOiAxNjUyLjQwNjI1LAogICAgICAgICJib3R0b20iOiAyNDUuOTUzMTI1LAogICAgICAgICJyaWdodCI6IDM3OQogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmQiOiB7CiAgICAgICAgIngiOiAyMywKICAgICAgICAieSI6IDE3NC44NTkzNzUsCiAgICAgICAgIndpZHRoIjogMzQ0LAogICAgICAgICJoZWlnaHQiOiA1My4wOTM3NSwKICAgICAgICAiYm90dG9tIjogMjI3Ljk1MzEyNSwKICAgICAgICAicmlnaHQiOiAzNjcKICAgICAgfSwKICAgICAgImNvbXBvc2VyIjogewogICAgICAgICJ4IjogMTEsCiAgICAgICAgInkiOiA1MjAuMjAzMTI1LAogICAgICAgICJ3aWR0aCI6IDM2OCwKICAgICAgICAiaGVpZ2h0IjogMjU1Ljk2ODc1LAogICAgICAgICJib3R0b20iOiA3NzYuMTcxODc1LAogICAgICAgICJyaWdodCI6IDM3OQogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmRSZWFjaGVkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlQ2xlYXJPZkNvbXBvc2VyIjogdHJ1ZSwKICAgICAgInRhcmdldHMiOiBbCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUmVjb2xoZXIgcHLDs3hpbWEgY29uc3VsdGEiLAogICAgICAgICAgIndpZHRoIjogMzQsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiAxNjcsCiAgICAgICAgICAiaGVpZ2h0IjogMzgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlZmluaWRvIHBlbGEgcGVyZ3VudGFPbnRlbcOabHRpbW9zIDcgZGlhc8OabHRpbW9zIDMwIGRpYXNQZXJzb25hbGl6YWRvMTAgZGUgYWdvLiAiLAogICAgICAgICAgIndpZHRoIjogMTY3LAogICAgICAgICAgImhlaWdodCI6IDM4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZW1vbnN0cmHDp8OjbyAoc2VtIElBKU1vZGVsbyBkZSBJQSDCtyBpbmRpc3BvbsOtdmVsIiwKICAgICAgICAgICJ3aWR0aCI6IDM0NCwKICAgICAgICAgICJoZWlnaHQiOiAzOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRSBub3Mgc2V0ZSBkaWFzIGFudGVyaW9yZXM/IiwKICAgICAgICAgICJ3aWR0aCI6IDE4Ny40MjE4NzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlRFWFRBUkVBIiwKICAgICAgICAgICJ3aWR0aCI6IDM0NCwKICAgICAgICAgICJoZWlnaHQiOiA5NAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGFkb3MgZmljdMOtY2lvcyDCtyBhY2Vzc28gZSBtw6l0cmljYXMiLAogICAgICAgICAgIndpZHRoIjogMzQ0LAogICAgICAgICAgImhlaWdodCI6IDQ2CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2OC43NjU2MjUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfSwKICAgICAgImlucHV0R2VvbWV0cnkiOiB7CiAgICAgICAgInRvcCI6IDU4Ny44OTA2MjUsCiAgICAgICAgImJvdHRvbSI6IDY4MS44OTA2MjUsCiAgICAgICAgInZpZXdwb3J0SGVpZ2h0IjogODQ0CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJuYW1lIjogIjMyMHg4NDQiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiA4NDQsCiAgICAgICAgImRldmljZVNjYWxlRmFjdG9yIjogMQogICAgICB9LAogICAgICAicGFnZVdpZHRoIjogMzIwLAogICAgICAiaG9yaXpvbnRhbE92ZXJmbG93IjogZmFsc2UsCiAgICAgICJkYWlseUNoYXJ0Rml0cyI6IHRydWUsCiAgICAgICJzY3JvbGxNb2RlIjogInZpc2libGUiLAogICAgICAibWFpbiI6IHsKICAgICAgICAieCI6IDExLAogICAgICAgICJ5IjogLTE0OTAuOTUzMTI1LAogICAgICAgICJ3aWR0aCI6IDI5OCwKICAgICAgICAiaGVpZ2h0IjogMTY5OS45NTMxMjUsCiAgICAgICAgImJvdHRvbSI6IDIwOSwKICAgICAgICAicmlnaHQiOiAzMDkKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kIjogewogICAgICAgICJ4IjogMjMsCiAgICAgICAgInkiOiAxMzcuOTA2MjUsCiAgICAgICAgIndpZHRoIjogMjc0LAogICAgICAgICJoZWlnaHQiOiA1My4wOTM3NSwKICAgICAgICAiYm90dG9tIjogMTkxLAogICAgICAgICJyaWdodCI6IDI5NwogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAxMSwKICAgICAgICAieSI6IDUwMS44NDM3NSwKICAgICAgICAid2lkdGgiOiAyOTgsCiAgICAgICAgImhlaWdodCI6IDI3NC41NjI1LAogICAgICAgICJib3R0b20iOiA3NzYuNDA2MjUsCiAgICAgICAgInJpZ2h0IjogMzA5CiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZFJlYWNoZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2VDbGVhck9mQ29tcG9zZXIiOiB0cnVlLAogICAgICAidGFyZ2V0cyI6IFsKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJSZWNvbGhlciBwcsOzeGltYSBjb25zdWx0YSIsCiAgICAgICAgICAid2lkdGgiOiAzNCwKICAgICAgICAgICJoZWlnaHQiOiAzNAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiQ2VudHJvIiwKICAgICAgICAgICJ3aWR0aCI6IDEzMiwKICAgICAgICAgICJoZWlnaHQiOiAzOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8xMCBkZSBhZ28uICIsCiAgICAgICAgICAid2lkdGgiOiAxMzIsCiAgICAgICAgICAiaGVpZ2h0IjogMzgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlbW9uc3RyYcOnw6NvIChzZW0gSUEpTW9kZWxvIGRlIElBIMK3IGluZGlzcG9uw612ZWwiLAogICAgICAgICAgIndpZHRoIjogMjc0LAogICAgICAgICAgImhlaWdodCI6IDM4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJFIG5vcyBzZXRlIGRpYXMgYW50ZXJpb3Jlcz8iLAogICAgICAgICAgIndpZHRoIjogMTg3LjQyMTg3NSwKICAgICAgICAgICJoZWlnaHQiOiAzNAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiVEVYVEFSRUEiLAogICAgICAgICAgIndpZHRoIjogMjc0LAogICAgICAgICAgImhlaWdodCI6IDk0CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEYWRvcyBmaWN0w61jaW9zIMK3IGFjZXNzbyBlIG3DqXRyaWNhcyIsCiAgICAgICAgICAid2lkdGgiOiAyNzQsCiAgICAgICAgICAiaGVpZ2h0IjogNDYKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJzbWFsbFRhcmdldHMiOiBbXSwKICAgICAgImtleWJvYXJkIjogewogICAgICAgICJyb2xlIjogInJlZ2lvbiIsCiAgICAgICAgImxhYmVsIjogIlRvdGFpcyBwb3IgZGlhIiwKICAgICAgICAiaW5zaWRlRXZpZGVuY2UiOiB0cnVlLAogICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzY4LjcxODc1LAogICAgICAgICJ1bmNvdmVyZWQiOiB0cnVlLAogICAgICAgICJmb2N1c091dGxpbmUiOiAic29saWQiCiAgICAgIH0sCiAgICAgICJpbnB1dCI6IHsKICAgICAgICAidmlzaWJsZSI6IHRydWUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzZWQiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbnB1dEdlb21ldHJ5IjogewogICAgICAgICJ0b3AiOiA1NjkuNTMxMjUsCiAgICAgICAgImJvdHRvbSI6IDY2My41MzEyNSwKICAgICAgICAidmlld3BvcnRIZWlnaHQiOiA4NDQKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiMzIweDI1Ni16b29tLWVxdWl2YWxlbnQiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiAyNTYsCiAgICAgICAgImRldmljZVNjYWxlRmFjdG9yIjogMQogICAgICB9LAogICAgICAicGFnZVdpZHRoIjogMzIwLAogICAgICAiaG9yaXpvbnRhbE92ZXJmbG93IjogZmFsc2UsCiAgICAgICJkYWlseUNoYXJ0Rml0cyI6IHRydWUsCiAgICAgICJzY3JvbGxNb2RlIjogInZpc2libGUiLAogICAgICAibWFpbiI6IHsKICAgICAgICAieCI6IDExLAogICAgICAgICJ5IjogLTE5NzkuOTUzMTI1LAogICAgICAgICJ3aWR0aCI6IDI5OCwKICAgICAgICAiaGVpZ2h0IjogMTY5OS45NTMxMjUsCiAgICAgICAgImJvdHRvbSI6IC0yODAsCiAgICAgICAgInJpZ2h0IjogMzA5CiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZCI6IHsKICAgICAgICAieCI6IDIzLAogICAgICAgICJ5IjogLTM1MS4wOTM3NSwKICAgICAgICAid2lkdGgiOiAyNzQsCiAgICAgICAgImhlaWdodCI6IDUzLjA5Mzc1LAogICAgICAgICJib3R0b20iOiAtMjk4LAogICAgICAgICJyaWdodCI6IDI5NwogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAxMSwKICAgICAgICAieSI6IDEyLjg0Mzc1LAogICAgICAgICJ3aWR0aCI6IDI5OCwKICAgICAgICAiaGVpZ2h0IjogMjc0LjU2MjUsCiAgICAgICAgImJvdHRvbSI6IDI4Ny40MDYyNSwKICAgICAgICAicmlnaHQiOiAzMDkKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kUmVhY2hlZCI6IGZhbHNlLAogICAgICAiZXZpZGVuY2VDbGVhck9mQ29tcG9zZXIiOiB0cnVlLAogICAgICAidGFyZ2V0cyI6IFsKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJFIG5vcyBzZXRlIGRpYXMgYW50ZXJpb3Jlcz8iLAogICAgICAgICAgIndpZHRoIjogMTg3LjQyMTg3NSwKICAgICAgICAgICJoZWlnaHQiOiAzNAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiVEVYVEFSRUEiLAogICAgICAgICAgIndpZHRoIjogMjc0LAogICAgICAgICAgImhlaWdodCI6IDk0CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDI1NiwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNPdXRsaW5lIjogInNvbGlkIgogICAgICB9LAogICAgICAiaW5wdXQiOiB7CiAgICAgICAgInZpc2libGUiOiB0cnVlLAogICAgICAgICJ1bmNvdmVyZWQiOiB0cnVlLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5wdXRHZW9tZXRyeSI6IHsKICAgICAgICAidG9wIjogMTA1LjUzMTI1LAogICAgICAgICJib3R0b20iOiAxOTkuNTMxMjUsCiAgICAgICAgInZpZXdwb3J0SGVpZ2h0IjogMjU2CiAgICAgIH0KICAgIH0KICBdCn0=",
+                      "contentType": "application/json",
+                      "name": "viewport-checks"
+                    },
+                    {
+                      "contentType": "image/png",
+                      "name": "screenshot",
+                      "path": "private-attachments/quality-evidência-foco-alv-f2a29-essíveis-em-sete-geometrias-chromium/test-failed-1.png"
+                    },
+                    {
+                      "contentType": "text/markdown",
+                      "name": "error-context",
+                      "path": "private-attachments/quality-evidência-foco-alv-f2a29-essíveis-em-sete-geometrias-chromium/error-context.md"
+                    },
+                    {
+                      "contentType": "application/zip",
+                      "name": "trace",
+                      "path": "private-attachments/quality-evidência-foco-alv-f2a29-essíveis-em-sete-geometrias-chromium/trace.zip"
+                    }
+                  ],
+                  "duration": 5374,
+                  "error": {
+                    "location": {
+                      "column": 10,
+                      "file": "container-source/e2e/quality.spec.ts",
+                      "line": 394
+                    },
+                    "message": "Error: 1440x900: fim da evidência acessível\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "snippet": "\u001b[0m \u001b[90m 392 |\u001b[39m           check\u001b[33m.\u001b[39mname \u001b[33m+\u001b[39m \u001b[32m\": fim da evidência acessível\"\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 393 |\u001b[39m         )\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 394 |\u001b[39m         \u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 395 |\u001b[39m       expect\n \u001b[90m 396 |\u001b[39m         \u001b[33m.\u001b[39msoft(\n \u001b[90m 397 |\u001b[39m           check\u001b[33m.\u001b[39mevidenceClearOfComposer\u001b[33m,\u001b[39m\u001b[0m",
+                    "stack": "Error: 1440x900: fim da evidência acessível\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at container-source/e2e/quality.spec.ts:394:10"
+                  },
+                  "errorLocation": {
+                    "column": 10,
+                    "file": "container-source/e2e/quality.spec.ts",
+                    "line": 394
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "column": 10,
+                        "file": "container-source/e2e/quality.spec.ts",
+                        "line": 394
+                      },
+                      "message": "Error: 1440x900: fim da evidência acessível\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  392 |           check.name + \": fim da evidência acessível\",\n  393 |         )\n> 394 |         .toBe(true);\n      |          ^\n  395 |       expect\n  396 |         .soft(\n  397 |           check.evidenceClearOfComposer,\n    at container-source/e2e/quality.spec.ts:394:10"
+                    },
+                    {
+                      "location": {
+                        "column": 10,
+                        "file": "container-source/e2e/quality.spec.ts",
+                        "line": 394
+                      },
+                      "message": "Error: 1366x768: fim da evidência acessível\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  392 |           check.name + \": fim da evidência acessível\",\n  393 |         )\n> 394 |         .toBe(true);\n      |          ^\n  395 |       expect\n  396 |         .soft(\n  397 |           check.evidenceClearOfComposer,\n    at container-source/e2e/quality.spec.ts:394:10"
+                    },
+                    {
+                      "location": {
+                        "column": 10,
+                        "file": "container-source/e2e/quality.spec.ts",
+                        "line": 394
+                      },
+                      "message": "Error: 320x256-zoom-equivalent: fim da evidência acessível\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  392 |           check.name + \": fim da evidência acessível\",\n  393 |         )\n> 394 |         .toBe(true);\n      |          ^\n  395 |       expect\n  396 |         .soft(\n  397 |           check.evidenceClearOfComposer,\n    at container-source/e2e/quality.spec.ts:394:10"
+                    }
+                  ],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:50.988Z",
+                  "status": "failed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 1
+                }
+              ],
+              "status": "unexpected",
+              "timeout": 45000
+            }
+          ],
+          "title": "evidência, foco, alvos e refluxo permanecem acessíveis em sete geometrias"
+        },
+        {
+          "column": 5,
+          "file": "quality.spec.ts",
+          "id": "f46baca133b10bf87db1-589dddb88b43c843c485",
+          "line": 472,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1316,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:57.683Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "zero coberto, receita de 90 dias e cobertura parcial preservam o significado dos números"
+        },
+        {
+          "column": 5,
+          "file": "quality.spec.ts",
+          "id": "f46baca133b10bf87db1-bec4271a65d693632736",
+          "line": 536,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 531,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:59.089Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "preferência de movimento reduzido evita rolagem animada da conversa"
+        }
+      ],
+      "title": "quality.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "result-selection.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "result-selection.spec.ts",
+          "id": "fa735cd57eedea52919c-85b4f07129680d5d95d9",
+          "line": 17,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1329,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:05:59.635Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "rever um resultado preserva os dados e a continuação do último plano"
+        }
+      ],
+      "title": "result-selection.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "review.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "review.spec.ts",
+          "id": "12f883ce49bb8436c3d7-566a0cbf1a3c203a8010",
+          "line": 3,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 603,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:00.980Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "filtro não suportado não aparece como receita geral"
+        },
+        {
+          "column": 7,
+          "file": "review.spec.ts",
+          "id": "12f883ce49bb8436c3d7-520437e9fb9f0b524f98",
+          "line": 30,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "body": "ewogICJjb250cm9scyI6IFsKICAgIHsKICAgICAgInRleHQiOiAiUmVjZWl0YSBkZSBvbnRlbSIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlJhbmtpbmcgZGUgcHJvZHV0b3MiLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJFdm9sdcOnw6NvIGRpw6FyaWEiLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJUaWNrZXQgbcOpZGlvIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiQ29tcGFyYcOnw6NvIGRlIHBlcsOtb2RvcyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlVuaWRhZGVzIHZlbmRpZGFzIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiTG9qYSIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkNlbnRybyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlBlcsOtb2RvIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8iLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJJbnRlcnByZXRhZG9yIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVtb25zdHJhw6fDo28gKHNlbSBJQSlNb2RlbG8gZGUgSUEgwrcgaW5kaXNwb27DrXZlbCIsCiAgICAgICJzaXplIjogMTQKICAgIH0KICBdLAogICJpbnB1dHMiOiBbCiAgICB7CiAgICAgICJ0ZXh0IjogIiIsCiAgICAgICJzaXplIjogMTYKICAgIH0KICBdLAogICJtZXRhZGF0YSI6IFsKICAgIHsKICAgICAgInRleHQiOiAiRGF0YSBkZSByZWZlcsOqbmNpYTE3LzA4LzIwMjYiLAogICAgICAic2l6ZSI6IDEyCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJEYXRhcyBlc2NyaXRhcyBuYSBwZXJndW50YSBwcmV2YWxlY2VtIHNvYnJlIG8gZmlsdHJvLiIsCiAgICAgICJzaXplIjogMTIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkVudGVyIGVudmlhIMK3IFNoaWZ0ICsgRW50ZXIgcXVlYnJhIGxpbmhhIMK3IDAvMTAwMCBjYXJhY3RlcmVzIiwKICAgICAgInNpemUiOiAxMgogICAgfQogIF0KfQ==",
+                      "contentType": "application/json",
+                      "name": "readability"
+                    }
+                  ],
+                  "duration": 550,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:01.596Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "atalhos de análise aparecem cedo em 1280×720"
+        },
+        {
+          "column": 7,
+          "file": "review.spec.ts",
+          "id": "12f883ce49bb8436c3d7-d9790665c27c14d07e89",
+          "line": 30,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "body": "ewogICJjb250cm9scyI6IFsKICAgIHsKICAgICAgInRleHQiOiAiUmVjZWl0YSBkZSBvbnRlbSIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlJhbmtpbmcgZGUgcHJvZHV0b3MiLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJFdm9sdcOnw6NvIGRpw6FyaWEiLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJUaWNrZXQgbcOpZGlvIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiQ29tcGFyYcOnw6NvIGRlIHBlcsOtb2RvcyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlVuaWRhZGVzIHZlbmRpZGFzIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiTG9qYSIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkNlbnRybyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlBlcsOtb2RvIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8iLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJJbnRlcnByZXRhZG9yIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVtb25zdHJhw6fDo28gKHNlbSBJQSlNb2RlbG8gZGUgSUEgwrcgaW5kaXNwb27DrXZlbCIsCiAgICAgICJzaXplIjogMTQKICAgIH0KICBdLAogICJpbnB1dHMiOiBbCiAgICB7CiAgICAgICJ0ZXh0IjogIiIsCiAgICAgICJzaXplIjogMTYKICAgIH0KICBdLAogICJtZXRhZGF0YSI6IFsKICAgIHsKICAgICAgInRleHQiOiAiRGF0YSBkZSByZWZlcsOqbmNpYTE3LzA4LzIwMjYiLAogICAgICAic2l6ZSI6IDEyCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJEYXRhcyBlc2NyaXRhcyBuYSBwZXJndW50YSBwcmV2YWxlY2VtIHNvYnJlIG8gZmlsdHJvLiIsCiAgICAgICJzaXplIjogMTIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkVudGVyIGVudmlhIMK3IFNoaWZ0ICsgRW50ZXIgcXVlYnJhIGxpbmhhIMK3IDAvMTAwMCBjYXJhY3RlcmVzIiwKICAgICAgInNpemUiOiAxMgogICAgfQogIF0KfQ==",
+                      "contentType": "application/json",
+                      "name": "readability"
+                    }
+                  ],
+                  "duration": 456,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:02.160Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "atalhos de análise aparecem cedo em 390×844"
+        }
+      ],
+      "title": "review.spec.ts"
+    },
+    {
+      "column": 0,
+      "file": "round-2-fields.spec.ts",
+      "line": 0,
+      "specs": [
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-a9ff00b2f99906dde8c0",
+          "line": 30,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 718,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:02.632Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "senha vazia, incorreta e limite preservam validação e recuperação"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-51a731e27c16a99f3487",
+          "line": 64,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1129,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:03.361Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "datas personalizadas mantêm edição real, bloqueiam inválidas e enviam recorte exato"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-6a73fb5580136b3a7bcf",
+          "line": 114,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1190,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:04.502Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "lojas e períodos rápidos refletem seleção e datas explícitas prevalecem"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-356a8508152b7830d7df",
+          "line": 141,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 891,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:05.703Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "pergunta respeita espaços, acentos, quebra de linha, tamanho e múltiplas métricas"
+        },
+        {
+          "column": 7,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-87114a941061949b355e",
+          "line": 182,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 789,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:06.605Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "falha network preserva pergunta, resultado anterior e permite tentar novamente"
+        },
+        {
+          "column": 7,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-cdada62f05fb6bdea8f3",
+          "line": 182,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 861,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:07.405Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "falha 409 preserva pergunta, resultado anterior e permite tentar novamente"
+        },
+        {
+          "column": 7,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-88baf5e08b061fe1dde4",
+          "line": 182,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 801,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:08.279Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "falha 503 preserva pergunta, resultado anterior e permite tentar novamente"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-69023c1fda7f94228105",
+          "line": 221,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 975,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:09.091Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "resposta lenta bloqueia envio duplicado e alterações de escopo"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-c2817b95dbeabf085a96",
+          "line": 255,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1634,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:10.080Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "histórico, operação indisponível e nova análise mantêm contexto e foco"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-d6352c6b1c71b3ad0f2f",
+          "line": 297,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 572,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:11.726Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "sessão expirada entre identificação e histórico volta ao login"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-177f0915b77836224013",
+          "line": 316,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 133,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:12.308Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "proxy recusa JSON grande com contexto público consistente"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-4dc7fae809f38b7830b8",
+          "line": 331,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 743,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:12.454Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "evidência com falha pode ser repetida sem perder o resultado"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-6d6d494527cccbbd70f3",
+          "line": 351,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 1001,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:13.209Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "erro tardio de evidência antiga não expira a nova identidade"
+        },
+        {
+          "column": 5,
+          "file": "round-2-fields.spec.ts",
+          "id": "637eda59c7fbc630df6f-5ea6d558d856daf13cdd",
+          "line": 390,
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "annotations": [],
+                  "attachments": [],
+                  "duration": 475,
+                  "errors": [],
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-09-22T08:06:14.221Z",
+                  "status": "passed",
+                  "stderr": [],
+                  "stdout": [],
+                  "workerIndex": 2
+                }
+              ],
+              "status": "expected",
+              "timeout": 45000
+            }
+          ],
+          "title": "falha de conexão no login não acusa senha inválida"
+        }
+      ],
+      "title": "round-2-fields.spec.ts"
+    }
+  ]
+}

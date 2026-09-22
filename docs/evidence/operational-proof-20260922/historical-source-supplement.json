@@ -1,0 +1,114 @@
+{
+  "historical_snapshot": {
+    "association": {
+      "bytes": 15443,
+      "path_from_repository_root": "docs/evidence/azure-live/historical-source-20260921.json",
+      "sha256": "80632ff16c12ecad7ad2280d29380ace0641793b46396d519a3e77694718077b"
+    },
+    "bytes": 392759,
+    "case_sets": 2,
+    "git_blob_oids_and_original_sha256_verified": 64,
+    "original_artifact_hashes_still_verified": 65,
+    "original_publication_manifest_unchanged_sha256": "799827800273eda8214a39759fa5b6d6955ee01894b4f73f452882a3ae069a98",
+    "recovery_commit": "849428f4c1fd6b166516553f43c5466d8fee6de0",
+    "source_files": 62
+  },
+  "limits": [
+    "No Docker, PostgreSQL, Azure or paid call was run for this supplement.",
+    "The353 backend tests and68 browser/pure tests remain historical results for their recorded sources; these11 host tests are a distinct later verification.",
+    "The original157 execution-source hashes were not rewritten. This subtask modified only the verifier and added its test plus historical snapshot/publication artifacts. Separate concurrent UI changes were detected and are explicitly listed; the earlier68 passes are not attributed to that later UI.",
+    "Snapshot was recovered from a later Git commit containing exact matching blobs. That recovery commit is not claimed as the commit used to run the paid evaluation."
+  ],
+  "post_proof_changes": {
+    "added_test_file": {
+      "bytes": 5200,
+      "path_from_repository_root": "backend/tests/test_historical_evidence.py",
+      "sha256": "ced94919cccf06b3b6ac875c68d75014593dcf7ebd7acda70f5407f2ba5502fa"
+    },
+    "backend_application_sources_changed_after_operational_proof": false,
+    "concurrent_ui_changes_not_validated_by_this_supplement": [
+      {
+        "observed_current_sha256": "8b6743cf6d6a9ac39429520a2b742b447bd62af645e579963919f29021131996",
+        "path": "frontend/e2e/round-2-fields.spec.ts",
+        "recorded_sha256": "0852ef368997325e108eb610d8d65116af530cc625597bd23f29da75ba0c2910"
+      },
+      {
+        "observed_current_sha256": "97be3d5be859b31e1ab4a944b8af17c66a37eb041135405a5d44111cee014bd2",
+        "path": "frontend/src/app/globals.css",
+        "recorded_sha256": "482625188a5e506b93422bb5fdd1df188163332803d6174f73585cd5e8e039ca"
+      },
+      {
+        "observed_current_sha256": "d69a502ae46b74bc9d09db1503747e904f7e59e5c8161fbe0d5c64b7a8aee26e",
+        "path": "frontend/src/features/analytics/visualization.tsx",
+        "recorded_sha256": "40c76a050238c188475b049755bea15291693818b517ba4841e9d680ef51ffac"
+      },
+      {
+        "observed_current_sha256": "3f3efe2493218caa73a4b8c7f55cc1deecb69d3cf4eb228ff7e03f7d3e6bcd53",
+        "path": "frontend/src/features/assistant/analysis-sidebar.tsx",
+        "recorded_sha256": "1547dae3bd5a89ea0b9d7a7aa5aef78e45fe2106b918df6490baf34c6cccba58"
+      },
+      {
+        "observed_current_sha256": "9cd49f533d4e4224e00abf875b4f3bb05cd51d1640ad09d730543f56c781a934",
+        "path": "frontend/src/features/assistant/operations.tsx",
+        "recorded_sha256": "6879ff936357267216dbc032c597cd0691bf810b0ad0ea3179a911d76ab74a63"
+      },
+      {
+        "observed_current_sha256": "c8382b577143dbc7f9c26675dba07d33867f3bfaa3ab755429617d145ff9e756",
+        "path": "frontend/src/features/assistant/question-composer.tsx",
+        "recorded_sha256": "4446d9cbfce7180699f9f965716fd0280332dfe901b25fe0e244abb009a96d66"
+      }
+    ],
+    "frontend_sources_changed_after_operational_proof": true,
+    "modified_by_historical_fix": [
+      {
+        "current_sha256": "61b8d69ae54461a71ac13a7cf088882b0ed962b020481b1688633cfa2ff9e51d",
+        "path": "scripts/verify_evidence.py",
+        "recorded_sha256": "e66d24db544012dfa7cfebdb3e5bb6e7702bedca0857f0e212b85c63793a44cd"
+      }
+    ]
+  },
+  "purpose": "Post-proof publication compatibility fix. Paid historical evaluation remains bound to its exact archived bytes, not the new application.",
+  "recorded_at_utc": "2026-09-22T08:34:54.436531+00:00",
+  "status": "PASSED_OFFLINE_HISTORICAL_VERIFICATION",
+  "verification": {
+    "controls": {
+      "new_verifier_accepts_exact_historical_snapshot": {
+        "log": {
+          "bytes": 1823,
+          "path_from_repository_root": "docs/evidence/operational-proof-20260922/historical-control-valid-snapshot.log",
+          "sha256": "217fc1158c212f6e4784a7b6b70b5dbdd919dbfdf05fc60863b8a6beecfde497"
+        },
+        "private_raw_log_sha256": "217fc1158c212f6e4784a7b6b70b5dbdd919dbfdf05fc60863b8a6beecfde497",
+        "returncode": 0
+      },
+      "new_verifier_rejects_tampered_historical_byte": {
+        "log": {
+          "bytes": 116,
+          "path_from_repository_root": "docs/evidence/operational-proof-20260922/historical-control-tampered-snapshot.log",
+          "sha256": "a32311fd904c51d456a66d448040560ebd0fffa57121710027b19644d634f646"
+        },
+        "private_raw_log_sha256": "a32311fd904c51d456a66d448040560ebd0fffa57121710027b19644d634f646",
+        "returncode": 1
+      },
+      "old_verifier_rejects_changed_current_source": {
+        "log": {
+          "bytes": 105,
+          "path_from_repository_root": "docs/evidence/operational-proof-20260922/historical-control-old-verifier.log",
+          "sha256": "e7e050800f5a6698df4107da90173d375bda34584ccd22df273efdf82144369c"
+        },
+        "private_raw_log_sha256": "e7e050800f5a6698df4107da90173d375bda34584ccd22df273efdf82144369c",
+        "returncode": 1
+      }
+    },
+    "failed": 0,
+    "host_test_cases": 11,
+    "junit": {
+      "bytes": 1820,
+      "path_from_repository_root": "docs/evidence/operational-proof-20260922/historical-supplement-tests.xml",
+      "sha256": "6c5546409eae45bf926d32d285a2d98f5f04f01ead7ec8cc32844fe6d0067d63"
+    },
+    "passed": 11,
+    "ruff_and_format": "PASSED with backend pyproject/cwd",
+    "skipped": 0
+  }
+}

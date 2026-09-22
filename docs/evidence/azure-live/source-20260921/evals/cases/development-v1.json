@@ -1,0 +1,418 @@
+{
+  "version": "development-v1",
+  "dataset": "manual-v1",
+  "reference_date": "2026-08-17",
+  "cases": [
+    {
+      "id": "dev-01",
+      "category": "natural_language",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Quanto eu vendi ontem?",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "3000",
+          "totals": {
+            "revenue_cents": "3000",
+            "orders": 2,
+            "units": 8,
+            "average_ticket_cents": "1500"
+          }
+        }
+      }
+    },
+    {
+      "id": "dev-02",
+      "category": "natural_language",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Me mostra o faturamento de ontem",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "3000"
+        }
+      }
+    },
+    {
+      "id": "dev-03",
+      "category": "natural_language",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Só queria saber a receita de ontem",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "3000"
+        }
+      }
+    },
+    {
+      "id": "dev-04",
+      "category": "ambiguity_greeting",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Oi!",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "needs_clarification",
+          "unsupported"
+        ],
+        "no_result": true
+      }
+    },
+    {
+      "id": "dev-05",
+      "category": "unsupported_filters",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Quanto vendi ontem por transferência bancária?",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "needs_clarification",
+          "unsupported"
+        ],
+        "no_result": true
+      }
+    },
+    {
+      "id": "dev-06",
+      "category": "ambiguity_greeting",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Receita e pedidos de ontem",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "needs_clarification",
+          "unsupported"
+        ],
+        "no_result": true
+      }
+    },
+    {
+      "id": "dev-07",
+      "category": "scope",
+      "identity": "supervisor_a",
+      "authorized_store_ids": [
+        "a001",
+        "a002"
+      ],
+      "question": "Receita das lojas Centro e Jardins ontem",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "revenue",
+          "store_references": [
+            "a001",
+            "a002"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "4600",
+          "totals": {
+            "orders": 3,
+            "units": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "dev-08",
+      "category": "scope",
+      "identity": "manager_b",
+      "authorized_store_ids": [
+        "b001"
+      ],
+      "question": "Qual foi a receita de ontem?",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "revenue",
+          "store_references": [
+            "b001"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "3300",
+          "totals": {
+            "orders": 1,
+            "units": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "dev-09",
+      "category": "boundary_finance",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Qual o ticket médio de ontem?",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "average_ticket",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-16",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "1500"
+        }
+      }
+    },
+    {
+      "id": "dev-10",
+      "category": "period_context",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "E nos sete dias anteriores?",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "aggregate",
+          "metric": "units",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-09",
+            "end": "2026-08-16"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 5
+        },
+        "result": {
+          "value": "7",
+          "coverage": {
+            "status": "partial"
+          }
+        }
+      },
+      "prior_question": "Unidades ontem"
+    },
+    {
+      "id": "dev-11",
+      "category": "boundary_finance",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Evolução diária da receita de 14/08/2026 a 16/08/2026",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "daily",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-14",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": "day",
+          "limit": 5
+        },
+        "result": {
+          "value": "7100",
+          "rows": [
+            {
+              "key": "2026-08-14",
+              "revenue_cents": "2500"
+            },
+            {
+              "key": "2026-08-15",
+              "revenue_cents": "1600"
+            },
+            {
+              "key": "2026-08-16",
+              "revenue_cents": "3000"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "dev-12",
+      "category": "period_context",
+      "identity": "manager_a",
+      "authorized_store_ids": [
+        "a001"
+      ],
+      "question": "Ranking dos 3 produtos por receita de 14/08/2026 a 16/08/2026",
+      "expected": {
+        "http_statuses": [
+          200
+        ],
+        "statuses": [
+          "ready"
+        ],
+        "plan": {
+          "intent": "ranking",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-14",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": null,
+          "limit": 3
+        },
+        "result": {
+          "value": "7100",
+          "rows": [
+            {
+              "key": "pa01",
+              "revenue_cents": "3900"
+            },
+            {
+              "key": "pa02",
+              "revenue_cents": "1600"
+            },
+            {
+              "key": "pa03",
+              "revenue_cents": "1600"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

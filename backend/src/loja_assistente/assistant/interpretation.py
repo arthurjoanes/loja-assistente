@@ -6,11 +6,17 @@ from loja_assistente.analytics.contracts import QueryPlan, StoreScope
 from loja_assistente.assistant.contracts import AskRequest, Interpretation
 from loja_assistente.assistant.filter_limits import unsupported_filter
 from loja_assistente.assistant.interpreters import demo, openai_adapter
+from loja_assistente.assistant.provider_trace import ProviderBudget
 from loja_assistente.config import settings
 
 
 def interpret_request(
-    request: AskRequest, stores: list[StoreScope], reference_date: date, previous: QueryPlan | None
+    request: AskRequest,
+    stores: list[StoreScope],
+    reference_date: date,
+    previous: QueryPlan | None,
+    *,
+    budget: ProviderBudget,
 ) -> Interpretation:
     unsupported = unsupported_filter(request.question)
     if unsupported:
@@ -45,5 +51,6 @@ def interpret_request(
                 client=client,
                 model=settings.openai_model,
                 reasoning_effort=settings.openai_reasoning_effort,
+                budget=budget,
             )
     return interpreted

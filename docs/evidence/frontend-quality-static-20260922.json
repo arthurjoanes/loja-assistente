@@ -1,0 +1,467 @@
+{
+  "review_date": "2026-09-22",
+  "head_reference": "849428f4c1fd6b166516553f43c5466d8fee6de0",
+  "baseline_kind": "Initial current frontend snapshot plus explicit reconciliation of concurrent changes before final checks; not HEAD alone",
+  "hash_normalization": "CRLF to LF",
+  "source_hashes": {
+    "frontend/.dockerignore": {
+      "initial_baseline": "643f8a0b2055a54c0a80db2cecccfda65a769f8f1519bb147bff9e4910b3be32",
+      "integration_baseline": "643f8a0b2055a54c0a80db2cecccfda65a769f8f1519bb147bff9e4910b3be32",
+      "candidate": "643f8a0b2055a54c0a80db2cecccfda65a769f8f1519bb147bff9e4910b3be32"
+    },
+    "frontend/.prettierignore": {
+      "initial_baseline": "78fcf1f735665fd6d85521149831f05d674d9a6fa60403b3ec28f60ea7782b3a",
+      "integration_baseline": "78fcf1f735665fd6d85521149831f05d674d9a6fa60403b3ec28f60ea7782b3a",
+      "candidate": "78fcf1f735665fd6d85521149831f05d674d9a6fa60403b3ec28f60ea7782b3a"
+    },
+    "frontend/.prettierrc.json": {
+      "initial_baseline": "dbad71140e6bf6e9d64ca636d921e7855036f1a8739ab3f94ce2978e99d40fb1",
+      "integration_baseline": "dbad71140e6bf6e9d64ca636d921e7855036f1a8739ab3f94ce2978e99d40fb1",
+      "candidate": "dbad71140e6bf6e9d64ca636d921e7855036f1a8739ab3f94ce2978e99d40fb1"
+    },
+    "frontend/Dockerfile": {
+      "initial_baseline": "8b408304c6f1d3cfe13e04dbba2d72709d11e15b1ebf568a50a31bc0cef7179e",
+      "integration_baseline": "8b408304c6f1d3cfe13e04dbba2d72709d11e15b1ebf568a50a31bc0cef7179e",
+      "candidate": "8b408304c6f1d3cfe13e04dbba2d72709d11e15b1ebf568a50a31bc0cef7179e"
+    },
+    "frontend/Dockerfile.e2e": {
+      "initial_baseline": "200c935841f96346f8113db393d895748c484b83fb587ca6b5b02a70276ef426",
+      "integration_baseline": "200c935841f96346f8113db393d895748c484b83fb587ca6b5b02a70276ef426",
+      "candidate": "200c935841f96346f8113db393d895748c484b83fb587ca6b5b02a70276ef426"
+    },
+    "frontend/e2e/domain.spec.ts": {
+      "initial_baseline": "c5190d0a96a204798fffc09cfbbdb6899fdd5018ca10611a0cd6e7ece1843dfa",
+      "integration_baseline": "c5190d0a96a204798fffc09cfbbdb6899fdd5018ca10611a0cd6e7ece1843dfa",
+      "candidate": "c5190d0a96a204798fffc09cfbbdb6899fdd5018ca10611a0cd6e7ece1843dfa"
+    },
+    "frontend/e2e/journeys.spec.ts": {
+      "initial_baseline": "2598c2b82e502685914d8f24d20b89e8b13e95cca538da564027fd7b03de77d4",
+      "integration_baseline": "290d6d15af59807b8b69d666289673681d7208ada0ea16f8f6507f6157258507",
+      "candidate": "290d6d15af59807b8b69d666289673681d7208ada0ea16f8f6507f6157258507"
+    },
+    "frontend/e2e/operational-story.spec.ts": {
+      "initial_baseline": "f083bea8e8e2c171cc84eaad263e9b256a942a552a82838720e7edc122a8596e",
+      "integration_baseline": "f083bea8e8e2c171cc84eaad263e9b256a942a552a82838720e7edc122a8596e",
+      "candidate": "f083bea8e8e2c171cc84eaad263e9b256a942a552a82838720e7edc122a8596e"
+    },
+    "frontend/e2e/proxy-streams.spec.ts": {
+      "initial_baseline": "3e3c6e035e5b0ce0f36fc463f94aa79bf87e0e6205e4aedf5756d04d3d64e423",
+      "integration_baseline": "3e3c6e035e5b0ce0f36fc463f94aa79bf87e0e6205e4aedf5756d04d3d64e423",
+      "candidate": "3e3c6e035e5b0ce0f36fc463f94aa79bf87e0e6205e4aedf5756d04d3d64e423"
+    },
+    "frontend/e2e/quality.spec.ts": {
+      "initial_baseline": "fecd75275fb9ba8850a4c84032a9ad4bd27f69b9ae9cbea23c07f682c26f24b5",
+      "integration_baseline": "a528fdd7bad9163f7e62eaa942fcdb9252a8af64cd9041c8cfe96936d269eddc",
+      "candidate": "a528fdd7bad9163f7e62eaa942fcdb9252a8af64cd9041c8cfe96936d269eddc"
+    },
+    "frontend/e2e/result-selection.spec.ts": {
+      "initial_baseline": "a84abac1bc9aec954720162ad5624a1ccbb6a2e6273c5659c3f73accefeefff2",
+      "integration_baseline": "a84abac1bc9aec954720162ad5624a1ccbb6a2e6273c5659c3f73accefeefff2",
+      "candidate": "a84abac1bc9aec954720162ad5624a1ccbb6a2e6273c5659c3f73accefeefff2"
+    },
+    "frontend/e2e/review.spec.ts": {
+      "initial_baseline": "16257f16ff3655631378dba9d19005bd31a811a037cbdccc0453c795b73431cc",
+      "integration_baseline": "16257f16ff3655631378dba9d19005bd31a811a037cbdccc0453c795b73431cc",
+      "candidate": "16257f16ff3655631378dba9d19005bd31a811a037cbdccc0453c795b73431cc"
+    },
+    "frontend/e2e/round-2-fields.spec.ts": {
+      "initial_baseline": "0852ef368997325e108eb610d8d65116af530cc625597bd23f29da75ba0c2910",
+      "integration_baseline": "0852ef368997325e108eb610d8d65116af530cc625597bd23f29da75ba0c2910",
+      "candidate": "8b6743cf6d6a9ac39429520a2b742b447bd62af645e579963919f29021131996"
+    },
+    "frontend/eslint.config.mjs": {
+      "initial_baseline": "678a50481348cb6654d217f2c47429390deeef061ad8bfb28cbe08f63cd78bd2",
+      "integration_baseline": "678a50481348cb6654d217f2c47429390deeef061ad8bfb28cbe08f63cd78bd2",
+      "candidate": "678a50481348cb6654d217f2c47429390deeef061ad8bfb28cbe08f63cd78bd2"
+    },
+    "frontend/next-env.d.ts": {
+      "initial_baseline": "04f71d342a4a5bfc120ebc1fd1eca5b18716c7929a16bcb2d29ed9bb9e248236",
+      "integration_baseline": "04f71d342a4a5bfc120ebc1fd1eca5b18716c7929a16bcb2d29ed9bb9e248236",
+      "candidate": "04f71d342a4a5bfc120ebc1fd1eca5b18716c7929a16bcb2d29ed9bb9e248236"
+    },
+    "frontend/next.config.ts": {
+      "initial_baseline": "ecec43de1f34dc24fee5c734838b61063b5d2305fa49d7b5dace73ac13dac504",
+      "integration_baseline": "ecec43de1f34dc24fee5c734838b61063b5d2305fa49d7b5dace73ac13dac504",
+      "candidate": "ecec43de1f34dc24fee5c734838b61063b5d2305fa49d7b5dace73ac13dac504"
+    },
+    "frontend/package-lock.json": {
+      "initial_baseline": "d3245df97bca42c0ef615ab15aad8d39a69844e772b8cdbc9c9d231fd2ebe9c3",
+      "integration_baseline": "d3245df97bca42c0ef615ab15aad8d39a69844e772b8cdbc9c9d231fd2ebe9c3",
+      "candidate": "d3245df97bca42c0ef615ab15aad8d39a69844e772b8cdbc9c9d231fd2ebe9c3"
+    },
+    "frontend/package.json": {
+      "initial_baseline": "e9087e84e28ca83549ede891aee11fbb7992b3f69289bea55b3c0999fa5af666",
+      "integration_baseline": "e9087e84e28ca83549ede891aee11fbb7992b3f69289bea55b3c0999fa5af666",
+      "candidate": "e9087e84e28ca83549ede891aee11fbb7992b3f69289bea55b3c0999fa5af666"
+    },
+    "frontend/playwright.config.ts": {
+      "initial_baseline": "671d7e518b61143a670511b4c2047598b91bf22d7dcee4db37aadbdf3cda6fd0",
+      "integration_baseline": "671d7e518b61143a670511b4c2047598b91bf22d7dcee4db37aadbdf3cda6fd0",
+      "candidate": "671d7e518b61143a670511b4c2047598b91bf22d7dcee4db37aadbdf3cda6fd0"
+    },
+    "frontend/src/app/api/[...path]/route.ts": {
+      "initial_baseline": "36b2c21aa94849bb27c61649f4b8e9f61f0eb13a1191239bb535e09ebd14785c",
+      "integration_baseline": "36b2c21aa94849bb27c61649f4b8e9f61f0eb13a1191239bb535e09ebd14785c",
+      "candidate": "36b2c21aa94849bb27c61649f4b8e9f61f0eb13a1191239bb535e09ebd14785c"
+    },
+    "frontend/src/app/globals.css": {
+      "initial_baseline": "091f70823668b262559e27b03cc0f47b72b9885e6c76c8595d55802a1f116cda",
+      "integration_baseline": "482625188a5e506b93422bb5fdd1df188163332803d6174f73585cd5e8e039ca",
+      "candidate": "97be3d5be859b31e1ab4a944b8af17c66a37eb041135405a5d44111cee014bd2"
+    },
+    "frontend/src/app/layout.tsx": {
+      "initial_baseline": "860e0fcc1947827ad12d5b50a9e6abe8a23b72d3c32753c386acf2c21aa4f443",
+      "integration_baseline": "860e0fcc1947827ad12d5b50a9e6abe8a23b72d3c32753c386acf2c21aa4f443",
+      "candidate": "860e0fcc1947827ad12d5b50a9e6abe8a23b72d3c32753c386acf2c21aa4f443"
+    },
+    "frontend/src/app/page.tsx": {
+      "initial_baseline": "356882114fe375885346fa137df82528a29b3baa1cf5ebefc88d6e1c55ed5512",
+      "integration_baseline": "356882114fe375885346fa137df82528a29b3baa1cf5ebefc88d6e1c55ed5512",
+      "candidate": "356882114fe375885346fa137df82528a29b3baa1cf5ebefc88d6e1c55ed5512"
+    },
+    "frontend/src/components/icon.tsx": {
+      "initial_baseline": "d0939f4d8e51f6cf016f5c09fe154eb3fc789383027d9a761726684154da414f",
+      "integration_baseline": "d0939f4d8e51f6cf016f5c09fe154eb3fc789383027d9a761726684154da414f",
+      "candidate": "d0939f4d8e51f6cf016f5c09fe154eb3fc789383027d9a761726684154da414f"
+    },
+    "frontend/src/features/analytics/daily-series.ts": {
+      "initial_baseline": "72e93e224f14194b35bc10645f44493cf1adc4ee415e017061fd8b4d0f632cd4",
+      "integration_baseline": "72e93e224f14194b35bc10645f44493cf1adc4ee415e017061fd8b4d0f632cd4",
+      "candidate": "72e93e224f14194b35bc10645f44493cf1adc4ee415e017061fd8b4d0f632cd4"
+    },
+    "frontend/src/features/analytics/evidence.tsx": {
+      "initial_baseline": "64f01755263d01faad742b89df6d05eabcf5b01d5107a4314b5e8baf4646b200",
+      "integration_baseline": "64f01755263d01faad742b89df6d05eabcf5b01d5107a4314b5e8baf4646b200",
+      "candidate": "64f01755263d01faad742b89df6d05eabcf5b01d5107a4314b5e8baf4646b200"
+    },
+    "frontend/src/features/analytics/result.tsx": {
+      "initial_baseline": "f0af97e16c291f5580891f691a3b28f892923cf61c117755196d4782024d95aa",
+      "integration_baseline": "f0af97e16c291f5580891f691a3b28f892923cf61c117755196d4782024d95aa",
+      "candidate": "f0af97e16c291f5580891f691a3b28f892923cf61c117755196d4782024d95aa"
+    },
+    "frontend/src/features/analytics/visualization.tsx": {
+      "initial_baseline": "40c76a050238c188475b049755bea15291693818b517ba4841e9d680ef51ffac",
+      "integration_baseline": "40c76a050238c188475b049755bea15291693818b517ba4841e9d680ef51ffac",
+      "candidate": "d69a502ae46b74bc9d09db1503747e904f7e59e5c8161fbe0d5c64b7a8aee26e"
+    },
+    "frontend/src/features/assistant/analysis-context.tsx": {
+      "initial_baseline": "ed22e53fd11839d08a75773b99532403def847f737147d996f396eb9b5032689",
+      "integration_baseline": "ed22e53fd11839d08a75773b99532403def847f737147d996f396eb9b5032689",
+      "candidate": "ed22e53fd11839d08a75773b99532403def847f737147d996f396eb9b5032689"
+    },
+    "frontend/src/features/assistant/analysis-filters.tsx": {
+      "initial_baseline": "58a5b5a690fdda9e45ef3c439ff64b22606c70456f5973b73802458fbc50c4c3",
+      "integration_baseline": "58a5b5a690fdda9e45ef3c439ff64b22606c70456f5973b73802458fbc50c4c3",
+      "candidate": "58a5b5a690fdda9e45ef3c439ff64b22606c70456f5973b73802458fbc50c4c3"
+    },
+    "frontend/src/features/assistant/analysis-sidebar.tsx": {
+      "initial_baseline": "1547dae3bd5a89ea0b9d7a7aa5aef78e45fe2106b918df6490baf34c6cccba58",
+      "integration_baseline": "1547dae3bd5a89ea0b9d7a7aa5aef78e45fe2106b918df6490baf34c6cccba58",
+      "candidate": "3f3efe2493218caa73a4b8c7f55cc1deecb69d3cf4eb228ff7e03f7d3e6bcd53"
+    },
+    "frontend/src/features/assistant/analysis-start.tsx": {
+      "initial_baseline": "e4c2ced3508b998ffcf754d26af7be6eab25887e97756c072a86b4b3876f0e0a",
+      "integration_baseline": "e4c2ced3508b998ffcf754d26af7be6eab25887e97756c072a86b4b3876f0e0a",
+      "candidate": "e4c2ced3508b998ffcf754d26af7be6eab25887e97756c072a86b4b3876f0e0a"
+    },
+    "frontend/src/features/assistant/conversation-state.ts": {
+      "initial_baseline": "513f764a4b02e9c8b0bd51253b9d6152c81773048369d8be7ea0ee5675b8b588",
+      "integration_baseline": "513f764a4b02e9c8b0bd51253b9d6152c81773048369d8be7ea0ee5675b8b588",
+      "candidate": "513f764a4b02e9c8b0bd51253b9d6152c81773048369d8be7ea0ee5675b8b588"
+    },
+    "frontend/src/features/assistant/login.tsx": {
+      "initial_baseline": "2d332f13bf109921a5df7da443bfaf1ccbb5abec7bb6ee9a04833c34131a070a",
+      "integration_baseline": "2d332f13bf109921a5df7da443bfaf1ccbb5abec7bb6ee9a04833c34131a070a",
+      "candidate": "2d332f13bf109921a5df7da443bfaf1ccbb5abec7bb6ee9a04833c34131a070a"
+    },
+    "frontend/src/features/assistant/operations.tsx": {
+      "initial_baseline": "6879ff936357267216dbc032c597cd0691bf810b0ad0ea3179a911d76ab74a63",
+      "integration_baseline": "6879ff936357267216dbc032c597cd0691bf810b0ad0ea3179a911d76ab74a63",
+      "candidate": "9cd49f533d4e4224e00abf875b4f3bb05cd51d1640ad09d730543f56c781a934"
+    },
+    "frontend/src/features/assistant/period-selection.ts": {
+      "initial_baseline": "3cc938316305115c080662aa974c6d6a408c4747e2625f5b9cf6af42a7aebbdc",
+      "integration_baseline": "3cc938316305115c080662aa974c6d6a408c4747e2625f5b9cf6af42a7aebbdc",
+      "candidate": "3cc938316305115c080662aa974c6d6a408c4747e2625f5b9cf6af42a7aebbdc"
+    },
+    "frontend/src/features/assistant/question-composer.tsx": {
+      "initial_baseline": "1369950af89d0657bf51a173417a836ed9c1e687ba364ef12201380d1be44464",
+      "integration_baseline": "4446d9cbfce7180699f9f965716fd0280332dfe901b25fe0e244abb009a96d66",
+      "candidate": "c8382b577143dbc7f9c26675dba07d33867f3bfaa3ab755429617d145ff9e756"
+    },
+    "frontend/src/features/assistant/use-workspace.ts": {
+      "initial_baseline": "badb61c6b667cf2b80521a891b43707f56495e5e3df988fe545730d41c1257e6",
+      "integration_baseline": "badb61c6b667cf2b80521a891b43707f56495e5e3df988fe545730d41c1257e6",
+      "candidate": "badb61c6b667cf2b80521a891b43707f56495e5e3df988fe545730d41c1257e6"
+    },
+    "frontend/src/features/assistant/workspace.tsx": {
+      "initial_baseline": "084bdc7e67030918ff4f76b669ab79e67329e4a5e754655831fa7e5fc1ae4b60",
+      "integration_baseline": "084bdc7e67030918ff4f76b669ab79e67329e4a5e754655831fa7e5fc1ae4b60",
+      "candidate": "084bdc7e67030918ff4f76b669ab79e67329e4a5e754655831fa7e5fc1ae4b60"
+    },
+    "frontend/src/lib/api.ts": {
+      "initial_baseline": "a092f1b28aeccb677556dd1c985918c8dd48fa885ae3e97ac95e201f401c49d2",
+      "integration_baseline": "a092f1b28aeccb677556dd1c985918c8dd48fa885ae3e97ac95e201f401c49d2",
+      "candidate": "a092f1b28aeccb677556dd1c985918c8dd48fa885ae3e97ac95e201f401c49d2"
+    },
+    "frontend/src/lib/contracts.ts": {
+      "initial_baseline": "7c0f3d0213ce30d52c28cde0d19b2d2a6d4429affbc72dd5f6d114d1aa2adea7",
+      "integration_baseline": "7c0f3d0213ce30d52c28cde0d19b2d2a6d4429affbc72dd5f6d114d1aa2adea7",
+      "candidate": "7c0f3d0213ce30d52c28cde0d19b2d2a6d4429affbc72dd5f6d114d1aa2adea7"
+    },
+    "frontend/src/lib/format.ts": {
+      "initial_baseline": "7cd768073f8338d587e5e56768e2a37995d47b2129a673bdaefa499850efa165",
+      "integration_baseline": "7cd768073f8338d587e5e56768e2a37995d47b2129a673bdaefa499850efa165",
+      "candidate": "7cd768073f8338d587e5e56768e2a37995d47b2129a673bdaefa499850efa165"
+    },
+    "frontend/src/lib/server/proxy-lifetime.ts": {
+      "initial_baseline": "65bf95964e941766e47bcabec2c2381e0cf5471e25bd5a9efb9ecb677ebef838",
+      "integration_baseline": "65bf95964e941766e47bcabec2c2381e0cf5471e25bd5a9efb9ecb677ebef838",
+      "candidate": "65bf95964e941766e47bcabec2c2381e0cf5471e25bd5a9efb9ecb677ebef838"
+    },
+    "frontend/src/lib/server/request-body.ts": {
+      "initial_baseline": "36f1cac673914d2916d6dddcefb173f26f5d5b7b9894c47deea3a00f5e52dd20",
+      "integration_baseline": "36f1cac673914d2916d6dddcefb173f26f5d5b7b9894c47deea3a00f5e52dd20",
+      "candidate": "36f1cac673914d2916d6dddcefb173f26f5d5b7b9894c47deea3a00f5e52dd20"
+    },
+    "frontend/tsconfig.json": {
+      "initial_baseline": "36814e212df22ec60bd30af2b8a85f8d4361dee6ff3a20c12440a114e9e049aa",
+      "integration_baseline": "36814e212df22ec60bd30af2b8a85f8d4361dee6ff3a20c12440a114e9e049aa",
+      "candidate": "36814e212df22ec60bd30af2b8a85f8d4361dee6ff3a20c12440a114e9e049aa"
+    }
+  },
+  "protected_unchanged": [
+    "frontend/src/lib/contracts.ts",
+    "frontend/src/lib/api.ts",
+    "frontend/src/lib/format.ts",
+    "frontend/src/lib/server/proxy-lifetime.ts",
+    "frontend/src/lib/server/request-body.ts",
+    "frontend/src/app/api/[...path]/route.ts",
+    "frontend/src/features/assistant/use-workspace.ts",
+    "frontend/src/features/assistant/conversation-state.ts",
+    "frontend/src/features/assistant/period-selection.ts",
+    "frontend/src/features/analytics/daily-series.ts",
+    "frontend/src/features/analytics/result.tsx",
+    "frontend/src/features/analytics/evidence.tsx",
+    "frontend/src/features/assistant/workspace.tsx",
+    "frontend/package.json",
+    "frontend/package-lock.json",
+    "frontend/next.config.ts"
+  ],
+  "checks": {
+    "eslint": "passed",
+    "prettier": "passed",
+    "typescript": "passed",
+    "production_build": "passed",
+    "pure_tests": {
+      "passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "duration_seconds": 1.17,
+      "files": [
+        "domain.spec.ts",
+        "proxy-streams.spec.ts"
+      ]
+    },
+    "browser_http_journeys": {
+      "declared": 30,
+      "executed": 0,
+      "status": "not_verified",
+      "count_note": "29 previously documented plus operational-story.spec.ts already present in initial snapshot; IME extends an existing journey."
+    },
+    "contrast_pairs": [
+      {
+        "name": "login-label",
+        "foreground": "#1b2739",
+        "background": "#edf1f5",
+        "ratio": 13.25,
+        "minimum": 4.5
+      },
+      {
+        "name": "login-description",
+        "foreground": "#5e6b7e",
+        "background": "#edf1f5",
+        "ratio": 4.77,
+        "minimum": 4.5
+      },
+      {
+        "name": "action",
+        "foreground": "#ffffff",
+        "background": "#2059c5",
+        "ratio": 6.37,
+        "minimum": 4.5
+      },
+      {
+        "name": "input-border",
+        "foreground": "#7a899e",
+        "background": "#ffffff",
+        "ratio": 3.56,
+        "minimum": 3
+      },
+      {
+        "name": "composer-border",
+        "foreground": "#7a899e",
+        "background": "#fbfcfe",
+        "ratio": 3.47,
+        "minimum": 3
+      },
+      {
+        "name": "focus-header",
+        "foreground": "#9fc5ff",
+        "background": "#17283f",
+        "ratio": 8.43,
+        "minimum": 3
+      },
+      {
+        "name": "focus-surface",
+        "foreground": "#b15b12",
+        "background": "#ffffff",
+        "ratio": 4.8,
+        "minimum": 3
+      }
+    ],
+    "old_login_description_ratio": 1.59,
+    "links": {
+      "documents": 28,
+      "local_links": 494,
+      "missing_in_isolated_candidate_but_verified_in_original": [
+        {
+          "document": "README.md",
+          "target": "docs/screenshots/operational-proof-20260922/96ae56f146d044d8ada235c3dbfc1c0c/01-calculation.png",
+          "exists_in_original": true
+        },
+        {
+          "document": "README.md",
+          "target": "docs/operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "README.md",
+          "target": "docs/operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/demo.md",
+          "target": "operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/frontend-quality.md",
+          "target": "evidence/operational-proof-20260922/index.json",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/frontend-quality.md",
+          "target": "operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/interface.md",
+          "target": "operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/problem-solution.md",
+          "target": "operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/provider-budget.md",
+          "target": "../backend/src/loja_assistente/assistant/budget.py",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/provider-budget.md",
+          "target": "../backend/migrations/versions/0003_provider_budget.py",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/provider-budget.md",
+          "target": "../backend/src/loja_assistente/budget_admin.py",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/provider-budget.md",
+          "target": "../backend/tests/test_budget_postgres.py",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/quality-review.md",
+          "target": "operational-story.md",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/usage-comparison.md",
+          "target": "user-study/round.template.json",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/usage-comparison.md",
+          "target": "user-study/observation.template.json",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/verification.md",
+          "target": "evidence/operational-proof-20260922/index.json",
+          "exists_in_original": true
+        },
+        {
+          "document": "docs/verification.md",
+          "target": "operational-story.md",
+          "exists_in_original": true
+        }
+      ],
+      "broken": [],
+      "anchors_checked": false,
+      "scope": "Isolated frontend candidate omits concurrent backend, story and proof files. Missing-file entries were checked read-only against the original."
+    }
+  },
+  "assets": {
+    "baseline_bytes": 635984,
+    "candidate_bytes": 636686,
+    "baseline_gzip_bytes": 191252,
+    "candidate_gzip_bytes": 191404,
+    "limit": "Initial baseline vs final composed candidate emitted chunks; includes preserved concurrent changes, not only this refinement. Not measured browser transfer, paint or interaction."
+  },
+  "limits": [
+    "No server startup attempted: previous policy rejection remains",
+    "No browser or fresh screenshots",
+    "No paid calls, budget proofs or backend tests",
+    "No full WCAG or user usability study"
+  ],
+  "historical_screenshots_preserved": true,
+  "new_runtime_resources": 0,
+  "concurrent_changes_preserved": [
+    "docs/provider-budget.md",
+    "frontend/e2e/journeys.spec.ts",
+    "frontend/e2e/quality.spec.ts",
+    "frontend/src/app/globals.css",
+    "frontend/src/features/assistant/question-composer.tsx",
+    "README.md",
+    "docs/decisoes-tecnicas.md",
+    "docs/demo.md",
+    "docs/interface.md",
+    "docs/problem-solution.md",
+    "docs/verification.md"
+  ],
+  "separate_pre_refinement_proof": {
+    "run_id": "96ae56f146d044d8ada235c3dbfc1c0c",
+    "index": "docs/evidence/operational-proof-20260922/index.json",
+    "reported_playwright_passed": 68,
+    "scope": "Concurrent task verified its own earlier source snapshot. This refinement did not execute or reproduce that browser proof.",
+    "frontend_source_comparison": {
+      "matched": 39,
+      "different": [
+        "frontend/e2e/round-2-fields.spec.ts",
+        "frontend/src/app/globals.css",
+        "frontend/src/features/analytics/visualization.tsx",
+        "frontend/src/features/assistant/analysis-sidebar.tsx",
+        "frontend/src/features/assistant/operations.tsx",
+        "frontend/src/features/assistant/question-composer.tsx"
+      ],
+      "not_in_proof": [],
+      "screenshots_represent_candidate": false
+    }
+  }
+}

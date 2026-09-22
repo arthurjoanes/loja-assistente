@@ -38,6 +38,9 @@ O monólito mantém interpretação e consulta no mesmo processo. O banco usa um
 7. Logs incluem request_id, modo, capacidade, status e durações, mas não pergunta, corpo, senha nem token. Telemetria é pessoal; tokens/custo são indisponíveis sem medição.
 
 ## Modelo de dados
+
+A admissão do modo LLM usa uma conta PostgreSQL por organização e reservas duráveis, com lock apenas nas transações curtas do orçamento. A reserva e o despacho são confirmados antes da rede; uma falha na transação da conversa não os desfaz. Uso incerto conserva a reserva, sem expiração automática. A migração 0003 acrescenta esse ledger sem conceder saldo. [Estados, operação e limites](provider-budget.md).
+
 Organização → lojas/produtos/usuários. Permissões ligam usuário e loja. Pedidos possuem tenant, loja, identificador de origem, instante UTC e status; itens possuem tenant, pedido, produto, quantidade, preço unitário e desconto total do item em centavos. Chaves estrangeiras compostas e unicidade por tenant impedem cruzamentos acidentais. Cobertura tem uma linha por tenant/loja/data comercial carregada. Dataset guarda versão e configuração. Sessões, conversas, respostas e telemetria são persistidas. Nomes e IDs externos coincidem entre organizações intencionalmente.
 
 ## Contratos
@@ -75,3 +78,9 @@ origem. Encerramento normal remove timer/listener; expiração ou cancelamento
 propagam a interrupção e liberam o reader. `request-body.ts` converte somente a
 expiração de leitura em 408, preservando 413 para excesso. O frontend rejeita JSON
 interrompido como erro explícito. [Validação e limites](security.md).
+
+## Alternativa simples e hipótese de utilidade
+
+O público pretendido é quem consulta indicadores de lojas e precisa conferir o recorte usado. As organizações e vendas desta demonstração são sintéticas; não comprovam adoção comercial. Um relatório SQL com filtros pode resolver as mesmas métricas sem modelo. Aqui a interpretação em português é uma hipótese de redução do esforço de entrada, enquanto plano limitado e consultas predefinidas conservam o cálculo verificável. Não houve estudo que prove produtividade superior. O [protocolo preparado](usage-comparison.md) define como comparar essa hipótese com os controles existentes, sem inventar participantes ou um dashboard separado.
+
+Separar interpretação e cálculo impede que uma frase plausível substitua uma conta definida, mas custa manter uma matriz de capacidades e recusar pedidos fora dela. Um modelo pode interpretar melhor algumas formulações e ainda pedir esclarecimento desnecessário, como na falha histórica `final-bf-04`. Evoluir para SQL livre, RAG ou novos serviços não decorre desse resultado: exige outro problema e outro contrato de verificação.

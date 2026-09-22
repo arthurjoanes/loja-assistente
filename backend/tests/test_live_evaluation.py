@@ -81,7 +81,7 @@ def test_runner_persists_setup_failure_without_secrets_or_live_approval(
     import fastapi.testclient
     import manual_fixture
     import sqlalchemy.orm
-    from evals import database
+    from evals import api_budget, database
 
     from loja_assistente.app import app
     from loja_assistente.config import settings
@@ -115,6 +115,9 @@ def test_runner_persists_setup_failure_without_secrets_or_live_approval(
     prepare = MagicMock(return_value=engine)
     seed = MagicMock()
     monkeypatch.setattr(database, "prepare_test_database", prepare)
+    monkeypatch.setattr(
+        api_budget, "prepare_api_budget", lambda *_args: {"host_setup_test_only": True}
+    )
     monkeypatch.setattr(manual_fixture, "seed_manual", seed)
     client = MagicMock(side_effect=AssertionError("No API request is allowed during setup"))
     monkeypatch.setattr(fastapi.testclient, "TestClient", client)

@@ -6,6 +6,18 @@ Um dashboard com filtros é a alternativa mais simples e continua sendo a refer�
 
 O núcleo existente é útil: sessão → interpretação → plano estrito → autorização atual → SQL parametrizado → centavos/Decimal → resultado e cálculo únicos. A dificuldade está nas fronteiras entre intenção, capacidade, escopo, datas, qualidade dos dados e falha de provedor. O modelo nunca calcula o faturamento nem escolhe a identidade confiável.
 
+A entrega também trata uma falha operacional distinta: perder a resposta do provedor não significa que a chamada deixou de consumir recursos. O [orçamento persistente](provider-budget.md) reserva antes do despacho e conserva uso incerto, mesmo se a resposta HTTP não puder ser gravada. A [jornada visual](operational-story.md) e os testes de orçamento têm provas separadas; uma tela correta em modo Demo não demonstra controle de cobrança externa.
+
+## Conferir o resultado sem perder o recorte
+
+Uma conversa pode misturar receita de ontem, evolução de sete dias e uma tentativa recusada. Empilhar todas as respostas e repetir uma coluna de acesso reduz o espaço disponível para conferir a tabela e dificulta localizar a pergunta desejada. A interface revisada mostra um resultado selecionado por vez e reúne o acesso em um bloco recolhível. O histórico continua disponível; selecionar outra resposta não chama o modelo nem recalcula seus indicadores.
+
+Um exemplo reproduzível: pergunte **Quanto vendi ontem?** e depois **Mostre a evolução diária da receita nos últimos 7 dias**. Com a referência demo de 17/08/2026, a primeira usa 16/08 e a segunda usa 10–16/08. Selecione a primeira novamente e confira o período impresso nela. A seleção é de leitura: **E nos sete dias anteriores?** continua o último plano válido, portanto usa 03–09/08 neste exemplo. O aviso da interface explica essa distinção; a [regressão de seleção](../frontend/e2e/result-selection.spec.ts) compara o período recebido do servidor e observa se houve nova requisição.
+
+Os filtros descrevem a próxima consulta; o resultado mostra as lojas e datas efetivamente usadas. **Gráfico** e **Tabela** leem o mesmo objeto, e **Cálculo** recupera a evidência daquela resposta. Para conferir casos diferentes, use **Receita em 2026-08-11** (dia coberto sem vendas), **Receita de 2026-05-18 a 2026-05-20** (cobertura parcial) e **Receita em 2026-09-01** (sem dados carregados). As [jornadas de qualidade](../frontend/e2e/quality.spec.ts) e [de consulta](../frontend/e2e/journeys.spec.ts) verificam os estados e os números; o [registro de validação](verification.md) informa quais execuções foram concluídas.
+
+Essa organização facilita a conferência prevista pelo produto, mas não demonstra ganho de produtividade. Não houve teste com usuários; a hipótese comercial continua separada da correção técnica e da avaliação de linguagem abaixo.
+
 ## Diagnóstico e contrato de sucesso
 
 | Alegação / estado inicial | Cenário | Implementação / teste existente | Lacuna | Correção e critério |

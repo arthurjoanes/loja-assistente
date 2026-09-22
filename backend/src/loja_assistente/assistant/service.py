@@ -8,6 +8,8 @@ from sqlalchemy.orm import Session
 
 from loja_assistente.analytics.contracts import QueryPlan, StoreScope
 from loja_assistente.analytics.service import execute_query
+from loja_assistente.assistant.budget import DurableBudget
+from loja_assistente.assistant.budget_policy import BudgetRejected
 from loja_assistente.assistant.contracts import Answer, AskRequest
 from loja_assistente.assistant.interpretation import interpret_request
 from loja_assistente.assistant.interpreters import demo, openai_adapter
@@ -70,7 +72,13 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
     )
     try:
         interpretation_start = perf_counter()
-        interpreted = interpret_request(request, stores, settings.reference_date, previous)
+        interpreted = interpret_request(
+            request,
+            stores,
+            settings.reference_date,
+            previous,
+            budget=DurableBudget(principal.tenant_id, principal.user_id, request_id),
+        )
         interpretation_ms = round((perf_counter() - interpretation_start) * 1000)
         answer.status = interpreted.status
         answer.message = interpreted.message
@@ -89,7 +97,7 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
             conversation.last_plan = plan.model_dump(mode="json")
         if conversation.title == "Nova conversa":
             conversation.title = request.question[:120]
-    except openai_adapter.ProviderUnavailable as error:
+    except (openai_adapter.ProviderUnavailable, BudgetRejected) as error:
         interpretation_ms = round((perf_counter() - start) * 1000)
         answer.status = "provider_error"
         answer.message = str(error)

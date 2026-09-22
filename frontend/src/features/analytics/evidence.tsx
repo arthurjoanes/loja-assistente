@@ -51,6 +51,7 @@ export function EvidencePanel({
         <span>
           <Icon name="list" size={17} /> Cálculo
         </span>
+        <small>Fórmula, cobertura e totais por dia</small>
         <Icon name="chevron" size={16} />
       </summary>
       <div className="evidence-body">

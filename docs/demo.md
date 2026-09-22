@@ -1,5 +1,12 @@
 # Roteiro da demonstração
 
+A interface mantém um resultado selecionado na área central. Use **Resultados
+desta análise** para rever perguntas da conversa e **Cálculo** para conferir a
+evidência. O bloco recolhível **Dados fictícios · acesso e métricas** reúne as
+permissões e a referência dos dados. [Guia de leitura](interface.md).
+
+A [jornada registrada nesta entrega](operational-story.md) mostra consulta com cálculo, recusa do filtro por dinheiro e nova tentativa válida em tabela. As três capturas são da aplicação real em modo Demo, com dados sintéticos e resultados conferidos.
+
 ## Problema e resultado em 5–8 minutos
 
 1. **1 min:** abra [o baseline](evidence/problem-review/parser-before.json): acrescentar “eu” derrubava a pergunta. Explique que decorar frases não demonstra interpretação natural. Um dashboard com filtros é a alternativa simples.
@@ -32,3 +39,7 @@ O cliente usa `http://frontend:3102` dentro da rede Docker; no navegador, o ende
 A avaliação registrada usou **gpt-5.6-luna, versão 2026-07-09, GlobalStandard, recurso East US 2, reasoning effort `none`**. Configure seu próprio endpoint, deployment e chave para habilitar LLM na aplicação; Demo continua disponível sem chave. O protocolo de [avaliação delimitada](live-evaluation.md) é separado do uso pela interface.
 
 Smoke, desenvolvimento e final somaram 55 chamadas e 48.788 tokens, com estimativa conservadora de US$ 0,01550395, usando US$ 0,25 por milhão de entrada e US$ 1,20 por milhão de saída. A estimativa não é fatura. O [relatório](azure-live-results.md) preserva a falha, a origem dos preços e os resultados originais; não houve ajuste de prompt nem repetição após examinar o holdout. Utilidade com usuários e qualidade em produção não foram avaliadas.
+
+## Avaliar a utilidade da demonstração
+
+Para transformar apresentação em avaliação, use o [protocolo de consulta versus controles](usage-comparison.md): mesma tarefa/base/permissão, ordem registrada, acerto do recorte, tempo e ajuda. Os formulários estão preparados, mas ainda não houve estudo com participantes. Os valores pequenos da fixture manual não são os totais do setup demonstrado acima.

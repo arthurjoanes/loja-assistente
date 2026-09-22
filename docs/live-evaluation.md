@@ -41,6 +41,8 @@ O exemplo não é uma autorização e não funciona sem preencher valores. Os te
 
 Um ledger em `.runtime/llm-budgets/`, identificado pelo hash de `approval_id`, persiste a reserva antes de enviar a chamada. Cópias do arquivo de autorização compartilham ledger/lock; mudar preço ou limite sem uma nova autorização é recusado. Reinício não devolve chamadas/tokens reservados. Uso medido acima da reserva interrompe a execução, inclusive após reinício. Tokens parciais ou inconsistentes mantêm custo identificado como parcial, nunca zero conhecido. Cada etapa pode ser tentada uma vez por autorização; falha exige decisão explícita sobre outra execução, preservando resultados. Lock que sobreviver a uma interrupção exige conferir que o processo terminou antes de removê-lo.
 
+Depois da migração 0003, o runner também prepara o [ledger PostgreSQL da aplicação](provider-budget.md), pois a API exige reserva independentemente do avaliador. O helper aceita somente PostgreSQL de teste com nome terminado em `_test`; confirma as duas organizações sintéticas e suas contas antes da transação reversível de usuários/vendas/respostas. Reservas permanecem confirmadas. A configuração fica vinculada ao hash do contrato de autorização; outra autorização ou uma organização preexistente incompatível é recusada, sem reset. O ledger em arquivo continua sendo o teto global adicional entre organizações e etapas. Essa adaptação não executa novamente a avaliação paga histórica nem renova sua autorização.
+
 ## Comandos preparados
 
 Na raiz do projeto, com a imagem backend já construída e Docker disponível:
@@ -72,3 +74,7 @@ Relatórios únicos em `evals/reports/<UTC-id>/`: manifest com fontes/ambiente, 
 - [Azure — endpoints](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/endpoints): rota de inferência v1 e nome de deployment.
 - [Azure — saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs): suporte deve ser conferido no modelo real.
 - [OpenAI — contrato estruturado](https://developers.openai.com/api/docs/guides/structured-outputs): parsing e recusas; conformidade de schema não mostra compreensão.
+
+## Comparação de uso preparada
+
+O [protocolo de comparação com os controles](usage-comparison.md) trata uma pergunta diferente desta avaliação automática: esforço humano para obter e conferir o recorte. Traz tarefas de treino da fixture manual e formulários sem resultados; não houve participantes. A baseline proposta usa controles mais pergunta canônica no mesmo produto, e não um dashboard externo já implementado. Casos conhecidos ficam em desenvolvimento; uma rodada nova exige tarefas, configuração e ordem congeladas antes da coleta.

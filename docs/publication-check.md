@@ -1,5 +1,7 @@
 # Verificação para publicação
 
+**Registro histórico de 21/09.** A entrega posterior, com orçamento persistente e novas jornadas, está em [verificação atual](verification.md). A avaliação Azure conserva suas fontes em um [arquivo verificável](evidence/azure-live/historical-source-20260921.json); seus números não foram transferidos para o código posterior.
+
 Revalidação de 21/09/2026 em uma cópia formada somente pelos arquivos públicos do Git, com configuração gerada, imagens Linux e bancos exclusivos. Não houve chamada a modelo nesta rodada. Os registros da avaliação Azure anterior foram preservados e conferidos por hash.
 
 | Verificação | Resultado |
@@ -16,7 +18,7 @@ Revalidação de 21/09/2026 em uma cópia formada somente pelos arquivos públic
 
 As imagens da aplicação passaram a usar Python 3.12.14 e Node 24.19.0 sobre Alpine 3.24, com digests fixados. A instalação Python usa o mesmo `uv.lock` e aceita apenas wheels; `uv` e `pip` não ficam no runtime. O frontend usa OpenSSL 3.5.8 e não leva npm, Yarn ou Corepack para a imagem final. Os serviços continuam executando sem usuário root.
 
-Os atalhos de teste e avaliação agora gravam seus resultados em `evals/reports/local/`, ignorado pelo Git. Antes, sobrescreviam os relatórios históricos `latest.*`, fazendo a conferência de evidências falhar depois de uma execução normal. O runner original permanece congelado para reproduzir a avaliação; os comandos documentados passam o diretório de saída explicitamente.
+Os atalhos de teste e avaliação passaram a gravar seus resultados em `evals/reports/local/`, ignorado pelo Git. Antes, sobrescreviam os relatórios históricos `latest.*`, fazendo a conferência de evidências falhar depois de uma execução normal. O runner usado nesta avaliação permanece no arquivo histórico; o runner ativo evoluiu com o orçamento. Os comandos documentados passam o diretório de saída explicitamente.
 
 O verificador do roteiro HTTP foi atualizado para converter os centavos recebidos como strings JSON em inteiros antes de somá-los. A aplicação já mantinha esse contrato para evitar perda de precisão no navegador; o script de demonstração ainda esperava números JSON.
 

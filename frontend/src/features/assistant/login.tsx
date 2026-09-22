@@ -54,12 +54,40 @@ export function Login({
   }
   return (
     <main className="login-page">
-      <Brand />
-
+      <section className="login-intro">
+        <Brand />
+        <div>
+          <span className="eyebrow">Análise de vendas</span>
+          <h2>Vendas, com o cálculo à vista.</h2>
+          <p>
+            Consulte um período, explore o resultado e confira de onde veio cada
+            número.
+          </p>
+          <ol className="login-steps">
+            <li>
+              <strong>Defina o recorte</strong>
+              <span>Lojas autorizadas e período da consulta.</span>
+            </li>
+            <li>
+              <strong>Leia o resultado</strong>
+              <span>Indicadores, ranking ou evolução diária.</span>
+            </li>
+            <li>
+              <strong>Confira o cálculo</strong>
+              <span>Fórmula, totais por dia e cobertura dos dados.</span>
+            </li>
+          </ol>
+        </div>
+        <p className="login-demo-note">
+          Ambiente demonstrativo · dados fictícios
+        </p>
+      </section>
       <section className="login-form-panel">
         <div className="login-form-inner">
           <h1>Entrar</h1>
-          <p className="muted">Escolha uma conta demo.</p>
+          <p className="muted">
+            Escolha o acesso para explorar a demonstração.
+          </p>
           {notice && (
             <div role="status" className="notice warning">
               {notice}

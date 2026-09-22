@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterator
 from contextlib import contextmanager
 from contextvars import ContextVar
 from dataclasses import dataclass
+from typing import Protocol
 
 
 @dataclass
@@ -29,6 +30,15 @@ class EvaluationHooks:
     # Reserve before touching the network; failures and unknown usage still consume the reservation.
     reserve: Callable[[str, int, int], None]
     record: Callable[[ProviderTrace], None]
+
+
+class ProviderBudget(Protocol):
+    """Application ledger; evaluation hooks do not substitute for this authorization."""
+
+    def reserve(self, trace: ProviderTrace, input_units: int, output_units: int) -> None: ...
+    def dispatch(self, call_id: str) -> None: ...
+    def cancel_before_dispatch(self, call_id: str) -> None: ...
+    def record(self, trace: ProviderTrace) -> None: ...
 
 
 _hooks: ContextVar[EvaluationHooks | None] = ContextVar("loja_evaluation_hooks", default=None)

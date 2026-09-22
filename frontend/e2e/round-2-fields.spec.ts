@@ -10,6 +10,8 @@ async function enter(page: Page, supervisor = false) {
   ).toBeVisible();
 }
 async function submit(page: Page, question: string): Promise<Answer> {
+  if (!(await page.getByLabel("Pergunta", { exact: true }).isVisible()))
+    await page.getByRole("button", { name: "Editar pergunta" }).click();
   await page.getByLabel("Pergunta", { exact: true }).fill(question);
   const response = page.waitForResponse((r) =>
     r.url().endsWith("/api/assistant/query"),
@@ -146,6 +148,18 @@ test("pergunta respeita espaços, acentos, quebra de linha, tamanho e múltiplas
     page.getByRole("button", { name: "Enviar pergunta" }),
   ).toBeDisabled();
   await input.fill("  RECEITA LÍQUIDA");
+  let compositionQueries = 0;
+  page.on("request", (request) => {
+    if (request.url().endsWith("/api/assistant/query")) compositionQueries += 1;
+  });
+  await input.dispatchEvent("keydown", {
+    key: "Enter",
+    code: "Enter",
+    isComposing: true,
+  });
+  await expect(input).toBeEnabled();
+  await expect(input).toHaveValue("  RECEITA LÍQUIDA");
+  expect(compositionQueries).toBe(0);
   await input.press("Shift+Enter");
   await input.pressSequentially("  ontem?  ");
   const response = page.waitForResponse((r) =>
@@ -202,6 +216,9 @@ for (const failure of ["network", "409", "503"]) {
     await input.fill("Pedidos ontem");
     await input.press("Enter");
     await expect(page.locator(".workspace-notice[role=alert]")).toBeVisible();
+    await expect(
+      page.locator(".workspace-notice[role=alert]"),
+    ).toBeInViewport();
     await expect(input).toHaveValue("Pedidos ontem");
     await expect(input).toBeEnabled();
     await expect(page.getByTestId("answer")).toHaveCount(1);
@@ -217,6 +234,7 @@ test("resposta lenta bloqueia envio duplicado e alterações de escopo", async (
   page,
 }) => {
   await enter(page);
+  await submit(page, "Mostre a evolução diária da receita nos últimos 7 dias");
   let release = () => {};
   const held = new Promise<void>((resolve) => {
     release = resolve;
@@ -231,6 +249,9 @@ test("resposta lenta bloqueia envio duplicado e alterações de escopo", async (
   await input.fill("Receita ontem");
   await input.press("Enter");
   await expect(input).toBeDisabled();
+  await expect(
+    page.getByText("Consultando…", { exact: true }),
+  ).toBeInViewport();
   await expect(page.getByLabel("Loja", { exact: true })).toBeDisabled();
   await expect(page.getByLabel("Período", { exact: true })).toBeDisabled();
   await expect(
@@ -239,7 +260,7 @@ test("resposta lenta bloqueia envio duplicado e alterações de escopo", async (
   await page.keyboard.press("Enter");
   expect(requests).toBe(1);
   release();
-  await expect(page.getByTestId("answer")).toHaveCount(1);
+  await expect(page.getByTestId("answer")).toHaveCount(2);
   await expect(input).toBeEnabled();
 });
 
@@ -271,6 +292,7 @@ test("histórico, operação indisponível e nova análise mantêm contexto e fo
   await page.getByRole("button", { name: "Nova análise" }).click();
   await expect(page.getByLabel("Pergunta", { exact: true })).toBeFocused();
   await expect(page.getByTestId("answer")).toHaveCount(0);
+  await page.locator(".history-menu > summary").click();
   await page
     .getByRole("navigation", { name: "Histórico pessoal" })
     .getByRole("button")

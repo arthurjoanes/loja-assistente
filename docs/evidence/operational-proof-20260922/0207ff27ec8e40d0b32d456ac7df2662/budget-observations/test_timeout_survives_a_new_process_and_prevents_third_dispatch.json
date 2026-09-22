@@ -1,0 +1,76 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "blocked": false,
+    "blocked_reason": null,
+    "committed": {
+      "calls": 2,
+      "input_units": 24262,
+      "output_units": 2000
+    },
+    "contract": "Cumulative operational allowance. Known reported tokens replace reservations; unknown calls remain reserved. No prices, invoice guarantee or automatic expiry.",
+    "limits": {
+      "calls": 2,
+      "input_units": 200000,
+      "output_units": 2000
+    },
+    "reservations": [
+      {
+        "call_id": "18c2f7f1-ee25-4bc4-8955-9e50bff84b9d",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": {
+          "attempts": 1,
+          "call_id": "18c2f7f1-ee25-4bc4-8955-9e50bff84b9d",
+          "duration_ms": 8,
+          "input_tokens": null,
+          "model_requested": "gpt-4.1-mini-2025-04-14",
+          "model_returned": null,
+          "output_tokens": null,
+          "prompt_sha256": "2ca81cee3f1762dad0334e12a759fe5a9d6bc46bcdd1e8652a9093c4e31e031e",
+          "provider_request_id": null,
+          "reasoning_effort": null,
+          "response_id": null,
+          "schema_sha256": "34bbe594dac0f803b64f06208a1250680e63a49193e422b2773dd05ab574eea3",
+          "status": "timeout",
+          "total_tokens": null
+        },
+        "observation_source": "adapter",
+        "request_id": "e2229637-4a19-4df4-aaa8-495a5d786267",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "unknown"
+      },
+      {
+        "call_id": "915d8246-6fa8-47af-a5d8-16e0e4814a2c",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": {
+          "attempts": 1,
+          "call_id": "915d8246-6fa8-47af-a5d8-16e0e4814a2c",
+          "duration_ms": 8,
+          "input_tokens": null,
+          "model_requested": "gpt-4.1-mini-2025-04-14",
+          "model_returned": null,
+          "output_tokens": null,
+          "prompt_sha256": "2ca81cee3f1762dad0334e12a759fe5a9d6bc46bcdd1e8652a9093c4e31e031e",
+          "provider_request_id": null,
+          "reasoning_effort": null,
+          "response_id": null,
+          "schema_sha256": "34bbe594dac0f803b64f06208a1250680e63a49193e422b2773dd05ab574eea3",
+          "status": "timeout",
+          "total_tokens": null
+        },
+        "observation_source": "adapter",
+        "request_id": "b278397a-9bee-4d66-bbdd-472450ade308",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "unknown"
+      }
+    ],
+    "tenant_id": "budget-531bb032c6fc4eb5bb34871ef8b23209"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 2,
+  "test": "tests/test_budget_postgres.py::test_timeout_survives_a_new_process_and_prevents_third_dispatch",
+  "transport": "httpx.MockTransport; no paid provider"
+}

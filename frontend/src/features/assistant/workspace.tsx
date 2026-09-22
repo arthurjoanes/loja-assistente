@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Brand, Icon } from "@/components/icon";
 import { dateLabel } from "@/lib/format";
 import { AnswerCard } from "@/features/analytics/result";
@@ -50,19 +50,39 @@ export function Workspace() {
     choosePeriod,
     handleError,
   } = useWorkspace();
-  const conversationEnd = useRef<HTMLDivElement>(null);
+  const latestId = answers.at(-1)?.id;
+  const [queryExpanded, setQueryExpanded] = useState(false);
+  const [selection, setSelection] = useState<{
+    conversationId: string | null;
+    latestId: string | undefined;
+    id: string;
+  } | null>(null);
+  const selectedId =
+    selection?.conversationId === conversationId &&
+    selection?.latestId === latestId
+      ? selection.id
+      : latestId;
+  const resultStart = useRef<HTMLDivElement>(null);
+  const errorNotice = useRef<HTMLDivElement>(null);
   const composer = useRef<HTMLTextAreaElement>(null);
+  const editQuestionButton = useRef<HTMLButtonElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    conversationEnd.current?.scrollIntoView({
+    const target = error ? errorNotice.current : resultStart.current;
+    target?.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "instant"
         : "smooth",
-      block: "end",
+      block: "start",
     });
-  }, [answers, pendingQuestion]);
+  }, [latestId, pendingQuestion, error]);
   function startAnalysis() {
     freshConversation();
+    setQueryExpanded(true);
+    requestAnimationFrame(() => composer.current?.focus());
+  }
+  function editQuestion() {
+    setQueryExpanded(true);
     requestAnimationFrame(() => composer.current?.focus());
   }
   if (booting)
@@ -137,24 +157,12 @@ export function Workspace() {
           </div>
         </header>
 
-        {view === "assistant" && (
-          <AnalysisFilters
-            stores={session.user.stores}
-            storeIds={storeIds}
-            period={period}
-            periodPreset={periodPreset}
-            mode={mode}
-            llmAvailable={session.llm_available}
-            busy={busy}
-            periodInvalid={periodInvalid}
-            onStoresChange={setStoreIds}
-            onPresetChange={choosePeriod}
-            onModeChange={setMode}
-            onPeriodChange={setPeriod}
-          />
-        )}
         {error && (
-          <div className="notice danger workspace-notice" role="alert">
+          <div
+            className="notice danger workspace-notice"
+            role="alert"
+            ref={errorNotice}
+          >
             <span>{error}</span>
             <button
               className="icon-button"
@@ -167,7 +175,7 @@ export function Workspace() {
         )}
 
         {view === "operations" ? (
-          <main id="main-content" className="operations-scroll">
+          <main id="main-content" className="operations-scroll" tabIndex={-1}>
             <OperationsPanel
               operations={operations}
               loading={operationsLoading}
@@ -176,10 +184,52 @@ export function Workspace() {
             />
           </main>
         ) : (
-          <div className="assistant-layout">
+          <div className="explorer-layout">
             <div className="conversation-column">
+              <div className="result-toolbar">
+                {answers.length > 1 && (
+                  <div className="result-selector">
+                    <label htmlFor="result-selector" className="sr-only">
+                      Resultados desta análise
+                    </label>
+                    <select
+                      id="result-selector"
+                      aria-label="Resultado selecionado"
+                      value={selectedId}
+                      disabled={busy}
+                      onChange={(event) =>
+                        setSelection({
+                          conversationId,
+                          latestId,
+                          id: event.target.value,
+                        })
+                      }
+                    >
+                      {answers.map((answer, index) => (
+                        <option key={answer.id} value={answer.id}>
+                          {index + 1}. {answer.question}
+                        </option>
+                      ))}
+                    </select>
+                    <span>
+                      {answers.findIndex((answer) => answer.id === selectedId) +
+                        1}{" "}
+                      de {answers.length}
+                    </span>
+                  </div>
+                )}
+                <button
+                  className="prepare-question"
+                  ref={editQuestionButton}
+                  aria-controls="query-controls"
+                  onClick={editQuestion}
+                >
+                  Editar pergunta <Icon name="arrow" size={14} />
+                </button>
+              </div>
               <main
                 id="main-content"
+                tabIndex={-1}
                 className="conversation-scroll"
                 aria-busy={busy}
               >
@@ -194,13 +244,7 @@ export function Workspace() {
                   />
                 ) : (
                   <div className="conversation-thread">
-                    {answers.map((answer) => (
-                      <AnswerCard
-                        key={answer.id}
-                        answer={answer}
-                        onError={handleError}
-                      />
-                    ))}
+                    <div ref={resultStart} />
                     {pendingQuestion && (
                       <div className="pending-answer">
                         <div className="question-row">
@@ -212,14 +256,58 @@ export function Workspace() {
                         </div>
                       </div>
                     )}
-                    <div ref={conversationEnd} />
+                    {answers.map((answer) => (
+                      <div key={answer.id} hidden={answer.id !== selectedId}>
+                        <AnswerCard answer={answer} onError={handleError} />
+                      </div>
+                    ))}
                   </div>
                 )}
               </main>
+            </div>
+            <aside
+              id="query-controls"
+              className={
+                "query-panel" + (queryExpanded ? "" : " query-panel-collapsed")
+              }
+              aria-label="Preparar consulta"
+            >
+              <div className="query-panel-heading">
+                <Icon name="store" size={18} />
+                <div>
+                  <h2>Próxima consulta</h2>
+                  <p>Defina o recorte e faça sua pergunta.</p>
+                </div>
+                <button
+                  className="query-collapse icon-button"
+                  aria-label="Recolher próxima consulta"
+                  onClick={() => {
+                    setQueryExpanded(false);
+                    editQuestionButton.current?.focus();
+                  }}
+                >
+                  <Icon name="close" size={16} />
+                </button>
+              </div>
+              <AnalysisFilters
+                stores={session.user.stores}
+                storeIds={storeIds}
+                period={period}
+                periodPreset={periodPreset}
+                mode={mode}
+                llmAvailable={session.llm_available}
+                busy={busy}
+                periodInvalid={periodInvalid}
+                onStoresChange={setStoreIds}
+                onPresetChange={choosePeriod}
+                onModeChange={setMode}
+                onPeriodChange={setPeriod}
+              />
               <QuestionComposer
                 mode={mode}
                 llmAvailable={session.llm_available}
                 hasPlan={answers.some((answer) => answer.plan !== null)}
+                reviewingEarlier={selectedId !== latestId}
                 busy={busy}
                 periodInvalid={periodInvalid}
                 question={question}
@@ -227,12 +315,12 @@ export function Workspace() {
                 onQuestionChange={setQuestion}
                 onAsk={(text) => void ask(text)}
               />
-            </div>
-            <AnalysisContext
-              stores={session.user.stores}
-              referenceDate={session.reference_date}
-              datasetVersion={session.dataset_version}
-            />
+              <AnalysisContext
+                stores={session.user.stores}
+                referenceDate={session.reference_date}
+                datasetVersion={session.dataset_version}
+              />
+            </aside>
           </div>
         )}
       </div>

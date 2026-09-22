@@ -73,7 +73,7 @@ export function OperationsPanel({
             <div>
               <span>Tokens / custo</span>
               <strong className="not-applicable">Indisponível</strong>
-              <small>Uso e custo não medidos</small>
+              <small>Não expostos neste painel</small>
             </div>
           </div>
           {operations.entries.length ? (
@@ -90,9 +90,12 @@ export function OperationsPanel({
                     <th>Horário</th>
                     <th>Modo / capacidade</th>
                     <th>Status</th>
-                    <th>Interpretação</th>
-                    <th>Consulta</th>
-                    <th title="Tempo no serviço, sem commit ou rede">
+                    <th className="numeric">Interpretação</th>
+                    <th className="numeric">Consulta</th>
+                    <th
+                      className="numeric"
+                      title="Tempo no serviço, sem commit ou rede"
+                    >
                       Serviço
                     </th>
                   </tr>
@@ -129,11 +132,15 @@ export function OperationsPanel({
                           {statusLabels[entry.status] ?? "Não concluído"}
                         </span>
                       </td>
-                      <td>
+                      <td className="numeric">
                         {entry.interpretation_ms.toLocaleString("pt-BR")} ms
                       </td>
-                      <td>{entry.query_ms.toLocaleString("pt-BR")} ms</td>
-                      <td>{entry.response_ms.toLocaleString("pt-BR")} ms</td>
+                      <td className="numeric">
+                        {entry.query_ms.toLocaleString("pt-BR")} ms
+                      </td>
+                      <td className="numeric">
+                        {entry.response_ms.toLocaleString("pt-BR")} ms
+                      </td>
                     </tr>
                   ))}
                 </tbody>
