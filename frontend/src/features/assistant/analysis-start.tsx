@@ -56,18 +56,17 @@ export function AnalysisStart({
       </p>
 
       <div className="suggestions">
-        {suggestions.map((item, index) => (
+        {suggestions.map((item) => (
           <button
             key={item.title}
             onClick={() => onAsk(item.question)}
             disabled={disabled}
           >
             <span className="suggestion-icon">
-              {String(index + 1).padStart(2, "0")}
+              <Icon name={item.icon} size={19} />
             </span>
             <strong>{item.title}</strong>
             <span>{item.description}</span>
-            <Icon name={item.icon} size={19} />
           </button>
         ))}
       </div>

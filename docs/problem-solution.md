@@ -1,12 +1,30 @@
 # Problema e solução
 
-Público: gerente ou supervisor que precisa consultar vendas de suas lojas e conferir o recorte antes de tomar uma decisão. Problema plausível, sem entrevista, piloto ou resultado comercial observado.
+Desenvolvi a demonstração para o gerente ou supervisor que precisa consultar vendas de suas lojas e conferir o recorte antes de decidir. É um problema plausível: não realizei entrevista, piloto ou medição de resultado comercial.
 
 Um dashboard com filtros é a alternativa mais simples e continua sendo a referência de correção. A hipótese de valor do assistente é reduzir a tradução manual de perguntas variadas em filtros, preservando limites, autorização e cálculo. Se a interpretação exigir decorar frases, perder qualificadores ou recusar perguntas válidas, essa vantagem não está demonstrada. Acrescentar um modelo sem medir esses erros tampouco resolve o problema.
 
 O núcleo existente é útil: sessão → interpretação → plano estrito → autorização atual → SQL parametrizado → centavos/Decimal → resultado e cálculo únicos. A dificuldade está nas fronteiras entre intenção, capacidade, escopo, datas, qualidade dos dados e falha de provedor. O modelo nunca calcula o faturamento nem escolhe a identidade confiável.
 
 A entrega também trata uma falha operacional distinta: perder a resposta do provedor não significa que a chamada deixou de consumir recursos. O [orçamento persistente](provider-budget.md) reserva antes do despacho e conserva uso incerto, mesmo se a resposta HTTP não puder ser gravada. A [jornada visual](operational-story.md) e os testes de orçamento têm provas separadas; uma tela correta em modo Demo não demonstra controle de cobrança externa.
+
+## Uma conta pequena que pode ser refeita
+
+Na fixture de testes `manual-v1`, “Quanto vendi ontem?” usa a referência de 17/08/2026, portanto consulta 16/08 na loja Centro A (`a001`). Dois pedidos concluídos entram na conta:
+
+| Pedido | Itens e desconto total por item | Receita | Unidades |
+|---|---|---:|---:|
+| `oa3` | 2 garrafas × R$ 6 − R$ 2 de desconto; 5 ecobags × R$ 2 | R$ 20 | 7 |
+| `oa4` | 1 caneca × R$ 10 | R$ 10 | 1 |
+| Total | 2 pedidos distintos | **R$ 30** | **8** |
+
+O ticket é R$ 30 / 2 = R$ 15. `oa5`, de R$ 100, está cancelado e não entra. O gerente B tem outro total, R$ 33, apesar de identificadores externos coincidirem. Usei esses números literais no [oráculo manual](manual-fixture.md) e em `test_independent_financial_oracle_with_multi_item_orders` e `test_same_external_identifiers_do_not_join_tenants`, em [test_analytics.py](../backend/tests/test_analytics.py). O esperado não é recalculado pela função sob teste.
+
+Implementei o caminho pergunta → plano validado → autorização → consulta predefinida → resultado único. As [consultas](../backend/src/loja_assistente/analytics/queries.py) somam quantidade × preço − desconto, contam pedidos distintos e limitam tenant/loja/data. Valores monetários saem como strings exatas; texto, gráfico e tabela não fazem uma segunda conta financeira. Um relatório SQL com filtros seria suficiente para essas métricas; a interpretação em português acrescenta conveniência a avaliar, custo e possibilidade de recusa indevida.
+
+Dois limites mudam o significado da resposta. Um dia coberto sem pedidos tem receita zero e ticket indisponível; um dia não carregado tem `value=null`, não zero. Os testes `test_daily_zero_is_only_emitted_for_covered_day`, `test_absence_is_not_financial_zero` e `test_partial_coverage_excludes_unloaded_sales_and_comparison` conferem essas diferenças. Pedir “somente em dinheiro” exige esclarecimento: não adicionei forma de pagamento ao plano e não descarto o qualificador silenciosamente. [Guardas e autorização](../backend/tests/test_security.py).
+
+A [história visual](operational-story.md) mostra os três estados — consulta, recusa e nova tentativa válida — em uma versão histórica da aplicação e **outra base**, `synthetic-v1`, total R$ 10.810,95. Ela não é uma imagem da conta manual de R$ 30 nem comprova a composição local posterior.
 
 ## Conferir o resultado sem perder o recorte
 
@@ -18,7 +36,9 @@ Os filtros descrevem a próxima consulta; o resultado mostra as lojas e datas ef
 
 Essa organização facilita a conferência prevista pelo produto, mas não demonstra ganho de produtividade. Não houve teste com usuários; a hipótese comercial continua separada da correção técnica e da avaliação de linguagem abaixo.
 
-## Diagnóstico e contrato de sucesso
+## Diagnóstico histórico e contrato de sucesso
+
+A matriz abaixo registra o estado **anterior à avaliação Azure de 21/09/2026**. Conservei o diagnóstico para tornar as mudanças e a falha final rastreáveis; ele não é a lista atual de resultados.
 
 | Alegação / estado inicial | Cenário | Implementação / teste existente | Lacuna | Correção e critério |
 |---|---|---|---|---|

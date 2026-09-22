@@ -1,6 +1,26 @@
 # Testes locais
 
+## Revisão autoral de portfólio — 22/09/2026
+
+Revisei problema, conta manual, decisões, código e as três capturas reais de `f98ee948…`. A fixture `manual-v1` de R$ 30 permanece separada do caso visual `synthetic-v1` de R$ 10.810,95. O README identifica minhas contribuições e as bibliotecas que integrei; a arquitetura, o orçamento e os contratos não foram alterados.
+
+Construí somente o backend atual, com Dockerfile e locks presentes, em tag própria: **Python 3.12.14**, imagem `sha256:54aa5ebe173e51bb354be5e4ee359fc4e7154040e80f2793ece2d7c0d5881b3e`. `scripts/check.py` passou Ruff, formato (58 arquivos), mypy (36 fontes), migrações até 0003, **364 testes** em 72,01 s e **57/57 casos offline**. Os 364 incluem os 353 da prova anterior e 11 casos de integridade histórica. Um aviso de depreciação do alias AnyIO usado pelo TestClient do Starlette permaneceu visível. O banco era temporário, sem portas; a rede era interna, LLM estava desligado e a chave vazia. Fontes foram montadas somente para leitura, com saída de relatório separada. Esses tempos, com outras tarefas no host, não são benchmark.
+
+Preservei duas falhas de preparação: primeiro o Docker não pôde criar o ponto de montagem do relatório sob a raiz somente para leitura; depois, um endpoint fictício HTTP foi corretamente recusado pela validação de configuração antes de migrar. Criei o diretório vazio de destino e usei a URL de configuração aceita, mantendo chave vazia, modo Demo e rede sem saída. Não alterei código, testes, limiares ou guardas para obter aprovação. A terceira tentativa passou e os recursos próprios foram encerrados, sem apagar volumes alheios.
+
+No host Windows, com Node 24.19.0 e npm 11.17.0, instalei o frontend do lock em diretório novo com `npm ci --no-audit --fund=false`. ESLint, Prettier, build de produção, TypeScript e **39 testes puros** (`domain.spec.ts`/`proxy-streams.spec.ts`, 1,3 s, sem skip/retry) passaram. Esses casos usam o runner Playwright sem abrir navegador nem iniciar servidor. O arquivo de tipos gerado pelo build foi devolvido aos bytes do snapshot, sem mudar fontes de frontend. `npm audit --package-lock-only --json` retornou zero achados em 22/09/2026; isso não cobre o sistema operacional, segredos ou a aplicação.
+
+Gitleaks 8.30.1, com redação integral e a configuração existente, retornou zero achados nos 396 arquivos rastreados/não ignorados do snapshot e nos sete commits alcançáveis (`--all`). A invocação inicial com caminho absoluto não aplicava as exceções existentes por caminho e marcou digests/ID de correlação históricos; conservei a tentativa e corrigi a invocação para caminho relativo, sem acrescentar exceções. Não fiz nova chamada paga ou avaliação de linguagem.
+
+Trivy 0.74.0 retornou **zero vulnerabilidades** na imagem de backend atual, via Docker local, sem filtro de severidade ou exceções. A base de avisos foi atualizada em 22/09/2026 às 07:24 UTC. O scanner manteve avisos sobre Alpine 3.24 fora de sua lista de EOL e termos adicionais em metadados de licença. Esse resultado cobre os pacotes de sistema/Python detectados, não o frontend ou uma implantação.
+
+`python scripts/verify_evidence.py` passou sem escrita ou rede: 65 artefatos, 62 fontes históricas, dois conjuntos de casos, contagens e somas. O verificador identifica as nove fontes alteradas e os 11 módulos posteriores; não transfere 47/48 da avaliação paga para o código atual. Os resultados originais e a falha `final-bf-04` permanecem preservados. O [recibo desta revisão](evidence/portfolio-review-20260922.json) separa instalação, testes, scans e imagens históricas.
+
+**Situação: design aprovado pelo autor em 22/09/2026; validação de execução do frontend atual pendente.** A recusa automática anterior de inicialização continua respeitada, sem repetição nem método alternativo. Nenhuma das 30 jornadas de navegador/HTTP foi executada nesta revisão; não há nova captura ou validação interativa; a aprovação do design pelo autor não substitui esses testes. A prova `f98ee948…` abaixo corresponde à sua versão congelada, anterior à nova marca, fonte e composição descritas em [qualidade do frontend](frontend-quality.md). O procedimento completo `setup/start/e2e` não foi repetido.
+
 ## Validação final da candidata de interface
+
+**Registro histórico `f98ee948…`, anterior à direção visual local atual.** A aprovação abaixo não se aplica automaticamente à composição posterior.
 
 A rodada `f98ee94864384422bd835bcabd8f3a11` exercitou o refinamento posterior de alinhamento, contornos/foco, navegação e Enter durante composição IME. Build, lint, formato, tipos e **68 casos** passaram: 38 puros e 30 de navegador/HTTP, em 38,441 s, sem falha, skip ou retry. As três capturas usam a mesma fixture e viewport 1440×1000, com transições concluídas pelo coletor. Os 158 arquivos congelados ficaram estáveis durante a execução; recursos próprios removidos.
 
@@ -29,7 +49,7 @@ A avaliação histórica de linguagem, os scans anteriores e a auditoria adversa
 
 ## Histórico da revisão da interface — estado anterior à prova completa
 
-Os parágrafos desta seção registram a etapa parcial que precedeu a entrega acima. Suas pendências de navegador foram tratadas na prova posterior; não são o estado atual da entrega.
+Os parágrafos desta seção registram a etapa parcial que precedeu a entrega acima. Suas pendências de navegador foram tratadas na prova posterior; foram encerradas naquela versão. A direção visual local posterior tem novas jornadas pendentes, descritas em [qualidade do frontend](frontend-quality.md).
 
 A interface passou a exibir um resultado selecionado por vez, com histórico,
 filtros, gráfico/tabela e cálculo preservados. Build de produção Next.js,

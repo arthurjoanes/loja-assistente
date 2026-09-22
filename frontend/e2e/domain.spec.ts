@@ -167,3 +167,39 @@ test("proxy preserva 16 KiB e centavos grandes formatam sem Number", async () =>
   expect(money("100.5")).toBe("R$ 1,01");
   expect(money(null)).toBe("Indisponível");
 });
+
+test("teto da série mantém precisão de centavos grandes, frações e ausência", () => {
+  const period = { start: "2026-08-10", end: "2026-08-12" };
+  const rows: Row[] = ["9007199254740992.49", "9007199254740992.50"].map(
+    (value, index) => ({
+      key: `2026-08-${10 + index}`,
+      label: `2026-08-${10 + index}`,
+      revenue_cents: "0",
+      orders: 0,
+      units: 0,
+      average_ticket_cents: value,
+    }),
+  );
+  const ticket = dailySeries(rows, "average_ticket", period);
+  expect(ticket.maximumValue).toBe("9007199254740992.50");
+  expect(money(ticket.maximumValue)).toBe("R$ 90.071.992.547.409,93");
+  const small = dailySeries(
+    rows.map((row, index) => ({
+      ...row,
+      average_ticket_cents: index === 0 ? "0.49" : "0.50",
+    })),
+    "average_ticket",
+    period,
+  );
+  expect(small.maximumValue).toBe("0.50");
+  expect(small.points[1].height).toBe(100);
+  expect(dailySeries(rows, "orders", period).maximumValue).toBe(0);
+  expect(dailySeries([], "revenue", period).maximumValue).toBeNull();
+  expect(
+    dailySeries(
+      rows.map((row) => ({ ...row, average_ticket_cents: null })),
+      "average_ticket",
+      period,
+    ).maximumValue,
+  ).toBeNull();
+});

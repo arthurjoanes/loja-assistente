@@ -1,0 +1,20 @@
+[
+  {
+    "file": "source-sans-3.woff2",
+    "source": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/WOFF2/VF/SourceSans3VF-Upright.ttf.woff2",
+    "repository": "adobe-fonts/source-sans",
+    "commit": "87b37a2daaed80fcb8e8ccb0085c4d72ddade12e",
+    "bytes": 170188,
+    "sha256": "5f16566f7a40d39b339ad26be151fa5a1ab1f0c2574c7a2e619765584a1acbd8",
+    "modified": false
+  },
+  {
+    "file": "source-sans-LICENSE.md",
+    "source": "https://raw.githubusercontent.com/adobe-fonts/source-sans/87b37a2daaed80fcb8e8ccb0085c4d72ddade12e/LICENSE.md",
+    "repository": "adobe-fonts/source-sans",
+    "commit": "87b37a2daaed80fcb8e8ccb0085c4d72ddade12e",
+    "bytes": 4486,
+    "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328",
+    "modified": false
+  }
+]

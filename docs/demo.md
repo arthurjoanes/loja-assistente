@@ -5,7 +5,9 @@ desta análise** para rever perguntas da conversa e **Cálculo** para conferir a
 evidência. O bloco recolhível **Dados fictícios · acesso e métricas** reúne as
 permissões e a referência dos dados. [Guia de leitura](interface.md).
 
-A [jornada registrada nesta entrega](operational-story.md) mostra consulta com cálculo, recusa do filtro por dinheiro e nova tentativa válida em tabela. As três capturas são da aplicação real em modo Demo, com dados sintéticos e resultados conferidos.
+A [jornada histórica `f98ee948…`](operational-story.md) mostra consulta com cálculo, recusa do filtro por dinheiro e nova tentativa válida em tabela. As três capturas são da aplicação real em modo Demo, com dados sintéticos e resultados conferidos.
+
+Este roteiro descreve ações para quem executar a aplicação; não foi repetido nesta revisão documental. As capturas abaixo e na história pertencem às fontes históricas identificadas, anteriores à [direção visual local](frontend-quality.md).
 
 ## Problema e resultado em 5–8 minutos
 

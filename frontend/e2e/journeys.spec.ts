@@ -318,9 +318,25 @@ test("celular permite teclado, filtros e leitura sem overflow horizontal", async
   await page.setViewportSize({ width: 390, height: 844 });
   await login(page, "Supervisor · Aurora Casa");
   await expect(page.getByRole("button", { name: "Abrir menu" })).toBeVisible();
-  await expect(page.getByLabel("Pergunta", { exact: true })).toBeHidden();
-  await page.getByRole("button", { name: "Editar pergunta" }).press("Enter");
-  await expect(page.getByLabel("Pergunta", { exact: true })).toBeFocused();
+  await expect(
+    page.getByRole("heading", { name: "Nova consulta", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Pergunta", { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Editar pergunta" }),
+  ).toHaveCount(0);
+  const queryBeforeSuggestions = await page
+    .locator("#query-controls")
+    .evaluate((element) =>
+      Boolean(
+        element.compareDocumentPosition(document.querySelector(".welcome")!) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+      ),
+    );
+  expect(queryBeforeSuggestions).toBe(true);
+  await page.getByRole("button", { name: "Abrir menu" }).focus();
+  await page.keyboard.press("Tab");
+  await expect(page.getByLabel("Loja", { exact: true })).toBeFocused();
   await page.getByLabel("Loja", { exact: true }).selectOption("a002");
   await page.getByLabel("Período", { exact: true }).selectOption("week");
   const response = page.waitForResponse((response) =>
