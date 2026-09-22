@@ -1,7 +1,5 @@
 # Problema e solução
 
-> Hipótese de utilidade e exemplos sintéticos; resultados limitados às rodadas identificadas. Fontes: [fixture](../backend/tests/manual_fixture.py), [casos](../evals/cases/manual-v1.json) e [resumo final](../evals/reports/20260921T121255Z-a9c11d1f/summary.json). Conferência documental: **22/09/2026**.
-
 Desenvolvi a demonstração para o gerente ou supervisor que precisa consultar vendas de suas lojas e conferir o recorte antes de decidir. É um problema plausível: não realizei entrevista, piloto ou medição de resultado comercial.
 
 Um dashboard com filtros é a alternativa mais simples e continua sendo a referência de correção. A hipótese de valor do assistente é reduzir a tradução manual de perguntas variadas em filtros, preservando limites, autorização e cálculo. Se a interpretação exigir decorar frases, perder qualificadores ou recusar perguntas válidas, essa vantagem não está demonstrada. Acrescentar um modelo sem medir esses erros tampouco resolve o problema.
@@ -74,3 +72,7 @@ Recurso Azure próprio, deployment Luna conferido e teto de US$ 15. A avaliaçã
 ## Resultado posterior à autorização Azure
 
 A matriz acima foi registrada antes da implementação e preserva o diagnóstico original. A [avaliação real](azure-live-results.md) mostrou 47/48 resultados corretos com Luna, ante 24/48 do parser e 30/30 consultas estruturadas aplicáveis. Seis decisões de guardas locais permanecem no denominador do caminho modelo + backend, separadas das 42 chamadas finais. Houve um esclarecimento desnecessário e nenhuma falha crítica; todos os limiares definidos antes passaram. Smoke/desenvolvimento/final geraram 55 chamadas, 48.788 tokens e estimativa conservadora US$ 0,01550395. Acesso e orçamento foram fornecidos; produção e utilidade com usuários continuam não avaliados.
+
+## Código e evidências relacionados
+
+[fixture](../backend/tests/manual_fixture.py) · [casos](../evals/cases/manual-v1.json) · [resumo final](../evals/reports/20260921T121255Z-a9c11d1f/summary.json).

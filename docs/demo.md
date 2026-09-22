@@ -1,7 +1,5 @@
 # Roteiro da demonstração
 
-> Roteiro proposto; tempos sugeridos não são medição com usuários. Fontes: [seed](../backend/src/loja_assistente/seed.py), [casos independentes](../evals/cases/manual-v1.json) e [captura com resposta](screenshots/current-20260922/capture.json). Conferência documental: **22/09/2026**.
-
 A interface mantém um resultado selecionado na área central. Use **Resultados
 desta análise** para rever perguntas da conversa e **Cálculo** para conferir a
 evidência. O bloco recolhível **Dados fictícios · acesso e métricas** reúne as
@@ -47,3 +45,7 @@ Smoke, desenvolvimento e final somaram 55 chamadas e 48.788 tokens, com estimati
 ## Avaliar a utilidade da demonstração
 
 Para transformar apresentação em avaliação, use o [protocolo de consulta versus controles](usage-comparison.md): mesma tarefa/base/permissão, ordem registrada, acerto do recorte, tempo e ajuda. Os formulários estão preparados, mas ainda não houve estudo com participantes. Os valores pequenos da fixture manual não são os totais do setup demonstrado acima.
+
+## Código e evidências relacionados
+
+[seed](../backend/src/loja_assistente/seed.py) · [casos independentes](../evals/cases/manual-v1.json) · [captura com resposta](screenshots/current-20260922/capture.json).

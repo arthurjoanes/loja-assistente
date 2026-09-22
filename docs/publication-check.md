@@ -1,7 +1,5 @@
 # Verificação para publicação
 
-> Registro histórico de 21/09/2026, sem repetir builds ou scans nesta revisão documental. Fontes: [registro técnico primário](publication-check.json). Conferência documental: **22/09/2026**.
-
 **Registro histórico de 21/09.** A entrega posterior, com orçamento persistente e novas jornadas, está em [verificação atual](verification.md). A avaliação Azure conserva suas fontes em um [arquivo verificável](evidence/azure-live/historical-source-20260921.json); seus números não foram transferidos para o código posterior.
 
 Revalidação de 21/09/2026 em uma cópia formada somente pelos arquivos públicos do Git, com configuração gerada, imagens Linux e bancos exclusivos. Não houve chamada a modelo nesta rodada. Os registros da avaliação Azure anterior foram preservados e conferidos por hash.

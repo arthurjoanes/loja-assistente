@@ -2,7 +2,7 @@
 
 A inspeção histórica executou a consulta SQLAlchemy então vigente do gerente A para Centro (`a001`), de 10/08/2026 incluído a 17/08/2026 exclusivo. A massa `synthetic-v1` continha 6.316 pedidos e 15.683 itens em seis lojas. O artefato registra PostgreSQL **17.6**. Filtros de tenant, loja, status, UTC e cobertura continuam presentes, mas o SQL registrado antecede a promoção de quantidade para `NUMERIC` na [consulta atual](../backend/src/loja_assistente/analytics/queries.py). Não representa um novo plano do código atual.
 
-O [artefato primário](query-plan.json) informa planejamento de **0,54 ms** e execução de **0,438 ms** em `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)`. Conferência documental: **22/09/2026**; o JSON não registra a data/hora da medição original. É uma observação local única com caches potencialmente aquecidos, sem caracterização de carga, concorrência ou percentis. Não é benchmark de produção.
+O [artefato primário](query-plan.json) informa planejamento de **0,54 ms** e execução de **0,438 ms** em `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)`. O JSON não registra a data/hora da medição original. É uma observação local única com caches potencialmente aquecidos, sem caracterização de carga, concorrência ou percentis. Não é benchmark de produção.
 
 Nós observados:
 

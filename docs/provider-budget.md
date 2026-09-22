@@ -1,14 +1,10 @@
 # Limitar chamadas sem esquecer o consumo incerto
 
-> Contrato operacional local, sem novas chamadas pagas. Fontes: [orçamento](../backend/src/loja_assistente/assistant/budget.py), [testes PostgreSQL](../backend/tests/test_budget_postgres.py) e [provas históricas](evidence/operational-proof-20260922/index.json). Conferência documental: **22/09/2026**.
-
 Uma requisição pode chegar ao provedor e perder a resposta por timeout. Reiniciar a API ou desfazer a transação da conversa não deve devolver automaticamente esse saldo. O controle da aplicação agora registra uma reserva por organização antes do despacho e mantém a reserva quando não consegue determinar o uso.
 
 O objetivo é limitar a admissão de chamadas pelo caminho LLM da API. **Não é uma fatura, um teto monetário do Azure/OpenAI nem uma garantia de tokenização exata.** A reserva usa bytes UTF-8 de prompt/contexto/schema mais margem de 8.192 unidades; a saída reserva 1.000 unidades, conforme o limite solicitado ao adaptador. Uso real informado pelo provedor substitui essa estimativa quando está completo e consistente. Se exceder a reserva, o excesso é registrado e novas admissões são bloqueadas; isso não desfaz uma cobrança já ocorrida.
 
 ## Por que persistir fora da conversa
-
-Fontes do contrato local: [`budget.py`](../backend/src/loja_assistente/assistant/budget.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 A [conta de orçamento](../backend/src/loja_assistente/assistant/budget.py) usa transações PostgreSQL curtas e um bloqueio de linha por organização. Reserva e marca de despacho são confirmadas antes da chamada ao SDK. A transação HTTP pode falhar depois, preservando esse registro. O bloqueio da conta não fica aberto durante a comunicação com o provedor.
 
@@ -32,8 +28,6 @@ As reservas guardam organização, usuário, request e call ID. O caminho do ada
 
 ## Estados e consequências
 
-Fontes do contrato local: [`budget.py`](../backend/src/loja_assistente/assistant/budget.py), [`budget_policy.py`](../backend/src/loja_assistente/assistant/budget_policy.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
-
 | Estado       | O que significa                                                              | Efeito sobre o saldo                                                                   |
 | ------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `reserved`   | Reserva confirmada, sem marca de despacho                                    | Pode ser cancelada pelo caminho que comprovadamente não despachou                      |
@@ -47,8 +41,6 @@ Contagem de chamadas permanece comprometida após o despacho. Reconciliação co
 Uma interrupção entre reserva e despacho pode conservar saldo em `reserved`. O método de cancelamento exige ausência de despacho; o CLI atual não expõe esse cancelamento. Esse caso requer revisão operacional específica, sem editar contadores ou apagar o ledger para liberar crédito. Na dúvida sobre despacho, manter a reserva é a escolha conservadora.
 
 ## Configuração e inspeção
-
-Fontes do contrato local: [`budget_admin.py`](../backend/src/loja_assistente/budget_admin.py), [`budget.py`](../backend/src/loja_assistente/assistant/budget.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 A migração [0003](../backend/migrations/versions/0003_provider_budget.py) acrescenta conta e reservas sem conceder saldo por padrão. O modo Demo continua sem chamar o provedor. Para LLM, chave e ativação da integração precisam ser acompanhadas de uma conta de orçamento para a organização. Sem conta ou sem saldo, o despacho é recusado.
 
@@ -88,8 +80,13 @@ As unidades dos casos incertos são reservas daquela pergunta/schema, não token
 
 ## Escolha e limites operacionais
 
-Fontes do contrato local: [`budget.py`](../backend/src/loja_assistente/assistant/budget.py), [`budget_policy.py`](../backend/src/loja_assistente/assistant/budget_policy.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
-
 Um contador em memória seria menor, mas esqueceria reservas no reinício e não coordenaria processos. Uma quota apenas no runner deixaria as chamadas da interface fora desse controle. PostgreSQL já é parte do produto e permite persistência e exclusão mútua sem adicionar outro serviço; o custo é uma transação e conexão extra por transição, além da operação de casos incertos.
 
 O mecanismo cobre chamadas que passam pelo serviço autenticado da aplicação. Não controla outros programas que utilizem a mesma credencial, nem despesas de infraestrutura. Prazo de 45 s no proxy e cancelamento no navegador continuam sem provar interrupção ou custo zero no provedor. Testes locais usam provedor simulado e dados sintéticos; integração paga, políticas do recurso e uso comercial precisam de verificações próprias.
+
+## Código e evidências relacionados
+
+| Tema                       | Implementação e critérios                                                       |
+| -------------------------- | ------------------------------------------------------------------------------- |
+| Implementação e evidências | [provas históricas](evidence/operational-proof-20260922/index.json)             |
+| Estados e consequências    | [`budget_policy.py`](../backend/src/loja_assistente/assistant/budget_policy.py) |

@@ -1,7 +1,5 @@
 # Avaliação de interpretação
 
-> Protocolo local, separado da avaliação histórica encerrada. Fontes: [runner](../evals/live_runner.py), [orçamento da avaliação](../evals/live_budget.py) e [critérios semânticos](../evals/semantic.py). Conferência documental: **22/09/2026**.
-
 Estado: avaliação Azure aprovada pelos critérios definidos antes, com 47/48 resultados corretos no caminho modelo + backend. [Resultado, logs, custo e falha registrada](azure-live-results.md). O restante deste documento define o protocolo de reprodução; a autorização usada já teve suas três etapas executadas e não vale para repetir a avaliação.
 
 ## O que comparar
@@ -71,12 +69,18 @@ Smoke e desenvolvimento têm estados próprios; nenhum deles emite aprovação f
 
 Relatórios únicos em `evals/reports/<UTC-id>/`: manifest com fontes/ambiente, `cases.jsonl` com esperado/observado, `summary.json` e resumo Markdown. Entradas são sintéticas, saídas são planos e dados autorizados. Metadata do provedor é uma lista explícita de campos: IDs, modelo, hashes, status, duração, tentativas e uso. Nenhum header, chave, cookie, connection string ou raciocínio privado é coletado. Falhas anteriores não são sobrescritas.
 
-## Referências conferidas em 21/09/2026
+<a id="referências-conferidas-em-21092026"></a>
 
-- [Azure — endpoints](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/endpoints) (consulta: 22/09/2026): rota de inferência v1 e nome de deployment.
-- [Azure — saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs) (consulta: 22/09/2026): suporte deve ser conferido no modelo real.
+## Referências
+
+- [Azure — endpoints](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/endpoints): rota de inferência v1 e nome de deployment.
+- [Azure — saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs): suporte deve ser conferido no modelo real.
 - [OpenAI — contrato estruturado](https://developers.openai.com/api/docs/guides/structured-outputs): parsing e recusas; conformidade de schema não mostra compreensão.
 
 ## Comparação de uso preparada
 
 O [protocolo de comparação com os controles](usage-comparison.md) trata uma pergunta diferente desta avaliação automática: esforço humano para obter e conferir o recorte. Traz tarefas de treino da fixture manual e formulários sem resultados; não houve participantes. A baseline proposta usa controles mais pergunta canônica no mesmo produto, e não um dashboard externo já implementado. Casos conhecidos ficam em desenvolvimento; uma rodada nova exige tarefas, configuração e ordem congeladas antes da coleta.
+
+## Código e evidências relacionados
+
+[runner](../evals/live_runner.py) · [orçamento da avaliação](../evals/live_budget.py) · [critérios semânticos](../evals/semantic.py).

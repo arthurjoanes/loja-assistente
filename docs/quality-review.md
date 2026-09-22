@@ -1,7 +1,5 @@
 # Interface e organização
 
-> Apresentação e resultados históricos nas versões que identificam. Fontes: [workspace](../frontend/src/features/assistant/workspace.tsx), [índice de provas](evidence/operational-proof-20260922/index.json) e [recibo do CI](evidence/frontend-ci-20260922.json). Conferência documental: **22/09/2026**.
-
 Para apresentação, use as [seis telas atuais de 22/09/2026](image-captures.md). As capturas anteriores citadas nesta página são arquivos históricos e não representam o layout atual.
 
 O [guia da interface](interface.md) explica pergunta, resultado selecionado, recorte aplicado, cobertura e cálculo. A [revisão de qualidade](frontend-quality.md) registra inventário de telas/estados, matriz das 11 dimensões antes/depois, decisões, referências, verificações e pendências.
@@ -15,3 +13,7 @@ As imagens [notebook](screenshots/welcome-1280x720.png), [celular](screenshots/w
 ## Prova posterior da candidata
 
 A rodada `f98ee94864384422bd835bcabd8f3a11` passou em 68 casos, com build/checks e três capturas reais da candidata. [Escopo executado](verification.md#validação-final-da-candidata-de-interface) e [história com os mesmos dados](operational-story.md). Este resultado posterior não transforma os limites da revisão estática acima em uma auditoria visual completa.
+
+## Código e evidências relacionados
+
+[workspace](../frontend/src/features/assistant/workspace.tsx) · [índice de provas](evidence/operational-proof-20260922/index.json).

@@ -1,7 +1,5 @@
 # O que o modo demo entende
 
-> Capacidades implementadas do parser, não promessa de compreensão aberta. Fontes: [parser](../backend/src/loja_assistente/assistant/interpreters/demo.py) e [testes](../backend/tests/test_interpreters.py). Conferência documental: **22/09/2026**.
-
 Modo **Demo sem IA**: parser de padrões.
 
 Versão `demo-patterns-v4`. Termos e números desconhecidos pedem reformulação antes da consulta. Paráfrases fora do vocabulário também são recusadas. “Quanto eu vendi ontem?”, “Me mostra o faturamento de ontem” e “Só queria saber a receita de ontem” agora preservam o plano. Saudações isoladas recebem ajuda sem consulta. Prefixos de cortesia só são removidos no início: “Só queria saber a receita somente em dinheiro” continua recusada. Isso corrige casos conhecidos; compreensão aberta depende do modelo e da avaliação separada.
@@ -29,8 +27,6 @@ Continuação é resolvida pelo último plano validado da mesma conversa, conser
 
 ## Filtros e ambiguidades recusados
 
-Fontes do contrato local: [`filter_limits.py`](../backend/src/loja_assistente/assistant/filter_limits.py), [`demo.py`](../backend/src/loja_assistente/assistant/interpreters/demo.py), [`demo_language.py`](../backend/src/loja_assistente/assistant/interpreters/demo_language.py), [`demo_periods.py`](../backend/src/loja_assistente/assistant/interpreters/demo_periods.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
-
 Pagamento (`dinheiro`, `Pix`, cartão), categoria, vendedor, canal, produto individual, horário, exclusões (`exceto`, `sem`, `apenas`, `somente`) e condições de valor não fazem parte do contrato. A guarda explícita também roda antes do adaptador LLM. Exemplos: “Quanto vendi ontem somente em dinheiro?”, “Receita de canecas ontem”, “Receita por vendedor ontem”, “Receita das 10 às 14 ontem”. Resposta de esclarecimento: `plan=null`, `result=null`, sem SQL de vendas. O produto pode aparecer em ranking; isso não implementa filtro de produto.
 
 “Receita ontem ou hoje”, dois indicadores ou ranking junto com evolução diária exigem reformulação. A política é uma métrica principal por consulta: “ticket e quantidade de pedidos” pede escolha, sem consultar SQL. Os totais auxiliares de uma consulta válida não significam que múltiplas solicitações foram compreendidas. Todas as seis combinações de pares de métricas são exercitadas com conectores “e” e “por”. Um ranking “mais vendidos **por receita**” usa receita; sem métrica monetária explícita, “mais vendidos” usa unidades. Números são aceitos somente nos formatos implementados de datas, períodos, IDs e limite de ranking. Os testes também incluem termos de negócio desconhecidos e verificam ausência de SQL analítico, não apenas o texto da mensagem.
@@ -38,3 +34,10 @@ Pagamento (`dinheiro`, `Pix`, cartão), categoria, vendedor, canal, produto indi
 A ordem está explícita em `demo.interpret`: guardas de capacidade → continuação estrita → vocabulário/números → todas as métricas candidatas → período/comparação → lojas → plano validado. `demo_language.py` reúne vocabulário e capacidade; `demo_periods.py` cuida das janelas e precedências; `store_mentions.py` resolve menções. Espaços internos/quebras e acentos são normalizados, mas palavras desconhecidas continuam recusadas. A seleção do provedor está em `assistant/interpretation.py` e não conhece o banco.
 
 Novos padrões precisam de testes com perguntas válidas e ambíguas, conferindo o plano inteiro.
+
+## Código e evidências relacionados
+
+| Tema                             | Implementação e critérios                                                                                                                                                                                                                                                   |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Implementação e evidências       | [parser](../backend/src/loja_assistente/assistant/interpreters/demo.py) · [testes](../backend/tests/test_interpreters.py)                                                                                                                                                   |
+| Filtros e ambiguidades recusados | [`filter_limits.py`](../backend/src/loja_assistente/assistant/filter_limits.py) · [`demo_language.py`](../backend/src/loja_assistente/assistant/interpreters/demo_language.py) · [`demo_periods.py`](../backend/src/loja_assistente/assistant/interpreters/demo_periods.py) |

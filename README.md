@@ -22,7 +22,7 @@ A pergunta vira um plano limitado; o servidor confere as permissões e calcula. 
 | Calcular               | Consultas predefinidas, centavos/Decimal e cobertura de loja/dia            |
 | Conferir               | Texto, gráfico, tabela e cálculo consultável usam o mesmo resultado         |
 
-Fontes: [interpretação](backend/src/loja_assistente/assistant/interpretation.py), [autorização](backend/src/loja_assistente/auth/service.py), [consultas](backend/src/loja_assistente/analytics/queries.py) e [apresentação](backend/src/loja_assistente/assistant/presentation.py), conferidas em **22/09/2026**.
+O código separa [interpretação](backend/src/loja_assistente/assistant/interpretation.py), [autorização](backend/src/loja_assistente/auth/service.py), [consultas](backend/src/loja_assistente/analytics/queries.py) e [apresentação](backend/src/loja_assistente/assistant/presentation.py).
 
 <a id="na-prática"></a>
 
@@ -42,7 +42,7 @@ Na fixture de testes `manual-v1`, **“Quanto vendi ontem?”** usa a referênci
 | `oa4`            | 1 caneca × R$ 10                            |     R$ 10 |        1 |
 | Total            | 2 pedidos distintos                         | **R$ 30** |    **8** |
 
-Ticket médio: **R$ 30 / 2 = R$ 15**. Pedido cancelado e vendas de outra organização ficam fora. Fontes: [fixture independente](backend/tests/manual_fixture.py), [esperados](evals/cases/manual-v1.json) e [testes analíticos](backend/tests/test_analytics.py), conferidos em **22/09/2026**. A massa `synthetic-v1` da interface é outra base: seus totais não devem ser comparados com esta conta manual.
+Ticket médio: **R$ 30 / 2 = R$ 15**. Pedido cancelado e vendas de outra organização ficam fora. A [fixture independente](backend/tests/manual_fixture.py) permite refazer os [resultados esperados](evals/cases/manual-v1.json) usados pelos [testes analíticos](backend/tests/test_analytics.py). A massa `synthetic-v1` da interface é outra base: seus totais não devem ser comparados com esta conta manual.
 
 <a id="conferir-uma-análise"></a>
 
@@ -57,9 +57,7 @@ flowchart TB
     API -. "interpretação opcional" .-> LLM["OpenAI / Azure"]
 ```
 
-O modelo recebe contexto de interpretação, não autoridade sobre tenant nem SQL livre. O orçamento é reservado no PostgreSQL antes do despacho ao provedor; a apresentação usa o resultado calculado. Migração e seed preparam a massa local.
-
-Fontes: [Compose](compose.yaml), [serviço da pergunta](backend/src/loja_assistente/assistant/service.py), [adaptador](backend/src/loja_assistente/assistant/interpreters/openai_adapter.py) e [orçamento](backend/src/loja_assistente/assistant/budget.py), conferidos em **22/09/2026**. [Arquitetura completa](docs/architecture.md).
+O [serviço da pergunta](backend/src/loja_assistente/assistant/service.py) envia ao [adaptador do modelo](backend/src/loja_assistente/assistant/interpreters/openai_adapter.py) contexto de interpretação, não autoridade sobre tenant nem SQL livre. O [orçamento](backend/src/loja_assistente/assistant/budget.py) é reservado no PostgreSQL antes do despacho; a apresentação usa o resultado calculado. Migração e seed no [Compose](compose.yaml) preparam a massa local. A [arquitetura completa](docs/architecture.md) detalha o fluxo.
 
 <a id="implementação"></a>
 <a id="o-que-eu-implementei"></a>
@@ -86,7 +84,7 @@ Fontes: [Compose](compose.yaml), [serviço da pergunta](backend/src/loja_assiste
 | Modelo opcional | SDK OpenAI, com saída estruturada validada novamente pelo domínio    |
 | Execução        | Docker Compose; demo, testes e avaliação usam escopos distintos      |
 
-Esquema válido não comprova interpretação correta ou autorização. A [Microsoft documenta a saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs); este projeto valida o [plano](backend/src/loja_assistente/analytics/contracts.py) e as [permissões](backend/src/loja_assistente/auth/service.py) separadamente. Fontes consultadas em **22/09/2026**. [Decisões e alternativas](docs/decisoes-tecnicas.md) · [Lock Python](backend/uv.lock) · [Lock frontend](frontend/package-lock.json).
+Esquema válido não comprova interpretação correta ou autorização. A [Microsoft documenta a saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs); este projeto valida o [plano](backend/src/loja_assistente/analytics/contracts.py) e as [permissões](backend/src/loja_assistente/auth/service.py) separadamente. [Decisões e alternativas](docs/decisoes-tecnicas.md) · [Lock Python](backend/uv.lock) · [Lock frontend](frontend/package-lock.json).
 
 <a id="executar-e-verificar"></a>
 <a id="rodar"></a>
@@ -100,7 +98,7 @@ Docker Desktop com containers Linux e PowerShell 7+; na raiz:
 .\scripts\dev.ps1 start
 ```
 
-Abra a [interface](http://localhost:3102) ou a [API](http://localhost:8102/docs). A conta fictícia `gerente.a@demo.local`, senha `LojaDemo!2026`, exige `DEMO_MODE=true`. O relógio analítico padrão é 17/08/2026. Fontes: [setup](scripts/dev.ps1), [seed](backend/src/loja_assistente/seed.py) e [configuração](backend/src/loja_assistente/config.py), conferidas em **22/09/2026**.
+Após o [setup](scripts/dev.ps1), abra a [interface](http://localhost:3102) ou a [API](http://localhost:8102/docs). O [seed](backend/src/loja_assistente/seed.py) cria a conta fictícia `gerente.a@demo.local`, senha `LojaDemo!2026`; a [configuração](backend/src/loja_assistente/config.py) exige `DEMO_MODE=true`. O relógio analítico padrão é 17/08/2026.
 
 Demo dispensa chave e chamadas pagas; a execução local continua consumindo recursos do computador. [Linux e operação](docs/local-setup.md). O modo LLM exige [configuração do provedor](docs/llm-integration.md) e [orçamento por organização](docs/provider-budget.md); pode gerar cobrança.
 
@@ -115,7 +113,7 @@ Confira a avaliação histórica sem Docker, chave ou rede, com Python 3.11+:
 python scripts/verify_evidence.py
 ```
 
-O [verificador](scripts/verify_evidence.py) recalcula hashes, contagens e custo estimado dos artefatos. A execução Azure de **21/09/2026** registrou **47/48** tentativas aprovadas no caminho modelo + backend, contra **24/48** do parser: 24 perguntas repetidas duas vezes. São dados sintéticos e uma amostra limitada, com uma falha preservada. Fontes: [resumo final](evals/reports/20260921T121255Z-a9c11d1f/summary.json) e [casos](evals/reports/20260921T121255Z-a9c11d1f/cases.jsonl).
+O [verificador](scripts/verify_evidence.py) recalcula hashes, contagens e custo estimado dos artefatos. O [resumo da execução Azure de **21/09/2026**](evals/reports/20260921T121255Z-a9c11d1f/summary.json) registra **47/48** tentativas aprovadas no caminho modelo + backend, contra **24/48** do parser: 24 perguntas repetidas duas vezes. São dados sintéticos e uma amostra limitada, com uma falha preservada nos [casos executados](evals/reports/20260921T121255Z-a9c11d1f/cases.jsonl).
 
 As três etapas registraram **55 chamadas e 48.788 tokens**. O custo **estimado histórico** de **US$ 0,01550395** usa uma hipótese conservadora de entrada, não uma fatura ou cotação atual. [Medidores e datas](docs/evidence/azure-live/azure-prices.json) · [Cálculo, preços e limites](docs/azure-live-results.md#chamadas-e-consumo). O teto de US$ 15 daquela avaliação não limita a conta Azure nem a interface.
 
@@ -124,20 +122,20 @@ As três etapas registraram **55 chamadas e 48.788 tokens**. O custo **estimado 
 .\scripts\dev.ps1 e2e
 ```
 
-O [recibo do CI de 22/09/2026](docs/evidence/frontend-ci-20260922.json), sobre `73aa1fff`, registra **69 casos Playwright**, sendo 39 puros e 30 de navegador/HTTP. A [verificação](docs/verification.md) identifica os resultados de backend, comandos e versões de cada rodada. Não houve nova avaliação paga nesta revisão documental.
+O [recibo do CI de 22/09/2026](docs/evidence/frontend-ci-20260922.json), sobre `73aa1fff`, registra **69 casos Playwright**, sendo 39 puros e 30 de navegador/HTTP. A [verificação](docs/verification.md) identifica os resultados de backend, comandos e versões de cada rodada.
 
 <a id="limites-e-manutenção"></a>
 <a id="limites"></a>
 
 ## Limites e segurança
 
-- Uma métrica por pergunta; pagamento, vendedor, categoria, produto específico e horário não são filtros suportados. Ranking de produtos é uma capacidade distinta.
-- Comparações exigem cobertura completa; dia ausente não vira venda zero.
+- O [contrato](backend/src/loja_assistente/analytics/contracts.py) aceita uma métrica por pergunta; pagamento, vendedor, categoria, produto específico e horário são [filtros não suportados](backend/src/loja_assistente/assistant/filter_limits.py). Ranking de produtos é uma capacidade distinta.
+- Comparações exigem [cobertura completa](backend/src/loja_assistente/analytics/queries.py); dia ausente não vira venda zero.
 - Lucro, estoque, imposto e reembolso parcial não são modelados.
-- O orçamento local controla admissão; não garante cobrança monetária do provedor.
+- A [política de orçamento](backend/src/loja_assistente/assistant/budget_policy.py) controla admissão; não garante cobrança monetária do provedor.
 - A demonstração não comprova produtividade, capacidade de produção, acessibilidade integral ou segurança universal. Publicação exige identidade, HTTPS e proteção operacional próprios.
 
-Fontes: [contrato](backend/src/loja_assistente/analytics/contracts.py), [guardas de filtros](backend/src/loja_assistente/assistant/filter_limits.py), [cobertura](backend/src/loja_assistente/analytics/queries.py) e [política de orçamento](backend/src/loja_assistente/assistant/budget_policy.py), conferidas em **22/09/2026**. [Limites de rede e revisão](docs/security.md).
+O guia de [segurança](docs/security.md) detalha os limites de rede e das verificações.
 
 <a id="manter-e-diagnosticar"></a>
 
@@ -165,4 +163,4 @@ Desenvolvido por **Arthur Joanes**. Para conversar sobre análise de vendas, int
   </a>
 </p>
 
-Código sob [licença MIT](LICENSE). Source Sans 3 mantém a [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e a [origem](frontend/src/app/fonts/sources.json). Ícones da stack e LinkedIn: [Devicon, licença MIT](docs/stack/LICENSE.devicon). Licenças conferidas nos arquivos em **22/09/2026**.
+Código sob [licença MIT](LICENSE). Source Sans 3 mantém a [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e a [origem](frontend/src/app/fonts/sources.json). Ícones da stack e LinkedIn: [Devicon, licença MIT](docs/stack/LICENSE.devicon).

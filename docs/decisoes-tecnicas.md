@@ -1,7 +1,5 @@
 # Decisões técnicas
 
-> Decisões locais; medições históricas mantêm suas datas e escopos. Fontes: [consulta](../backend/src/loja_assistente/analytics/queries.py), [contrato](../backend/src/loja_assistente/analytics/contracts.py), [estado visual](../frontend/src/features/assistant/conversation-state.ts) e [resultado final](../evals/reports/20260921T121255Z-a9c11d1f/summary.json). Conferência documental: **22/09/2026**.
-
 ## Responsabilidade de cada camada
 
 A sessão identifica usuário e organização. A pergunta vira um plano com capacidades fechadas; o backend resolve referências, confere permissões atuais e calcula com SQL parametrizado. A apresentação transforma o resultado em texto, gráfico, tabela e cálculo, sem pedir ao modelo para fazer aritmética.
@@ -21,7 +19,7 @@ O percurso pode ser lido em [assistant/service.py](../backend/src/loja_assistent
 | A evidência detalhada nem sempre é necessária para ler o indicador                     | O cálculo é carregado sob demanda, por resposta. Falha de rede permite repetir a busca sem apagar o resultado; uma resposta tardia de componente desmontado não troca a sessão atual.                                | [EvidencePanel](../frontend/src/features/analytics/evidence.tsx) e [jornadas de recuperação](../frontend/e2e/round-2-fields.spec.ts). A requisição continua sujeita à autorização do backend.                                                                                               |
 | Uma resposta interrompida pode ser confundida com resultado vazio                      | O proxy conta bytes, aplica prazo total e propaga cancelamento/falhas. O cliente não converte JSON interrompido em sucesso.                                                                                          | [Contrato de transporte](security.md) e [regressões de streams](../frontend/e2e/proxy-streams.spec.ts). Os limites são 16 KiB de entrada e 45 s totais no proxy.                                                                                                                            |
 
-A preservação de estado segue o comportamento documentado do [React para posição e chaves na árvore](https://react.dev/learn/preserving-and-resetting-state) (consulta: 22/09/2026). O uso de NUMERIC corresponde ao tipo de precisão exata descrito pelo [PostgreSQL 17](https://www.postgresql.org/docs/17/datatype-numeric.html) (consulta: 22/09/2026). A revalidação da autorização em cada acesso segue a orientação da [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (consulta: 22/09/2026). Essas fontes explicam os mecanismos; os testes e contratos locais demonstram como foram aplicados neste projeto.
+A preservação de estado segue o comportamento documentado do [React para posição e chaves na árvore](https://react.dev/learn/preserving-and-resetting-state). O uso de NUMERIC corresponde ao tipo de precisão exata descrito pelo [PostgreSQL 17](https://www.postgresql.org/docs/17/datatype-numeric.html). A revalidação da autorização em cada acesso segue a orientação da [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html). Essas fontes explicam os mecanismos; os testes e contratos locais demonstram como foram aplicados neste projeto.
 
 ## Exemplos que distinguem as decisões
 
@@ -68,3 +66,7 @@ A composição histórica foi conferida na rodada `f98ee948…` de navegador, in
 ## Caminho para uso real
 
 Uma adoção real exige importação e reconciliação de dados comerciais, definição de fuso/reembolsos, identidade corporativa, HTTPS e proteção de login, rotação de segredos, retenção/auditoria e novas avaliações com perguntas representativas. RLS pode complementar a autorização se testada com a role efetiva do banco. Cache ou serviços separados dependem de medição; não foram acrescentados para simular escala. As provas atuais usam dados sintéticos e não demonstram SLA, benefício comercial ou operação em produção.
+
+## Código e evidências relacionados
+
+[resultado final](../evals/reports/20260921T121255Z-a9c11d1f/summary.json).

@@ -1,7 +1,5 @@
 # Qualidade da experiência analítica
 
-> Decisões visuais e verificações por versão; sem certificação integral de acessibilidade. Fontes: [workspace](../frontend/src/features/assistant/workspace.tsx), [estilo](../frontend/src/app/globals.css) e [recibo do CI](evidence/frontend-ci-20260922.json). Conferência documental: **22/09/2026**.
-
 As [capturas locais atuais de 22/09/2026](image-captures.md) documentam seis vistas reais sobre `6361280d`, com modo Demo explícito e bloqueio de requisições LLM. Os registros de CI, provas operacionais e design abaixo conservam suas fontes e limites históricos.
 
 Direção visual de 22/09/2026 sobre o **estado local da interface já reconstruída**, incluindo alterações concorrentes de orçamento/provas e o refinamento anterior. O HEAD de partida era `849428f4c1fd6b166516553f43c5466d8fee6de0`, com fontes locais posteriores; o baseline foi registrado por conteúdo, incluindo `daily-series.ts`. A proposta põe **pergunta, recorte, resposta e conferência** à frente, com identidade própria. Não é um diff apenas contra aquele HEAD.
@@ -53,7 +51,7 @@ São **simulações de composição**, rotuladas na imagem; não são captura da
 
 O [Explorer do Lightdash](https://docs.lightdash.com/introduction) foi observado em sua [demo pública](https://demo.lightdash.com/projects/thyme-to-shine-market/saved/what-are-the-weekly-revenue-stats-); o [Explore do Superset](https://superset.apache.org/user-docs/using-superset/creating-your-first-dashboard/#creating-charts-in-explore-view), em imagem oficial de documentação. Foram reaproveitadas as relações entre métrica, gráfico, tabela e recorte. Rejeitamos catálogo de campos, SQL livre, duas colunas permanentes de edição e números abreviados. A aplicação continua oferecendo somente as capacidades autorizadas pelo servidor. Nenhum código ou asset desses produtos foi copiado; suas licenças não são uma licença geral para imagens ou dependências.
 
-| Fonte primária / material visto em 22/09/2026                                                                                                                         | Aproveitado e adaptado                                                                   | Rejeitado / licença                                                                                                        |
+| Fonte primária / material consultado                                                                                                                                  | Aproveitado e adaptado                                                                   | Rejeitado / licença                                                                                                        |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | [Linear — redesenho](https://linear.app/now/how-we-redesigned-the-linear-ui), imagem oficial da interface com lista e detalhe                                         | Contraste entre navegação, edição e conteúdo; cor intensa tem uma função                 | Não copiar shell, código, marca ou imagem. A publicação não concede licença para reutilizar seus assets                    |
 | [Carbon — tabelas](https://carbondesignsystem.com/components/data-table/usage/) e [eixos/rótulos](https://carbondesignsystem.com/data-visualization/axes-and-labels/) | Alinhamento numérico, unidade e comparabilidade; controles junto do trabalho             | Não adicionar gráficos para decorar nem arredondar dinheiro para K/M; padrões consultados, nenhum componente copiado       |
@@ -61,9 +59,7 @@ O [Explorer do Lightdash](https://docs.lightdash.com/introduction) foi observado
 | [Pentagram — Galaxy](https://www.pentagram.com/work/galaxy), aplicação real de símbolo e wordmark                                                                     | Um gesto reconhecível que funciona sem ornamento e em aplicações diferentes              | Não reutilizar círculo/quadrado, desenho ou marca; direitos dos autores                                                    |
 | [Swavee — identidade conceitual](https://www.behance.net/gallery/241721015/Visual-Identity-design-for-Swavee), apresentação no Behance                                | Relação entre nome, símbolo e aplicação; referência fictícia explicitamente identificada | Não copiar letras, esfera, fotos, gradientes ou marketing. Portfólio conceitual não comprova usabilidade nem exclusividade |
 
-As referências externas desta seção foram reconsultadas em **22/09/2026**. Suas relações com o produto são interpretações de design, não provas de usabilidade.
-
-As [Web Interface Guidelines](https://github.com/vercel-labs/web-interface-guidelines/blob/main/command.md) foram consultadas em 22/09/2026. Foram aplicados foco visível, redução de movimento, campos nomeados, consulta/aplicação separadas e ausência de dependência visual nova. [Estado em React](https://react.dev/learn/choosing-the-state-structure), [reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) e [alvos](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) orientam decisões; não certificam a aplicação. Estas fontes sustentam padrões e inferências de design, não uma avaliação de usabilidade com usuários.
+As [Web Interface Guidelines](https://github.com/vercel-labs/web-interface-guidelines/blob/main/command.md) orientaram foco visível, redução de movimento, campos nomeados e a separação entre consultar e aplicar filtros. [Estado em React](https://react.dev/learn/choosing-the-state-structure), [reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) e [alvos](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) orientam decisões; não certificam a aplicação. Estas fontes sustentam padrões e inferências de design, não uma avaliação de usabilidade com usuários.
 
 ## Identidade, tipografia e superfícies
 
@@ -118,3 +114,7 @@ Antes de alterar telas, confira o inventário, os contratos e os limites das pro
 - Nos READMEs e na documentação, identifique a linguagem dos blocos de código (`json`, `python`, `powershell`, `sh`, `sql`, `yaml` etc.) para habilitar o realce sintático. Use `text` para saídas sem sintaxe, prosa e diagramas ASCII.
 - Nas interfaces, use realce da linguagem com contraste legível. Preserve o texto original e o conteúdo copiado; a formatação para leitura deve ser uma opção separada.
 - Mudanças de apresentação não alteram evidências históricas, hashes ou capturas antigas. Gere registros atuais separados quando necessário.
+
+## Código e evidências relacionados
+
+[estilo](../frontend/src/app/globals.css).

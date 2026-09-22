@@ -1,7 +1,5 @@
 # Comparar a consulta em português com os controles
 
-> Protocolo proposto, sem participantes ou resultados humanos. Fontes: [casos de treino](../evals/cases/manual-v1.json), [formulário da rodada](user-study/round.template.json) e [formulário de observação](user-study/observation.template.json). Conferência documental: **22/09/2026**.
-
 **Pergunta central:** uma pessoa consegue chegar ao recorte correto e conferir o cálculo com menos esforço? Acertar um plano em teste automático é necessário, mas não responde essa pergunta de uso.
 
 **Estado: protocolo preparado, sem participantes ou resultados.** Não houve medição de produtividade nesta rodada. A avaliação histórica de 47/48 tentativas trata interpretação e cálculo em 24 perguntas repetidas duas vezes; não mede tempo humano e não será reapresentada como estudo novo. A falha `final-bf-04`, repetição 2, permanece no [resultado original](azure-live-results.md).
@@ -50,3 +48,7 @@ A pessoa deve apontar o recorte **do resultado executado**, não apenas os filtr
 Apresentar primeiro quantas pessoas e tarefas realmente participaram, distribuição dos tempos observados, taxa de recorte correto e erros por condição. Manter tarefas incompletas no total planejado. Evitar percentuais de ganho com poucos casos ou exclusão de tentativas lentas; comparações por pessoa não tornam suas várias perguntas participantes independentes.
 
 Se a pergunta em português poupar entrada mas aumentar erros de recorte, a decisão pode ser melhorar confirmação/clareza ou priorizar controles. Se as condições não diferirem de forma confiável, registrar isso. O protocolo testa uma hipótese de utilidade; não estabelece antecipadamente que IA, parser ou formulário será superior.
+
+## Código e evidências relacionados
+
+[casos de treino](../evals/cases/manual-v1.json).
