@@ -16,11 +16,25 @@ export function dailySeries(rows: Row[], metric: Metric, period: Period) {
   });
   // Conversão numérica só para geometria; os valores originais seguem na tabela.
   const magnitudes = values.map((value) => Math.max(0, Number(value ?? 0)));
-  const maximum = Math.max(1, ...magnitudes);
+  const maximum = Math.max(0, ...magnitudes) || 1;
   const axisIndices = [
     ...new Set([0, Math.floor((dates.length - 1) / 2), dates.length - 1]),
   ].filter((index) => index >= 0 && index < dates.length);
+  // O teto mostrado no gráfico preserva a precisão decimal da API.
+  // Number continua restrito à geometria das colunas.
+  const maximumValue = values.reduce<string | number | null>((best, value) => {
+    if (value === null) return best;
+    if (best === null) return value;
+    const [leftInteger, leftFraction = ""] = String(value).split(".");
+    const [rightInteger, rightFraction = ""] = String(best).split(".");
+    const left =
+      BigInt(leftInteger + leftFraction) * 10n ** BigInt(rightFraction.length);
+    const right =
+      BigInt(rightInteger + rightFraction) * 10n ** BigInt(leftFraction.length);
+    return left > right ? value : best;
+  }, null);
   return {
+    maximumValue,
     points: dates.map((date, index) => ({
       date,
       row: byDate.get(date) ?? null,

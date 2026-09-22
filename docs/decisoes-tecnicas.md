@@ -31,7 +31,7 @@ A preservação de estado segue o comportamento documentado do [React para posi�
 
 ## Uso do modelo e avaliação
 
-O modelo só interpreta. Uma segunda chamada para redigir números aumentaria custo e criaria outra oportunidade de divergência; a apresentação existente já usa o resultado calculado. RAG também não foi adicionado: as consultas agregam dados estruturados e poucas métricas conhecidas, sem corpus textual a recuperar. SQL livre ampliaria capacidades e riscos sem necessidade para esse recorte.
+Mantive o modelo restrito à interpretação. Uma segunda chamada para redigir números aumentaria custo e criaria outra oportunidade de divergência; a apresentação existente já usa o resultado calculado. RAG também não foi adicionado: as consultas agregam dados estruturados e poucas métricas conhecidas, sem corpus textual a recuperar. SQL livre ampliaria capacidades e riscos sem necessidade para esse recorte.
 
 No Azure, o adaptador usa Responses com JSON Schema estrito no subconjunto aceito pelo provedor. O schema enviado omite constraints incompatíveis, mas o modelo Pydantic do domínio continua validando a saída antes da autorização e do SQL. A configuração histórica avaliada foi GPT-5.6 Luna, versão 2026-07-09, GlobalStandard, East US 2, com reasoning effort none. [Configuração da integração](llm-integration.md).
 
@@ -52,9 +52,9 @@ A aplicação não calcula lucro, estoque, imposto ou reembolso parcial. As comp
 
 ## Composição da bancada
 
-O resultado selecionado ocupa a maior área; os controles da próxima consulta ficam em uma coluna própria. Essa separação evita atribuir ao resultado antigo um filtro que ainda não foi executado. O histórico é recolhível, e a descrição textual que repete os indicadores passa para **Resumo em texto**. Lojas, período efetivo, cobertura e limitações continuam junto do resultado. A série diária usa colunas, o ranking mantém rótulos nas barras horizontais e ambos conservam a tabela exata.
+Na composição local atual, o resultado selecionado usa a largura principal, com totais ao lado do gráfico quando há espaço; os controles da próxima consulta vêm abaixo. Sem resposta, a consulta fica visível antes dos atalhos. Essa separação evita atribuir ao resultado antigo um filtro que ainda não foi executado. O histórico é recolhível, e a descrição textual que repete os indicadores passa para **Resumo em texto**. Lojas, período efetivo, cobertura e limitações continuam junto do resultado. A série diária usa colunas, o ranking mantém rótulos nas barras horizontais e ambos conservam a tabela exata.
 
-A pergunta é o título da resposta; um seletor aparece apenas quando existe mais de uma resposta. Até 1024 px, o formulário fica recolhido inicialmente e abre no fluxo por **Editar pergunta**, que leva o foco ao campo. A abertura é mantida enquanto a pessoa trabalha, sem fechar controles após uma resposta; recolher devolve o foco ao botão. Essa quebra ocorre antes de a coluna do formulário comprimir a leitura do resultado.
+A pergunta é o título da resposta; um seletor aparece apenas quando existe mais de uma resposta. Na primeira visita, o formulário começa expandido. Depois de uma resposta, **Editar pergunta** leva o foco ao campo; o formulário pode ser recolhido pelo usuário. A abertura é mantida enquanto a pessoa trabalha, sem fechar controles após uma resposta; recolher devolve o foco ao botão. Essa quebra ocorre antes de a coluna do formulário comprimir a leitura do resultado.
 
 A série diária distribui todas as colunas pela largura disponível e usa até três datas no eixo. Valores exatos continuam na tabela e na descrição acessível; não são recalculados pelo frontend. O [modelo de apresentação](../frontend/src/features/analytics/daily-series.ts) converte valores somente para calcular altura, preserva zero e indisponível e não altera as linhas originais. A cor da série é uniforme: a primeira data não recebe significado especial. Essa opção permite ver 30 dias sem uma faixa mínima de 3300 px, com o custo de consultar a tabela para conferir cada valor. Os [casos puros](../frontend/e2e/domain.spec.ts) verificam séries de 1, 7 e 30 dias; legibilidade e interação ainda dependem das jornadas pendentes.
 
@@ -62,7 +62,7 @@ O shell limita e centraliza a largura, usa a mesma linha de alinhamento para cab
 
 O backend omite datas inteiramente sem cobertura; o gráfico reserva essas posições como lacunas no calendário do resultado aplicado. Não transforma ausência em zero nem preenche linhas da tabela. A consulta continua mostrando aviso quando só parte das lojas/dias está carregada.
 
-As decisões foram conferidas na rodada final de navegador, incluindo foco, sete geometrias e capturas reais. Os testes encontraram contraste insuficiente e um campo focado parcialmente fora da tela; cores e rolagem condicional foram corrigidas, mantendo as asserções. Os [resultados e tentativas](verification.md) distinguem essas provas de um estudo com usuários, ainda não executado, e não alegam acessibilidade completa.
+A composição histórica foi conferida na rodada `f98ee948…` de navegador, incluindo foco, sete geometrias e capturas reais. A direção local posterior alterou marca, fonte e ordem da consulta; suas jornadas ainda não foram executadas e não herdam essa aprovação. Os testes encontraram contraste insuficiente e um campo focado parcialmente fora da tela; cores e rolagem condicional foram corrigidas, mantendo as asserções. Os [resultados e tentativas](verification.md) distinguem essas provas de um estudo com usuários, ainda não executado, e não alegam acessibilidade completa.
 
 ## Caminho para uso real
 

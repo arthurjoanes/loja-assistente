@@ -72,7 +72,15 @@ export function AnswerCard({
               </div>
             )}
             {result.totals && result.coverage.status !== "absent" && (
-              <>
+              <div
+                className={
+                  "analysis-reading" +
+                  ((result.intent === "ranking" || result.intent === "daily") &&
+                  result.rows.length > 0
+                    ? " has-visual"
+                    : "")
+                }
+              >
                 <MetricSummary
                   totals={result.totals}
                   metric={result.metric}
@@ -98,7 +106,7 @@ export function AnswerCard({
                 )}
                 {(result.intent === "ranking" || result.intent === "daily") &&
                   result.rows.length > 0 && <ResultChart result={result} />}
-              </>
+              </div>
             )}
             {result.coverage.status !== "absent" && (
               <details className="result-description">

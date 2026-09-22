@@ -84,7 +84,7 @@ export function ResultChart({ result }: { result: Result }) {
               </span>
               <span className="bar-track">
                 <span
-                  className={"bar " + (index === 0 ? "bar-first" : "")}
+                  className="bar"
                   style={
                     {
                       "--bar-size":
@@ -116,7 +116,7 @@ export function ResultChart({ result }: { result: Result }) {
   );
 }
 function DailyChart({ result }: { result: Result }) {
-  const { points, axisIndices } = dailySeries(
+  const { points, axisIndices, maximumValue } = dailySeries(
     result.rows,
     result.metric,
     result.period,
@@ -130,6 +130,14 @@ function DailyChart({ result }: { result: Result }) {
         role="img"
         aria-label={"Evolução diária. " + points.map(pointLabel).join("; ")}
       >
+        <div className="daily-scale" aria-hidden="true">
+          <span>Base: {metricValue(0, result.metric)}</span>
+          <strong>
+            {maximumValue === null
+              ? "Sem valores disponíveis"
+              : `Teto: ${metricValue(maximumValue, result.metric)}`}
+          </strong>
+        </div>
         <div
           className="daily-bars"
           style={{ "--points": points.length } as CSSProperties}

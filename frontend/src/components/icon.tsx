@@ -123,13 +123,22 @@ export function Icon({
 }
 export function Brand() {
   return (
-    <div className="brand">
-      <span className="brand-mark">
-        <Icon name="store" size={25} />
-      </span>
-      <span>
-        loja<span className="brand-light">assistente</span>
-      </span>
+    <div className="brand" translate="no">
+      <svg
+        className="brand-symbol"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M10 4H4v24h6m12-24h6v24h-6M11 12h10M11 20h10" />
+      </svg>
+      <span>Loja Assistente</span>
     </div>
   );
 }

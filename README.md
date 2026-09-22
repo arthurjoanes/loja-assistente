@@ -1,12 +1,24 @@
 # Loja Assistente
 
-Faça perguntas sobre vendas e confira os números em tabela ou gráfico. Cada resultado informa o período, as lojas consideradas, o cálculo e a cobertura dos dados. O histórico permite rever perguntas anteriores sem recalcular os indicadores. A demonstração usa dados fictícios.
+Desenvolvi um assistente de análise de vendas para o gerente ou supervisor que precisa fazer uma pergunta e conferir o recorte e a conta. A demonstração usa lojas e vendas fictícias. O problema não é apenas somar: “Quanto vendi ontem somente em dinheiro?” não pode virar a receita geral quando o sistema não conhece a forma de pagamento.
 
-O problema é responder à pergunta certa dentro do acesso da conta. “Quanto vendi ontem somente em dinheiro?” não pode virar o total de todas as formas de pagamento. O servidor aceita apenas capacidades representáveis, autoriza as lojas e faz a conta no PostgreSQL; a interface mantém o recorte junto dos números. [Problema, solução e critérios](docs/problem-solution.md) · [decisões e código](docs/decisoes-tecnicas.md).
+Na pequena fixture manual, dois pedidos concluídos em 16/08/2026 somam **R$ 20 + R$ 10 = R$ 30**, com oito unidades e ticket de R$ 15. O pedido cancelado não entra; a loja de outra organização também não. A IA, quando habilitada, interpreta a pergunta; autorização e cálculo continuam no servidor. [Conta passo a passo](docs/problem-solution.md#uma-conta-pequena-que-pode-ser-refeita) · [decisões e código](docs/decisoes-tecnicas.md).
 
-![Evolução diária de vendas com lojas, período e cálculo](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
+A imagem abaixo usa outra base: a massa maior `synthetic-v1`, loja Centro, de 10 a 16/08/2026. Seus R$ 10.810,95 não são a conta manual de R$ 30.
 
-*Aplicação real em modo Demo, com dados sintéticos. [Consulta, recusa e nova tentativa válida](docs/operational-story.md), com versões, testes e limites da prova.*
+![Evolução diária com receita, período, cobertura e cálculo consultável](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
+
+*Captura histórica real de 22/09/2026, rodada `f98ee948…`, modo Demo sem IA: Centro, 10–16/08, R$ 10.810,95 e cobertura 7/7. É a massa `synthetic-v1`, diferente da fixture manual de R$ 30. Confira pergunta, período e linhas do cálculo na [imagem completa](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png). A [história de consulta, recusa e recuperação](docs/operational-story.md) identifica versões e limites. **A composição local posterior ainda não foi executada no navegador**: [qualidade do frontend](docs/frontend-quality.md).*
+
+## O que eu implementei
+
+- A passagem da pergunta a um plano estrito, com parser demo offline, adaptador estruturado e recusa de capacidades não representáveis ([interpretação](backend/src/loja_assistente/assistant/interpretation.py)).
+- A autorização por organização, usuário e loja, aplicada novamente ao consultar respostas e cálculos históricos ([auth](backend/src/loja_assistente/auth/service.py), [serviço analítico](backend/src/loja_assistente/analytics/service.py)).
+- As consultas predefinidas, centavos/Decimal, períodos comerciais e a distinção entre zero, ausência e cobertura parcial ([consultas](backend/src/loja_assistente/analytics/queries.py), [oráculo manual](docs/manual-fixture.md)).
+- A apresentação de uma resposta selecionada, com gráfico, tabela, cálculo sob demanda e continuação separada da seleção visual ([workspace](frontend/src/features/assistant/workspace.tsx), [estado](frontend/src/features/assistant/conversation-state.ts)).
+- A avaliação com casos congelados e esperado independente, além da reserva persistente de orçamento antes do despacho ao provedor ([avaliação](docs/live-evaluation.md), [orçamento e incerteza](docs/provider-budget.md)).
+
+Integrei FastAPI, SQLAlchemy/PostgreSQL, Next.js/React e o SDK do provedor; essas bibliotecas e o modelo são de terceiros. As decisões documentadas explicam a implementação atual e seus compromissos, sem atribuir a ela experiência comercial ou uma motivação histórica não registrada.
 
 ## Conferir uma análise
 
@@ -28,7 +40,7 @@ O script usa só a biblioteca padrão do Python 3.11+ e recalcula as contagens a
 
 ## Interpretação e cálculo separados
 
-A IA interpreta a pergunta. O servidor valida o plano, checa a autorização e faz a conta no banco; texto, tabela e gráfico usam o mesmo resultado. Isso está em [analytics/contracts.py](backend/src/loja_assistente/analytics/contracts.py), [auth/service.py](backend/src/loja_assistente/auth/service.py) e [analytics/queries.py](backend/src/loja_assistente/analytics/queries.py). [Arquitetura](docs/architecture.md).
+Quando habilitada, a IA interpreta a pergunta; no modo Demo, essa etapa usa o parser determinístico. O servidor valida o plano, checa a autorização e faz a conta no banco; texto, tabela e gráfico usam o mesmo resultado. Isso está em [analytics/contracts.py](backend/src/loja_assistente/analytics/contracts.py), [auth/service.py](backend/src/loja_assistente/auth/service.py) e [analytics/queries.py](backend/src/loja_assistente/analytics/queries.py). [Arquitetura](docs/architecture.md).
 
 Na avaliação histórica com GPT-5.6 Luna no Azure Foundry, o caminho modelo + backend acertou 47/48 tentativas, contra 24/48 do parser determinístico, em 24 perguntas repetidas duas vezes. As chamadas foram reais; os dados comerciais são sintéticos e a falha está documentada. Esse recorte não mede a qualidade de toda pergunta possível nem foi repetido na revisão visual.
 
@@ -51,12 +63,16 @@ O caminho LLM da API exige [orçamento persistente por organização](docs/provi
 
 ## Testes
 
-`dev.ps1 test` roda os testes de backend; a rodada desta entrega aprovou 353 casos, incluindo 40 novos casos ligados ao orçamento e seu executor. A avaliação offline também passou em 57/57. `dev.ps1 e2e` roda jornadas e casos puros: a revisão final aprovou 68, sendo 38 puros e 30 de navegador/HTTP. Build, tipos, lint e formato passaram. [Resultados, tentativas e escopo de cada revisão](docs/verification.md). O refinamento posterior de alinhamento, foco e composição de texto também passou na rodada final `f98ee948`, com 68 casos e três capturas novas. Os 11 testes de integridade histórica foram executados separadamente no host. [Escopo do candidato](docs/frontend-quality.md).
+`dev.ps1 test` roda o backend; `dev.ps1 e2e` reúne casos puros e jornadas de navegador. Nesta revisão, construí o backend atual e executei **364 testes**, **57 casos offline** e **39 testes puros de frontend**. Instalação pelo lock, lint, formato, tipos e build passaram. As **30 jornadas de navegador/HTTP do frontend atual não foram executadas**, devido ao bloqueio de inicialização já registrado.
+
+A prova histórica `f98ee948…` aprovou 68 casos (38 puros e 30 de navegador/HTTP) na composição anterior. Suas capturas não validam a fonte e a hierarquia locais posteriores. [Resultados, falhas de preparação, ambientes e limites](docs/verification.md#revisão-autoral-de-portfólio--22092026).
 
 O proxy limita a entrada a 16 KiB e usa um prazo total de 45 s para receber o corpo e encaminhar a resposta. Leitura expirada retorna 408; corpo excessivo retorna 413. Uma resposta interrompida é apresentada como falha, sem virar resultado vazio. [Contrato e testes de robustez](docs/security.md).
 
 ## Limites
 
-Cada pergunta escolhe uma métrica. "Quanto vendi ontem só em dinheiro?" pede esclarecimento em vez de chutar o total. Pagamento, vendedor, categoria, produto e horário não cabem no plano atual, e comparações exigem cobertura completa. A base tem 6.316 pedidos fictícios em 90 dias, sem lucro, estoque, imposto ou reembolso parcial. Os testes de protocolo não medem compreensão de português, e não medi ganho de produtividade com usuários reais. [Parser demo](docs/demo-parser.md) · [métricas](docs/metrics.md) · [decisões técnicas](docs/decisoes-tecnicas.md).
+Cada pergunta escolhe uma métrica. "Quanto vendi ontem só em dinheiro?" pede esclarecimento em vez de chutar o total. Filtros por forma de pagamento, vendedor, categoria, produto específico ou horário não cabem no plano atual; o ranking de produtos é uma capacidade distinta e está disponível. Comparações exigem cobertura completa. A base tem 6.316 pedidos fictícios em 90 dias, sem lucro, estoque, imposto ou reembolso parcial. Os testes de protocolo não medem compreensão de português, e não medi ganho de produtividade com usuários reais. [Parser demo](docs/demo-parser.md) · [métricas](docs/metrics.md) · [decisões técnicas](docs/decisoes-tecnicas.md).
 
-FastAPI, PostgreSQL, SQLAlchemy/Alembic, Next.js/TypeScript. Licença MIT.
+O design foi aprovado pelo autor em 22/09/2026. A **validação de execução do frontend atual permanece pendente**. Os checks desta revisão documental, as provas históricas e o bloqueio de novas jornadas estão separados em [verificação](docs/verification.md). Não houve chamada paga nesta revisão.
+
+Código sob MIT. Source Sans 3 mantém sua [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e [origem](frontend/src/app/fonts/sources.json).

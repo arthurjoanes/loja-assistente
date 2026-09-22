@@ -2,7 +2,7 @@
 
 Uma soma pode estar correta e ainda responder à pergunta errada. Se a pessoa pedir receita somente em dinheiro, devolver a receita geral esconderia uma limitação dos dados. Esta jornada mostra a consulta válida, a recusa de um filtro não representável e uma nova pergunta válida com o mesmo recorte.
 
-**Resultado local de 22/09/2026:** as 68 verificações Playwright passaram, sem skip ou retry: 38 casos puros, 29 jornadas existentes de navegador/HTTP e a nova história abaixo. O [índice da entrega](evidence/operational-proof-20260922/index.json) separa essa execução das provas de backend, das tentativas que falharam e da avaliação paga histórica. Os dados são sintéticos, com **Demo sem IA**; não houve chamada paga nem participante humano.
+**Resultado histórico de 22/09/2026, anterior à direção visual local atual:** as 68 verificações Playwright passaram, sem skip ou retry: 38 casos puros, 29 jornadas existentes de navegador/HTTP e a nova história abaixo. O [índice da entrega](evidence/operational-proof-20260922/index.json) separa essa execução das provas de backend, das tentativas que falharam e da avaliação paga histórica. Os dados são sintéticos, com **Demo sem IA**; não houve chamada paga nem participante humano.
 
 ## 1. Consulta válida com cálculo conferível
 

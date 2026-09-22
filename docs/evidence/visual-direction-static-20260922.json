@@ -1,0 +1,296 @@
+{
+  "date": "2026-09-22T09:23:02.590317+00:00",
+  "review": "Direção visual: proposta comparada e implementação estática",
+  "baseline_head": "849428f4c1fd6b166516553f43c5466d8fee6de0",
+  "baseline_includes_local_changes": true,
+  "scope": "Frontend e documentação; nenhum servidor, navegador, screenshot de aplicação ou chamada paga executado nesta rodada.",
+  "checks": {
+    "eslint": "passed",
+    "prettier": "passed",
+    "typescript": "passed",
+    "next_build": "passed",
+    "playwright_list": 69,
+    "browser_http_executed": 0,
+    "pure_tests": 39,
+    "pure_format_assertions": null,
+    "contrast_pairs": 9,
+    "font_source_hashes": "verified",
+    "brand_sizes_px": [
+      16,
+      24,
+      32
+    ]
+  },
+  "sources": [
+    {
+      "path": "frontend/.prettierignore",
+      "baseline_lf_sha256": "78fcf1f735665fd6d85521149831f05d674d9a6fa60403b3ec28f60ea7782b3a",
+      "candidate_lf_sha256": "a7ff2a1f6a29373f2ae18bbb1f6a77970d221e92ba24acc603058c97fbbb8075"
+    },
+    {
+      "path": "frontend/e2e/domain.spec.ts",
+      "baseline_lf_sha256": "c5190d0a96a204798fffc09cfbbdb6899fdd5018ca10611a0cd6e7ece1843dfa",
+      "candidate_lf_sha256": "733cba6d17edd38158aca1c9ee2110b9a03e8f70e43e31e49b3b332616107e3b"
+    },
+    {
+      "path": "frontend/e2e/journeys.spec.ts",
+      "baseline_lf_sha256": "290d6d15af59807b8b69d666289673681d7208ada0ea16f8f6507f6157258507",
+      "candidate_lf_sha256": "61d8f74277cba1285b0d1412dcdb4ee5767f05249fb8a763332a0fd36809baac"
+    },
+    {
+      "path": "frontend/public/brand/mark-mono.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "b5dfd695c9745f6bc6266da5eecce9fd9844baa26056b5a750a6ed0e70607809"
+    },
+    {
+      "path": "frontend/public/brand/mark-reverse.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "5bed6734956f4ebf863ef2d065b4d05ad06c871e132f6701e303735af743223c"
+    },
+    {
+      "path": "frontend/public/brand/mark.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "28447cc59ef562e004995690ec4c35c984938ebe49dcf93afc7e02869c9f8721"
+    },
+    {
+      "path": "frontend/public/brand/mono.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "6b66fb1d921668301bc6ecbbc4911bfdd03b90f7392c00ee200e689a1f4cfc6a"
+    },
+    {
+      "path": "frontend/public/brand/reverse.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "027cf32fc6e27fb3de63eaa456cedd7395d99f3b2971e490baadb22de0d9a483"
+    },
+    {
+      "path": "frontend/public/brand/wordmark.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "7caf01ca60438de2a090844e517546322e98216e612b5a0715617059b596b44c"
+    },
+    {
+      "path": "frontend/src/app/fonts/source-sans-3.woff2",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "5e383d6a85b6c6f3c470672af94416776d83bd9b3a933280b10cfd6b8542f785"
+    },
+    {
+      "path": "frontend/src/app/fonts/source-sans-LICENSE.md",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328"
+    },
+    {
+      "path": "frontend/src/app/fonts/sources.json",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "84efa3322039daafb6d053b194195422ac6de8a3f91225ce515c5458dbc0a54d"
+    },
+    {
+      "path": "frontend/src/app/globals.css",
+      "baseline_lf_sha256": "97be3d5be859b31e1ab4a944b8af17c66a37eb041135405a5d44111cee014bd2",
+      "candidate_lf_sha256": "d06f50e2f6ee98d6c5603ac97f2d3225583a8f53c4f401281d2a3a216c0eb7a8"
+    },
+    {
+      "path": "frontend/src/app/icon.svg",
+      "baseline_lf_sha256": null,
+      "candidate_lf_sha256": "3f2c4f305e4f53418538fd1285d4577de19c829bd40963f0434e6d7bc02f15bf"
+    },
+    {
+      "path": "frontend/src/app/layout.tsx",
+      "baseline_lf_sha256": "860e0fcc1947827ad12d5b50a9e6abe8a23b72d3c32753c386acf2c21aa4f443",
+      "candidate_lf_sha256": "6bda347f6ad256ae43eb9f1227bf94e344106f8c2c4e85234e39e19eb09a6010"
+    },
+    {
+      "path": "frontend/src/components/icon.tsx",
+      "baseline_lf_sha256": "d0939f4d8e51f6cf016f5c09fe154eb3fc789383027d9a761726684154da414f",
+      "candidate_lf_sha256": "32e5c3799e42ca6dc255eac09b029e907e32c9b7e119b0709696c5f0b6d45672"
+    },
+    {
+      "path": "frontend/src/features/analytics/daily-series.ts",
+      "baseline_lf_sha256": "72e93e224f14194b35bc10645f44493cf1adc4ee415e017061fd8b4d0f632cd4",
+      "candidate_lf_sha256": "7e8ea6ac197546894a71e45d5e7fff877a89aa3aa4fc02d3929bac86758ff722"
+    },
+    {
+      "path": "frontend/src/features/analytics/result.tsx",
+      "baseline_lf_sha256": "f0af97e16c291f5580891f691a3b28f892923cf61c117755196d4782024d95aa",
+      "candidate_lf_sha256": "e598c2ab0a6b23f06c337646615f44a4b6fe93cc42be0c1f3a7ded91686b82c3"
+    },
+    {
+      "path": "frontend/src/features/analytics/visualization.tsx",
+      "baseline_lf_sha256": "d69a502ae46b74bc9d09db1503747e904f7e59e5c8161fbe0d5c64b7a8aee26e",
+      "candidate_lf_sha256": "a7e04a531f031594a20eec06e4f5a974a26a5cd8bf01b0104225b0e6c1d9142e"
+    },
+    {
+      "path": "frontend/src/features/assistant/analysis-start.tsx",
+      "baseline_lf_sha256": "e4c2ced3508b998ffcf754d26af7be6eab25887e97756c072a86b4b3876f0e0a",
+      "candidate_lf_sha256": "37a7932fd7c5fc427454148f501eccbe307bf70de12e6620546dd4e8a06327b6"
+    },
+    {
+      "path": "frontend/src/features/assistant/workspace.tsx",
+      "baseline_lf_sha256": "084bdc7e67030918ff4f76b669ab79e67329e4a5e754655831fa7e5fc1ae4b60",
+      "candidate_lf_sha256": "6ef26b554d66fbc8b8ac0ec69e0b38631c1e5eb8778372e51e73e4f15ecbbcee"
+    }
+  ],
+  "unchanged_frontend_sources": [
+    "frontend/src/app/api/[...path]/route.ts",
+    "frontend/src/app/page.tsx",
+    "frontend/src/features/analytics/evidence.tsx",
+    "frontend/src/features/assistant/analysis-context.tsx",
+    "frontend/src/features/assistant/analysis-filters.tsx",
+    "frontend/src/features/assistant/analysis-sidebar.tsx",
+    "frontend/src/features/assistant/conversation-state.ts",
+    "frontend/src/features/assistant/login.tsx",
+    "frontend/src/features/assistant/operations.tsx",
+    "frontend/src/features/assistant/period-selection.ts",
+    "frontend/src/features/assistant/question-composer.tsx",
+    "frontend/src/features/assistant/use-workspace.ts",
+    "frontend/src/lib/api.ts",
+    "frontend/src/lib/contracts.ts",
+    "frontend/src/lib/format.ts",
+    "frontend/src/lib/server/proxy-lifetime.ts",
+    "frontend/src/lib/server/request-body.ts"
+  ],
+  "contrasts": [
+    {
+      "name": "ink",
+      "foreground": "#203a41",
+      "background": "#ffffff",
+      "minimum": 4.5,
+      "ratio": 12.05
+    },
+    {
+      "name": "muted",
+      "foreground": "#52666c",
+      "background": "#f0f2f3",
+      "minimum": 4.5,
+      "ratio": 5.38
+    },
+    {
+      "name": "query-detail",
+      "foreground": "#52666c",
+      "background": "#e2eaec",
+      "minimum": 4.5,
+      "ratio": 4.95
+    },
+    {
+      "name": "action",
+      "foreground": "#ffffff",
+      "background": "#0c6273",
+      "minimum": 4.5,
+      "ratio": 6.98
+    },
+    {
+      "name": "selected",
+      "foreground": "#0c6273",
+      "background": "#e6f0f2",
+      "minimum": 4.5,
+      "ratio": 6.02
+    },
+    {
+      "name": "chart",
+      "foreground": "#147b91",
+      "background": "#ffffff",
+      "minimum": 3,
+      "ratio": 4.92
+    },
+    {
+      "name": "control",
+      "foreground": "#7a899e",
+      "background": "#ffffff",
+      "minimum": 3,
+      "ratio": 3.56
+    },
+    {
+      "name": "focus",
+      "foreground": "#a4520a",
+      "background": "#e2eaec",
+      "minimum": 3,
+      "ratio": 4.54
+    },
+    {
+      "name": "coverage",
+      "foreground": "#23704e",
+      "background": "#ffffff",
+      "minimum": 4.5,
+      "ratio": 6.0
+    }
+  ],
+  "assets": [
+    {
+      "path": "static/chunks/0cegfsgm6lvdz.js",
+      "bytes": 183103,
+      "gzip_bytes": 48175,
+      "sha256": "82d28975ef4120af4576e36df96453dca7465c104a3dc53aa1be2625e8ef685d"
+    },
+    {
+      "path": "static/chunks/0cz1d0mv5g_q7.js",
+      "bytes": 112594,
+      "gzip_bytes": 39373,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+    },
+    {
+      "path": "static/chunks/0hr0ta6jma1u1.css",
+      "bytes": 30204,
+      "gzip_bytes": 6832,
+      "sha256": "e86d8378486f0c56ef3878357ffbed7f3eca5dace92b50f4e1a56da8e953edd6"
+    },
+    {
+      "path": "static/chunks/0w5k2hzz7v4r9.js",
+      "bytes": 43926,
+      "gzip_bytes": 12728,
+      "sha256": "921d1a3f5cf7e22c1b28a1ee2f783e80e936c8c5d154985fe1e7cacdaf8f7b56"
+    },
+    {
+      "path": "static/chunks/27t_qfc-3_lzs.js",
+      "bytes": 229156,
+      "gzip_bytes": 71459,
+      "sha256": "f71552684e86daa3e94faad9002fb69d4e8d308a997ca88fdde74e54b5191870"
+    },
+    {
+      "path": "static/chunks/3fntmmi971322.js",
+      "bytes": 14377,
+      "gzip_bytes": 3661,
+      "sha256": "34ed6abf4c6d0d1bb3dc56d3f133d2a5dbc3a3c89c791deab314e27143ac14ce"
+    },
+    {
+      "path": "static/chunks/3l04zcqx63h3y.js",
+      "bytes": 16797,
+      "gzip_bytes": 5835,
+      "sha256": "49cf866bf4d0282119e51835114325403f28e53fd0bccb63dde7ba3114a8e9fb"
+    },
+    {
+      "path": "static/chunks/turbopack-36t3xf3k-le2x.js",
+      "bytes": 9688,
+      "gzip_bytes": 3842,
+      "sha256": "86aebdf799cefd732b2a1f287f7d4a357d8617fefa0d6c99009f4f0631659b0e"
+    },
+    {
+      "path": "static/di3MHDCq060QZV2W8sUvk/_buildManifest.js",
+      "bytes": 219,
+      "gzip_bytes": 151,
+      "sha256": "9476e0afd3f9da68a64e6ec58631191fd3eaca62c9f5a377e7517fe9a89e59ea"
+    },
+    {
+      "path": "static/di3MHDCq060QZV2W8sUvk/_clientMiddlewareManifest.js",
+      "bytes": 96,
+      "gzip_bytes": 66,
+      "sha256": "5483e3295dc35dfe29ea932efc85341c916f10ff78ff5b0e965e003710893a4a"
+    },
+    {
+      "path": "static/di3MHDCq060QZV2W8sUvk/_ssgManifest.js",
+      "bytes": 80,
+      "gzip_bytes": 64,
+      "sha256": "678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00"
+    },
+    {
+      "path": "static/media/source_sans_3-s.p.0bgocza2xk39f.woff2",
+      "bytes": 170188,
+      "gzip_bytes": 170133,
+      "sha256": "5f16566f7a40d39b339ad26be151fa5a1ab1f0c2574c7a2e619765584a1acbd8"
+    }
+  ],
+  "limits": [
+    "Propostas SVG/PNG são simulações, não execução da interface.",
+    "Pares de contraste não certificam todos os estados nem WCAG integral.",
+    "Fontes e marcas inspecionadas como arquivos/raster; carregamento e favicon no navegador não verificados.",
+    "Bloqueio anterior de inicialização preservado; sem repetição ou alternativa.",
+    "Nenhuma aprovação visual/publicação atribuída aos checks estáticos."
+  ]
+}

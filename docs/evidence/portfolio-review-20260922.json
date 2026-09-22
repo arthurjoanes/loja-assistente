@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-22",
+  "base_commit": "0422f49e3e2c463ce8717cd258d0a8bf253a0ca7",
+  "scope": "documentation review; application/frontend/backend/budget/evaluation sources unchanged",
+  "source_fingerprint": {
+    "paths": "baseline Git tracked + nonignored untracked under backend/,frontend/,data/,scripts/,evals/",
+    "files": 165,
+    "normalization": "CRLF to LF; SHA256 of concatenated sorted path + NUL + source SHA256 + LF",
+    "sha256": "f905f1984846f91682accc8fb712188a70977482656b084e095418d1fded78a1"
+  },
+  "backend": {
+    "dockerfile": "backend/Dockerfile",
+    "image": "sha256:54aa5ebe173e51bb354be5e4ee359fc4e7154040e80f2793ece2d7c0d5881b3e",
+    "python": "3.12.14",
+    "command": "python /app/scripts/check.py",
+    "tests_passed": 364,
+    "skipped": 0,
+    "warnings": 1,
+    "seconds": 72.01,
+    "offline_cases": 57,
+    "ruff": "passed",
+    "mypy": "passed",
+    "fresh_image_build": true,
+    "source_mount": "current candidate, read-only; report folder separate",
+    "preparation_failures": [
+      "missing child mountpoint under read-only bind",
+      "invalid HTTP provider configuration rejected before migration"
+    ],
+    "paid_calls": 0
+  },
+  "frontend": {
+    "fresh_install": "npm ci --no-audit --fund=false: passed",
+    "typecheck": "passed",
+    "production_build": "passed",
+    "lint": "passed",
+    "format": "passed",
+    "pure_tests": 39,
+    "pure_seconds": 1.3,
+    "browser_tests_executed": 0,
+    "browser_tests_pending": 30,
+    "npm_audit_vulnerabilities": 0,
+    "browser": "previous startup policy rejection preserved",
+    "environment": {
+      "platform": "Windows host",
+      "node": "24.19.0",
+      "npm": "11.17.0",
+      "next": "16.3.5",
+      "react": "19.3.0"
+    }
+  },
+  "secrets": {
+    "tool": "Gitleaks 8.30.1",
+    "current_files": 396,
+    "reachable_commits": 7,
+    "config": ".gitleaks.toml unchanged",
+    "exit_code": 0,
+    "findings": 0
+  },
+  "historical_evidence": {
+    "verifier": "scripts/verify_evidence.py",
+    "artifacts": 65,
+    "sources": 62,
+    "case_sets": 2,
+    "new_evaluation": false
+  },
+  "historical_screenshots": {
+    "run": "f98ee94864384422bd835bcabd8f3a11",
+    "inspected": 3,
+    "new_images": 0,
+    "validate_current_frontend": false
+  },
+  "classification": "pending frontend validation",
+  "resources": "own temporary containers/network removed; no external volumes removed",
+  "backend_image_scan": {
+    "tool": "Trivy 0.74.0",
+    "scanner_digest": "sha256:62b1e65e8869bc4b4c6aa4fa2b21595256c7c2f6018a9d9ad61caf87187c1969",
+    "artifact": "portfolio-autoria-loja-backend:20260922",
+    "exit_code": 0,
+    "vulnerabilities": 0,
+    "database_updated_at": "2026-09-22T07:24:27.402429319Z",
+    "scope": "current backend image via Docker only, OS and Python packages; no severity filter, empty ignorefile; no frontend image or deployment review",
+    "warnings": [
+      "Alpine 3.24 missing from EOL list",
+      "package metadata licenses may have additional terms"
+    ]
+  }
+}
