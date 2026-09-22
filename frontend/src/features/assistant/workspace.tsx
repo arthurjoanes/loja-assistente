@@ -252,7 +252,6 @@ export function Workspace() {
             className="explorer-layout"
             aria-busy={busy}
           >
-            {!hasResponse && queryControls}
             <div className="conversation-column" key="result">
               {hasResponse && (
                 <div className="result-toolbar">
@@ -331,7 +330,7 @@ export function Workspace() {
                 )}
               </div>
             </div>
-            {hasResponse && queryControls}
+            {queryControls}
           </main>
         )}
       </div>
