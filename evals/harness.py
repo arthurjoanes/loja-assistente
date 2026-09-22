@@ -5,6 +5,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Literal
 from unittest.mock import patch
+from uuid import UUID
 
 from fastapi.testclient import TestClient
 from httpx import Response
@@ -158,8 +159,25 @@ def execute_case(client: TestClient, case: dict[str, Any]) -> dict[str, Any]:
             "authorization",
             "Resposta recusada expôs resultado financeiro.",
         )
+        error_content = dict(payload)
+        if "request_id" in error_content:
+            request_id = error_content.pop("request_id")
+            try:
+                correlation = UUID(request_id) if isinstance(request_id, str) else None
+            except ValueError:
+                correlation = None
+            require(
+                correlation is not None
+                and correlation.version == 4
+                and str(correlation) == request_id,
+                "authorization",
+                "Resposta recusada retornou request_id inválido.",
+            )
+        # Random correlation digits are metadata, not a financial observation.
+        # Inspect every other field, including nested values and free-form detail.
+        error_text = json.dumps(error_content, ensure_ascii=False)
         require(
-            "3300" not in response.text and "Brisa Comércio" not in response.text,
+            "3300" not in error_text and "Brisa Comércio" not in error_text,
             "authorization",
             "Resposta recusada expôs dados proibidos da fixture.",
         )

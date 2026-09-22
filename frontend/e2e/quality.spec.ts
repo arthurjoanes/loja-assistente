@@ -368,6 +368,7 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em sete geometria
     contentType: "application/json",
   });
   if (!process.env.LAYOUT_BASELINE) {
+    expect(chartControls).toHaveLength(2);
     for (const control of chartControls) {
       expect(
         control.height,

@@ -91,3 +91,60 @@ def test_evaluation_classifies_induced_response_errors(
     with pytest.raises(EvaluationFailure) as failure:
         execute_case(fake_client, case)
     assert failure.value.stage == stage
+
+
+def test_evaluation_accepts_a_correlation_uuid_containing_fixture_digits() -> None:
+    from unittest.mock import Mock
+
+    from httpx import Response
+
+    case = next(case for case in CASES if case["id"] == "user_field_injected")
+    client = Mock(spec=TestClient)
+    client.post.return_value = Response(
+        422,
+        json={
+            "detail": "Entrada inválida. Confira os campos.",
+            "request_id": "33000000-0000-4000-8000-000000000000",
+        },
+    )
+    assert execute_case(client, case) == {"http_status": 422}
+
+
+def test_real_validation_error_with_fixture_digits_is_not_a_leak(
+    manager_client: TestClient,
+) -> None:
+    from unittest.mock import patch
+    from uuid import UUID
+
+    case = next(case for case in CASES if case["id"] == "user_field_injected")
+    with patch(
+        "loja_assistente.app.uuid4",
+        return_value=UUID("33000000-0000-4000-8000-000000000000"),
+    ):
+        assert execute_case(manager_client, case) == {"http_status": 422}
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"detail": "Receita proibida: 3300"},
+        {"detail": "Brisa Comércio"},
+        {"detail": "Inválido", "result": None},
+        {"detail": "Inválido", "totals": {}},
+        {"detail": "Inválido", "extra": {"revenue_cents": "3300"}},
+        {"detail": "Inválido", "request_id": "3300"},
+        {"detail": "Inválido", "request_id": {"revenue_cents": "3300"}},
+    ],
+)
+def test_evaluation_still_rejects_financial_data_and_invalid_metadata(payload: dict) -> None:
+    from unittest.mock import Mock
+
+    from evals.harness import EvaluationFailure
+    from httpx import Response
+
+    case = next(case for case in CASES if case["id"] == "user_field_injected")
+    client = Mock(spec=TestClient)
+    client.post.return_value = Response(422, json=payload)
+    with pytest.raises(EvaluationFailure) as failure:
+        execute_case(client, case)
+    assert failure.value.stage == "authorization"

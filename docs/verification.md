@@ -1,5 +1,48 @@
 # Testes locais
 
+## Auditoria final sobre d702d127 — 22/09/2026
+
+Baseline: `origin=https://github.com/arthurjoanes/loja-assistente.git`, branch `main`, SHA `d702d12774bd1c69a58c881eb26058dd2385a41e`, árvore rastreada limpa em 22/09/2026, por volta de 13:00 −03. Inventário: 398 arquivos rastreados, 36 Markdown e 35 PNG/SVG; nenhum novo arquivo não ignorado. `.env`, instruções locais `AGENTS.md`, caches e `.runtime` estavam ignorados. Credenciais existentes não foram copiadas. Foram lidos README, instruções, contratos, arquitetura, decisões, CI e caminhos críticos de autorização, cálculo, orçamento, proxy e estado da interface; testes, scripts e imagens foram amostrados. Inventário não significa leitura de cada fonte histórica.
+
+**Avaliação de contratação:** chamaria para entrevista pelo cálculo com esperado independente, isolamento por organização, reautorização de histórico e reserva de orçamento em transações próprias. A falha reproduzida do avaliador diminuía a confiança no sinal do CI, embora não demonstrasse vazamento do produto. O escopo fechado é proporcional: consultas predefinidas evitam SQL livre; o orçamento só é necessário no caminho opcional com modelo. Uma pergunta técnica útil seria pedir a demonstração de por que o rollback de uma resposta não libera uma chamada já despachada. Qualidade de linguagem aberta, benefício com usuários e operação pública não foram comprovados por esta revisão.
+
+| Requisito | Evidência atual e situação | Correção ou limite |
+| --- | --- | --- |
+| Dados, domínio e autorização | Conforme nos cenários executados: valores manuais, fuso, cobertura, IDs alheios e ausência de SQL proibido | 373 testes, incluindo nove regressões do avaliador |
+| Testes efetivos e CI | Corrigido: avaliação falhava ao encontrar `3300` dentro de um UUID | Metadado validado separadamente; payload financeiro continua recusado |
+| UI, hierarquia, estados, teclado e gráficos | Conforme nos percursos automatizados; comparação visual completa não verificada | 30 jornadas/HTTP, sete geometrias; capturas atuais de início desktop, início móvel e cálculo inspecionadas |
+| Asserções de geometria/tipografia | Corrigido: laços poderiam passar com coleções vazias | Exigem 12 controles, um campo, três metadados e dois botões de gráfico/tabela |
+| Público, problema, exemplo, decisões e limites | Conforme na leitura simulada apenas do README | Conta de R$ 30 completa, cobertura explicada, alternativa com filtros e mapa de manutenção; sem estudo com leitores |
+| Fontes e identidade visual | Parcial: fontes primárias e aplicação dos mecanismos conferidas; efeito com pessoas não verificado | Microsoft: esquema JSON; PostgreSQL: precisão; OWASP: permissão a cada acesso. Pesquisa visual anterior é histórica |
+| Imagens e provas | Conforme quanto à separação de base manual, massa visual e avaliação histórica | Sem substituir capturas antigas; propostas de design continuam identificadas como simulações |
+| Conteúdo público, instalação e manutenção | Conforme no escopo dos checks; implantação pública não verificada | Locks, scans e guia de operação preservados; nenhum commit, push ou deploy |
+
+**Falha preservada e causa:** a rodada inicial `a32041cd926e4ebf827aa3f05afbe3f4` executou 364 testes com sucesso, mas a avaliação seguinte terminou **56/57**, código 1, no caso `user_field_injected`. `evals/harness.py` procurava a substring `3300` no JSON inteiro, incluindo o `request_id` aleatório da resposta 422. O controle determinístico com UUID `33000000-0000-4000-8000-000000000000` reproduziu a mesma falha antes da correção. O ID original daquela resposta não foi gravado pelo relatório; a atribuição desse caso específico à colisão é inferida do caminho 422 e confirmada pelo controle reproduzível, não pela recuperação do ID original.
+
+Agora o avaliador separa somente um `request_id` que seja UUID v4 canônico e inspeciona todos os outros campos, inclusive conteúdo aninhado. Os nove novos testes cobrem o ID sintético no comparador e na API real, valores e organização proibidos, `result`, `totals` e metadados malformados. As guardas de produto, o esperado financeiro e os casos históricos não mudaram. As duas falhas de UI do commit `2e8edd1` e a ausência de `frontend/test-results` no upload **já estavam corrigidas no baseline**; não foram tratadas como defeitos atuais.
+
+**Candidata final:** rodada `0a49ef18a5754dbd8c075b736ba0c489`, fontes congeladas sobre o SHA acima mais as alterações locais, identidade SHA-256 `45a9ed9fb0288defb0abbd08c4669d09b4573fb3a82d18d8583705b3d0af25dc`. Os arquivos de execução permaneceram estáveis. Backend: Ruff, formato, mypy, migrações 0001–0003 e **373 testes**, zero falhas/erros/skips; **57/57** avaliações offline. Frontend: build de produção, ESLint, TypeScript, Prettier e **69 casos Playwright** em 67,107 s, sendo 39 puros e 30 navegador/HTTP, zero falhas/skips/retries. Durações em host compartilhado não são benchmark.
+
+O executor `scripts/prove_budget_ui.py` construiu imagens dos Dockerfiles/locks, com Python 3.12.14, Node 24.19.0, PostgreSQL 17.11 e Playwright 1.63.0. Usou banco novo em memória, rede interna, nenhuma porta publicada, chave vazia e `LLM_ENABLED=false`. A limpeza verificou os dois labels de propriedade antes de encerrar apenas os recursos descartáveis daquela rodada. Serviços das outras auditorias não foram administrados. A instalação Windows `setup/start` e zoom nativo não foram repetidos.
+
+Em uma cópia nova do frontend, `npm ci --no-audit --fund=false` instalou 349 pacotes com cache próprio; `npm audit --package-lock-only --json` retornou zero achados. O npm avisou sobre o ciclo de suporte do ESLint 9 e aprovação de script de instalação do `unrs-resolver`; o fluxo Docker de lint/build passou. Gitleaks 8.30.1, com redação e configuração existente, encontrou zero segredos em 11 commits alcançáveis e nos 398 arquivos rastreados da candidata. Trivy 0.74.0, sem exclusões nem filtro de severidade, retornou zero vulnerabilidades nas imagens backend `4ca2d355ab3e…` e frontend `1666d52bdcb4…`; permanecem os avisos do scanner sobre EOL do Alpine 3.24 e termos de metadados de licença. Esses scans não são pentest.
+
+`python scripts/verify_evidence.py` passou antes e depois: 65 artefatos originais, 62 fontes históricas e dois conjuntos de casos, sem escrita/rede. A falha paga `final-bf-04` e seus números continuam preservados. A checagem final por parser GFM examinou os 36 Markdown sem falha de caminho local ou âncora. O link anônimo do artefato remoto retornou 404, mas a API confirmou `10703737289`, não expirado, com expiração em 21/12/2026; isso não equivale a baixar o ZIP autenticado. O resumo e a captura versionados continuam disponíveis, sem depender desse download.
+
+**Markdown publicado e candidata local:** em 22/09/2026, o README da raiz foi conferido no GitHub no baseline `d702d127…`, incluindo hierarquia, parágrafos, tabelas, código, imagens, textos alternativos, legendas, âncoras e navegação. Em 320 px não houve rolagem horizontal global; tabelas largas mantiveram rolagem na própria região. Essa inspeção pertence à versão publicada, não às edições locais seguintes.
+
+A candidata também foi renderizada em Chromium offline com parser GFM e folhas de estilo obtidas do GitHub. A revisão conjunta dos seis READMEs cobriu 24 combinações: larguras de 1440 e 320 px, temas claro e escuro, quatro por projeto. As imagens carregaram e não houve overflow global; as aberturas e tabelas móveis foram inspecionadas. Esse preview verifica a composição local, mas não reproduz toda a sanitização, navegação ou recursos do GitHub e não comprova publicação da candidata.
+
+A [orientação oficial para README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) sustenta a precedência `.github` → raiz → `docs` e a preferência por links relativos internos; a [sintaxe oficial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#section-links) explica âncoras e títulos repetidos. Um único título principal, a concisão dos parágrafos e a densidade escolhida de imagens são decisões editoriais desta revisão, não cotas impostas pelo GitHub.
+
+Para reproduzir a prova completa em ambiente com Docker, a partir da raiz, escolhendo uma saída fora do repositório:
+
+```powershell
+python scripts/prove_budget_ui.py --output "$env:TEMP/loja-assistente-audit"
+```
+
+Os resultados locais brutos ficaram fora do Git; este resumo preserva a falha, o controle reproduzível e o escopo da aprovação. Acesso público ao artefato, comparação visual pareada, leitor de tela, desempenho percebido, backup/restore e implantação continuam sem nova comprovação. A redução de legendas e a posição dos detalhes no README são escolhas editoriais; não são regras de quantidade de imagens ou palavras impostas pelo GitHub.
+
 ## CI da interface publicada — 22/09/2026
 
 O [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226), SHA **`73aa1fff1e061b6f7c562d788544f4c968b50b7e`**, tentativa 1, terminou com sucesso: **69 casos Playwright em 55,626 s**, sendo 39 puros e 30 de navegador/HTTP, sem falha, skip ou retry. Chromium/Playwright 1.63.0, um worker, Next 16.3.5 e React 19.3.0. Build, 364 testes de backend, avaliação offline, frontend checks, demo HTTP, scans e limpeza também passaram. O modo Demo estava ativo, `LLM_ENABLED=false`, chave vazia; `LAYOUT_BASELINE` não estava definido, portanto os checks de reflow/foco foram exigidos.
