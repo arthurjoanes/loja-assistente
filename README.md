@@ -34,6 +34,20 @@ A imagem abaixo usa outra base: a massa maior `synthetic-v1`, loja Centro, de 10
 
 Integrei FastAPI, SQLAlchemy/PostgreSQL, Next.js/React e o SDK do provedor. Essas bibliotecas e o modelo são de terceiros; a composição, os contratos e os testes acima pertencem à implementação deste projeto.
 
+## Stack
+
+<p>
+  <img src="docs/stack/python.svg" alt="Python" width="72" height="72">
+  <img src="docs/stack/fastapi.svg" alt="FastAPI" width="72" height="72">
+  <img src="docs/stack/postgresql.svg" alt="PostgreSQL" width="72" height="72">
+  <img src="docs/stack/typescript.svg" alt="TypeScript" width="72" height="72">
+  <img src="docs/stack/react.svg" alt="React" width="72" height="72">
+  <img src="docs/stack/nextjs.svg" alt="Next.js" width="72" height="72">
+  <img src="docs/stack/docker.svg" alt="Docker" width="72" height="72">
+</p>
+
+Python e FastAPI na API; PostgreSQL nos dados e controles; TypeScript, React e Next.js na interface. Docker Compose executa a demo; Azure OpenAI é opcional.
+
 ## Conferir uma análise
 
 1. Entre com uma conta demo e pergunte **Mostre a evolução diária da receita nos últimos 7 dias**. Confira as lojas e o período exibidos no resultado. Datas escritas na pergunta prevalecem sobre o filtro.
@@ -101,3 +115,5 @@ Cada pergunta escolhe uma métrica. "Quanto vendi ontem só em dinheiro?" pede e
 Este repositório entrega uma demonstração local. Comparação visual pareada, zoom nativo, leitor de tela, acessibilidade integral e desempenho percebido continuam sem comprovação; as jornadas automatizadas têm o escopo registrado em [verificação](docs/verification.md). Implantação pública exige configuração própria de identidade, HTTPS, cookies e proteção operacional.
 
 Código sob MIT. Source Sans 3 mantém sua [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e [origem](frontend/src/app/fonts/sources.json).
+
+Ícones da stack: [Devicon — licença MIT](docs/stack/LICENSE.devicon).
