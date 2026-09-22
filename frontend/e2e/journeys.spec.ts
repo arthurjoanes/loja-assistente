@@ -325,16 +325,34 @@ test("celular permite teclado, filtros e leitura sem overflow horizontal", async
   await expect(
     page.getByRole("button", { name: "Editar pergunta" }),
   ).toHaveCount(0);
-  const queryBeforeSuggestions = await page
-    .locator("#query-controls")
+  const suggestionsBeforeQuery = await page
+    .locator(".welcome")
     .evaluate((element) =>
       Boolean(
-        element.compareDocumentPosition(document.querySelector(".welcome")!) &
-        Node.DOCUMENT_POSITION_FOLLOWING,
+        element.compareDocumentPosition(
+          document.querySelector("#query-controls")!,
+        ) & Node.DOCUMENT_POSITION_FOLLOWING,
       ),
     );
-  expect(queryBeforeSuggestions).toBe(true);
+  expect(suggestionsBeforeQuery).toBe(true);
+  const suggestions = page.locator(".suggestions").getByRole("button");
+  await expect(suggestions).toHaveCount(6);
   await page.getByRole("button", { name: "Abrir menu" }).focus();
+  for (const name of [
+    "Receita de ontem",
+    "Ranking de produtos",
+    "Evolução diária",
+    "Ticket médio",
+    "Comparação de períodos",
+    "Unidades vendidas",
+  ]) {
+    await page.keyboard.press("Tab");
+    await expect(
+      page
+        .locator(".suggestions")
+        .getByRole("button", { name: new RegExp(name) }),
+    ).toBeFocused();
+  }
   await page.keyboard.press("Tab");
   await expect(page.getByLabel("Loja", { exact: true })).toBeFocused();
   await page.getByLabel("Loja", { exact: true }).selectOption("a002");
