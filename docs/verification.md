@@ -1,5 +1,21 @@
 # Testes locais
 
+## Revisão de transporte em 22/09/2026 UTC
+
+A correção de deadline/cancelamento do proxy foi validada com build de produção
+Next.js e **63 casos Playwright aprovados**, sem skip ou retry: 28 jornadas
+existentes de navegador/HTTP e 35 casos puros (19 existentes + 16 novos). A stack
+usou banco PostgreSQL novo em tmpfs, seed sintético e `LLM_ENABLED=false`. ESLint,
+TypeScript e Prettier passaram. [Detalhes, evidências e limites](security.md).
+
+O verificador dos 65 artefatos, 62 fontes congeladas e duas bases de casos passou
+antes/depois, sem escrita nem rede. Os 313 testes backend abaixo pertencem à
+execução anterior; esta alteração de frontend não reexecutou a suíte pytest nem
+a avaliação paga. As regressões existentes foram preservadas; esta rodada não é
+uma nova revisão completa de autenticação/autorização.
+
+## Publicação anterior
+
 Para a publicação, a instalação e as suítes foram repetidas em uma cópia somente com arquivos Git, agora em Python 3.12.14 e imagens Alpine. Os 313 testes backend, 57 avaliações e 47 casos Playwright passaram. Consulte a [revalidação e correções](publication-check.md). Os registros abaixo preservam a execução anterior e sua configuração.
 
 Execução de 21/09/2026 UTC, Windows/PowerShell 7 e containers Linux: Python 3.12.12, Node 24.19.0 e PostgreSQL 17.11. Locks: `backend/uv.lock` e `frontend/package-lock.json`. Execute os comandos na raiz do clone.

@@ -1,6 +1,6 @@
 # Arquitetura do Loja Assistente
 
-Atualizado em 21/09/2026.
+Atualizado em 22/09/2026 UTC.
 
 ## Interpretação
 
@@ -55,7 +55,7 @@ Valores financeiros esperados calculados à mão, independentes da massa; integr
 
 PostgreSQL fixado em 17.11-bookworm nos ambientes de demonstração e testes. E2E usa `compose.e2e.yaml`, projeto `pf-loja-assistente-e2e`, banco tmpfs e nenhuma porta host; sobe migrações e seed antes da saúde da API. Não usa `.env` com credenciais ou chave de IA da demonstração. `dev.ps1 e2e` encerra apenas esse ambiente em `finally`, inclusive após falhas.
 
-Perguntas da mesma conversa usam `SELECT FOR UPDATE NOWAIT`: uma segunda solicitação recebe 409 em vez de aguardar o provedor segurando outra conexão. O teste de concorrência usa duas conexões PostgreSQL independentes e confirma aquisição após commit. Não há fila distribuída nem promessa de alta demanda. Pool espera até 5 s por conexão; conexão nova tem timeout de 5 s; comandos de banco têm limite de 10 s e consultas analíticas de 3 s. O timeout do SDK é de comunicação, não deadline total da requisição. Proxy: 45 s; cliente: 50 s.
+Perguntas da mesma conversa usam `SELECT FOR UPDATE NOWAIT`: uma segunda solicitação recebe 409 em vez de aguardar o provedor segurando outra conexão. O teste de concorrência usa duas conexões PostgreSQL independentes e confirma aquisição após commit. Não há fila distribuída nem promessa de alta demanda. Pool espera até 5 s por conexão; conexão nova tem timeout de 5 s; comandos de banco têm limite de 10 s e consultas analíticas de 3 s. O timeout do SDK é de comunicação, não deadline total da requisição. Proxy: 45 s totais desde a leitura do corpo até o fim da resposta; cliente: 50 s. Cancelar o fetch não garante interromper trabalho já iniciado no servidor Python.
 
 Todos os planos históricos são reautorizados para lista/detalhe/continuação: uma pergunta recente autorizada não torna visível o título de uma consulta anterior revogada. A checagem no acesso ao cálculo (`/answers/{id}/evidence`) permanece independente. O plano não admite filtros de pagamento, horário, vendedor ou produto individual; a guarda inicial recusa essas intenções antes de consultar ou chamar provedor. O parser demo usa vocabulário limitado; o LLM mantém validação de schema e autorização posterior.
 
@@ -68,3 +68,10 @@ No cliente, `workspace.tsx` compõe os componentes e controla foco/rolagem; `use
 O bootstrap distingue 401 inicial de expiração entre identificação e histórico. Geração de sessão e revisão de histórico impedem retorno tardio sobre identidade nova. O painel Cálculo ignora retornos após desmontagem: um 401 antigo não encerra a nova sessão. Atendimentos que falham ao atualizar conservam a última amostra com aviso explícito de desatualização. Um ref de envio impede duplicação antes do próximo render. Esses controles complementam, sem substituir, a autorização no servidor.
 
 API e proxy limitam corpos de entrada a 16 KiB, contando chunks antes do decode. O limite de 1.000 caracteres da pergunta continua sendo regra do contrato, independente do limite de transporte.
+
+`lib/server/proxy-lifetime.ts` controla deadline, desconexão e encaminhamento do
+corpo da resposta. O reader não fica preso esperando o hook de cancelamento da
+origem. Encerramento normal remove timer/listener; expiração ou cancelamento
+propagam a interrupção e liberam o reader. `request-body.ts` converte somente a
+expiração de leitura em 408, preservando 413 para excesso. O frontend rejeita JSON
+interrompido como erro explícito. [Validação e limites](security.md).

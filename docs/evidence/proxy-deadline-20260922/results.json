@@ -1,0 +1,2291 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/app/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/app/playwright.config.ts",
+    "rootDir": "/app/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/app/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/app/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "domain.spec.ts",
+      "file": "domain.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "intervalo puro 2026-08-16 / 2026-08-17",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.494Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-b51ce7204b08b1d4cfdc",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2026-05-19 / 2026-08-17",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.550Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-40da48d36f031b2e646e",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2026-05-18 / 2026-08-17",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.565Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-6ad85a1106e6ad416cc1",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2026-08-17 / 2026-08-17",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.607Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-eed3b94ac3450c22ff70",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2026-08-18 / 2026-08-17",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.628Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-149d0097b5f04d54775d",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro vazio / 2026-08-17",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.644Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-00707028a1b34838f2cf",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2026-08-16 / vazio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-2f97c01fa7bfa92a3ca6",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 0001-01-01 / 0001-01-02",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.682Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-a257c39b9fff5223fbdc",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 0000-01-01 / 0000-01-02",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-7a89a5b009c1867ab56b",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 9999-12-30 / 9999-12-31",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-84e042ea36f19ae1fc7d",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2026-02-29 / 2026-03-01",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.768Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-ff2c393a99583a04fcdf",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "intervalo puro 2024-02-29 / 2024-03-01",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.793Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-abd2044fae3b7e7d71ed",
+          "file": "domain.spec.ts",
+          "line": 32,
+          "column": 7
+        },
+        {
+          "title": "preset personalizado preserva edição e pergunta remove filtro",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.821Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-c81f8b524a08f7d42679",
+          "file": "domain.spec.ts",
+          "line": 37,
+          "column": 5
+        },
+        {
+          "title": "esclarecimento preserva filtros; troca de identidade limpa toda análise",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.838Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-8192dafd2fe2fde19e89",
+          "file": "domain.spec.ts",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "title": "proxy conta bytes do stream com Content-Length null",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.853Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-1fff4274c0e316803bca",
+          "file": "domain.spec.ts",
+          "line": 77,
+          "column": 7
+        },
+        {
+          "title": "proxy conta bytes do stream com Content-Length 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.886Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-86400de4347083bc59b3",
+          "file": "domain.spec.ts",
+          "line": 77,
+          "column": 7
+        },
+        {
+          "title": "proxy conta bytes do stream com Content-Length 16385",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.912Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-ba90bb05eccb54e05c18",
+          "file": "domain.spec.ts",
+          "line": 77,
+          "column": 7
+        },
+        {
+          "title": "proxy conta bytes do stream com Content-Length invalid",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.931Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-88e2a5f90b3ea610ad40",
+          "file": "domain.spec.ts",
+          "line": 77,
+          "column": 7
+        },
+        {
+          "title": "proxy preserva 16 KiB e centavos grandes formatam sem Number",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:20.948Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6e9a6815fce29ff22b2-ce62cb7657d2c5b0b18a",
+          "file": "domain.spec.ts",
+          "line": 97,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts",
+      "file": "journeys.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "gestor consulta receita, evidência, ranking, comparação e continuação",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5344,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:21.147Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aa09586c1d16412a1f00-7bf6b4790f27ad6022bb",
+          "file": "journeys.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "paráfrase e cortesia preservam cálculo; qualificador recusado não vira total",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2720,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:26.986Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aa09586c1d16412a1f00-0170905ccc53e56b3928",
+          "file": "journeys.spec.ts",
+          "line": 158,
+          "column": 5
+        },
+        {
+          "title": "login e análise atendem verificações automatizadas de acessibilidade",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:29.719Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aa09586c1d16412a1f00-c64fe66b90a8cfa83e41",
+          "file": "journeys.spec.ts",
+          "line": 197,
+          "column": 5
+        },
+        {
+          "title": "troca de usuário isola histórico, resposta e evidência no backend",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1856,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:34.036Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aa09586c1d16412a1f00-b7ff1bb545d249bcbc4d",
+          "file": "journeys.spec.ts",
+          "line": 230,
+          "column": 5
+        },
+        {
+          "title": "limitação, provedor indisponível e expiração têm estados recuperáveis",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:35.909Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aa09586c1d16412a1f00-b84d0d057ca803ff6dff",
+          "file": "journeys.spec.ts",
+          "line": 270,
+          "column": 5
+        },
+        {
+          "title": "celular permite teclado, filtros e leitura sem overflow horizontal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1671,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:37.234Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aa09586c1d16412a1f00-511a4b8c4bf92a587320",
+          "file": "journeys.spec.ts",
+          "line": 303,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "proxy-streams.spec.ts",
+      "file": "proxy-streams.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "leitura sem primeiro chunk expira e não espera cancel hook pendente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.048Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-4825cf3db2ed2aae5667",
+          "file": "proxy-streams.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "chunks intermediários não renovam o prazo total de leitura",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.082Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-89ee8adb8ba4ca1e6add",
+          "file": "proxy-streams.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "excesso de bytes cancela sem esperar hook, declarado=undefined",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-d8320333de70c71913cd",
+          "file": "proxy-streams.spec.ts",
+          "line": 76,
+          "column": 7
+        },
+        {
+          "title": "excesso de bytes cancela sem esperar hook, declarado=16385",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.135Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-3b899930cbed1fb7a679",
+          "file": "proxy-streams.spec.ts",
+          "line": 76,
+          "column": 7
+        },
+        {
+          "title": "aborto do chamador cancela leitura e remove listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.152Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-816790f49de8e88b0878",
+          "file": "proxy-streams.spec.ts",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "title": "aborto anterior não é ignorado por chunks já disponíveis",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.169Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-f5a31019f3797a50a531",
+          "file": "proxy-streams.spec.ts",
+          "line": 114,
+          "column": 5
+        },
+        {
+          "title": "sucesso libera listener e dispose remove o timer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.187Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-82a47a6ead0c0889fc86",
+          "file": "proxy-streams.spec.ts",
+          "line": 131,
+          "column": 5
+        },
+        {
+          "title": "resposta entrega primeiro chunk antes de EOF e libera prazo ao concluir",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.230Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-115c3bae113c83d9db58",
+          "file": "proxy-streams.spec.ts",
+          "line": 149,
+          "column": 5
+        },
+        {
+          "title": "resposta incompleta expira após o primeiro chunk e cancela upstream",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.249Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-caf1d0ced9abe46286a9",
+          "file": "proxy-streams.spec.ts",
+          "line": 174,
+          "column": 5
+        },
+        {
+          "title": "prazo da resposta vale mesmo sem consumo do downstream",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-d14951f60bd4a6cee78e",
+          "file": "proxy-streams.spec.ts",
+          "line": 195,
+          "column": 5
+        },
+        {
+          "title": "cancelamento downstream interrompe fetch e não aguarda cancel hook",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.324Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-989360dcb1f92cbcff27",
+          "file": "proxy-streams.spec.ts",
+          "line": 217,
+          "column": 5
+        },
+        {
+          "title": "erro upstream é propagado e resposta sem corpo não mantém deadline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.340Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-f546c934d1fa3e8e0229",
+          "file": "proxy-streams.spec.ts",
+          "line": 236,
+          "column": 5
+        },
+        {
+          "title": "rota responde 408 com identificador e sem cache quando leitura expira",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.380Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-eeafc41a4d92ac9589f1",
+          "file": "proxy-streams.spec.ts",
+          "line": 256,
+          "column": 5
+        },
+        {
+          "title": "rota preserva 413 e cabeçalhos ao recusar corpo excessivo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.403Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-ee1e7045b041e9476d95",
+          "file": "proxy-streams.spec.ts",
+          "line": 278,
+          "column": 5
+        },
+        {
+          "title": "rota mantém streaming e cabeçalhos; aborto fecha resposta já iniciada",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.423Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-c4d58fe84efc203aae73",
+          "file": "proxy-streams.spec.ts",
+          "line": 291,
+          "column": 5
+        },
+        {
+          "title": "cliente não trata JSON interrompido como resultado bem-sucedido",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "247215c97324906c91c8-c1db22c3d0f91ad79dba",
+          "file": "proxy-streams.spec.ts",
+          "line": 339,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "quality.spec.ts",
+      "file": "quality.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "histórico tardio não apaga a conversa recém-criada",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:39.479Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-b2777195e8d655eb7f92",
+          "file": "quality.spec.ts",
+          "line": 36,
+          "column": 5
+        },
+        {
+          "title": "histórico distingue horários, revela título longo e drawer devolve foco",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:40.505Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-7aab6c1554f04f9ceae4",
+          "file": "quality.spec.ts",
+          "line": 84,
+          "column": 5
+        },
+        {
+          "title": "evidência, foco, alvos e refluxo permanecem acessíveis em seis geometrias",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:41.677Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "viewport-checks",
+                      "contentType": "application/json",
+                      "body": "ewogICJjYXB0dXJlZEF0IjogIjIwMjYtMDktMjJUMDE6MjA6NDQuOTI2WiIsCiAgIm1vZGUiOiAidmVyaWZpY2F0aW9uIiwKICAic2NlbmFyaW8iOiAiQ29uc3VsdGEgZGnDoXJpYSByZWFsLCBldmlkw6puY2lhIHJlYWwgYWJlcnRhIGUgbmF2ZWdhw6fDo28gcG9yIHRlY2xhZG8uIiwKICAiem9vbU1ldGhvZCI6ICIzMjDDlzI1NiBDU1MgcHggcmVwcm9kdXogYSBnZW9tZXRyaWEgZGUgMTI4MMOXMTAyNCBlbSA0MDAlOyB6b29tIG5hdGl2byBkYSBpbnRlcmZhY2UgZG8gbmF2ZWdhZG9yIG7Do28gZm9pIG1lZGlkby4iLAogICJjaGFydENvbnRyb2xzIjogWwogICAgewogICAgICAibmFtZSI6ICJHcsOhZmljbyIsCiAgICAgICJ3aWR0aCI6IDc0LjY4NzUsCiAgICAgICJoZWlnaHQiOiAyOAogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiVGFiZWxhIiwKICAgICAgIndpZHRoIjogNzEuMzc1LAogICAgICAiaGVpZ2h0IjogMjgKICAgIH0KICBdLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJuYW1lIjogIjE0NDB4OTAwIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDE0NDAsCiAgICAgICAgImhlaWdodCI6IDkwMCwKICAgICAgICAiZGV2aWNlU2NhbGVGYWN0b3IiOiAxCiAgICAgIH0sCiAgICAgICJwYWdlV2lkdGgiOiAxNDQwLAogICAgICAiaG9yaXpvbnRhbE92ZXJmbG93IjogZmFsc2UsCiAgICAgICJzY3JvbGxNb2RlIjogImF1dG8iLAogICAgICAibWFpbiI6IHsKICAgICAgICAieCI6IDI0MCwKICAgICAgICAieSI6IDE4MCwKICAgICAgICAid2lkdGgiOiAxMDAwLAogICAgICAgICJoZWlnaHQiOiA1MDEuNjI1LAogICAgICAgICJib3R0b20iOiA2ODEuNjI1LAogICAgICAgICJyaWdodCI6IDEyNDAKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kIjogewogICAgICAgICJ4IjogMjkzLjUsCiAgICAgICAgInkiOiA2NDEuNTYyNSwKICAgICAgICAid2lkdGgiOiA4NzgsCiAgICAgICAgImhlaWdodCI6IDQwLAogICAgICAgICJib3R0b20iOiA2ODEuNTYyNSwKICAgICAgICAicmlnaHQiOiAxMTcxLjUKICAgICAgfSwKICAgICAgImNvbXBvc2VyIjogewogICAgICAgICJ4IjogMjQwLAogICAgICAgICJ5IjogNjgxLjYyNSwKICAgICAgICAid2lkdGgiOiAxMDAwLAogICAgICAgICJoZWlnaHQiOiAyMTguMzc1LAogICAgICAgICJib3R0b20iOiA5MDAsCiAgICAgICAgInJpZ2h0IjogMTI0MAogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmRSZWFjaGVkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlQ2xlYXJPZkNvbXBvc2VyIjogdHJ1ZSwKICAgICAgInRhcmdldHMiOiBbCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiTm92YSBhbsOhbGlzZSIsCiAgICAgICAgICAid2lkdGgiOiAyMDMsCiAgICAgICAgICAiaGVpZ2h0IjogNDUKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkFzc2lzdGVudGUiLAogICAgICAgICAgIndpZHRoIjogMjE1LAogICAgICAgICAgImhlaWdodCI6IDQxCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJBdGVuZGltZW50b3MiLAogICAgICAgICAgIndpZHRoIjogMjE1LAogICAgICAgICAgImhlaWdodCI6IDQxCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJNb3N0cmUgYSBldm9sdcOnw6NvIGRpw6FyaWEgZGEgcmVjZWl0YSBub3Mgw7psdGltb3MgNyBkaWFzMjIvMDkvMjAyNiwgMDE6MjAiLAogICAgICAgICAgIndpZHRoIjogMjEzLAogICAgICAgICAgImhlaWdodCI6IDEwOAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiTW9zdHJlIGEgZXZvbHXDp8OjbyBkacOhcmlhIGRhIHJlY2VpdGEgbm9zIMO6bHRpbW9zIDcgZGlhcyBwYXJhIGNvbmZlcmlyIG9zIGRpYXMgY29tIiwKICAgICAgICAgICJ3aWR0aCI6IDIxMywKICAgICAgICAgICJoZWlnaHQiOiA4NwogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUXVhbnRvIHZlbmRpIGVtIDIwMjYtMDgtMTU/MjIvMDkvMjAyNiwgMDE6MjAiLAogICAgICAgICAgIndpZHRoIjogMjEzLAogICAgICAgICAgImhlaWdodCI6IDg3CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJRdWFsIGZvaSBvIGx1Y3JvIG9udGVtPzIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDIxMywKICAgICAgICAgICJoZWlnaHQiOiA2NgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUXVhbnRvIHZlbmRpIG9udGVtPzIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDIxMywKICAgICAgICAgICJoZWlnaHQiOiA2NgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUXVhbnRvIHZlbmRpIG9udGVtPzIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDIxMywKICAgICAgICAgICJoZWlnaHQiOiA2NgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiU2FpciIsCiAgICAgICAgICAid2lkdGgiOiAyNiwKICAgICAgICAgICJoZWlnaHQiOiAzMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiQ2VudHJvIiwKICAgICAgICAgICJ3aWR0aCI6IDk4LAogICAgICAgICAgImhlaWdodCI6IDMyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZWZpbmlkbyBwZWxhIHBlcmd1bnRhT250ZW3Dmmx0aW1vcyA3IGRpYXPDmmx0aW1vcyAzMCBkaWFzUGVyc29uYWxpemFkbzEwIGRlIGFnby4gIiwKICAgICAgICAgICJ3aWR0aCI6IDIwMywKICAgICAgICAgICJoZWlnaHQiOiAzMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGVtb25zdHJhw6fDo28gKHNlbSBJQSlNb2RlbG8gZGUgSUEgwrcgaW5kaXNwb27DrXZlbCIsCiAgICAgICAgICAid2lkdGgiOiAyMjQsCiAgICAgICAgICAiaGVpZ2h0IjogMzIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkUgbm9zIHNldGUgZGlhcyBhbnRlcmlvcmVzPyIsCiAgICAgICAgICAid2lkdGgiOiAyMTEuNDIxODc1LAogICAgICAgICAgImhlaWdodCI6IDMyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJURVhUQVJFQSIsCiAgICAgICAgICAid2lkdGgiOiA5MzgsCiAgICAgICAgICAiaGVpZ2h0IjogNzEuMzc1CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJTb2JyZSBvcyBkYWRvcyIsCiAgICAgICAgICAid2lkdGgiOiAxNTMsCiAgICAgICAgICAiaGVpZ2h0IjogMjgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIk3DqXRyaWNhcyBkaXNwb27DrXZlaXMiLAogICAgICAgICAgIndpZHRoIjogMTUzLAogICAgICAgICAgImhlaWdodCI6IDI4CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2MCwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNPdXRsaW5lIjogInNvbGlkIgogICAgICB9LAogICAgICAiaW5wdXQiOiB7CiAgICAgICAgInZpc2libGUiOiB0cnVlLAogICAgICAgICJ1bmNvdmVyZWQiOiB0cnVlLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZQogICAgICB9CiAgICB9LAogICAgewogICAgICAibmFtZSI6ICIxMzY2eDc2OCIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMzY2LAogICAgICAgICJoZWlnaHQiOiA3NjgsCiAgICAgICAgImRldmljZVNjYWxlRmFjdG9yIjogMQogICAgICB9LAogICAgICAicGFnZVdpZHRoIjogMTM2NiwKICAgICAgImhvcml6b250YWxPdmVyZmxvdyI6IGZhbHNlLAogICAgICAic2Nyb2xsTW9kZSI6ICJhdXRvIiwKICAgICAgIm1haW4iOiB7CiAgICAgICAgIngiOiAyNDAsCiAgICAgICAgInkiOiAxODAsCiAgICAgICAgIndpZHRoIjogOTI2LAogICAgICAgICJoZWlnaHQiOiAzNjkuNjI1LAogICAgICAgICJib3R0b20iOiA1NDkuNjI1LAogICAgICAgICJyaWdodCI6IDExNjYKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kIjogewogICAgICAgICJ4IjogMjg2LAogICAgICAgICJ5IjogNTA5LjU2MjUsCiAgICAgICAgIndpZHRoIjogODE5LAogICAgICAgICJoZWlnaHQiOiA0MCwKICAgICAgICAiYm90dG9tIjogNTQ5LjU2MjUsCiAgICAgICAgInJpZ2h0IjogMTEwNQogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAyNDAsCiAgICAgICAgInkiOiA1NDkuNjI1LAogICAgICAgICJ3aWR0aCI6IDkyNiwKICAgICAgICAiaGVpZ2h0IjogMjE4LjM3NSwKICAgICAgICAiYm90dG9tIjogNzY4LAogICAgICAgICJyaWdodCI6IDExNjYKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kUmVhY2hlZCI6IHRydWUsCiAgICAgICJldmlkZW5jZUNsZWFyT2ZDb21wb3NlciI6IHRydWUsCiAgICAgICJ0YXJnZXRzIjogWwogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIk5vdmEgYW7DoWxpc2UiLAogICAgICAgICAgIndpZHRoIjogMjAzLAogICAgICAgICAgImhlaWdodCI6IDQ1CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJBc3Npc3RlbnRlIiwKICAgICAgICAgICJ3aWR0aCI6IDIxNSwKICAgICAgICAgICJoZWlnaHQiOiA0MQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiQXRlbmRpbWVudG9zIiwKICAgICAgICAgICJ3aWR0aCI6IDIxNSwKICAgICAgICAgICJoZWlnaHQiOiA0MQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiTW9zdHJlIGEgZXZvbHXDp8OjbyBkacOhcmlhIGRhIHJlY2VpdGEgbm9zIMO6bHRpbW9zIDcgZGlhczIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDIxMywKICAgICAgICAgICJoZWlnaHQiOiAxMDgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIk1vc3RyZSBhIGV2b2x1w6fDo28gZGnDoXJpYSBkYSByZWNlaXRhIG5vcyDDumx0aW1vcyA3IGRpYXMgcGFyYSBjb25mZXJpciBvcyBkaWFzIGNvbSIsCiAgICAgICAgICAid2lkdGgiOiAyMTMsCiAgICAgICAgICAiaGVpZ2h0IjogODcKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlF1YW50byB2ZW5kaSBlbSAyMDI2LTA4LTE1PzIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDIxMywKICAgICAgICAgICJoZWlnaHQiOiA4NwogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUXVhbCBmb2kgbyBsdWNybyBvbnRlbT8yMi8wOS8yMDI2LCAwMToyMCIsCiAgICAgICAgICAid2lkdGgiOiAyMTMsCiAgICAgICAgICAiaGVpZ2h0IjogNjYKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlNhaXIiLAogICAgICAgICAgIndpZHRoIjogMjYsCiAgICAgICAgICAiaGVpZ2h0IjogMzIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiA5OCwKICAgICAgICAgICJoZWlnaHQiOiAzMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8xMCBkZSBhZ28uICIsCiAgICAgICAgICAid2lkdGgiOiAyMDMsCiAgICAgICAgICAiaGVpZ2h0IjogMzIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlbW9uc3RyYcOnw6NvIChzZW0gSUEpTW9kZWxvIGRlIElBIMK3IGluZGlzcG9uw612ZWwiLAogICAgICAgICAgIndpZHRoIjogMjI0LAogICAgICAgICAgImhlaWdodCI6IDMyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJFIG5vcyBzZXRlIGRpYXMgYW50ZXJpb3Jlcz8iLAogICAgICAgICAgIndpZHRoIjogMjExLjQyMTg3NSwKICAgICAgICAgICJoZWlnaHQiOiAzMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiVEVYVEFSRUEiLAogICAgICAgICAgIndpZHRoIjogODY0LAogICAgICAgICAgImhlaWdodCI6IDcxLjM3NQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiU29icmUgb3MgZGFkb3MiLAogICAgICAgICAgIndpZHRoIjogMTUzLAogICAgICAgICAgImhlaWdodCI6IDI4CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJNw6l0cmljYXMgZGlzcG9uw612ZWlzIiwKICAgICAgICAgICJ3aWR0aCI6IDE1MywKICAgICAgICAgICJoZWlnaHQiOiAyOAogICAgICAgIH0KICAgICAgXSwKICAgICAgInNtYWxsVGFyZ2V0cyI6IFtdLAogICAgICAia2V5Ym9hcmQiOiB7CiAgICAgICAgInJvbGUiOiAicmVnaW9uIiwKICAgICAgICAibGFiZWwiOiAiVG90YWlzIHBvciBkaWEiLAogICAgICAgICJpbnNpZGVFdmlkZW5jZSI6IHRydWUsCiAgICAgICAgInZpc2libGVIZWlnaHQiOiAzNjAsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiNzY4eDEwMjQiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogNzY4LAogICAgICAgICJoZWlnaHQiOiAxMDI0LAogICAgICAgICJkZXZpY2VTY2FsZUZhY3RvciI6IDEKICAgICAgfSwKICAgICAgInBhZ2VXaWR0aCI6IDc2OCwKICAgICAgImhvcml6b250YWxPdmVyZmxvdyI6IGZhbHNlLAogICAgICAic2Nyb2xsTW9kZSI6ICJhdXRvIiwKICAgICAgIm1haW4iOiB7CiAgICAgICAgIngiOiAyMTUsCiAgICAgICAgInkiOiAyMTYsCiAgICAgICAgIndpZHRoIjogNTUzLAogICAgICAgICJoZWlnaHQiOiA1ODkuNjI1LAogICAgICAgICJib3R0b20iOiA4MDUuNjI1LAogICAgICAgICJyaWdodCI6IDc2OAogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmQiOiB7CiAgICAgICAgIngiOiAyNTQsCiAgICAgICAgInkiOiA3NjUuNzUsCiAgICAgICAgIndpZHRoIjogNDYwLAogICAgICAgICJoZWlnaHQiOiA0MCwKICAgICAgICAiYm90dG9tIjogODA1Ljc1LAogICAgICAgICJyaWdodCI6IDcxNAogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAyMTUsCiAgICAgICAgInkiOiA4MDUuNjI1LAogICAgICAgICJ3aWR0aCI6IDU1MywKICAgICAgICAiaGVpZ2h0IjogMjE4LjM3NSwKICAgICAgICAiYm90dG9tIjogMTAyNCwKICAgICAgICAicmlnaHQiOiA3NjgKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kUmVhY2hlZCI6IHRydWUsCiAgICAgICJldmlkZW5jZUNsZWFyT2ZDb21wb3NlciI6IHRydWUsCiAgICAgICJ0YXJnZXRzIjogWwogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIk5vdmEgYW7DoWxpc2UiLAogICAgICAgICAgIndpZHRoIjogMTc4LAogICAgICAgICAgImhlaWdodCI6IDQ1CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJBc3Npc3RlbnRlIiwKICAgICAgICAgICJ3aWR0aCI6IDE5MCwKICAgICAgICAgICJoZWlnaHQiOiA0MQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiQXRlbmRpbWVudG9zIiwKICAgICAgICAgICJ3aWR0aCI6IDE5MCwKICAgICAgICAgICJoZWlnaHQiOiA0MQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiTW9zdHJlIGEgZXZvbHXDp8OjbyBkacOhcmlhIGRhIHJlY2VpdGEgbm9zIMO6bHRpbW9zIDcgZGlhczIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDE4OCwKICAgICAgICAgICJoZWlnaHQiOiAxMDgKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIk1vc3RyZSBhIGV2b2x1w6fDo28gZGnDoXJpYSBkYSByZWNlaXRhIG5vcyDDumx0aW1vcyA3IGRpYXMgcGFyYSBjb25mZXJpciBvcyBkaWFzIGNvbSIsCiAgICAgICAgICAid2lkdGgiOiAxODgsCiAgICAgICAgICAiaGVpZ2h0IjogODcKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlF1YW50byB2ZW5kaSBlbSAyMDI2LTA4LTE1PzIyLzA5LzIwMjYsIDAxOjIwIiwKICAgICAgICAgICJ3aWR0aCI6IDE4OCwKICAgICAgICAgICJoZWlnaHQiOiA4NwogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiUXVhbCBmb2kgbyBsdWNybyBvbnRlbT8yMi8wOS8yMDI2LCAwMToyMCIsCiAgICAgICAgICAid2lkdGgiOiAxODgsCiAgICAgICAgICAiaGVpZ2h0IjogODcKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlF1YW50byB2ZW5kaSBvbnRlbT8yMi8wOS8yMDI2LCAwMToyMCIsCiAgICAgICAgICAid2lkdGgiOiAxODgsCiAgICAgICAgICAiaGVpZ2h0IjogNjYKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlF1YW50byB2ZW5kaSBvbnRlbT8yMi8wOS8yMDI2LCAwMToyMCIsCiAgICAgICAgICAid2lkdGgiOiAxODgsCiAgICAgICAgICAiaGVpZ2h0IjogNjYKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlF1YW50byB2ZW5kaSBvbnRlbT8yMi8wOS8yMDI2LCAwMToyMCIsCiAgICAgICAgICAid2lkdGgiOiAxODgsCiAgICAgICAgICAiaGVpZ2h0IjogNjYKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlF1YW50byB2ZW5kaSBvbnRlbT8yMi8wOS8yMDI2LCAwMToyMCIsCiAgICAgICAgICAid2lkdGgiOiAxODgsCiAgICAgICAgICAiaGVpZ2h0IjogNjYKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlNhaXIiLAogICAgICAgICAgIndpZHRoIjogMjYsCiAgICAgICAgICAiaGVpZ2h0IjogMzIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiA5OCwKICAgICAgICAgICJoZWlnaHQiOiAzMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8xMCBkZSBhZ28uICIsCiAgICAgICAgICAid2lkdGgiOiAyMDMsCiAgICAgICAgICAiaGVpZ2h0IjogMzIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlbW9uc3RyYcOnw6NvIChzZW0gSUEpTW9kZWxvIGRlIElBIMK3IGluZGlzcG9uw612ZWwiLAogICAgICAgICAgIndpZHRoIjogMjIwLAogICAgICAgICAgImhlaWdodCI6IDMyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJFIG5vcyBzZXRlIGRpYXMgYW50ZXJpb3Jlcz8iLAogICAgICAgICAgIndpZHRoIjogMjExLjQyMTg3NSwKICAgICAgICAgICJoZWlnaHQiOiAzMgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiVEVYVEFSRUEiLAogICAgICAgICAgIndpZHRoIjogNTA1LAogICAgICAgICAgImhlaWdodCI6IDcxLjM3NQogICAgICAgIH0KICAgICAgXSwKICAgICAgInNtYWxsVGFyZ2V0cyI6IFtdLAogICAgICAia2V5Ym9hcmQiOiB7CiAgICAgICAgInJvbGUiOiAicmVnaW9uIiwKICAgICAgICAibGFiZWwiOiAiVG90YWlzIHBvciBkaWEiLAogICAgICAgICJpbnNpZGVFdmlkZW5jZSI6IHRydWUsCiAgICAgICAgInZpc2libGVIZWlnaHQiOiAzNjAsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzT3V0bGluZSI6ICJzb2xpZCIKICAgICAgfSwKICAgICAgImlucHV0IjogewogICAgICAgICJ2aXNpYmxlIjogdHJ1ZSwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIm5hbWUiOiAiMzkweDg0NCIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAzOTAsCiAgICAgICAgImhlaWdodCI6IDg0NCwKICAgICAgICAiZGV2aWNlU2NhbGVGYWN0b3IiOiAxCiAgICAgIH0sCiAgICAgICJwYWdlV2lkdGgiOiAzOTAsCiAgICAgICJob3Jpem9udGFsT3ZlcmZsb3ciOiBmYWxzZSwKICAgICAgInNjcm9sbE1vZGUiOiAiYXV0byIsCiAgICAgICJtYWluIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDIzOCwKICAgICAgICAid2lkdGgiOiAzOTAsCiAgICAgICAgImhlaWdodCI6IDM5NS42MjUsCiAgICAgICAgImJvdHRvbSI6IDYzMy42MjUsCiAgICAgICAgInJpZ2h0IjogMzkwCiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZCI6IHsKICAgICAgICAieCI6IDMyLAogICAgICAgICJ5IjogNTkzLjQyMTg3NSwKICAgICAgICAid2lkdGgiOiAzMTEsCiAgICAgICAgImhlaWdodCI6IDQwLAogICAgICAgICJib3R0b20iOiA2MzMuNDIxODc1LAogICAgICAgICJyaWdodCI6IDM0MwogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogNjMzLjYyNSwKICAgICAgICAid2lkdGgiOiAzOTAsCiAgICAgICAgImhlaWdodCI6IDIxMC4zNzUsCiAgICAgICAgImJvdHRvbSI6IDg0NCwKICAgICAgICAicmlnaHQiOiAzOTAKICAgICAgfSwKICAgICAgImV2aWRlbmNlRW5kUmVhY2hlZCI6IHRydWUsCiAgICAgICJldmlkZW5jZUNsZWFyT2ZDb21wb3NlciI6IHRydWUsCiAgICAgICJ0YXJnZXRzIjogWwogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkFicmlyIG1lbnUiLAogICAgICAgICAgIndpZHRoIjogMzQsCiAgICAgICAgICAiaGVpZ2h0IjogMzQKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkNlbnRybyIsCiAgICAgICAgICAid2lkdGgiOiA5OCwKICAgICAgICAgICJoZWlnaHQiOiAzMAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8xMCBkZSBhZ28uICIsCiAgICAgICAgICAid2lkdGgiOiAyMDMsCiAgICAgICAgICAiaGVpZ2h0IjogMzAKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlbW9uc3RyYcOnw6NvIChzZW0gSUEpTW9kZWxvIGRlIElBIMK3IGluZGlzcG9uw612ZWwiLAogICAgICAgICAgIndpZHRoIjogMjUwLjgyODEyNSwKICAgICAgICAgICJoZWlnaHQiOiAzMAogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgIm5hbWUiOiAiRSBub3Mgc2V0ZSBkaWFzIGFudGVyaW9yZXM/IiwKICAgICAgICAgICJ3aWR0aCI6IDIxMS40MjE4NzUsCiAgICAgICAgICAiaGVpZ2h0IjogMzIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIlRFWFRBUkVBIiwKICAgICAgICAgICJ3aWR0aCI6IDM1OCwKICAgICAgICAgICJoZWlnaHQiOiA2OC4zNzUKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJzbWFsbFRhcmdldHMiOiBbXSwKICAgICAgImtleWJvYXJkIjogewogICAgICAgICJyb2xlIjogInJlZ2lvbiIsCiAgICAgICAgImxhYmVsIjogIlRvdGFpcyBwb3IgZGlhIiwKICAgICAgICAiaW5zaWRlRXZpZGVuY2UiOiB0cnVlLAogICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzYwLAogICAgICAgICJ1bmNvdmVyZWQiOiB0cnVlLAogICAgICAgICJmb2N1c091dGxpbmUiOiAic29saWQiCiAgICAgIH0sCiAgICAgICJpbnB1dCI6IHsKICAgICAgICAidmlzaWJsZSI6IHRydWUsCiAgICAgICAgInVuY292ZXJlZCI6IHRydWUsCiAgICAgICAgImZvY3VzZWQiOiB0cnVlCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJuYW1lIjogIjMyMHg4NDQiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiA4NDQsCiAgICAgICAgImRldmljZVNjYWxlRmFjdG9yIjogMQogICAgICB9LAogICAgICAicGFnZVdpZHRoIjogMzIwLAogICAgICAiaG9yaXpvbnRhbE92ZXJmbG93IjogZmFsc2UsCiAgICAgICJzY3JvbGxNb2RlIjogImF1dG8iLAogICAgICAibWFpbiI6IHsKICAgICAgICAieCI6IDAsCiAgICAgICAgInkiOiAyMzgsCiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiAzNzcuNjI1LAogICAgICAgICJib3R0b20iOiA2MTUuNjI1LAogICAgICAgICJyaWdodCI6IDMyMAogICAgICB9LAogICAgICAiZXZpZGVuY2VFbmQiOiB7CiAgICAgICAgIngiOiAzMiwKICAgICAgICAieSI6IDU3NS40MjE4NzUsCiAgICAgICAgIndpZHRoIjogMjQxLAogICAgICAgICJoZWlnaHQiOiA0MCwKICAgICAgICAiYm90dG9tIjogNjE1LjQyMTg3NSwKICAgICAgICAicmlnaHQiOiAyNzMKICAgICAgfSwKICAgICAgImNvbXBvc2VyIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDYxNS42MjUsCiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiAyMjguMzc1LAogICAgICAgICJib3R0b20iOiA4NDQsCiAgICAgICAgInJpZ2h0IjogMzIwCiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZFJlYWNoZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2VDbGVhck9mQ29tcG9zZXIiOiB0cnVlLAogICAgICAidGFyZ2V0cyI6IFsKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJBYnJpciBtZW51IiwKICAgICAgICAgICJ3aWR0aCI6IDM0LAogICAgICAgICAgImhlaWdodCI6IDM0CiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJDZW50cm8iLAogICAgICAgICAgIndpZHRoIjogOTgsCiAgICAgICAgICAiaGVpZ2h0IjogMzAKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkRlZmluaWRvIHBlbGEgcGVyZ3VudGFPbnRlbcOabHRpbW9zIDcgZGlhc8OabHRpbW9zIDMwIGRpYXNQZXJzb25hbGl6YWRvMTAgZGUgYWdvLiAiLAogICAgICAgICAgIndpZHRoIjogMjAzLAogICAgICAgICAgImhlaWdodCI6IDMwCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJEZW1vbnN0cmHDp8OjbyAoc2VtIElBKU1vZGVsbyBkZSBJQSDCtyBpbmRpc3BvbsOtdmVsIiwKICAgICAgICAgICJ3aWR0aCI6IDE4MC44MjgxMjUsCiAgICAgICAgICAiaGVpZ2h0IjogMzAKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJuYW1lIjogIkUgbm9zIHNldGUgZGlhcyBhbnRlcmlvcmVzPyIsCiAgICAgICAgICAid2lkdGgiOiAyMTEuNDIxODc1LAogICAgICAgICAgImhlaWdodCI6IDMyCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAibmFtZSI6ICJURVhUQVJFQSIsCiAgICAgICAgICAid2lkdGgiOiAyODgsCiAgICAgICAgICAiaGVpZ2h0IjogNjguMzc1CiAgICAgICAgfQogICAgICBdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDM2MCwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNPdXRsaW5lIjogInNvbGlkIgogICAgICB9LAogICAgICAiaW5wdXQiOiB7CiAgICAgICAgInZpc2libGUiOiB0cnVlLAogICAgICAgICJ1bmNvdmVyZWQiOiB0cnVlLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZQogICAgICB9CiAgICB9LAogICAgewogICAgICAibmFtZSI6ICIzMjB4MjU2LXpvb20tZXF1aXZhbGVudCIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAzMjAsCiAgICAgICAgImhlaWdodCI6IDI1NiwKICAgICAgICAiZGV2aWNlU2NhbGVGYWN0b3IiOiAxCiAgICAgIH0sCiAgICAgICJwYWdlV2lkdGgiOiAzMjAsCiAgICAgICJob3Jpem9udGFsT3ZlcmZsb3ciOiBmYWxzZSwKICAgICAgInNjcm9sbE1vZGUiOiAidmlzaWJsZSIsCiAgICAgICJtYWluIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IC0xNDMxLAogICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAiaGVpZ2h0IjogMTcxMC40MjE4NzUsCiAgICAgICAgImJvdHRvbSI6IDI3OS40MjE4NzUsCiAgICAgICAgInJpZ2h0IjogMzIwCiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZCI6IHsKICAgICAgICAieCI6IDMyLAogICAgICAgICJ5IjogMjE2LjQyMTg3NSwKICAgICAgICAid2lkdGgiOiAyNTYsCiAgICAgICAgImhlaWdodCI6IDQwLAogICAgICAgICJib3R0b20iOiAyNTYuNDIxODc1LAogICAgICAgICJyaWdodCI6IDI4OAogICAgICB9LAogICAgICAiY29tcG9zZXIiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMjc5LjQyMTg3NSwKICAgICAgICAid2lkdGgiOiAzMjAsCiAgICAgICAgImhlaWdodCI6IDIyOC4zNzUsCiAgICAgICAgImJvdHRvbSI6IDUwNy43OTY4NzUsCiAgICAgICAgInJpZ2h0IjogMzIwCiAgICAgIH0sCiAgICAgICJldmlkZW5jZUVuZFJlYWNoZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2VDbGVhck9mQ29tcG9zZXIiOiB0cnVlLAogICAgICAidGFyZ2V0cyI6IFtdLAogICAgICAic21hbGxUYXJnZXRzIjogW10sCiAgICAgICJrZXlib2FyZCI6IHsKICAgICAgICAicm9sZSI6ICJyZWdpb24iLAogICAgICAgICJsYWJlbCI6ICJUb3RhaXMgcG9yIGRpYSIsCiAgICAgICAgImluc2lkZUV2aWRlbmNlIjogdHJ1ZSwKICAgICAgICAidmlzaWJsZUhlaWdodCI6IDI1NiwKICAgICAgICAidW5jb3ZlcmVkIjogdHJ1ZSwKICAgICAgICAiZm9jdXNPdXRsaW5lIjogInNvbGlkIgogICAgICB9LAogICAgICAiaW5wdXQiOiB7CiAgICAgICAgInZpc2libGUiOiB0cnVlLAogICAgICAgICJ1bmNvdmVyZWQiOiB0cnVlLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZQogICAgICB9CiAgICB9CiAgXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-11827ab0871cda7d3c7f",
+          "file": "quality.spec.ts",
+          "line": 129,
+          "column": 5
+        },
+        {
+          "title": "zero coberto, receita de 90 dias e cobertura parcial preservam o significado dos números",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2530,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:45.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-589dddb88b43c843c485",
+          "file": "quality.spec.ts",
+          "line": 404,
+          "column": 5
+        },
+        {
+          "title": "preferência de movimento reduzido evita rolagem animada da conversa",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:47.582Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f46baca133b10bf87db1-bec4271a65d693632736",
+          "file": "quality.spec.ts",
+          "line": 468,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "review.spec.ts",
+      "file": "review.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "filtro não suportado não aparece como receita geral",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 933,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:48.706Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12f883ce49bb8436c3d7-566a0cbf1a3c203a8010",
+          "file": "review.spec.ts",
+          "line": 3,
+          "column": 5
+        },
+        {
+          "title": "atalhos de análise aparecem cedo em 1280×720",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 840,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:49.656Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "readability",
+                      "contentType": "application/json",
+                      "body": "ewogICJjb250cm9scyI6IFsKICAgIHsKICAgICAgInRleHQiOiAiTG9qYSIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkNlbnRybyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlBlcsOtb2RvIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8iLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJJbnRlcnByZXRhZG9yIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVtb25zdHJhw6fDo28gKHNlbSBJQSlNb2RlbG8gZGUgSUEgwrcgaW5kaXNwb27DrXZlbCIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlJlY2VpdGEgZGUgb250ZW0iLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJSYW5raW5nIGRlIHByb2R1dG9zIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRXZvbHXDp8OjbyBkacOhcmlhIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiVGlja2V0IG3DqWRpbyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkNvbXBhcmHDp8OjbyBkZSBwZXLDrW9kb3MiLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJVbmlkYWRlcyB2ZW5kaWRhcyIsCiAgICAgICJzaXplIjogMTQKICAgIH0KICBdLAogICJpbnB1dHMiOiBbCiAgICB7CiAgICAgICJ0ZXh0IjogIiIsCiAgICAgICJzaXplIjogMTYKICAgIH0KICBdLAogICJtZXRhZGF0YSI6IFsKICAgIHsKICAgICAgInRleHQiOiAiRGF0YSBkZSByZWZlcsOqbmNpYTE3LzA4LzIwMjYiLAogICAgICAic2l6ZSI6IDEyCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJEYXRhcyBlc2NyaXRhcyBuYSBwZXJndW50YSBwcmV2YWxlY2VtIHNvYnJlIG8gZmlsdHJvLiIsCiAgICAgICJzaXplIjogMTIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkVudGVyIGVudmlhIMK3IFNoaWZ0ICsgRW50ZXIgcXVlYnJhIGxpbmhhIMK3IDAvMTAwMCBjYXJhY3RlcmVzIiwKICAgICAgInNpemUiOiAxMgogICAgfQogIF0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12f883ce49bb8436c3d7-520437e9fb9f0b524f98",
+          "file": "review.spec.ts",
+          "line": 30,
+          "column": 7
+        },
+        {
+          "title": "atalhos de análise aparecem cedo em 390×844",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 723,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:50.513Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "readability",
+                      "contentType": "application/json",
+                      "body": "ewogICJjb250cm9scyI6IFsKICAgIHsKICAgICAgInRleHQiOiAiTG9qYSIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkNlbnRybyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlBlcsOtb2RvIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVmaW5pZG8gcGVsYSBwZXJndW50YU9udGVtw5psdGltb3MgNyBkaWFzw5psdGltb3MgMzAgZGlhc1BlcnNvbmFsaXphZG8iLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJJbnRlcnByZXRhZG9yIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRGVtb25zdHJhw6fDo28gKHNlbSBJQSlNb2RlbG8gZGUgSUEgwrcgaW5kaXNwb27DrXZlbCIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlJlY2VpdGEgZGUgb250ZW0iLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJSYW5raW5nIGRlIHByb2R1dG9zIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiRXZvbHXDp8OjbyBkacOhcmlhIiwKICAgICAgInNpemUiOiAxNAogICAgfSwKICAgIHsKICAgICAgInRleHQiOiAiVGlja2V0IG3DqWRpbyIsCiAgICAgICJzaXplIjogMTQKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkNvbXBhcmHDp8OjbyBkZSBwZXLDrW9kb3MiLAogICAgICAic2l6ZSI6IDE0CiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJVbmlkYWRlcyB2ZW5kaWRhcyIsCiAgICAgICJzaXplIjogMTQKICAgIH0KICBdLAogICJpbnB1dHMiOiBbCiAgICB7CiAgICAgICJ0ZXh0IjogIiIsCiAgICAgICJzaXplIjogMTYKICAgIH0KICBdLAogICJtZXRhZGF0YSI6IFsKICAgIHsKICAgICAgInRleHQiOiAiRGF0YSBkZSByZWZlcsOqbmNpYTE3LzA4LzIwMjYiLAogICAgICAic2l6ZSI6IDEyCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJEYXRhcyBlc2NyaXRhcyBuYSBwZXJndW50YSBwcmV2YWxlY2VtIHNvYnJlIG8gZmlsdHJvLiIsCiAgICAgICJzaXplIjogMTIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIkVudGVyIGVudmlhIMK3IFNoaWZ0ICsgRW50ZXIgcXVlYnJhIGxpbmhhIMK3IDAvMTAwMCBjYXJhY3RlcmVzIiwKICAgICAgInNpemUiOiAxMgogICAgfQogIF0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12f883ce49bb8436c3d7-d9790665c27c14d07e89",
+          "file": "review.spec.ts",
+          "line": 30,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "round-2-fields.spec.ts",
+      "file": "round-2-fields.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "senha vazia, incorreta e limite preservam validação e recuperação",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:51.266Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-a9ff00b2f99906dde8c0",
+          "file": "round-2-fields.spec.ts",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "title": "datas personalizadas mantêm edição real, bloqueiam inválidas e enviam recorte exato",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:52.476Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-51a731e27c16a99f3487",
+          "file": "round-2-fields.spec.ts",
+          "line": 62,
+          "column": 5
+        },
+        {
+          "title": "lojas e períodos rápidos refletem seleção e datas explícitas prevalecem",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2179,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:54.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-6a73fb5580136b3a7bcf",
+          "file": "round-2-fields.spec.ts",
+          "line": 112,
+          "column": 5
+        },
+        {
+          "title": "pergunta respeita espaços, acentos, quebra de linha, tamanho e múltiplas métricas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1895,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:56.742Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-356a8508152b7830d7df",
+          "file": "round-2-fields.spec.ts",
+          "line": 139,
+          "column": 5
+        },
+        {
+          "title": "falha network preserva pergunta, resultado anterior e permite tentar novamente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1335,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:20:58.653Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-87114a941061949b355e",
+          "file": "round-2-fields.spec.ts",
+          "line": 180,
+          "column": 7
+        },
+        {
+          "title": "falha 409 preserva pergunta, resultado anterior e permite tentar novamente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1406,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:00.010Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-cdada62f05fb6bdea8f3",
+          "file": "round-2-fields.spec.ts",
+          "line": 180,
+          "column": 7
+        },
+        {
+          "title": "falha 503 preserva pergunta, resultado anterior e permite tentar novamente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1332,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:01.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-88baf5e08b061fe1dde4",
+          "file": "round-2-fields.spec.ts",
+          "line": 180,
+          "column": 7
+        },
+        {
+          "title": "resposta lenta bloqueia envio duplicado e alterações de escopo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1005,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:02.795Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-69023c1fda7f94228105",
+          "file": "round-2-fields.spec.ts",
+          "line": 216,
+          "column": 5
+        },
+        {
+          "title": "histórico, operação indisponível e nova análise mantêm contexto e foco",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:03.817Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-c2817b95dbeabf085a96",
+          "file": "round-2-fields.spec.ts",
+          "line": 246,
+          "column": 5
+        },
+        {
+          "title": "sessão expirada entre identificação e histórico volta ao login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 942,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:05.486Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-d6352c6b1c71b3ad0f2f",
+          "file": "round-2-fields.spec.ts",
+          "line": 287,
+          "column": 5
+        },
+        {
+          "title": "proxy recusa JSON grande com contexto público consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 205,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:06.445Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-177f0915b77836224013",
+          "file": "round-2-fields.spec.ts",
+          "line": 306,
+          "column": 5
+        },
+        {
+          "title": "evidência com falha pode ser repetida sem perder o resultado",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:06.670Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-4dc7fae809f38b7830b8",
+          "file": "round-2-fields.spec.ts",
+          "line": 321,
+          "column": 5
+        },
+        {
+          "title": "erro tardio de evidência antiga não expira a nova identidade",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1661,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:08.051Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-6d6d494527cccbbd70f3",
+          "file": "round-2-fields.spec.ts",
+          "line": 341,
+          "column": 5
+        },
+        {
+          "title": "falha de conexão no login não acusa senha inválida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 798,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-22T01:21:09.727Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "637eda59c7fbc630df6f-5ea6d558d856daf13cdd",
+          "file": "round-2-fields.spec.ts",
+          "line": 380,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-22T01:20:12.922Z",
+    "duration": 60381.27,
+    "expected": 63,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
