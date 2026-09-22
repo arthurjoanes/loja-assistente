@@ -52,12 +52,29 @@ Na interface, peça **Mostre a evolução diária da receita nos últimos 7 dias
 
 ```mermaid
 flowchart TB
-    Web["Interface Next.js<br/>localhost:3102"] --> API["API FastAPI<br/>localhost:8102"]
-    API --> DB[("PostgreSQL")]
-    API -. "interpretação opcional" .-> LLM["OpenAI / Azure"]
+    Web["Next.js :3102<br/>interface e proxy /api<br/>deadline de 45 s"]
+    API["FastAPI :8102<br/>sessão, CSRF e conversa<br/>guarda de filtros e interpretação"]
+    Query["Validação e cálculo na API<br/>plano + lojas autorizadas<br/>SQL predefinido e cobertura"]
+    DB[("PostgreSQL interno<br/>vendas, permissões e conversas<br/>orçamento por organização")]
+    LLM["OpenAI / Azure opcional<br/>Responses API<br/>saída estruturada"]
+    Web -->|"HTTP · cookie e CSRF"| API
+    API -->|"Demo: parser local"| Query
+    API -->|"orçamento: commits independentes"| DB
+    API -.->|"LLM: HTTPS após dispatch"| LLM
+    LLM -.->|"plano validado no adaptador"| Query
+    Query -->|"SQL · tenant, lojas e período"| DB
 ```
 
-O [serviço da pergunta](backend/src/loja_assistente/assistant/service.py) envia ao [adaptador do modelo](backend/src/loja_assistente/assistant/interpreters/openai_adapter.py) contexto de interpretação, não autoridade sobre tenant nem SQL livre. O [orçamento](backend/src/loja_assistente/assistant/budget.py) é reservado no PostgreSQL antes do despacho; a apresentação usa o resultado calculado. Migração e seed no [Compose](compose.yaml) preparam a massa local. A [arquitetura completa](docs/architecture.md) detalha o fluxo.
+Interpretação, orçamento e cálculo executam no mesmo backend FastAPI. Todas as consultas terminam no ciclo HTTP; as setas pontilhadas indicam apenas o caminho LLM opcional, também síncrono. Não há worker ou fila de perguntas. O modelo recebe pergunta, lojas permitidas, datas e último plano autorizado; o servidor resolve as referências, revalida o plano e calcula.
+
+| Etapa | Responsabilidade e fronteira |
+| --- | --- |
+| [Entrada e conversa](backend/src/loja_assistente/assistant/service.py) | Deriva identidade da sessão; trava a conversa com `NOWAIT`, reautoriza contexto e registra a resposta |
+| [Interpretação](backend/src/loja_assistente/assistant/interpretation.py) | Recusa filtros fora do contrato antes de consultar ou chamar o provedor; Demo usa parser local |
+| [Orçamento LLM](backend/src/loja_assistente/assistant/budget.py) | Confirma reserva e despacho em transações próprias; timeout conserva consumo incerto, sem retry automático |
+| [Cálculo e apresentação](backend/src/loja_assistente/analytics/service.py) | Reconsulta permissões, usa cobertura por loja/dia e centavos/Decimal; texto, gráfico e tabela partem do mesmo resultado |
+
+O [Compose](compose.yaml) publica frontend/API em loopback e mantém o banco interno. Migração e seed preparam a massa antes da demonstração. O [guia de arquitetura](docs/architecture.md) abre os módulos, o modelo de dados e a sequência dos commits antes e depois do provedor.
 
 <a id="implementação"></a>
 <a id="o-que-eu-implementei"></a>
