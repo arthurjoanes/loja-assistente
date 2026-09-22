@@ -59,6 +59,9 @@ for (const size of [
         ),
       };
     });
+    expect(readability.controls).toHaveLength(12);
+    expect(readability.inputs).toHaveLength(1);
+    expect(readability.metadata).toHaveLength(3);
     for (const item of readability.controls)
       expect(item.size, item.text).toBeGreaterThanOrEqual(14);
     for (const item of readability.inputs)
