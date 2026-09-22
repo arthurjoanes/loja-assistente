@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-22T15:35:21.871916+00:00",
+  "tested_commit": "73aa1fff1e061b6f7c562d788544f4c968b50b7e",
+  "workflow_run_id": 35747541226,
+  "workflow_run_url": "https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226",
+  "run_attempt": 1,
+  "conclusion": "success",
+  "playwright": {
+    "version": "1.63.0",
+    "project": "chromium",
+    "collected": 69,
+    "passed": 69,
+    "pure_cases": 39,
+    "browser_http_cases": 30,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "workers": 1,
+    "duration_seconds": 55.626,
+    "layout_baseline_flag": false
+  },
+  "runtime": {
+    "demo_mode": true,
+    "llm_enabled": false,
+    "next": "16.3.5",
+    "react": "19.3.0"
+  },
+  "artifact": {
+    "id": 10703737289,
+    "name": "verification-evidence",
+    "url": "https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226/artifacts/10703737289",
+    "new_png_count": 19,
+    "new_png_paths": [
+      "docs/screenshots/consulta-com-evidencia.png",
+      "docs/screenshots/consulta-mobile.png",
+      "docs/screenshots/evolucao-diaria.png",
+      "docs/screenshots/inicio.png",
+      "docs/screenshots/language-proof.png",
+      "docs/screenshots/organizacao-b.png",
+      "docs/screenshots/quality-1024x768.png",
+      "docs/screenshots/quality-1366x768.png",
+      "docs/screenshots/quality-1440x900.png",
+      "docs/screenshots/quality-320x256-zoom-equivalent.png",
+      "docs/screenshots/quality-320x844.png",
+      "docs/screenshots/quality-390x844.png",
+      "docs/screenshots/quality-768x1024.png",
+      "docs/screenshots/quality-lowheight-composer.png",
+      "docs/screenshots/welcome-1280x720.png",
+      "docs/screenshots/welcome-390x844.png",
+      "frontend/test-results/operational-story-operatio-622ea-imension-and-valid-recovery-chromium/story/01-calculation.png",
+      "frontend/test-results/operational-story-operatio-622ea-imension-and-valid-recovery-chromium/story/02-unsupported-dimension.png",
+      "frontend/test-results/operational-story-operatio-622ea-imension-and-valid-recovery-chromium/story/03-valid-recovery-table.png"
+    ],
+    "historical_png_count": 6,
+    "historical_png_paths": [
+      "docs/screenshots/operational-proof-20260922/96ae56f146d044d8ada235c3dbfc1c0c/01-calculation.png",
+      "docs/screenshots/operational-proof-20260922/96ae56f146d044d8ada235c3dbfc1c0c/02-unsupported-dimension.png",
+      "docs/screenshots/operational-proof-20260922/96ae56f146d044d8ada235c3dbfc1c0c/03-valid-recovery-table.png",
+      "docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png",
+      "docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/02-unsupported-dimension.png",
+      "docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/03-valid-recovery-table.png"
+    ]
+  },
+  "published_image": {
+    "path": "docs/screenshots/publication-20260922/inicio.png",
+    "artifact_path": "docs/screenshots/welcome-1280x720.png",
+    "sha256": "0279f3239290c23d884cf1ad208526bd341f8ca3f0aaa60989a21d5c8cdcecab",
+    "bytes": 58553,
+    "dimensions": {
+      "width": 1280,
+      "height": 720
+    },
+    "modified": false
+  },
+  "prior_failed_runs": [
+    {
+      "run_id": 35745146492,
+      "tested_commit": "2e8edd1764fcf4fdca91d82de6020237e2c1dfb9",
+      "passed": 67,
+      "failed": 2,
+      "cause": "Initial preparation pushed all suggestions outside viewport."
+    },
+    {
+      "run_id": 35746622056,
+      "tested_commit": "f48941e23ec132f0df0576ee948f20a67ee36a47",
+      "passed": 68,
+      "failed": 1,
+      "cause": "Mobile journey asserted the preceding DOM order; shortcut viewport cases passed."
+    }
+  ],
+  "limits": [
+    "No local frontend startup was retried. Remote CI is a separate proof.",
+    "No paired baseline comparison, native zoom, screen-reader, full WCAG AA or performance audit.",
+    "Some fullPage result images include an off-viewport fixed skip link; capture-beyond-viewport is the source-based explanation, but activeElement was not recorded at those moments. No pixels edited.",
+    "Demo parser, no paid calls or model quality evaluation."
+  ]
+}
