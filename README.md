@@ -35,7 +35,9 @@ O modo Demo funciona sem chave nem chamadas pagas. Para habilitar o modelo, siga
 
 ## Testes
 
-`dev.ps1 test` roda 313 testes de backend, incluindo 57 avaliações de regressão offline; `dev.ps1 e2e` roda 47 casos no Playwright. Comandos e resultados em [verificação](docs/verification.md).
+`dev.ps1 test` roda 313 testes de backend, incluindo 57 avaliações de regressão offline; `dev.ps1 e2e` roda 63 casos no Playwright: 28 jornadas de navegador/HTTP e 35 testes puros, incluindo cancelamento e prazo dos streams do proxy. Comandos, resultados atuais e execuções históricas em [verificação](docs/verification.md).
+
+O proxy limita a entrada a 16 KiB e usa um prazo total de 45 s para receber o corpo e encaminhar a resposta. Leitura expirada retorna 408; corpo excessivo retorna 413. Uma resposta interrompida é apresentada como falha, sem virar resultado vazio. [Contrato e testes de robustez](docs/security.md).
 
 ## Limites
 

@@ -30,7 +30,15 @@ export async function api<T>(
   } catch {
     throw new ApiError(0, "Falha na conexão. Tente novamente.");
   }
-  const payload: unknown = await response.json().catch(() => null);
+  let payload: unknown;
+  try {
+    payload = await response.json();
+  } catch {
+    throw new ApiError(
+      response.ok ? 0 : response.status,
+      "Resposta incompleta do serviço. Tente novamente.",
+    );
+  }
   if (!response.ok) {
     const detail =
       payload && typeof payload === "object" && "detail" in payload

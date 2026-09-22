@@ -1,0 +1,73 @@
+{
+  "scope": "New production frontend image, unchanged publication backend, synthetic isolated PostgreSQL; existing functional regression and controlled local streams; no paid calls or new authentication/RBAC adversarial review",
+  "base_commit": "6ea923175c83ac376333de84285f26d10d15205f",
+  "compose_project": "fix-loja-20260922",
+  "build_command": "docker build --tag fix-loja-frontend:20260922 --file frontend/Dockerfile frontend",
+  "build_exit_code": 0,
+  "compose_command": "docker compose -p fix-loja-20260922 -f compose.e2e.yaml -f .runtime/fix-loja-20260922/compose.override.yaml up --no-build --abort-on-container-exit --exit-code-from e2e",
+  "compose_exit_code": 0,
+  "images": {
+    "fix-loja-frontend:20260922": "sha256:e110e0716d03dab1a423d9faf0f9c53f795e298ea5e5436c8f723e386494fba2",
+    "pf-loja-publication-backend:20260921": "sha256:8119e17282d5d774de32caffe17633e5930607800e74df96ef0d4f278cbf0258",
+    "pf-loja-publication-e2e:20260921": "sha256:36f04e8257306e9f3df78619c498252514ef423a1911438d17973a377e91ae3d",
+    "postgres:17.11-bookworm": "sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652"
+  },
+  "stats": {
+    "startTime": "2026-09-22T01:20:12.922Z",
+    "duration": 60381.27,
+    "expected": 63,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": {
+    "browser_http_existing": 28,
+    "pure_existing": 19,
+    "pure_new": 16
+  },
+  "checks": {
+    "eslint": "passed; final api.ts and new spec rechecked after their last edit",
+    "typescript": "passed; final sources checked again by production Next build",
+    "prettier": "passed; final api.ts and new spec rechecked after their last edit",
+    "historical_evidence": "verify_evidence.py passed before and after E2E; 65 hashes,62 frozen source files,2 case sets",
+    "gitleaks": "8.30.1: staged diff and all existing Git history passed; no new allowlist"
+  },
+  "source_artifacts": [
+    {
+      "path": "frontend/src/app/api/[...path]/route.ts",
+      "sha256": "36b2c21aa94849bb27c61649f4b8e9f61f0eb13a1191239bb535e09ebd14785c"
+    },
+    {
+      "path": "frontend/src/lib/server/proxy-lifetime.ts",
+      "sha256": "65bf95964e941766e47bcabec2c2381e0cf5471e25bd5a9efb9ecb677ebef838"
+    },
+    {
+      "path": "frontend/src/lib/server/request-body.ts",
+      "sha256": "36f1cac673914d2916d6dddcefb173f26f5d5b7b9894c47deea3a00f5e52dd20"
+    },
+    {
+      "path": "frontend/src/lib/api.ts",
+      "sha256": "a092f1b28aeccb677556dd1c985918c8dd48fa885ae3e97ac95e201f401c49d2"
+    },
+    {
+      "path": "frontend/e2e/proxy-streams.spec.ts",
+      "sha256": "3e3c6e035e5b0ce0f36fc463f94aa79bf87e0e6205e4aedf5756d04d3d64e423"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "d3245df97bca42c0ef615ab15aad8d39a69844e772b8cdbc9c9d231fd2ebe9c3"
+    }
+  ],
+  "evidence_artifacts": [
+    {
+      "path": "results.json",
+      "sha256": "c055bb5a0036d628ef83c344d3b363d73044cef8c98511bb7b64d032b65b25cf"
+    },
+    {
+      "path": "playwright.log",
+      "sha256": "bb993461d047b01d54cf9039973415c98d165fc3a938637ee7d287a49a7fd0ec"
+    }
+  ],
+  "log_normalization": "Only e2e service output; Compose prefixes and trailing whitespace removed; LF endings; test outcomes unchanged",
+  "full_compose_log_sha256": "b26952653446f012a018f3d3f6dbe47074373ee8fdcf455afa4b37ab3157aa72"
+}

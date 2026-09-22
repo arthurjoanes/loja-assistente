@@ -43,6 +43,21 @@ Histórico examina até 50 conversas recentes e oculta aquelas com planos antigo
 
 ## Limites de entrada antes do JSON
 
-Corpos de POST/PUT/PATCH na API têm limite de **16 KiB (16.384 bytes)** antes do decode JSON; o proxy Next aplica o mesmo teto antes de acumular o conteúdo. Content-Length acima do teto é recusado cedo; cabeçalho ausente ou inexato não substitui a contagem dos chunks reais. O limite é inclusivo. Resposta 413 não repete o corpo e preserva request_id, no-store e nosniff. Isso limita o corpo acumulado pela aplicação, não constitui proteção completa contra conexões lentas ou força bruta.
+Corpos de POST/PUT/PATCH na API têm limite de **16 KiB (16.384 bytes)** antes do decode JSON; o proxy Next aplica o mesmo teto antes de acumular o conteúdo. Content-Length acima do teto é recusado cedo; cabeçalho ausente ou inexato não substitui a contagem dos chunks reais. O limite é inclusivo. Resposta 413 não repete o corpo e preserva request_id, no-store e nosniff.
+
+O proxy inicia um prazo total de **45 s antes de ler o corpo**. O prazo inclui
+leitura, fetch e encaminhamento do corpo da resposta; não renova a cada chunk.
+Expiração durante a leitura retorna 408 com request_id, no-store e nosniff.
+Falha/expiração upstream antes de retornar os cabeçalhos permanece 503. Depois de
+iniciada a resposta, o status não pode ser substituído: o stream é interrompido e
+o cliente trata JSON incompleto como erro de transporte, sem aceitar null como
+resposta bem-sucedida. A resposta continua em streaming, com backpressure.
+
+Abortar a requisição ou cancelar o consumidor encerra a leitura/fetch correspondente.
+Timers e listeners são descartados em sucesso, erro e cancelamento. Um hook de
+cancelamento que não resolve não impede a liberação do reader ou a resposta de
+erro. Isso limita recursos desta requisição no processo, não a quantidade de
+conexões simultâneas nem a execução já iniciada no backend. Não há nesta rodada
+medição de carga ou garantia contra saturação da infraestrutura.
 
 Pergunta: 1–1.000 caracteres, rejeição de conteúdo só com espaços, trim externo. `store_ids`: até seis referências, sem itens vazios ou maiores que 64 caracteres; duplicatas válidas são removidas sem ampliar escopo. `period` aceita 1–90 dias, datas ISO válidas e fim exclusivo. No formulário, datas vazias/invertidas mantêm a edição, mostram erro associado aos campos e desabilitam envio. A API valida de forma independente. Email aceita 3–254 caracteres, senha 1–200; a senha não é aparada, enquanto email é normalizado para a busca. O login público não revela se a conta existe.
