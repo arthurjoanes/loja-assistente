@@ -103,3 +103,13 @@ Na revisão local, **ESLint, Prettier, TypeScript, build de produção e 39 test
 As capturas de `operational-proof-20260922` permanecem históricas. A [tela inicial publicada](screenshots/publication-20260922/inicio.png) veio do [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226); as imagens do [artefato](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226/artifacts/10703737289) têm sua proveniência discriminada no recibo. Ainda falta comparar baseline/candidato com mesmo seed, conta, pergunta, recorte, cobertura e seleção em todas as telas do inventário. Zoom nativo de 200%, leitor de tela, fallback/favicon e desempenho percebido não foram verificados. A geometria 320×256 do teste não é zoom nativo. Não houve estudo com usuários, chamada paga ou certificação AA; as 30 jornadas aprovadas cobrem somente seus percursos e asserções.
 
 Na consulta anônima de 22/09/2026, o download do artefato retornou 404; isso não identifica sozinho se há exigência de login ou expiração. A captura publicada e o [recibo versionado](evidence/frontend-ci-20260922.json) permitem conferir o resumo sem esse download. A [auditoria final](verification.md#auditoria-final-sobre-d702d127--22092026) registra a nova execução local e seus limites, sem reatribuir as imagens anteriores.
+
+## Manutenção da interface e da documentação
+
+Antes de alterar telas, confira o inventário, os contratos e os limites das provas deste documento. Compare as versões com os mesmos dados, filtros, perfil e dimensões; preserve trabalho em andamento e evidências históricas. Execute lint, verificação de tipos, build e regressões pertinentes. Registre separadamente verificações executadas, inspeções e pendências. Propostas em `docs/design/` são simulações, não capturas da aplicação; fontes locais mantêm os avisos OFL.
+
+### Apresentação de código
+
+- Nos READMEs e na documentação, identifique a linguagem dos blocos de código (`json`, `python`, `powershell`, `sh`, `sql`, `yaml` etc.) para habilitar o realce sintático. Use `text` para saídas sem sintaxe, prosa e diagramas ASCII.
+- Nas interfaces, use realce da linguagem com contraste legível. Preserve o texto original e o conteúdo copiado; a formatação para leitura deve ser uma opção separada.
+- Mudanças de apresentação não alteram evidências históricas, hashes ou capturas antigas. Gere registros atuais separados quando necessário.
