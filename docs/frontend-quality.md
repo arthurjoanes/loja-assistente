@@ -1,5 +1,7 @@
 # Qualidade da experiência analítica
 
+As [capturas locais atuais de 22/09/2026](image-captures.md) documentam seis vistas reais sobre `6361280d`, com modo Demo explícito e bloqueio de requisições LLM. Os registros de CI, provas operacionais e design abaixo conservam suas fontes e limites históricos.
+
 Direção visual de 22/09/2026 sobre o **estado local da interface já reconstruída**, incluindo alterações concorrentes de orçamento/provas e o refinamento anterior. O HEAD de partida era `849428f4c1fd6b166516553f43c5466d8fee6de0`, com fontes locais posteriores; o baseline foi registrado por conteúdo, incluindo `daily-series.ts`. A proposta põe **pergunta, recorte, resposta e conferência** à frente, com identidade própria. Não é um diff apenas contra aquele HEAD.
 
 **Design aprovado pelo autor em 22/09/2026; execução automatizada comprovada no commit `73aa1fff1e061b6f7c562d788544f4c968b50b7e`:** o [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226) aprovou 69 casos (39 puros e 30 de navegador/HTTP), sem falha, skip ou retry. A revisão local anterior aprovou lint, tipos, build e 39 testes puros; o lançamento foi recusado com `blocked by policy`, sem repetição nem alternativa. O CI remoto posterior é uma prova distinta, com aplicação real em modo Demo, sem IA paga. O [recibo do CI](evidence/frontend-ci-20260922.json) e o [manifesto histórico da direção](evidence/visual-direction-static-20260922.json) conservam seus escopos.

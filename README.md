@@ -2,11 +2,17 @@
 
 Desenvolvi um assistente de análise de vendas para o gerente ou supervisor que precisa fazer uma pergunta e conferir as lojas, o período e a conta usados na resposta. A demonstração usa lojas e vendas fictícias. “Quanto vendi ontem somente em dinheiro?” não pode virar a receita geral quando o sistema não conhece a forma de pagamento.
 
-![Tela inicial da Loja Assistente com seis consultas de negócio e preparação da próxima pergunta](docs/screenshots/publication-20260922/inicio.png)
+[Na prática](#na-prática) · [Implementação](#implementação) · [Executar e verificar](#executar-e-verificar) · [Limites e manutenção](#limites-e-manutenção)
 
-*Tela inicial em 1280×720, modo Demo sem IA, commit `73aa1fff`. [Execução e proveniência da captura](docs/evidence/frontend-ci-20260922.json).*
+<p><img src="docs/readme/uso.svg" width="800" height="8" alt=""></p>
 
-## Uma conta pequena e um caso de consulta
+## Na prática
+
+![Recorte da tela inicial com seis consultas de negócio disponíveis](docs/screenshots/current-20260922/inicio.png)
+
+*Recorte real de 1392×329 px, capturado localmente em 22/09/2026 com viewport 1440×1000, sobre `6361280d`, modo Demo sem IA. [Telas atuais, reprodução e arquivo histórico](docs/image-captures.md).*
+
+### Uma conta pequena e um caso de consulta
 
 Na base mínima de testes `manual-v1`, “Quanto vendi ontem?” usa a referência de 17/08/2026 e consulta a loja Centro A em 16/08:
 
@@ -20,11 +26,15 @@ O ticket médio é R$ 30 / 2 = **R$ 15**. Um pedido cancelado de R$ 100 e as ven
 
 A imagem abaixo usa outra base: a massa maior `synthetic-v1`, loja Centro, de 10 a 16/08/2026. Seus R$ 10.810,95 não são a conta manual de R$ 30.
 
-![Evolução diária com receita, período, cobertura e cálculo consultável](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
+![Recorte atual dos indicadores e do gráfico de receita diária](docs/screenshots/current-20260922/evolucao-diaria.png)
 
-*Captura real histórica de 22/09/2026, rodada `f98ee948…`: Centro, 10–16/08, R$ 10.810,95, com os sete dias carregados. [Imagem completa](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png) · [consulta, recusa e recuperação, com versão e limites](docs/operational-story.md).*
+*Recorte atual de 22/09/2026: Centro, 10–16/08, R$ 10.810,95, 56 pedidos e 227 unidades. [Cálculo atual com as sete linhas](docs/screenshots/current-20260922/consulta-com-calculo.png). A [prova histórica completa da rodada `f98ee948…`](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png) e a [história operacional](docs/operational-story.md) conservam a execução anterior.*
 
-## O que eu implementei
+<p><img src="docs/readme/implementacao.svg" width="800" height="8" alt=""></p>
+
+## Implementação
+
+### O que eu implementei
 
 - A passagem da pergunta a um plano estrito, com parser demo offline, adaptador estruturado e recusa de capacidades não representáveis ([interpretação](backend/src/loja_assistente/assistant/interpretation.py)).
 - A autorização por organização, usuário e loja, aplicada novamente ao consultar respostas e cálculos históricos ([auth](backend/src/loja_assistente/auth/service.py), [serviço analítico](backend/src/loja_assistente/analytics/service.py)).
@@ -34,7 +44,7 @@ A imagem abaixo usa outra base: a massa maior `synthetic-v1`, loja Centro, de 10
 
 Integrei FastAPI, SQLAlchemy/PostgreSQL, Next.js/React e o SDK do provedor. Essas bibliotecas e o modelo são de terceiros; a composição, os contratos e os testes acima pertencem à implementação deste projeto.
 
-## Stack
+### Stack
 
 <p>
   <img src="docs/stack/python.svg" alt="Python" width="72" height="72">
@@ -48,25 +58,7 @@ Integrei FastAPI, SQLAlchemy/PostgreSQL, Next.js/React e o SDK do provedor. Essa
 
 Python e FastAPI na API; PostgreSQL nos dados e controles; TypeScript, React e Next.js na interface. Docker Compose executa a demo; Azure OpenAI é opcional.
 
-## Conferir uma análise
-
-1. Entre com uma conta demo e pergunte **Mostre a evolução diária da receita nos últimos 7 dias**. Confira as lojas e o período exibidos no resultado. Datas escritas na pergunta prevalecem sobre o filtro.
-2. Alterne **Gráfico** e **Tabela**. Abra **Cálculo** para conferir fórmula, totais por dia e cobertura: quantas combinações de loja e dia foram carregadas. Um dia carregado sem vendas tem zero; um dia ausente não é tratado como zero.
-3. Faça outra pergunta e use **Resultados desta análise** para rever a primeira. A continuação **E nos sete dias anteriores?** usa o último plano válido da conversa, mesmo enquanto um resultado anterior está selecionado.
-
-[Guia da interface](docs/interface.md) · [roteiro completo](docs/demo.md).
-
-## Dá pra conferir sem rodar
-
-Não precisa subir o projeto nem ter chave de IA:
-
-```sh
-python scripts/verify_evidence.py
-```
-
-O script usa só a biblioteca padrão do Python 3.11+ e recalcula as contagens a partir dos arquivos de resultado. Confere também as fontes históricas contra o freeze original e informa diferenças do código atual; não atribui a avaliação antiga às mudanças posteriores. O detalhe está em [resultado e limites](docs/azure-live-results.md), [as 48 execuções lado a lado](docs/evidence/azure-live/cases.md) e [as 55 chamadas à Azure](docs/evidence/azure-live/calls.md).
-
-## Interpretação e cálculo separados
+### Interpretação e cálculo separados
 
 Quando habilitada, a IA interpreta a pergunta; no modo Demo, essa etapa usa o parser determinístico. O servidor valida o plano, checa a autorização e faz a conta no banco; texto, tabela e gráfico usam o mesmo resultado. Isso está em [analytics/contracts.py](backend/src/loja_assistente/analytics/contracts.py), [auth/service.py](backend/src/loja_assistente/auth/service.py) e [analytics/queries.py](backend/src/loja_assistente/analytics/queries.py). [Arquitetura](docs/architecture.md).
 
@@ -74,7 +66,11 @@ A documentação da Microsoft sobre [saídas estruturadas](https://learn.microso
 
 Na avaliação histórica com GPT-5.6 Luna no Azure Foundry, o caminho modelo + backend acertou 47/48 tentativas, contra 24/48 do parser determinístico, em 24 perguntas repetidas duas vezes. As chamadas foram reais; os dados comerciais são sintéticos e a falha está documentada. Esse recorte não mede a qualidade de toda pergunta possível nem foi repetido na revisão visual.
 
-## Rodar
+<p><img src="docs/readme/execucao.svg" width="800" height="8" alt=""></p>
+
+## Executar e verificar
+
+### Rodar
 
 Docker Desktop com engine Linux e PowerShell 7+:
 
@@ -91,13 +87,35 @@ O modo com modelo tem cobrança do provedor. Na avaliação histórica, 55 chama
 
 O caminho LLM da API exige [orçamento persistente por organização](docs/provider-budget.md): reserva antes do despacho, sem saldo automático, e uso incerto continua comprometido após falha ou reinício. Os tetos locais controlam admissão; não são uma garantia de cobrança monetária do provedor.
 
-## Testes
+### Conferir uma análise
+
+1. Entre com uma conta demo e pergunte **Mostre a evolução diária da receita nos últimos 7 dias**. Confira as lojas e o período exibidos no resultado. Datas escritas na pergunta prevalecem sobre o filtro.
+2. Alterne **Gráfico** e **Tabela**. Abra **Cálculo** para conferir fórmula, totais por dia e cobertura: quantas combinações de loja e dia foram carregadas. Um dia carregado sem vendas tem zero; um dia ausente não é tratado como zero.
+3. Faça outra pergunta e use **Resultados desta análise** para rever a primeira. A continuação **E nos sete dias anteriores?** usa o último plano válido da conversa, mesmo enquanto um resultado anterior está selecionado.
+
+[Guia da interface](docs/interface.md) · [roteiro completo](docs/demo.md).
+
+### Dá pra conferir sem rodar
+
+Não precisa subir o projeto nem ter chave de IA:
+
+```sh
+python scripts/verify_evidence.py
+```
+
+O script usa só a biblioteca padrão do Python 3.11+ e recalcula as contagens a partir dos arquivos de resultado. Confere também as fontes históricas contra o freeze original e informa diferenças do código atual; não atribui a avaliação antiga às mudanças posteriores. O detalhe está em [resultado e limites](docs/azure-live-results.md), [as 48 execuções lado a lado](docs/evidence/azure-live/cases.md) e [as 55 chamadas à Azure](docs/evidence/azure-live/calls.md).
+
+### Testes
 
 `dev.ps1 test` roda o backend; `dev.ps1 e2e` reúne casos puros e jornadas de navegador. A revisão local sobre `d702d127`, com as correções descritas em [verificação](docs/verification.md#auditoria-final-sobre-d702d127--22092026), passou em **373 testes backend**, **57 casos offline** e **69 casos Playwright: 39 puros e 30 de navegador/HTTP**, sem falha, skip ou retry. Lint, formato, tipos e build também passaram. A execução inicial encontrou uma comparação incorreta entre um ID aleatório e um valor financeiro; a regressão, a correção e os resultados anteriores permanecem no registro. Esses resultados locais não são um novo CI publicado.
 
 O proxy limita a entrada a 16 KiB e usa um prazo total de 45 s para receber o corpo e encaminhar a resposta. Leitura expirada retorna 408; corpo excessivo retorna 413. Uma resposta interrompida é apresentada como falha, sem virar resultado vazio. [Contrato e testes de robustez](docs/security.md).
 
-## Manter e diagnosticar
+<p><img src="docs/readme/limites.svg" width="800" height="8" alt=""></p>
+
+## Limites e manutenção
+
+### Manter e diagnosticar
 
 | Mudança | Onde alterar | Contrato a verificar |
 | --- | --- | --- |
@@ -108,7 +126,7 @@ O proxy limita a entrada a 16 KiB e usa um prazo total de 45 s para receber o co
 
 Execute as suítes indicadas em **Testes** após mudar esses contratos. Para uma falha local, confira `dev.ps1 status` e `dev.ps1 logs`, o `request_id` mostrado em **Cálculo** e o [guia de operação](docs/local-setup.md). Relate problemas nas [issues do repositório](https://github.com/arthurjoanes/loja-assistente/issues), com passos, versão e mensagem sanitizada, sem chaves ou dados pessoais.
 
-## Limites
+### Limites
 
 Cada pergunta escolhe uma métrica. "Quanto vendi ontem só em dinheiro?" pede esclarecimento em vez de chutar o total. Filtros por forma de pagamento, vendedor, categoria, produto específico ou horário não cabem no plano atual; o ranking de produtos é uma capacidade distinta e está disponível. Comparações exigem cobertura completa. A base tem 6.316 pedidos fictícios em 90 dias, sem lucro, estoque, imposto ou reembolso parcial. Os testes de protocolo não medem compreensão de português, e não medi ganho de produtividade com usuários reais. [Parser demo](docs/demo-parser.md) · [métricas](docs/metrics.md) · [decisões técnicas](docs/decisoes-tecnicas.md).
 

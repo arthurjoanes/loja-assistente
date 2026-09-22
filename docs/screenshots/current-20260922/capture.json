@@ -1,0 +1,266 @@
+{
+  "captured_at": "2026-09-22T17:40:34.087Z",
+  "source_commit": "6361280de8faf9f8886f18edcb7bb45ee3df8114",
+  "application": "http://localhost:3102",
+  "browser_version": "153.0.8010.12",
+  "capture_method": "Capturas nativas de componentes e clip; sem fullPage ou edição de pixels.",
+  "scope": "Aplicação real; gerente demo; modo demo explícito e bloqueio de mode diferente de demo; sem provedor pago.",
+  "queries": [
+    {
+      "question": "Mostre a evolução diária da receita nos últimos 7 dias",
+      "mode": "demo",
+      "status": "ready",
+      "result": {
+        "intent": "daily",
+        "metric": "revenue",
+        "scope": [
+          {
+            "id": "a001",
+            "name": "Centro"
+          }
+        ],
+        "period": {
+          "start": "2026-08-10",
+          "end": "2026-08-17"
+        },
+        "timezone": "America/Sao_Paulo",
+        "currency": "BRL",
+        "unit": "centavos",
+        "formula": "Soma de quantidade × preço unitário − desconto total do item, nos pedidos concluídos.",
+        "value": "1081095",
+        "totals": {
+          "revenue_cents": "1081095",
+          "orders": 56,
+          "units": 227,
+          "average_ticket_cents": "19305.26785714285714285714286"
+        },
+        "rows": [
+          {
+            "revenue_cents": "155780",
+            "orders": 9,
+            "units": 26,
+            "average_ticket_cents": "17308.88888888888888888888889",
+            "key": "2026-08-10",
+            "label": "2026-08-10"
+          },
+          {
+            "revenue_cents": "0",
+            "orders": 0,
+            "units": 0,
+            "average_ticket_cents": null,
+            "key": "2026-08-11",
+            "label": "2026-08-11"
+          },
+          {
+            "revenue_cents": "0",
+            "orders": 0,
+            "units": 0,
+            "average_ticket_cents": null,
+            "key": "2026-08-12",
+            "label": "2026-08-12"
+          },
+          {
+            "revenue_cents": "183100",
+            "orders": 9,
+            "units": 37,
+            "average_ticket_cents": "20344.44444444444444444444444",
+            "key": "2026-08-13",
+            "label": "2026-08-13"
+          },
+          {
+            "revenue_cents": "154370",
+            "orders": 11,
+            "units": 48,
+            "average_ticket_cents": "14033.63636363636363636363636",
+            "key": "2026-08-14",
+            "label": "2026-08-14"
+          },
+          {
+            "revenue_cents": "174790",
+            "orders": 13,
+            "units": 57,
+            "average_ticket_cents": "13445.38461538461538461538462",
+            "key": "2026-08-15",
+            "label": "2026-08-15"
+          },
+          {
+            "revenue_cents": "413055",
+            "orders": 14,
+            "units": 59,
+            "average_ticket_cents": "29503.92857142857142857142857",
+            "key": "2026-08-16",
+            "label": "2026-08-16"
+          }
+        ],
+        "coverage": {
+          "status": "complete",
+          "covered_days": 7,
+          "expected_days": 7,
+          "missing": []
+        },
+        "comparison": null,
+        "evidence": [
+          {
+            "revenue_cents": "155780",
+            "orders": 9,
+            "units": 26,
+            "average_ticket_cents": "17308.88888888888888888888889",
+            "key": "2026-08-10",
+            "label": "2026-08-10"
+          },
+          {
+            "revenue_cents": "0",
+            "orders": 0,
+            "units": 0,
+            "average_ticket_cents": null,
+            "key": "2026-08-11",
+            "label": "2026-08-11"
+          },
+          {
+            "revenue_cents": "0",
+            "orders": 0,
+            "units": 0,
+            "average_ticket_cents": null,
+            "key": "2026-08-12",
+            "label": "2026-08-12"
+          },
+          {
+            "revenue_cents": "183100",
+            "orders": 9,
+            "units": 37,
+            "average_ticket_cents": "20344.44444444444444444444444",
+            "key": "2026-08-13",
+            "label": "2026-08-13"
+          },
+          {
+            "revenue_cents": "154370",
+            "orders": 11,
+            "units": 48,
+            "average_ticket_cents": "14033.63636363636363636363636",
+            "key": "2026-08-14",
+            "label": "2026-08-14"
+          },
+          {
+            "revenue_cents": "174790",
+            "orders": 13,
+            "units": 57,
+            "average_ticket_cents": "13445.38461538461538461538462",
+            "key": "2026-08-15",
+            "label": "2026-08-15"
+          },
+          {
+            "revenue_cents": "413055",
+            "orders": 14,
+            "units": 59,
+            "average_ticket_cents": "29503.92857142857142857142857",
+            "key": "2026-08-16",
+            "label": "2026-08-16"
+          }
+        ],
+        "dataset_version": "synthetic-v1",
+        "request_id": "60c224d7-0aff-4420-b063-69d403c63c79"
+      }
+    },
+    {
+      "question": "Quanto vendi ontem somente em dinheiro?",
+      "mode": "demo",
+      "status": "needs_clarification",
+      "result": null
+    }
+  ],
+  "images": [
+    {
+      "path": "inicio.png",
+      "focus": ".welcome",
+      "dimensions": {
+        "width": 1392,
+        "height": 329
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cba42804fcd55bc34b1b5c1211ead8dd369bc8093a9c2a5f1e9d45bec178ca65",
+      "overflow": false,
+      "dimension_source": "PNG IHDR"
+    },
+    {
+      "path": "inicio-mobile.png",
+      "focus": ".welcome",
+      "dimensions": {
+        "width": 370,
+        "height": 506
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e25ad6c0e7bfa3690ae0ca2af053b192143210400874c7106d18714e020919f7",
+      "overflow": false,
+      "dimension_source": "PNG IHDR"
+    },
+    {
+      "path": "evolucao-diaria.png",
+      "focus": ".analysis-reading",
+      "dimensions": {
+        "width": 1344,
+        "height": 386
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0d7c1265215b2fd6333c215c153441f7127421daf1c603ab23232ed1019c9b3e",
+      "overflow": false,
+      "dimension_source": "PNG IHDR"
+    },
+    {
+      "path": "consulta-com-calculo.png",
+      "focus": ".evidence",
+      "dimensions": {
+        "width": 1344,
+        "height": 673
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "a9d0288985ebcf1eb0ffa250a07f64b1503805e17b8d7e955460b9ca56d1ab7c",
+      "overflow": false,
+      "dimension_source": "PNG IHDR"
+    },
+    {
+      "path": "consulta-mobile.png",
+      "focus": ".period-summary",
+      "dimensions": {
+        "width": 346,
+        "height": 273
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4e51705e0f7e51072a8afe46c8bdc0f69e54d18359b0ed0bec55dea544317b81",
+      "overflow": false,
+      "dimension_source": "PNG IHDR"
+    },
+    {
+      "path": "filtro-nao-suportado.png",
+      "focus": ".answer-block",
+      "dimensions": {
+        "width": 1392,
+        "height": 194
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8517634d6f666c4940f2489421f4a56ecd15d62357f522e483a7fca0e0f225fe",
+      "overflow": false,
+      "dimension_source": "PNG IHDR"
+    }
+  ],
+  "page_errors": [],
+  "rejected_requests": [],
+  "scope_note": "Somente vistas autenticadas; mudanças concorrentes de login não são atribuídas ao runtime desta captura."
+}

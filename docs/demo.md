@@ -7,7 +7,7 @@ permissões e a referência dos dados. [Guia de leitura](interface.md).
 
 A [jornada histórica `f98ee948…`](operational-story.md) mostra consulta com cálculo, recusa do filtro por dinheiro e nova tentativa válida em tabela. As três capturas são da aplicação real em modo Demo, com dados sintéticos e resultados conferidos.
 
-Este roteiro descreve ações para quem executar a aplicação; não foi repetido nesta revisão documental. As capturas abaixo e na história pertencem às fontes históricas identificadas, anteriores à [direção visual local](frontend-quality.md).
+Este roteiro completo não foi repetido nesta revisão documental. A [galeria atual de 22/09/2026](image-captures.md) mostra início, evolução diária, cálculo, celular e recusa de filtro em Demo, com asserções sobre o resultado real. As imagens da história operacional pertencem às fontes históricas identificadas, anteriores à [direção visual local](frontend-quality.md).
 
 ## Problema e resultado em 5–8 minutos
 

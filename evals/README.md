@@ -29,7 +29,7 @@ O runner usa exclusivamente TEST_DATABASE_URL com banco PostgreSQL cujo nome ter
 
 Execução no serviço de testes:
 
-~~~text
+~~~sh
 docker compose --profile test up -d test-db
 docker compose --profile test run --rm test python /app/evals/runner.py --output-dir /app/evals/reports/local
 ~~~

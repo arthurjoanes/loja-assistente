@@ -1,12 +1,14 @@
 # Conferir a pergunta, o recorte e a conta
 
+Para o layout atual, veja a [galeria local de 22/09/2026](image-captures.md). As imagens abaixo permanecem inalteradas como prova da execução histórica identificada.
+
 Uma soma pode estar correta e ainda responder à pergunta errada. Se a pessoa pedir receita somente em dinheiro, devolver a receita geral esconderia uma limitação dos dados. Esta jornada mostra a consulta válida, a recusa de um filtro não representável e uma nova pergunta válida com o mesmo recorte.
 
 **Resultado histórico de 22/09/2026, anterior à direção visual local atual:** as 68 verificações Playwright passaram, sem skip ou retry: 38 casos puros, 29 jornadas existentes de navegador/HTTP e a nova história abaixo. O [índice da entrega](evidence/operational-proof-20260922/index.json) separa essa execução das provas de backend, das tentativas que falharam e da avaliação paga histórica. Os dados são sintéticos, com **Demo sem IA**; não houve chamada paga nem participante humano.
 
 ## 1. Consulta válida com cálculo conferível
 
-![Evolução diária com cálculo aberto e recorte explícito](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
+[Captura histórica completa: Evolução diária com cálculo aberto e recorte explícito](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
 
 *Loja Centro (`a001`), de 10 a 16/08/2026, fuso America/Sao_Paulo, base `synthetic-v1`: R$ 10.810,95, 56 pedidos e 227 unidades. A evidência mostra fórmula, fim exclusivo em 17/08, cobertura 7/7 e linhas diárias.*
 
@@ -14,7 +16,7 @@ A jornada abriu o cálculo pela API e conferiu igualdade com o resultado recebid
 
 ## 2. Recusa que preserva o significado
 
-![Pedido com filtro de dinheiro é recusado sem retornar receita geral](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/02-unsupported-dimension.png)
+[Captura histórica completa: Pedido com filtro de dinheiro é recusado sem retornar receita geral](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/02-unsupported-dimension.png)
 
 *“Mostre a receita dos últimos 7 dias somente em dinheiro” recebeu `needs_clarification`, com plano e resultado nulos. A tela informa que não há filtro por pagamento.*
 
@@ -22,7 +24,7 @@ O comportamento evita atribuir uma condição inexistente ao total de vendas. O 
 
 ## 3. Nova tentativa válida, com tabela exata
 
-![Pergunta válida após a recusa retorna os mesmos indicadores em tabela](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/03-valid-recovery-table.png)
+[Captura histórica completa: Pergunta válida após a recusa retorna os mesmos indicadores em tabela](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/03-valid-recovery-table.png)
 
 *Repetir a pergunta válida devolveu as mesmas lojas, período, linhas e totais. A tabela distingue os dias cobertos sem venda, com receita zero e ticket indisponível. As transições finitas foram concluídas pelo coletor Playwright antes da captura, sem edição da imagem. O viewport é 1440×1000.*
 
