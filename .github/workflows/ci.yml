@@ -73,6 +73,7 @@ jobs:
           path: |
             evals/reports
             docs/screenshots
+            frontend/test-results
       - name: Stop project containers
         if: always()
         run: |
