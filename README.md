@@ -2,6 +2,10 @@
 
 Desenvolvi um assistente de análise de vendas para o gerente ou supervisor que precisa fazer uma pergunta e conferir as lojas, o período e a conta usados na resposta. A demonstração usa lojas e vendas fictícias. “Quanto vendi ontem somente em dinheiro?” não pode virar a receita geral quando o sistema não conhece a forma de pagamento.
 
+![Página principal do Loja Assistente](docs/readme/home.png)
+
+*Página principal da demonstração.*
+
 [Na prática](#na-prática) · [Implementação](#implementação) · [Executar e verificar](#executar-e-verificar) · [Limites e manutenção](#limites-e-manutenção)
 
 <p><img src="docs/readme/uso.svg" width="800" height="8" alt=""></p>
