@@ -213,7 +213,11 @@ As 57 avaliações estão incluídas nos 313 testes pytest. No Playwright, 19 do
 
 ## Capturas e acessibilidade
 
-Capturas da aplicação no E2E isolado: [início](screenshots/inicio.png), [consulta com cálculo](screenshots/consulta-com-evidencia.png), [evolução](screenshots/evolucao-diaria.png), [outra organização](screenshots/organizacao-b.png), [celular](screenshots/consulta-mobile.png). A consulta principal parte de histórico com uma conversa; capturas posteriores mostram somente a sequência temporária da suíte.
+Para apresentação do produto, use as [capturas atuais de 22/09/2026](image-captures.md), com registro próprio de execução e limites.
+
+### Arquivo histórico da interface anterior — 21/09/2026
+
+As seguintes imagens documentam o E2E isolado da interface lateral verde, anterior à direção visual atual: [início](screenshots/inicio.png), [consulta com cálculo](screenshots/consulta-com-evidencia.png), [evolução](screenshots/evolucao-diaria.png), [outra organização](screenshots/organizacao-b.png), [celular](screenshots/consulta-mobile.png). São preservadas como prova daquela execução. A consulta principal parte de histórico com uma conversa; capturas posteriores mostram somente a sequência temporária da suíte.
 
 Em [1280×720](screenshots/welcome-1280x720.png), seis atalhos cabem antes do campo de pergunta. Em [390×844](screenshots/welcome-390x844.png), o teste exige pelo menos quatro.
 
