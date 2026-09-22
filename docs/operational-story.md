@@ -1,5 +1,7 @@
 # Conferir a pergunta, o recorte e a conta
 
+> História das execuções identificadas, sem nova jornada nesta revisão. Fontes: [índice primário](evidence/operational-proof-20260922/index.json) e [recibo do CI](evidence/frontend-ci-20260922.json). Conferência documental: **22/09/2026**.
+
 Para o layout atual, veja a [galeria local de 22/09/2026](image-captures.md). As imagens abaixo permanecem inalteradas como prova da execução histórica identificada.
 
 Uma soma pode estar correta e ainda responder à pergunta errada. Se a pessoa pedir receita somente em dinheiro, devolver a receita geral esconderia uma limitação dos dados. Esta jornada mostra a consulta válida, a recusa de um filtro não representável e uma nova pergunta válida com o mesmo recorte.
@@ -10,7 +12,7 @@ Uma soma pode estar correta e ainda responder à pergunta errada. Se a pessoa pe
 
 [Captura histórica completa: Evolução diária com cálculo aberto e recorte explícito](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
 
-*Loja Centro (`a001`), de 10 a 16/08/2026, fuso America/Sao_Paulo, base `synthetic-v1`: R$ 10.810,95, 56 pedidos e 227 unidades. A evidência mostra fórmula, fim exclusivo em 17/08, cobertura 7/7 e linhas diárias.*
+_Loja Centro (`a001`), de 10 a 16/08/2026, fuso America/Sao_Paulo, base `synthetic-v1`: R$ 10.810,95, 56 pedidos e 227 unidades. A evidência mostra fórmula, fim exclusivo em 17/08, cobertura 7/7 e linhas diárias._
 
 A jornada abriu o cálculo pela API e conferiu igualdade com o resultado recebido. A soma das sete linhas coincide com o total apresentado. Essa comparação demonstra consistência da apresentação; não é um oráculo independente da origem. A correção financeira tem testes próprios com a [fixture manual](../backend/tests/manual_fixture.py), cujo exemplo de R$ 30 é outra base e não deve ser confundido com esta tela.
 
@@ -18,7 +20,7 @@ A jornada abriu o cálculo pela API e conferiu igualdade com o resultado recebid
 
 [Captura histórica completa: Pedido com filtro de dinheiro é recusado sem retornar receita geral](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/02-unsupported-dimension.png)
 
-*“Mostre a receita dos últimos 7 dias somente em dinheiro” recebeu `needs_clarification`, com plano e resultado nulos. A tela informa que não há filtro por pagamento.*
+_“Mostre a receita dos últimos 7 dias somente em dinheiro” recebeu `needs_clarification`, com plano e resultado nulos. A tela informa que não há filtro por pagamento._
 
 O comportamento evita atribuir uma condição inexistente ao total de vendas. O último plano válido continua disponível para seguimento; uma tentativa recusada não ganha autoridade por estar no histórico.
 
@@ -26,7 +28,7 @@ O comportamento evita atribuir uma condição inexistente ao total de vendas. O 
 
 [Captura histórica completa: Pergunta válida após a recusa retorna os mesmos indicadores em tabela](screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/03-valid-recovery-table.png)
 
-*Repetir a pergunta válida devolveu as mesmas lojas, período, linhas e totais. A tabela distingue os dias cobertos sem venda, com receita zero e ticket indisponível. As transições finitas foram concluídas pelo coletor Playwright antes da captura, sem edição da imagem. O viewport é 1440×1000.*
+_Repetir a pergunta válida devolveu as mesmas lojas, período, linhas e totais. A tabela distingue os dias cobertos sem venda, com receita zero e ticket indisponível. As transições finitas foram concluídas pelo coletor Playwright antes da captura, sem edição da imagem. O viewport é 1440×1000._
 
 São respostas diferentes, com IDs próprios; a igualdade é do conteúdo analítico. A conta gerente usada na automação e o nome exibido são parte da demonstração sintética. Esta recuperação é da interação após uma recusa, não um restore de banco ou um experimento com usuário.
 

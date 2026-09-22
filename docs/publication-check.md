@@ -1,18 +1,20 @@
 # Verificação para publicação
 
+> Registro histórico de 21/09/2026, sem repetir builds ou scans nesta revisão documental. Fontes: [registro técnico primário](publication-check.json). Conferência documental: **22/09/2026**.
+
 **Registro histórico de 21/09.** A entrega posterior, com orçamento persistente e novas jornadas, está em [verificação atual](verification.md). A avaliação Azure conserva suas fontes em um [arquivo verificável](evidence/azure-live/historical-source-20260921.json); seus números não foram transferidos para o código posterior.
 
 Revalidação de 21/09/2026 em uma cópia formada somente pelos arquivos públicos do Git, com configuração gerada, imagens Linux e bancos exclusivos. Não houve chamada a modelo nesta rodada. Os registros da avaliação Azure anterior foram preservados e conferidos por hash.
 
-| Verificação | Resultado |
-|---|---|
-| Instalação | Build da API e frontend, migrações 0001/0002, seed e saúde dos serviços passaram em ambiente novo. |
-| Backend | 313 testes passaram; Ruff, formato e mypy passaram. As 57 avaliações estão incluídas nesses testes e também passaram no runner separado. |
-| Frontend | Build de produção, ESLint, TypeScript e Prettier passaram. |
-| Navegador | 47 casos Playwright passaram em 37,1 s, sem falha, skip ou retry. Desktop e celular foram inspecionados nas capturas reais. |
-| Roteiro HTTP | Receita, cálculo, ranking, comparação, continuação, capacidade ausente, ausência de dados, logout e isolamento entre contas passaram pelo proxy Next.js e PostgreSQL. |
-| Evidências históricas | `verify_evidence.py` passou antes e depois da suíte: 65 artefatos, 62 fontes congeladas, duas bases de casos e os resultados reais 47/48 preservados. |
-| Segredos | Gitleaks 8.30.1 sem credenciais detectadas no histórico após triagem de hashes de arquivo e um ID de correlação. Exceções são limitadas a caminhos e valores exatos em `.gitleaks.toml`. |
+| Verificação           | Resultado                                                                                                                                                                                |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Instalação            | Build da API e frontend, migrações 0001/0002, seed e saúde dos serviços passaram em ambiente novo.                                                                                       |
+| Backend               | 313 testes passaram; Ruff, formato e mypy passaram. As 57 avaliações estão incluídas nesses testes e também passaram no runner separado.                                                 |
+| Frontend              | Build de produção, ESLint, TypeScript e Prettier passaram.                                                                                                                               |
+| Navegador             | 47 casos Playwright passaram em 37,1 s, sem falha, skip ou retry. Desktop e celular foram inspecionados nas capturas reais.                                                              |
+| Roteiro HTTP          | Receita, cálculo, ranking, comparação, continuação, capacidade ausente, ausência de dados, logout e isolamento entre contas passaram pelo proxy Next.js e PostgreSQL.                    |
+| Evidências históricas | `verify_evidence.py` passou antes e depois da suíte: 65 artefatos, 62 fontes congeladas, duas bases de casos e os resultados reais 47/48 preservados.                                    |
+| Segredos              | Gitleaks 8.30.1 sem credenciais detectadas no histórico após triagem de hashes de arquivo e um ID de correlação. Exceções são limitadas a caminhos e valores exatos em `.gitleaks.toml`. |
 
 ## Correções desta rodada
 

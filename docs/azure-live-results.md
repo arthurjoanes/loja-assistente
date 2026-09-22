@@ -1,5 +1,7 @@
 # Avaliação com Azure Foundry
 
+> Resultados históricos de 21/09/2026; verificador offline novamente aprovado em 22/09/2026, sem reavaliar o modelo. Fontes: [summary.json](../evals/reports/20260921T121255Z-a9c11d1f/summary.json), [cases.jsonl](../evals/reports/20260921T121255Z-a9c11d1f/cases.jsonl) e [verificador](../scripts/verify_evidence.py). Conferência documental: **22/09/2026**.
+
 Este relatório descreve a **versão avaliada em 21/09/2026**. O orçamento persistente foi acrescentado depois e tem [prova própria, com provedor simulado](provider-budget.md). Os 47/48 abaixo não são uma nova avaliação semântica do código atual.
 
 Para manter o resultado conferível após a evolução do código, o [manifesto histórico](evidence/azure-live/historical-source-20260921.json) associa 62 arquivos de fonte e dois conjuntos de casos aos bytes originais, preservados em `docs/evidence/azure-live/source-20260921/`. O verificador compara esse arquivo histórico ao freeze original e aos 65 artefatos publicados; alterações no código ativo são informadas separadamente. Não houve nova chamada Azure para produzir esse arquivo.
@@ -12,22 +14,22 @@ Para conferir no repositório: [perguntas e resultados lado a lado](evidence/azu
 
 ## Resultado comparável
 
-| Caminho | Desenvolvimento | Avaliação final | p95 final |
-|---|---:|---:|---:|
-| Parser offline | 12/12 | 24/48 | 87 ms |
-| Filtros estruturados | 9/9 aplicáveis | 30/30 aplicáveis | 79 ms |
-| Modelo Azure + backend | 12/12 | 47/48 (97,92%) | 3.418 ms |
+| Caminho                | Desenvolvimento |  Avaliação final | p95 final |
+| ---------------------- | --------------: | ---------------: | --------: |
+| Parser offline         |           12/12 |            24/48 |     87 ms |
+| Filtros estruturados   |  9/9 aplicáveis | 30/30 aplicáveis |     79 ms |
+| Modelo Azure + backend |           12/12 |   47/48 (97,92%) |  3.418 ms |
 
 A amostra final contém 24 perguntas distintas, repetidas duas vezes, e não 48 exemplos independentes. São seis categorias, com quatro perguntas em cada uma. Consultas estruturadas só se aplicam aos 15 casos executáveis; os nove casos de recusa não entram nesse denominador. O caminho com modelo inclui 42 chamadas reais e seis recusas por guardas locais, de três perguntas sobre Pix, horário e categoria. Essas guardas não foram contabilizadas como chamadas de IA.
 
-| Categoria final | Parser | Modelo + backend |
-|---|---:|---:|
-| Linguagem natural | 0/8 | 8/8 |
-| Período e contexto | 0/8 | 8/8 |
-| Escopo de lojas | 4/8 | 8/8 |
-| Filtros não suportados | 8/8 | 8/8 |
-| Ambiguidade e saudação | 8/8 | 8/8 |
-| Fronteiras e finanças | 4/8 | 7/8 |
+| Categoria final        | Parser | Modelo + backend |
+| ---------------------- | -----: | ---------------: |
+| Linguagem natural      |    0/8 |              8/8 |
+| Período e contexto     |    0/8 |              8/8 |
+| Escopo de lojas        |    4/8 |              8/8 |
+| Filtros não suportados |    8/8 |              8/8 |
+| Ambiguidade e saudação |    8/8 |              8/8 |
+| Fronteiras e finanças  |    4/8 |              7/8 |
 
 Nos casos medidos: zero violações de autorização, zero aceitação de filtro não representado e zero divergências financeiras em resultados retornados. O avaliador confere o plano, o resultado, os dados guardados e as consultas analíticas; HTTP 200 isoladamente não aprova. Depois da execução, as contagens foram recalculadas e os valores literais conferidos contra a fixture ([final-review.json](evidence/azure-live/final-review.json)).
 
@@ -50,7 +52,7 @@ O resultado atende aos critérios definidos antes: semântica total ≥90%, cada
 
 Total das três etapas: 55 chamadas, todas concluídas sem retries; 45.307 tokens de entrada + 3.481 de saída = 48.788 tokens, sem uso desconhecido. Estimativa conservadora US$ 0,01550395; reserva persistida US$ 0,23306975. O limite de tentativas era 61 e o teto autorizado US$ 15.
 
-A estimativa usa US$ 0,25/milhão para toda entrada, cobrindo a tarifa publicada de escrita de cache, e US$ 1,20/milhão para saída. Entrada normal custa US$ 0,20/milhão e leitura de cache US$ 0,02/milhão; descontos não foram presumidos. A [Azure Retail Prices API](https://prices.azure.com/api/retail/prices) foi consultada em 21/09/2026 para East US 2/GlobalStandard, com vigência dos medidores desde 01/08/2026. Não é uma fatura: cobrança efetiva da conta não foi consultada.
+A estimativa usa US$ 0,25/milhão para toda entrada, cobrindo a tarifa publicada de escrita de cache, e US$ 1,20/milhão para saída. Entrada normal custa US$ 0,20/milhão e leitura de cache US$ 0,02/milhão; descontos não foram presumidos. A [Azure Retail Prices API](https://prices.azure.com/api/retail/prices) foi consultada em 21/09/2026 para East US 2/GlobalStandard, com vigência dos medidores desde 01/08/2026. A [reconsulta dos medidores em 22/09/2026](references/azure-prices-20260922.json) encontrou os mesmos valores para essa região/modalidade; não altera o cálculo histórico. Não é uma fatura: cobrança efetiva da conta não foi consultada.
 
 ## Implementação entregue
 

@@ -1,5 +1,7 @@
 # Executar localmente
 
+> Comandos e portas da composição local. Fontes: [Compose](../compose.yaml), [gerador de configuração](../scripts/setup_env.py), [PowerShell](../scripts/dev.ps1) e [Compose E2E](../compose.e2e.yaml). Conferência documental: **22/09/2026**.
+
 Requisitos: Docker com containers Linux e Compose v2. No Windows, use PowerShell 7; no Linux, Python 3.11 ou posterior para criar a configuração. As portas 3102 e 8102 precisam estar livres. A aplicação e os dados de demonstração são locais; nenhum recurso de nuvem é criado.
 
 ## Windows

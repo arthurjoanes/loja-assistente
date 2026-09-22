@@ -1,5 +1,7 @@
 # Robustez do proxy e limites da revisão
 
+> Contrato local de transporte e resultados históricos de 22/09/2026. Fontes: [limite de corpo](../frontend/src/lib/server/request-body.ts), [prazo do proxy](../frontend/src/lib/server/proxy-lifetime.ts) e [jornadas](../frontend/e2e/proxy-streams.spec.ts). Conferência documental: **22/09/2026**.
+
 ## Prazo de leitura e resposta
 
 A inspeção do proxy mostrou que `readRequestBody(request)` era aguardado antes
@@ -64,7 +66,6 @@ Para a suíte completa com navegador e banco novos, use `dev.ps1 e2e`, conforme
 ## O que esta rodada não comprova
 
 O incremento posterior de [orçamento persistente](provider-budget.md) controla admissão de chamadas no caminho LLM da aplicação. Reserva e despacho ficam em transações próprias; resultado incerto não é liberado por rollback, reinício ou prazo do proxy. Esse controle tem verificação separada e não completa a auditoria adversarial anterior de autenticação/RBAC, nem impõe limite de cobrança a outros clientes da mesma credencial.
-
 
 Trata-se de revisão de robustez do transporte e regressão funcional. Não é
 pentest completo, nova revisão adversarial de autenticação/RBAC, teste de carga

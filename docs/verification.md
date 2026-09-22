@@ -1,21 +1,23 @@
 # Testes locais
 
+> Histórico de execuções: cada seção conserva sua data, versão e limites. Fontes: [recibo de CI](evidence/frontend-ci-20260922.json), [índice de provas locais](evidence/operational-proof-20260922/index.json) e [workflow](../.github/workflows/ci.yml). Conferência documental: **22/09/2026**.
+
 ## Auditoria final sobre d702d127 — 22/09/2026
 
 Baseline: `origin=https://github.com/arthurjoanes/loja-assistente.git`, branch `main`, SHA `d702d12774bd1c69a58c881eb26058dd2385a41e`, árvore rastreada limpa em 22/09/2026, por volta de 13:00 −03. Inventário: 398 arquivos rastreados, 36 Markdown e 35 PNG/SVG; nenhum novo arquivo não ignorado. `.env`, caches e `.runtime` estavam ignorados. Credenciais existentes não foram copiadas. Foram lidos README, instruções, contratos, arquitetura, decisões, CI e caminhos críticos de autorização, cálculo, orçamento, proxy e estado da interface; testes, scripts e imagens foram amostrados. Inventário não significa leitura de cada fonte histórica.
 
 **Escopo da revisão:** cálculo com esperado independente, isolamento por organização, reautorização de histórico e reserva de orçamento em transações próprias. A falha reproduzida do avaliador diminuía a confiança no sinal do CI, embora não demonstrasse vazamento do produto. As consultas predefinidas evitam SQL livre; o orçamento só é necessário no caminho opcional com modelo. Qualidade de linguagem aberta, benefício com usuários e operação pública não foram comprovados por esta revisão.
 
-| Requisito | Evidência atual e situação | Correção ou limite |
-| --- | --- | --- |
-| Dados, domínio e autorização | Conforme nos cenários executados: valores manuais, fuso, cobertura, IDs alheios e ausência de SQL proibido | 373 testes, incluindo nove regressões do avaliador |
-| Testes efetivos e CI | Corrigido: avaliação falhava ao encontrar `3300` dentro de um UUID | Metadado validado separadamente; payload financeiro continua recusado |
-| UI, hierarquia, estados, teclado e gráficos | Conforme nos percursos automatizados; comparação visual completa não verificada | 30 jornadas/HTTP, sete geometrias; capturas atuais de início desktop, início móvel e cálculo inspecionadas |
-| Asserções de geometria/tipografia | Corrigido: laços poderiam passar com coleções vazias | Exigem 12 controles, um campo, três metadados e dois botões de gráfico/tabela |
-| Público, problema, exemplo, decisões e limites | Conforme na leitura simulada apenas do README | Conta de R$ 30 completa, cobertura explicada, alternativa com filtros e mapa de manutenção; sem estudo com leitores |
-| Fontes e identidade visual | Parcial: fontes primárias e aplicação dos mecanismos conferidas; efeito com pessoas não verificado | Microsoft: esquema JSON; PostgreSQL: precisão; OWASP: permissão a cada acesso. Pesquisa visual anterior é histórica |
-| Imagens e provas | Conforme quanto à separação de base manual, massa visual e avaliação histórica | Sem substituir capturas antigas; propostas de design continuam identificadas como simulações |
-| Conteúdo público, instalação e manutenção | Conforme no escopo dos checks; implantação pública não verificada | Locks, scans e guia de operação preservados; nenhum commit, push ou deploy |
+| Requisito                                      | Evidência atual e situação                                                                                 | Correção ou limite                                                                                                  |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Dados, domínio e autorização                   | Conforme nos cenários executados: valores manuais, fuso, cobertura, IDs alheios e ausência de SQL proibido | 373 testes, incluindo nove regressões do avaliador                                                                  |
+| Testes efetivos e CI                           | Corrigido: avaliação falhava ao encontrar `3300` dentro de um UUID                                         | Metadado validado separadamente; payload financeiro continua recusado                                               |
+| UI, hierarquia, estados, teclado e gráficos    | Conforme nos percursos automatizados; comparação visual completa não verificada                            | 30 jornadas/HTTP, sete geometrias; capturas atuais de início desktop, início móvel e cálculo inspecionadas          |
+| Asserções de geometria/tipografia              | Corrigido: laços poderiam passar com coleções vazias                                                       | Exigem 12 controles, um campo, três metadados e dois botões de gráfico/tabela                                       |
+| Público, problema, exemplo, decisões e limites | Conforme na leitura simulada apenas do README                                                              | Conta de R$ 30 completa, cobertura explicada, alternativa com filtros e mapa de manutenção; sem estudo com leitores |
+| Fontes e identidade visual                     | Parcial: fontes primárias e aplicação dos mecanismos conferidas; efeito com pessoas não verificado         | Microsoft: esquema JSON; PostgreSQL: precisão; OWASP: permissão a cada acesso. Pesquisa visual anterior é histórica |
+| Imagens e provas                               | Conforme quanto à separação de base manual, massa visual e avaliação histórica                             | Sem substituir capturas antigas; propostas de design continuam identificadas como simulações                        |
+| Conteúdo público, instalação e manutenção      | Conforme no escopo dos checks; implantação pública não verificada                                          | Locks, scans e guia de operação preservados; nenhum commit, push ou deploy                                          |
 
 **Falha preservada e causa:** a rodada inicial `a32041cd926e4ebf827aa3f05afbe3f4` executou 364 testes com sucesso, mas a avaliação seguinte terminou **56/57**, código 1, no caso `user_field_injected`. `evals/harness.py` procurava a substring `3300` no JSON inteiro, incluindo o `request_id` aleatório da resposta 422. O controle determinístico com UUID `33000000-0000-4000-8000-000000000000` reproduziu a mesma falha antes da correção. O ID original daquela resposta não foi gravado pelo relatório; a atribuição desse caso específico à colisão é inferida do caminho 422 e confirmada pelo controle reproduzível, não pela recuperação do ID original.
 
@@ -85,14 +87,14 @@ O [registro estático anterior](frontend-quality.md) e sua matriz mantêm o esco
 
 O [índice desta entrega](evidence/operational-proof-20260922/index.json) identifica cada rodada e conserva as falhas. A [história com capturas](operational-story.md) mostra consulta, recusa e nova tentativa válida; o [contrato do orçamento](provider-budget.md) explica problema, escolhas, operação e limites.
 
-| Prova | Resultado e versão |
-| --- | --- |
-| Backend, rodada `30792079e0d948258f4ab91d767529c0` | 353 testes passaram em 24,486 s, sem erro/falha/skip; migração 0003, Ruff, formato e mypy passaram. |
-| Incremento de orçamento, incluído nos 353 | 40 casos novos: 14 de política, 6 de adaptador, 12 de PostgreSQL/API, 3 de preparação da avaliação e 5 do executor. A integração da preparação também usa PostgreSQL; são 13 casos de banco entre esses módulos. |
-| Avaliação offline | 57/57; não houve repetição da avaliação Azure paga. |
-| Frontend final, rodada `f98ee94864384422bd835bcabd8f3a11` | Build, lint, tipos e formato passaram; 68 verificações Playwright em 38,441 s, sem skip ou retry: 38 puros, 29 jornadas existentes e uma nova história. |
-| Associação entre rodadas | Os 100 arquivos anteriores de backend/evals/data permaneceram byte a byte iguais. O teste histórico acrescentado passou em 11 casos host; a rodada final de frontend não reexecutou os 353 casos. |
-| Interface e acessibilidade automatizada | Jornadas de seleção, recorte, cobertura, teclado, foco, reflow, sete geometrias e Axe passaram. Três capturas reais conferidas; isso não é estudo com usuários, teste de leitor de tela ou certificação. |
+| Prova                                                     | Resultado e versão                                                                                                                                                                                               |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Backend, rodada `30792079e0d948258f4ab91d767529c0`        | 353 testes passaram em 24,486 s, sem erro/falha/skip; migração 0003, Ruff, formato e mypy passaram.                                                                                                              |
+| Incremento de orçamento, incluído nos 353                 | 40 casos novos: 14 de política, 6 de adaptador, 12 de PostgreSQL/API, 3 de preparação da avaliação e 5 do executor. A integração da preparação também usa PostgreSQL; são 13 casos de banco entre esses módulos. |
+| Avaliação offline                                         | 57/57; não houve repetição da avaliação Azure paga.                                                                                                                                                              |
+| Frontend final, rodada `f98ee94864384422bd835bcabd8f3a11` | Build, lint, tipos e formato passaram; 68 verificações Playwright em 38,441 s, sem skip ou retry: 38 puros, 29 jornadas existentes e uma nova história.                                                          |
+| Associação entre rodadas                                  | Os 100 arquivos anteriores de backend/evals/data permaneceram byte a byte iguais. O teste histórico acrescentado passou em 11 casos host; a rodada final de frontend não reexecutou os 353 casos.                |
+| Interface e acessibilidade automatizada                   | Jornadas de seleção, recorte, cobertura, teclado, foco, reflow, sete geometrias e Axe passaram. Três capturas reais conferidas; isso não é estudo com usuários, teste de leitor de tela ou certificação.         |
 
 O provedor dos testes de orçamento usa `httpx.MockTransport`. Foram conferidos oito concorrentes para duas admissões, reserva incerta após timeout, leitura do mesmo saldo por outro processo, rollback da resposta sem restituição, isolamento e reconciliação idempotente. O subprocesso lê o ledger; não é um restart completo da API. O índice separa observações auxiliares de saldo da autoridade dos resultados JUnit.
 
@@ -180,14 +182,14 @@ Execução de 21/09/2026 UTC, Windows/PowerShell 7 e containers Linux: Python 3.
 
 ## Comandos e resultados
 
-| Comando | Resultado |
-|---|---|
-| `docker compose build backend` e `docker compose build frontend` | Imagens construídas; Next.js compilou versão de produção. [Backend](evidence/azure-live/backend-build.log), [frontend](evidence/problem-review/frontend-build-final.log). |
-| `docker compose --profile test run --rm test` | Ruff, formato e mypy passaram; 313 testes backend em 18,05 s, incluindo as 57 avaliações de regressão (57/57 também no runner). [Log](evidence/azure-live/backend-checks.log), [avaliações](../evals/reports/latest.md), [JSON](../evals/reports/latest.json). |
-| `pwsh -NoProfile -File scripts/dev.ps1 check-frontend` | ESLint, TypeScript e Prettier passaram. [Log](evidence/problem-review/frontend-checks.log). |
-| `pwsh -NoProfile -File scripts/dev.ps1 e2e` | 47 casos Playwright em 38,3 s: 28 jornadas de aplicação/HTTP e 19 casos puros, sem skip ou retry, em outro Compose com banco novo/tmpfs, migração/seed e proxy reais. [Log](evidence/problem-review/e2e.log). O frontend não mudou na integração Azure. |
+| Comando                                                                                                                 | Resultado                                                                                                                                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `docker compose build backend` e `docker compose build frontend`                                                        | Imagens construídas; Next.js compilou versão de produção. [Backend](evidence/azure-live/backend-build.log), [frontend](evidence/problem-review/frontend-build-final.log).                                                                                        |
+| `docker compose --profile test run --rm test`                                                                           | Ruff, formato e mypy passaram; 313 testes backend em 18,05 s, incluindo as 57 avaliações de regressão (57/57 também no runner). [Log](evidence/azure-live/backend-checks.log), [avaliações](../evals/reports/latest.md), [JSON](../evals/reports/latest.json).   |
+| `pwsh -NoProfile -File scripts/dev.ps1 check-frontend`                                                                  | ESLint, TypeScript e Prettier passaram. [Log](evidence/problem-review/frontend-checks.log).                                                                                                                                                                      |
+| `pwsh -NoProfile -File scripts/dev.ps1 e2e`                                                                             | 47 casos Playwright em 38,3 s: 28 jornadas de aplicação/HTTP e 19 casos puros, sem skip ou retry, em outro Compose com banco novo/tmpfs, migração/seed e proxy reais. [Log](evidence/problem-review/e2e.log). O frontend não mudou na integração Azure.          |
 | `docker compose --profile evaluation run --rm evaluator python -m evals.live_runner --mode offline --stage development` | Parser 12/12 e consulta estruturada 9/9 nos casos aplicáveis, com valores manuais, FastAPI e PostgreSQL real; três recusas não se aplicam ao formulário estruturado. [Relatório](../evals/reports/20260921T063624Z-d4d4fcdb/summary.md). Zero chamadas a modelo. |
-| `python scripts/verify_evidence.py` | Confere hashes dos arquivos publicados, contagens, chamadas, tokens e custo estimado, sem rede. |
+| `python scripts/verify_evidence.py`                                                                                     | Confere hashes dos arquivos publicados, contagens, chamadas, tokens e custo estimado, sem rede.                                                                                                                                                                  |
 
 Avaliação com modelo real no Azure Foundry: smoke, desenvolvimento e final, 47/48 no caminho modelo + backend, 42 chamadas reais e seis guardas locais, 55 chamadas no total e custo estimado US$ 0,01550395. Detalhes, fontes congeladas e falha registrada em [azure-live-results.md](azure-live-results.md); logs em [evidence/azure-live/README.md](evidence/azure-live/README.md). Resultados anteriores à integração Azure ficam em [evidence/problem-review/README.md](evidence/problem-review/README.md).
 
@@ -197,17 +199,17 @@ Um aviso externo Starlette/AnyIO (`BlockingPortal`) permanece visível. O workfl
 
 ## Casos testados
 
-| Área | Testes |
-|---|---|
-| Cálculo | Valores esperados calculados à mão: múltiplos itens, dinheiro/ticket sem arredondamento duplo, pedidos distintos, empate, UTC/São Paulo e fim exclusivo. |
-| Cobertura | Zero somente em dia carregado, ausência com null, parcial exclui vendas sem cobertura e impede comparação completa. |
-| Autorização | Sessão, logout, expiração, Origin/CSRF independentes, tenant vindo da sessão, lojas mistas e planos maliciosos; listener verifica ausência de SQL proibido; FK composta protege joins. |
-| Histórico revogado | Consulta Jardins seguida de Centro; revogar Jardins remove título/ID da lista e recusa detalhe. |
-| Qualificadores | Pagamento, vendedor, categoria, produto, canal, horários e números não reconhecidos, exclusões e ambiguidades pedem esclarecimento sem SQL de vendas. Guarda LLM impede SDK. |
+| Área                  | Testes                                                                                                                                                                                                                        |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cálculo               | Valores esperados calculados à mão: múltiplos itens, dinheiro/ticket sem arredondamento duplo, pedidos distintos, empate, UTC/São Paulo e fim exclusivo.                                                                      |
+| Cobertura             | Zero somente em dia carregado, ausência com null, parcial exclui vendas sem cobertura e impede comparação completa.                                                                                                           |
+| Autorização           | Sessão, logout, expiração, Origin/CSRF independentes, tenant vindo da sessão, lojas mistas e planos maliciosos; listener verifica ausência de SQL proibido; FK composta protege joins.                                        |
+| Histórico revogado    | Consulta Jardins seguida de Centro; revogar Jardins remove título/ID da lista e recusa detalhe.                                                                                                                               |
+| Qualificadores        | Pagamento, vendedor, categoria, produto, canal, horários e números não reconhecidos, exclusões e ambiguidades pedem esclarecimento sem SQL de vendas. Guarda LLM impede SDK.                                                  |
 | Corpo HTTP e dinheiro | API/proxy recusam mais de 16 KiB antes do decode, inclusive chunks sem Content-Length correto. Centavos acima de 2^53 e multiplicação de BIGINT por INTEGER atravessam PostgreSQL, JSON, histórico legado e formatação exata. |
-| Concorrência | Duas conexões reais: mesma conversa bloqueada gera 409; após commit funciona. Não mede vazão. |
-| Provedor | SDK real com transporte simulado: schema estrito, campos proibidos, recusa, incompleta, rate limit e timeout. A qualidade semântica é medida só na avaliação Azure. |
-| Navegador | Consulta/cálculo, ranking, comparação/continuação, troca de usuário com requisições diretas a IDs alheios, histórico tardio, teclado, estados, contraste automatizado e reflow. |
+| Concorrência          | Duas conexões reais: mesma conversa bloqueada gera 409; após commit funciona. Não mede vazão.                                                                                                                                 |
+| Provedor              | SDK real com transporte simulado: schema estrito, campos proibidos, recusa, incompleta, rate limit e timeout. A qualidade semântica é medida só na avaliação Azure.                                                           |
+| Navegador             | Consulta/cálculo, ranking, comparação/continuação, troca de usuário com requisições diretas a IDs alheios, histórico tardio, teclado, estados, contraste automatizado e reflow.                                               |
 
 As 57 avaliações estão incluídas nos 313 testes pytest. No Playwright, 19 dos 47 casos são puros; a execução terminou sem skip, retry ou flaky.
 

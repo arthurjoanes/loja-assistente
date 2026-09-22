@@ -1,5 +1,7 @@
 # Problema e solução
 
+> Hipótese de utilidade e exemplos sintéticos; resultados limitados às rodadas identificadas. Fontes: [fixture](../backend/tests/manual_fixture.py), [casos](../evals/cases/manual-v1.json) e [resumo final](../evals/reports/20260921T121255Z-a9c11d1f/summary.json). Conferência documental: **22/09/2026**.
+
 Desenvolvi a demonstração para o gerente ou supervisor que precisa consultar vendas de suas lojas e conferir o recorte antes de decidir. É um problema plausível: não realizei entrevista, piloto ou medição de resultado comercial.
 
 Um dashboard com filtros é a alternativa mais simples e continua sendo a referência de correção. A hipótese de valor do assistente é reduzir a tradução manual de perguntas variadas em filtros, preservando limites, autorização e cálculo. Se a interpretação exigir decorar frases, perder qualificadores ou recusar perguntas válidas, essa vantagem não está demonstrada. Acrescentar um modelo sem medir esses erros tampouco resolve o problema.
@@ -12,11 +14,11 @@ A entrega também trata uma falha operacional distinta: perder a resposta do pro
 
 Na fixture de testes `manual-v1`, “Quanto vendi ontem?” usa a referência de 17/08/2026, portanto consulta 16/08 na loja Centro A (`a001`). Dois pedidos concluídos entram na conta:
 
-| Pedido | Itens e desconto total por item | Receita | Unidades |
-|---|---|---:|---:|
-| `oa3` | 2 garrafas × R$ 6 − R$ 2 de desconto; 5 ecobags × R$ 2 | R$ 20 | 7 |
-| `oa4` | 1 caneca × R$ 10 | R$ 10 | 1 |
-| Total | 2 pedidos distintos | **R$ 30** | **8** |
+| Pedido | Itens e desconto total por item                        |   Receita | Unidades |
+| ------ | ------------------------------------------------------ | --------: | -------: |
+| `oa3`  | 2 garrafas × R$ 6 − R$ 2 de desconto; 5 ecobags × R$ 2 |     R$ 20 |        7 |
+| `oa4`  | 1 caneca × R$ 10                                       |     R$ 10 |        1 |
+| Total  | 2 pedidos distintos                                    | **R$ 30** |    **8** |
 
 O ticket é R$ 30 / 2 = R$ 15. `oa5`, de R$ 100, está cancelado e não entra. O gerente B tem outro total, R$ 33, apesar de identificadores externos coincidirem. Usei esses números literais no [oráculo manual](manual-fixture.md) e em `test_independent_financial_oracle_with_multi_item_orders` e `test_same_external_identifiers_do_not_join_tenants`, em [test_analytics.py](../backend/tests/test_analytics.py). O esperado não é recalculado pela função sob teste.
 
@@ -40,14 +42,14 @@ Essa organização facilita a conferência prevista pelo produto, mas não demon
 
 A matriz abaixo registra o estado **anterior à avaliação Azure de 21/09/2026**. Conservei o diagnóstico para tornar as mudanças e a falha final rastreáveis; ele não é a lista atual de resultados.
 
-| Alegação / estado inicial | Cenário | Implementação / teste existente | Lacuna | Correção e critério |
-|---|---|---|---|---|
-| Português natural: não demonstrada | Pronome, cortesia, erro de digitação, continuação | Demo v3 usa regex/vocabulário; SDK somente simulado | “Quanto eu vendi ontem?” é rejeitado; nenhum benchmark live | Adaptar endpoint Azure v1; avaliação congelada compara campos semânticos e resultado financeiro, com recusas no denominador |
-| Não inventar filtros: parcial | Pagamento, produto, horário; cortesia “só queria” | Guarda anterior ao provedor e testes de SQL ausente | Guarda lexical também rejeita saudações/cortesia válidas | Tornar guardas explícitas conservadoras sem remover proteção; modelo deve esclarecer todo filtro não representável; aceitação indevida bloqueia aprovação |
-| Cálculo exato: testado antes | Itens, cancelamento, UTC/local, zero/ausência | Fixture manual independente e PostgreSQL; centavos em string | Reexecutar no código revisado | Resultado, cálculo persistido e consulta estruturada iguais; divergência financeira bloqueia aprovação |
-| Autorização fora do prompt: testada antes | Plano válido malicioso, histórico revogado | Sessão, referências resolvidas, revalidação, listener SQL | Reexecutar e incluir identidade no conjunto live | Nenhum dado/SQL proibido; qualquer violação bloqueia aprovação |
-| Provedor real confiável: não demonstrada | Recusa, timeout, schema, quota, custo | Responses parse, zero retry, sem fallback | Sem endpoint Azure; tokens, IDs e número de chamadas limitados | SDK único configurável, telemetria sanitizada e avaliação com orçamento reservado antes de cada chamada |
-| Utilidade superior a filtros: não demonstrada | Mesma tarefa por pessoa do público-alvo | Consulta estruturada já existe | Nenhuma pessoa avaliada | Comparação técnica com filtros agora; roteiro de usuário registrado, sem alegar ganho humano |
+| Alegação / estado inicial                     | Cenário                                           | Implementação / teste existente                              | Lacuna                                                         | Correção e critério                                                                                                                                       |
+| --------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Português natural: não demonstrada            | Pronome, cortesia, erro de digitação, continuação | Demo v3 usa regex/vocabulário; SDK somente simulado          | “Quanto eu vendi ontem?” é rejeitado; nenhum benchmark live    | Adaptar endpoint Azure v1; avaliação congelada compara campos semânticos e resultado financeiro, com recusas no denominador                               |
+| Não inventar filtros: parcial                 | Pagamento, produto, horário; cortesia “só queria” | Guarda anterior ao provedor e testes de SQL ausente          | Guarda lexical também rejeita saudações/cortesia válidas       | Tornar guardas explícitas conservadoras sem remover proteção; modelo deve esclarecer todo filtro não representável; aceitação indevida bloqueia aprovação |
+| Cálculo exato: testado antes                  | Itens, cancelamento, UTC/local, zero/ausência     | Fixture manual independente e PostgreSQL; centavos em string | Reexecutar no código revisado                                  | Resultado, cálculo persistido e consulta estruturada iguais; divergência financeira bloqueia aprovação                                                    |
+| Autorização fora do prompt: testada antes     | Plano válido malicioso, histórico revogado        | Sessão, referências resolvidas, revalidação, listener SQL    | Reexecutar e incluir identidade no conjunto live               | Nenhum dado/SQL proibido; qualquer violação bloqueia aprovação                                                                                            |
+| Provedor real confiável: não demonstrada      | Recusa, timeout, schema, quota, custo             | Responses parse, zero retry, sem fallback                    | Sem endpoint Azure; tokens, IDs e número de chamadas limitados | SDK único configurável, telemetria sanitizada e avaliação com orçamento reservado antes de cada chamada                                                   |
+| Utilidade superior a filtros: não demonstrada | Mesma tarefa por pessoa do público-alvo           | Consulta estruturada já existe                               | Nenhuma pessoa avaliada                                        | Comparação técnica com filtros agora; roteiro de usuário registrado, sem alegar ganho humano                                                              |
 
 Os resultados antigos ficam como histórico. A avaliação é registrada com horário real, hashes, ambiente, entradas/esperado/observado e falhas preservadas. Testes simulados e parser offline não são rotulados como integração live.
 

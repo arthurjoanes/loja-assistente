@@ -4,6 +4,8 @@ Atualizado em 22/09/2026 UTC.
 
 ## Interpretação
 
+Fontes do contrato local: [`interpretation.py`](../backend/src/loja_assistente/assistant/interpretation.py), [`openai_adapter.py`](../backend/src/loja_assistente/assistant/interpreters/openai_adapter.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
 [Problema e matriz](problem-solution.md). O caminho Responses v1 aceita OpenAI ou endpoint Azure de inferência configurado no servidor, usando o mesmo SDK/contrato. Endpoint de projeto e URLs com credenciais são recusados antes da rede; `model` no Azure é o nome do deployment. Não há segundo framework de provedor.
 
 O adaptador v5 usa um schema de transporte compatível com Azure e valida novamente no mesmo Pydantic de domínio antes de consultar. O esforço de raciocínio pode ser omitido ou configurado; o deployment Luna foi avaliado com none. Conserva somente metadata permitida de uso/correlação, inclusive quando o parsing falha, e fornece hooks de avaliação por contexto da requisição. O runner usa o endpoint FastAPI e PostgreSQL descartável; reserva orçamento persistente antes de enviar cada tentativa, sem retries ou fallback. O modo offline não acessa o provedor. [Protocolo e limites](live-evaluation.md). A [avaliação Azure](azure-live-results.md) passou nos limiares definidos antes; os testes de contrato simulado permanecem separados.
@@ -11,9 +13,14 @@ O adaptador v5 usa um schema de transporte compatível com Azure e valida novame
 Prefixos de cortesia são removidos apenas no início da guarda/parser; qualificadores posteriores permanecem sujeitos à recusa. O demo v4 aceita pronome em “quanto eu vendi” e ajuda numa saudação isolada. Essas correções não transformam o parser em modelo nem mostram generalização.
 
 ## Problema, usuários e limites
+
+Fontes do contrato local: [`seed.py`](../backend/src/loja_assistente/seed.py), [`contracts.py`](../backend/src/loja_assistente/analytics/contracts.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 Gestores consultam receita, pedidos, ticket, unidades, ranking e evolução em português e conferem o cálculo. Aurora Casa e Brisa Casa são organizações independentes, cada uma com Centro, Jardins e Norte. Gerente A vê a001; supervisor A vê a001/a002; gerente B vê b001. Lucro, estoque, previsão, causalidade, clientes, tributação e reembolsos parciais não são suportados.
 
 ## Componentes e fluxo
+
+Fontes do contrato local: [`service.py`](../backend/src/loja_assistente/assistant/service.py), [`service.py`](../backend/src/loja_assistente/analytics/service.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
 ```mermaid
 flowchart LR
   UI[Next.js · navegador] -->|mesma origem /api| API[FastAPI · sessão e CSRF]
@@ -24,11 +31,15 @@ flowchart LR
   Q --> R[Resultado exato e cálculo]
   R --> UI
 ```
+
 Python 3.12, Pydantic 2, SQLAlchemy 2, Alembic, Next.js 16, React 19, TypeScript, Node 24 e PostgreSQL 17. Dependências em `backend/uv.lock` e `frontend/package-lock.json`. Compose `pf-loja-assistente`, portas 3102/8102, banco interno.
 
 O monólito mantém interpretação e consulta no mesmo processo. O banco usa um único papel; autorização fica nas consultas por loja e tenant, com chaves compostas e testes.
 
 ## Identidade e mapa de autorização
+
+Fontes do contrato local: [`service.py`](../backend/src/loja_assistente/auth/service.py), [`service.py`](../backend/src/loja_assistente/conversations/service.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
 1. Cookie opaco la_session, HttpOnly, SameSite=Lax, sessão armazenada no banco como digest; expiração usa relógio real. Senhas Argon2. Identidade e tenant são derivados exclusivamente da sessão.
 2. Toda mutação requer Origin permitido; depois do login também X-CSRF-Token vinculado à sessão. Login aceita somente JSON e Origin conhecido. Proxy Next mantém uma origem no navegador. Secure habilitável para HTTPS.
 3. Interpretador recebe apenas referências de lojas atualmente permitidas, referência analítica, filtros visuais e último plano validado da conversa pertencente ao usuário. Nunca recebe dump de vendas, senha ou sessão.
@@ -39,22 +50,31 @@ O monólito mantém interpretação e consulta no mesmo processo. O banco usa um
 
 ## Modelo de dados
 
+Fontes do contrato local: [`models.py`](../backend/src/loja_assistente/models.py), [`budget.py`](../backend/src/loja_assistente/assistant/budget.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
 A admissão do modo LLM usa uma conta PostgreSQL por organização e reservas duráveis, com lock apenas nas transações curtas do orçamento. A reserva e o despacho são confirmados antes da rede; uma falha na transação da conversa não os desfaz. Uso incerto conserva a reserva, sem expiração automática. A migração 0003 acrescenta esse ledger sem conceder saldo. [Estados, operação e limites](provider-budget.md).
 
 Organização → lojas/produtos/usuários. Permissões ligam usuário e loja. Pedidos possuem tenant, loja, identificador de origem, instante UTC e status; itens possuem tenant, pedido, produto, quantidade, preço unitário e desconto total do item em centavos. Chaves estrangeiras compostas e unicidade por tenant impedem cruzamentos acidentais. Cobertura tem uma linha por tenant/loja/data comercial carregada. Dataset guarda versão e configuração. Sessões, conversas, respostas e telemetria são persistidas. Nomes e IDs externos coincidem entre organizações intencionalmente.
 
 ## Contratos
-Fonte de integração: docs/api-contract.md. Plano estrito com intent=aggregate|ranking|daily, metric=revenue|orders|average_ticket|units, store_references, period={start,end}, comparison=previous_period|null, grouping=day|null, limit. Datas são ISO, end exclusivo. Interpretador retorna status=ready|needs_clarification|unsupported, plan ou null e mensagem. Resultado inclui totais, rows, linhas diárias (`evidence`), cobertura, comparação, unidade/fórmula, escopo, fuso, versão e request_id. Dinheiro é inteiro em centavos no Python e string decimal na saída JSON, inclusive totais e linhas diárias; ticket e percentual também são strings Decimal. A multiplicação em SQL e o CHECK de desconto usam NUMERIC antes de multiplicar quantidade por preço BIGINT. A migração 0002 troca apenas essa restrição; não reescreve respostas antigas. Texto e gráfico leem este único objeto.
+
+Fontes do contrato local: [`contracts.py`](../backend/src/loja_assistente/analytics/contracts.py), [`queries.py`](../backend/src/loja_assistente/analytics/queries.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+Fonte de integração: [contrato HTTP](api-contract.md). Plano estrito com intent=aggregate|ranking|daily, metric=revenue|orders|average_ticket|units, store_references, period={start,end}, comparison=previous_period|null, grouping=day|null, limit. Datas são ISO, end exclusivo. Interpretador retorna status=ready|needs_clarification|unsupported, plan ou null e mensagem. Resultado inclui totais, rows, linhas diárias (`evidence`), cobertura, comparação, unidade/fórmula, escopo, fuso, versão e request_id. Dinheiro é inteiro em centavos no Python e string decimal na saída JSON, inclusive totais e linhas diárias; ticket e percentual também são strings Decimal. A multiplicação em SQL e o CHECK de desconto usam NUMERIC antes de multiplicar quantidade por preço BIGINT. A migração 0002 troca apenas essa restrição; não reescreve respostas antigas. Texto e gráfico leem este único objeto.
 
 ## Riscos e testes
-Valores financeiros esperados calculados à mão, independentes da massa; integração obrigatória em PostgreSQL real. Testar limite UTC/São Paulo, contagem distinta, centavos, zero/ausência/parcial, empates, períodos equivalentes e base zero. Testar expiração, CSRF, referência adulterada, plano malicioso, duas sessões alternadas e acesso direto a recursos alheios; inspecionar que o repositório não recebeu consulta proibida. Adaptador OpenAI com schema estrito, timeout, sem retry automático nem fallback oculto; execução paga exige ativação explícita e fica fora da validação local. Avaliações versionadas (40+) com relatório por categoria, separadas dos exemplos da UI. Jornadas reais de navegador, transições de sessão, campos e falhas, responsividade e capturas reais; contagens atuais em verification.md. CI usa comandos internos iguais ao Compose local.
+
+Fontes do contrato local: [`test_analytics.py`](../backend/src/loja_assistente/../../tests/test_analytics.py), [`test_security.py`](../backend/src/loja_assistente/../../tests/test_security.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+Valores financeiros esperados calculados à mão, independentes da massa; integração obrigatória em PostgreSQL real. Testar limite UTC/São Paulo, contagem distinta, centavos, zero/ausência/parcial, empates, períodos equivalentes e base zero. Testar expiração, CSRF, referência adulterada, plano malicioso, duas sessões alternadas e acesso direto a recursos alheios; inspecionar que o repositório não recebeu consulta proibida. Adaptador OpenAI com schema estrito, timeout, sem retry automático nem fallback oculto; execução paga exige ativação explícita e fica fora da validação local. Casos de avaliação versionados, com relatório por categoria, separadas dos exemplos da UI. Jornadas reais de navegador, transições de sessão, campos e falhas, responsividade e capturas reais; contagens históricas por execução em [verificação](verification.md). CI usa comandos internos iguais ao Compose local.
 
 ## Fontes consultadas
-- https://developers.openai.com/api/docs/guides/structured-outputs — saída estruturada e validação posterior.
-- https://nextjs.org/docs/app/getting-started/installation — requisitos de Node e App Router.
-- https://fastapi.tiangolo.com/tutorial/testing/ — testes HTTP.
+
+- [Documentação oficial](https://developers.openai.com/api/docs/guides/structured-outputs) — saída estruturada e validação posterior. Referência histórica; conferir disponibilidade antes de novo uso.
+- [Documentação oficial](https://nextjs.org/docs/app/getting-started/installation) — requisitos de Node e App Router. Consulta: **22/09/2026**.
+- [Documentação oficial](https://fastapi.tiangolo.com/tutorial/testing/) — testes HTTP. Consulta: **22/09/2026**.
 
 ## Execução e concorrência
+
+Fontes do contrato local: [`database.py`](../backend/src/loja_assistente/database.py), [`queries.py`](../backend/src/loja_assistente/analytics/queries.py), [`service.py`](../backend/src/loja_assistente/conversations/service.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 PostgreSQL fixado em 17.11-bookworm nos ambientes de demonstração e testes. E2E usa `compose.e2e.yaml`, projeto `pf-loja-assistente-e2e`, banco tmpfs e nenhuma porta host; sobe migrações e seed antes da saúde da API. Não usa `.env` com credenciais ou chave de IA da demonstração. `dev.ps1 e2e` encerra apenas esse ambiente em `finally`, inclusive após falhas.
 
@@ -63,6 +83,8 @@ Perguntas da mesma conversa usam `SELECT FOR UPDATE NOWAIT`: uma segunda solicit
 Todos os planos históricos são reautorizados para lista/detalhe/continuação: uma pergunta recente autorizada não torna visível o título de uma consulta anterior revogada. A checagem no acesso ao cálculo (`/answers/{id}/evidence`) permanece independente. O plano não admite filtros de pagamento, horário, vendedor ou produto individual; a guarda inicial recusa essas intenções antes de consultar ou chamar provedor. O parser demo usa vocabulário limitado; o LLM mantém validação de schema e autorização posterior.
 
 ## Organização do código
+
+Fontes do contrato local: [`service.py`](../backend/src/loja_assistente/assistant/service.py), [`interpretation.py`](../backend/src/loja_assistente/assistant/interpretation.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 `assistant/service.respond` coordena identidade, conversa, interpretação, autorização, consulta e persistência, com telemetria explícita. A decisão demo/LLM, configuração do SDK e guarda anterior ao provedor estão em `assistant/interpretation.py`. A gramática divide capacidade/vocabulário, datas/continuação e referências de loja em módulos específicos, sem framework de parsing.
 

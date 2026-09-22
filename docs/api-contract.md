@@ -1,26 +1,74 @@
 # Contrato HTTP e integração interna
 
-Todos os caminhos possuem prefixo /api; Next faz proxy para backend. Erros HTTP usam {detail: string}. Sessão: cookie la_session. POST exige Origin permitido; exceto login exige X-CSRF-Token. JSON usa snake_case.
+Todos os caminhos possuem prefixo `/api`; Next.js faz proxy para o backend. Erros HTTP usam `detail` textual. Cookie de sessão: `la_session`. POST exige `Origin` permitido; depois do login também exige `X-CSRF-Token`. JSON usa `snake_case`.
 
-- POST /auth/login {email,password} → mesmo objeto de GET /auth/me, com cookie.
-- GET /auth/me → {user:{id,name,email,role,organization:{id,name},stores:[{id,name}]},csrf_token,reference_date,dataset_version,llm_available}.
-- POST /auth/logout → {ok:true}.
-- GET /conversations → [{id,title,created_at}].
-- POST /conversations {} → {id,title,created_at}.
-- GET /conversations/{id} → {id,title,created_at,messages:[Answer]}.
-- POST /assistant/query {question,conversation_id:null|string,mode:demo|llm,store_ids:[],period:null|{start,end}} → Answer.
-- POST /analytics/query Plan → Result (CSRF obrigatório; mesma autorização).
-- GET /answers/{id} → Answer; GET /answers/{id}/evidence → Result.
-- GET /operations → {entries:[{request_id,mode,capability,status,interpretation_ms,query_ms,response_ms,created_at,interpreter_version}],total,errors,tokens:null,cost:null}.
-- GET /health → {status:ok}; readiness verifica SELECT 1.
+## Rotas
 
-Plan={intent:aggregate|ranking|daily,metric:revenue|orders|average_ticket|units,store_references:string[],period:{start:ISOdate,end:ISOdate},comparison:previous_period|null,grouping:day|null,limit:int}. period.end é exclusivo. A referência pode ser ID estável (a001) ou nome permitido. Ranking só aceita revenue ou units. Contratos Pydantic com extra=forbid.
+Fontes do contrato local: [`routes.py`](../backend/src/loja_assistente/auth/routes.py), [`routes.py`](../backend/src/loja_assistente/assistant/routes.py), [`routes.py`](../backend/src/loja_assistente/conversations/routes.py), [`routes.py`](../backend/src/loja_assistente/observability/routes.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
-Answer={id,conversation_id,question,status:ready|needs_clarification|unsupported|provider_error|no_data,message,mode,plan:Plan|null,result:Result|null,request_id,created_at}.
+| Método e caminho             | Entrada                               | Retorno                                                                     |
+| ---------------------------- | ------------------------------------- | --------------------------------------------------------------------------- |
+| `POST /auth/login`           | `email`, `password`                   | Mesmo objeto de `/auth/me`, com cookie                                      |
+| `GET /auth/me`               | Sessão                                | Usuário, `csrf_token`, `reference_date`, `dataset_version`, `llm_available` |
+| `POST /auth/logout`          | Sessão e CSRF                         | `ok: true`                                                                  |
+| `GET /conversations`         | Sessão                                | Conversas com `id`, `title`, `created_at`                                   |
+| `POST /conversations`        | Objeto vazio                          | `id`, `title`, `created_at`                                                 |
+| `GET /conversations/{id}`    | ID                                    | Identificação da conversa e `messages`, lista de respostas                  |
+| `POST /assistant/query`      | Pergunta e contexto                   | Resposta (`Answer`)                                                         |
+| `POST /analytics/query`      | Plano (`QueryPlan`), CSRF obrigatório | Resultado (`AnalyticsResult`)                                               |
+| `GET /answers/{id}`          | ID                                    | Resposta                                                                    |
+| `GET /answers/{id}/evidence` | ID                                    | Resultado autorizado                                                        |
+| `GET /operations`            | Sessão                                | `entries`, `total`, `errors`, `tokens: null`, `cost: null`                  |
+| `GET /health`                | —                                     | `status: "ok"`; prontidão verifica `SELECT 1`                               |
 
-Result={intent,metric,scope:[{id,name}],period:{start,end},timezone,currency,unit,formula,value:string|null,totals:null|{revenue_cents:string,orders:int,units:int,average_ticket_cents:string|null},rows:[{key,label,revenue_cents,orders,units,average_ticket_cents}],coverage:{status:complete|partial|absent,covered_days:int,expected_days:int,missing:[{store_id,date}]},comparison:null|{period:{start,end},value:string|null,change_percent:string|null,message:string},evidence:[{key,label,revenue_cents,orders,units,average_ticket_cents}],dataset_version,request_id}. value está em centavos para revenue/average_ticket e unidades para orders/units. rows de ranking têm orders distintos por produto; `evidence` traz agregados diários. Em totais, rows e `evidence`, `revenue_cents` é texto inteiro decimal. No Python permanece `int`; respostas históricas com JSON inteiro são aceitas e serializadas como texto ao sair. O contrato de saída/OpenAPI também declara string. Conversão para `Number` no frontend só participa da geometria dos gráficos; rótulos monetários usam BigInt e centavos decimais. Valor nunca float monetário.
+O usuário de `/auth/me` contém `id`, `name`, `email`, `role`, `organization` (`id`, `name`) e `stores` (lista de `id`, `name`). Cada entrada operacional contém `request_id`, `mode`, `capability`, `status`, `interpretation_ms`, `query_ms`, `response_ms`, `created_at` e `interpreter_version`.
+
+## Pergunta e plano
+
+Fontes do contrato local: [`contracts.py`](../backend/src/loja_assistente/analytics/contracts.py), [`contracts.py`](../backend/src/loja_assistente/assistant/contracts.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
+| Entrada da pergunta | Interpretação                        |
+| ------------------- | ------------------------------------ |
+| `question`          | Texto da pergunta                    |
+| `conversation_id`   | ID textual ou `null`                 |
+| `mode`              | `demo` ou `llm`                      |
+| `store_ids`         | Lista de IDs de lojas                |
+| `period`            | `null` ou objeto com `start` e `end` |
+
+| Campo do plano     | Domínio                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| `intent`           | `aggregate`, `ranking` ou `daily`                                                          |
+| `metric`           | `revenue`, `orders`, `average_ticket` ou `units`                                           |
+| `store_references` | Até seis IDs estáveis, como `a001`, ou nomes permitidos; até 120 caracteres por referência |
+| `period`           | Datas ISO `start` e `end`, com fim exclusivo                                               |
+| `comparison`       | `previous_period` ou `null`                                                                |
+| `grouping`         | `day` ou `null`                                                                            |
+| `limit`            | Inteiro de 1 a 20; padrão 5                                                                |
+
+Ranking aceita somente `revenue` ou `units`. Contratos Pydantic usam `extra="forbid"`. O [contrato Python](../backend/src/loja_assistente/analytics/contracts.py) define as combinações válidas e o schema completo.
+
+## Resposta e resultado
+
+Fontes do contrato local: [`contracts.py`](../backend/src/loja_assistente/analytics/contracts.py), [`contracts.py`](../backend/src/loja_assistente/assistant/contracts.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
+| Objeto     | Campos                                                                                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resposta   | `id`, `conversation_id`, `question`, `status`, `message`, `mode`, `plan`, `result`, `request_id`, `created_at`                                                                     |
+| Resultado  | `intent`, `metric`, `scope`, `period`, `timezone`, `currency`, `unit`, `formula`, `value`, `totals`, `rows`, `coverage`, `comparison`, `evidence`, `dataset_version`, `request_id` |
+| Escopo     | Lista de lojas com `id` e `name`                                                                                                                                                   |
+| Totais     | `revenue_cents`, `orders`, `units`, `average_ticket_cents`, ou `null`                                                                                                              |
+| Linha      | `key`, `label`, `revenue_cents`, `orders`, `units`, `average_ticket_cents`                                                                                                         |
+| Cobertura  | `status`, `covered_days`, `expected_days`, `missing` (lista de `store_id` e `date`)                                                                                                |
+| Comparação | `period`, `value`, `change_percent`, `message`, ou `null`                                                                                                                          |
+
+Status da resposta: `ready`, `needs_clarification`, `unsupported`, `provider_error` e `no_data`; `plan` e `result` podem ser `null`. Cobertura: `complete`, `partial` ou `absent`. `value` é texto ou `null`, em centavos para receita/ticket e unidades para pedidos/unidades. `change_percent` e `average_ticket_cents` são textos decimais ou `null`.
+
+`rows` de ranking contam pedidos distintos por produto; `evidence` traz agregados diários com o mesmo formato de linha. Em totais, linhas e evidências, `revenue_cents` sai como texto inteiro decimal. No Python permanece `int`; respostas históricas com inteiro JSON são aceitas e serializadas como texto. O OpenAPI também declara string. `Number` no frontend participa somente da geometria dos gráficos; rótulos monetários usam `BigInt` e centavos decimais, sem float monetário.
 
 ## Fronteira Python compartilhada
+
+Fontes do contrato local: [`config.py`](../backend/src/loja_assistente/config.py), [`database.py`](../backend/src/loja_assistente/database.py), [`models.py`](../backend/src/loja_assistente/models.py), [`service.py`](../backend/src/loja_assistente/auth/service.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
 - config.py: settings (database_url, reference_date, dataset_version, allowed_origins, session_secret, session_hours, cookie_secure, demo_mode, openai_api_key, openai_model, llm_enabled).
 - database.py: Base, engine, SessionLocal, get_db() generator.
 - models.py: modelos persistidos e tipados. Conversa: id,tenant_id,user_id,title,created_at,last_plan JSON nullable. AnswerRecord: id,tenant_id,user_id,conversation_id,payload JSON,created_at. Operation: id,tenant_id,user_id,request_id,mode,capability,status,interpretation_ms,query_ms,response_ms,interpreter_version,created_at.
@@ -35,6 +83,8 @@ Alterações neste contrato devem atualizar consumidores, documentação e teste
 
 ## Detalhes do contrato
 
+Fontes do contrato local: [`queries.py`](../backend/src/loja_assistente/analytics/queries.py), [`service.py`](../backend/src/loja_assistente/conversations/service.py), [`routes.py`](../backend/src/loja_assistente/observability/routes.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
+
 `totals` é null quando a cobertura é ausente, assim como `value`: ausência não transmite zeros financeiros. `average_ticket_cents` preserva a razão Decimal sem arredondamento intermediário; a apresentação em reais usa HALF_UP. `covered_days` e `expected_days` contam pares loja/data, não apenas datas distintas. Em cobertura parcial, `missing` permite identificar as lojas/dias excluídos.
 
 `response_ms` mede o tempo no serviço até a gravação do registro, incluindo interpretação e consulta; exclui commit, rede e entrega no navegador. Não deve ser somado às demais durações. `/operations` retorna até 100 entradas mais recentes do próprio usuário; total/errors referem-se a essa amostra. Falhas que impedem persistir a operação aparecem apenas nos logs sanitizados, não nessa amostra. Conflito de conversa é `conflict`, contabilizado entre erros; status de acesso recusado é `denied`, sem pergunta ou loja proibida no registro. Campos tokens/cost são null. O proxy preserva `X-Request-ID`, `Cache-Control: no-store` e `X-Content-Type-Options`.
@@ -42,6 +92,8 @@ Alterações neste contrato devem atualizar consumidores, documentação e teste
 Histórico examina até 50 conversas recentes e oculta aquelas com planos antigos hoje revogados; detalhe retorna até 100 mensagens recentes após reautorizar todos os planos da conversa. Paginação é uma extensão. O último plano é persistido independentemente do limite visual. Consulta concorrente na mesma conversa recebe HTTP 409 e pode ser reenviada após a primeira terminar; o campo de pergunta permanece preenchido diante desse erro.
 
 ## Limites de entrada antes do JSON
+
+Fontes do contrato local: [`request_limits.py`](../backend/src/loja_assistente/request_limits.py), [`contracts.py`](../backend/src/loja_assistente/assistant/contracts.py). Conferência documental em **22/09/2026**; regras da implementação, não medição de produção.
 
 Corpos de POST/PUT/PATCH na API têm limite de **16 KiB (16.384 bytes)** antes do decode JSON; o proxy Next aplica o mesmo teto antes de acumular o conteúdo. Content-Length acima do teto é recusado cedo; cabeçalho ausente ou inexato não substitui a contagem dos chunks reais. O limite é inclusivo. Resposta 413 não repete o corpo e preserva request_id, no-store e nosniff.
 

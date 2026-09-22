@@ -1,141 +1,168 @@
 # Loja Assistente
 
-Desenvolvi um assistente de análise de vendas para o gerente ou supervisor que precisa fazer uma pergunta e conferir as lojas, o período e a conta usados na resposta. A demonstração usa lojas e vendas fictícias. “Quanto vendi ontem somente em dinheiro?” não pode virar a receita geral quando o sistema não conhece a forma de pagamento.
+Assistente de análise de vendas para perguntar em português e conferir as lojas, o período e a conta usados na resposta. Desenvolvi interpretação, autorização, consultas e interface sobre vendas fictícias; o modo Demo funciona sem chamadas a um modelo.
+
+<!-- Navegação do README -->
+<p>
+  <a href="#demonstração"><img src="docs/readme/badges/demo.svg" alt="Demonstração" width="139" height="28"></a>
+  <a href="#arquitetura"><img src="docs/readme/badges/architecture.svg" alt="Arquitetura" width="126" height="28"></a>
+  <a href="#executar-localmente"><img src="docs/readme/badges/run.svg" alt="Executar localmente" width="107" height="28"></a>
+  <a href="#verificação-e-evidências"><img src="docs/readme/badges/evidence.svg" alt="Verificação e evidências" width="119" height="28"></a>
+  <a href="https://www.linkedin.com/in/arthur-joanes-6a2967373/"><img src="docs/readme/badges/linkedin.svg" alt="Arthur Joanes no LinkedIn" width="108" height="28"></a>
+</p>
+
+## Visão geral
+
+A pergunta vira um plano limitado; o servidor confere as permissões e calcula. **“Quanto vendi ontem somente em dinheiro?”** pede esclarecimento porque forma de pagamento não existe no contrato. Uma soma correta não basta se responder à pergunta errada.
+
+| Responsabilidade       | Implementação                                                               |
+| ---------------------- | --------------------------------------------------------------------------- |
+| Interpretar a pergunta | Parser determinístico no modo Demo; provedor opcional no modo LLM           |
+| Autorizar o recorte    | Organização, usuário e lojas conferidos no servidor, inclusive no histórico |
+| Calcular               | Consultas predefinidas, centavos/Decimal e cobertura de loja/dia            |
+| Conferir               | Texto, gráfico, tabela e cálculo consultável usam o mesmo resultado         |
+
+Fontes: [interpretação](backend/src/loja_assistente/assistant/interpretation.py), [autorização](backend/src/loja_assistente/auth/service.py), [consultas](backend/src/loja_assistente/analytics/queries.py) e [apresentação](backend/src/loja_assistente/assistant/presentation.py), conferidas em **22/09/2026**.
+
+<a id="na-prática"></a>
+
+## Demonstração
 
 ![Página principal do Loja Assistente](docs/readme/home.png)
 
-*Página principal da demonstração.*
+_Página principal já versionada. Os [recortes por foco](docs/image-captures.md) conservam a data, versão, dados e hashes das capturas de 22/09/2026._
 
-[Na prática](#na-prática) · [Implementação](#implementação) · [Executar e verificar](#executar-e-verificar) · [Limites e manutenção](#limites-e-manutenção)
+<a id="uma-conta-pequena-e-um-caso-de-consulta"></a>
 
-<p><img src="docs/readme/uso.svg" width="800" height="8" alt=""></p>
+Na fixture de testes `manual-v1`, **“Quanto vendi ontem?”** usa a referência de 17/08/2026 e consulta Centro A em 16/08:
 
-## Na prática
+| Pedido concluído | Conta                                       |   Receita | Unidades |
+| ---------------- | ------------------------------------------- | --------: | -------: |
+| `oa3`            | 2 garrafas × R$ 6 − R$ 2 + 5 ecobags × R$ 2 |     R$ 20 |        7 |
+| `oa4`            | 1 caneca × R$ 10                            |     R$ 10 |        1 |
+| Total            | 2 pedidos distintos                         | **R$ 30** |    **8** |
 
-![Recorte da tela inicial com seis consultas de negócio disponíveis](docs/screenshots/current-20260922/inicio.png)
+Ticket médio: **R$ 30 / 2 = R$ 15**. Pedido cancelado e vendas de outra organização ficam fora. Fontes: [fixture independente](backend/tests/manual_fixture.py), [esperados](evals/cases/manual-v1.json) e [testes analíticos](backend/tests/test_analytics.py), conferidos em **22/09/2026**. A massa `synthetic-v1` da interface é outra base: seus totais não devem ser comparados com esta conta manual.
 
-*Recorte real de 1392×329 px, capturado localmente em 22/09/2026 com viewport 1440×1000, sobre `6361280d`, modo Demo sem IA. [Telas atuais, reprodução e arquivo histórico](docs/image-captures.md).*
+<a id="conferir-uma-análise"></a>
 
-### Uma conta pequena e um caso de consulta
+Na interface, peça **Mostre a evolução diária da receita nos últimos 7 dias**, alterne **Gráfico/Tabela** e abra **Cálculo**. Confira lojas, período e cobertura. Selecionar um resultado antigo muda a leitura; a continuação usa o último plano válido da conversa. [Roteiro](docs/demo.md) · [Interface e fontes](docs/interface.md).
 
-Na base mínima de testes `manual-v1`, “Quanto vendi ontem?” usa a referência de 17/08/2026 e consulta a loja Centro A em 16/08:
+## Arquitetura
 
-| Pedido concluído | Conta | Receita | Unidades |
-| --- | --- | ---: | ---: |
-| `oa3` | 2 garrafas × R$ 6 − R$ 2 de desconto + 5 ecobags × R$ 2 | R$ 20 | 7 |
-| `oa4` | 1 caneca × R$ 10 | R$ 10 | 1 |
-| Total | 2 pedidos distintos | **R$ 30** | **8** |
+```mermaid
+flowchart TB
+    Web["Interface Next.js<br/>localhost:3102"] --> API["API FastAPI<br/>localhost:8102"]
+    API --> DB[("PostgreSQL")]
+    API -. "interpretação opcional" .-> LLM["OpenAI / Azure"]
+```
 
-O ticket médio é R$ 30 / 2 = **R$ 15**. Um pedido cancelado de R$ 100 e as vendas de outra organização ficam fora. A pergunta entra como texto, vira um plano de consulta e retorna total, tabela e cálculo conferível. A IA, quando habilitada, interpreta a pergunta; autorização e cálculo continuam no servidor. [Teste com esperado independente](backend/tests/test_analytics.py) · [decisões e código](docs/decisoes-tecnicas.md).
+O modelo recebe contexto de interpretação, não autoridade sobre tenant nem SQL livre. O orçamento é reservado no PostgreSQL antes do despacho ao provedor; a apresentação usa o resultado calculado. Migração e seed preparam a massa local.
 
-A imagem abaixo usa outra base: a massa maior `synthetic-v1`, loja Centro, de 10 a 16/08/2026. Seus R$ 10.810,95 não são a conta manual de R$ 30.
+Fontes: [Compose](compose.yaml), [serviço da pergunta](backend/src/loja_assistente/assistant/service.py), [adaptador](backend/src/loja_assistente/assistant/interpreters/openai_adapter.py) e [orçamento](backend/src/loja_assistente/assistant/budget.py), conferidos em **22/09/2026**. [Arquitetura completa](docs/architecture.md).
 
-![Recorte atual dos indicadores e do gráfico de receita diária](docs/screenshots/current-20260922/evolucao-diaria.png)
+<a id="implementação"></a>
+<a id="o-que-eu-implementei"></a>
+<a id="stack"></a>
+<a id="interpretação-e-cálculo-separados"></a>
 
-*Recorte atual de 22/09/2026: Centro, 10–16/08, R$ 10.810,95, 56 pedidos e 227 unidades. [Cálculo atual com as sete linhas](docs/screenshots/current-20260922/consulta-com-calculo.png). A [prova histórica completa da rodada `f98ee948…`](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png) e a [história operacional](docs/operational-story.md) conservam a execução anterior.*
-
-<p><img src="docs/readme/implementacao.svg" width="800" height="8" alt=""></p>
-
-## Implementação
-
-### O que eu implementei
-
-- A passagem da pergunta a um plano estrito, com parser demo offline, adaptador estruturado e recusa de capacidades não representáveis ([interpretação](backend/src/loja_assistente/assistant/interpretation.py)).
-- A autorização por organização, usuário e loja, aplicada novamente ao consultar respostas e cálculos históricos ([auth](backend/src/loja_assistente/auth/service.py), [serviço analítico](backend/src/loja_assistente/analytics/service.py)).
-- As consultas predefinidas, centavos/Decimal, períodos comerciais e a distinção entre zero, ausência e cobertura parcial ([consultas](backend/src/loja_assistente/analytics/queries.py), [oráculo manual](docs/manual-fixture.md)).
-- A apresentação de uma resposta selecionada, com gráfico, tabela, cálculo sob demanda e continuação separada da seleção visual ([workspace](frontend/src/features/assistant/workspace.tsx), [estado](frontend/src/features/assistant/conversation-state.ts)).
-- A avaliação com casos congelados e esperado independente, além da reserva persistente de orçamento antes do despacho ao provedor ([avaliação](docs/live-evaluation.md), [orçamento e incerteza](docs/provider-budget.md)).
-
-Integrei FastAPI, SQLAlchemy/PostgreSQL, Next.js/React e o SDK do provedor. Essas bibliotecas e o modelo são de terceiros; a composição, os contratos e os testes acima pertencem à implementação deste projeto.
-
-### Stack
+## Stack e decisões
 
 <p>
-  <img src="docs/stack/python.svg" alt="Python" width="72" height="72">
-  <img src="docs/stack/fastapi.svg" alt="FastAPI" width="72" height="72">
-  <img src="docs/stack/postgresql.svg" alt="PostgreSQL" width="72" height="72">
-  <img src="docs/stack/typescript.svg" alt="TypeScript" width="72" height="72">
-  <img src="docs/stack/react.svg" alt="React" width="72" height="72">
-  <img src="docs/stack/nextjs.svg" alt="Next.js" width="72" height="72">
-  <img src="docs/stack/docker.svg" alt="Docker" width="72" height="72">
+  <img src="docs/stack/python.svg" alt="Python" width="64" height="64">
+  <img src="docs/stack/fastapi.svg" alt="FastAPI" width="64" height="64">
+  <img src="docs/stack/postgresql.svg" alt="PostgreSQL" width="64" height="64">
+  <img src="docs/stack/typescript.svg" alt="TypeScript" width="64" height="64">
+  <img src="docs/stack/react.svg" alt="React" width="64" height="64">
+  <img src="docs/stack/nextjs.svg" alt="Next.js" width="64" height="64">
+  <img src="docs/stack/docker.svg" alt="Docker" width="64" height="64">
 </p>
 
-Python e FastAPI na API; PostgreSQL nos dados e controles; TypeScript, React e Next.js na interface. Docker Compose executa a demo; Azure OpenAI é opcional.
+| Camada          | Escolha e compromisso                                                |
+| --------------- | -------------------------------------------------------------------- |
+| Interface       | Next.js, React e TypeScript; gráfico/tabela sem recalcular dinheiro  |
+| API             | Python/FastAPI, SQLAlchemy e consultas parametrizadas                |
+| Dados           | PostgreSQL; autorização, cobertura e precisão financeira no servidor |
+| Modelo opcional | SDK OpenAI, com saída estruturada validada novamente pelo domínio    |
+| Execução        | Docker Compose; demo, testes e avaliação usam escopos distintos      |
 
-### Interpretação e cálculo separados
+Esquema válido não comprova interpretação correta ou autorização. A [Microsoft documenta a saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs); este projeto valida o [plano](backend/src/loja_assistente/analytics/contracts.py) e as [permissões](backend/src/loja_assistente/auth/service.py) separadamente. Fontes consultadas em **22/09/2026**. [Decisões e alternativas](docs/decisoes-tecnicas.md) · [Lock Python](backend/uv.lock) · [Lock frontend](frontend/package-lock.json).
 
-Quando habilitada, a IA interpreta a pergunta; no modo Demo, essa etapa usa o parser determinístico. O servidor valida o plano, checa a autorização e faz a conta no banco; texto, tabela e gráfico usam o mesmo resultado. Isso está em [analytics/contracts.py](backend/src/loja_assistente/analytics/contracts.py), [auth/service.py](backend/src/loja_assistente/auth/service.py) e [analytics/queries.py](backend/src/loja_assistente/analytics/queries.py). [Arquitetura](docs/architecture.md).
+<a id="executar-e-verificar"></a>
+<a id="rodar"></a>
 
-A documentação da Microsoft sobre [saídas estruturadas](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs) descreve a conformidade com um esquema JSON. Aqui o esquema restringe o plano, mas um plano válido ainda pode pedir a loja errada: a autorização é conferida novamente no servidor. Os testes usam organizações fictícias para verificar essa fronteira. Um relatório SQL com filtros resolveria as mesmas métricas; aceitar perguntas em português acrescenta conveniência a avaliar, custo e possibilidade de interpretação incorreta.
+## Executar localmente
 
-Na avaliação histórica com GPT-5.6 Luna no Azure Foundry, o caminho modelo + backend acertou 47/48 tentativas, contra 24/48 do parser determinístico, em 24 perguntas repetidas duas vezes. As chamadas foram reais; os dados comerciais são sintéticos e a falha está documentada. Esse recorte não mede a qualidade de toda pergunta possível nem foi repetido na revisão visual.
-
-<p><img src="docs/readme/execucao.svg" width="800" height="8" alt=""></p>
-
-## Executar e verificar
-
-### Rodar
-
-Docker Desktop com engine Linux e PowerShell 7+:
+Docker Desktop com containers Linux e PowerShell 7+; na raiz:
 
 ```powershell
 .\scripts\dev.ps1 setup
 .\scripts\dev.ps1 start
 ```
 
-[App](http://localhost:3102) · [API](http://localhost:8102/docs). O setup cria `.env`, faz o build, migra e carrega o seed. Entre com `gerente.a@demo.local`, senha `LojaDemo!2026`, e pergunte **Quanto vendi ontem?**. Abra **Cálculo** para conferir o resultado. As contas de demonstração só autenticam com `DEMO_MODE=true`; o relógio analítico é 17/08/2026.
+Abra a [interface](http://localhost:3102) ou a [API](http://localhost:8102/docs). A conta fictícia `gerente.a@demo.local`, senha `LojaDemo!2026`, exige `DEMO_MODE=true`. O relógio analítico padrão é 17/08/2026. Fontes: [setup](scripts/dev.ps1), [seed](backend/src/loja_assistente/seed.py) e [configuração](backend/src/loja_assistente/config.py), conferidas em **22/09/2026**.
 
-O modo Demo funciona sem chave nem chamadas pagas. Para habilitar o modelo, siga a [configuração OpenAI/Azure](docs/llm-integration.md). [Instalação no Linux e comandos de operação](docs/local-setup.md).
+Demo dispensa chave e chamadas pagas; a execução local continua consumindo recursos do computador. [Linux e operação](docs/local-setup.md). O modo LLM exige [configuração do provedor](docs/llm-integration.md) e [orçamento por organização](docs/provider-budget.md); pode gerar cobrança.
 
-O modo com modelo tem cobrança do provedor. Na avaliação histórica, 55 chamadas somaram 48.788 tokens e US$ 0,01550395 estimados; isso não é uma fatura nem previsão para outro uso. O teto de US$ 15 daquele experimento não limita as chamadas da interface. [Consumo, preços registrados e limites](docs/azure-live-results.md#chamadas-e-consumo).
+<a id="dá-pra-conferir-sem-rodar"></a>
+<a id="testes"></a>
 
-O caminho LLM da API exige [orçamento persistente por organização](docs/provider-budget.md): reserva antes do despacho, sem saldo automático, e uso incerto continua comprometido após falha ou reinício. Os tetos locais controlam admissão; não são uma garantia de cobrança monetária do provedor.
+## Verificação e evidências
 
-### Conferir uma análise
-
-1. Entre com uma conta demo e pergunte **Mostre a evolução diária da receita nos últimos 7 dias**. Confira as lojas e o período exibidos no resultado. Datas escritas na pergunta prevalecem sobre o filtro.
-2. Alterne **Gráfico** e **Tabela**. Abra **Cálculo** para conferir fórmula, totais por dia e cobertura: quantas combinações de loja e dia foram carregadas. Um dia carregado sem vendas tem zero; um dia ausente não é tratado como zero.
-3. Faça outra pergunta e use **Resultados desta análise** para rever a primeira. A continuação **E nos sete dias anteriores?** usa o último plano válido da conversa, mesmo enquanto um resultado anterior está selecionado.
-
-[Guia da interface](docs/interface.md) · [roteiro completo](docs/demo.md).
-
-### Dá pra conferir sem rodar
-
-Não precisa subir o projeto nem ter chave de IA:
+Confira a avaliação histórica sem Docker, chave ou rede, com Python 3.11+:
 
 ```sh
 python scripts/verify_evidence.py
 ```
 
-O script usa só a biblioteca padrão do Python 3.11+ e recalcula as contagens a partir dos arquivos de resultado. Confere também as fontes históricas contra o freeze original e informa diferenças do código atual; não atribui a avaliação antiga às mudanças posteriores. O detalhe está em [resultado e limites](docs/azure-live-results.md), [as 48 execuções lado a lado](docs/evidence/azure-live/cases.md) e [as 55 chamadas à Azure](docs/evidence/azure-live/calls.md).
+O [verificador](scripts/verify_evidence.py) recalcula hashes, contagens e custo estimado dos artefatos. A execução Azure de **21/09/2026** registrou **47/48** tentativas aprovadas no caminho modelo + backend, contra **24/48** do parser: 24 perguntas repetidas duas vezes. São dados sintéticos e uma amostra limitada, com uma falha preservada. Fontes: [resumo final](evals/reports/20260921T121255Z-a9c11d1f/summary.json) e [casos](evals/reports/20260921T121255Z-a9c11d1f/cases.jsonl).
 
-### Testes
+As três etapas registraram **55 chamadas e 48.788 tokens**. O custo **estimado histórico** de **US$ 0,01550395** usa uma hipótese conservadora de entrada, não uma fatura ou cotação atual. [Medidores e datas](docs/evidence/azure-live/azure-prices.json) · [Cálculo, preços e limites](docs/azure-live-results.md#chamadas-e-consumo). O teto de US$ 15 daquela avaliação não limita a conta Azure nem a interface.
 
-`dev.ps1 test` roda o backend; `dev.ps1 e2e` reúne casos puros e jornadas de navegador. A revisão local sobre `d702d127`, com as correções descritas em [verificação](docs/verification.md#auditoria-final-sobre-d702d127--22092026), passou em **373 testes backend**, **57 casos offline** e **69 casos Playwright: 39 puros e 30 de navegador/HTTP**, sem falha, skip ou retry. Lint, formato, tipos e build também passaram. A execução inicial encontrou uma comparação incorreta entre um ID aleatório e um valor financeiro; a regressão, a correção e os resultados anteriores permanecem no registro. Esses resultados locais não são um novo CI publicado.
+```powershell
+.\scripts\dev.ps1 test
+.\scripts\dev.ps1 e2e
+```
 
-O proxy limita a entrada a 16 KiB e usa um prazo total de 45 s para receber o corpo e encaminhar a resposta. Leitura expirada retorna 408; corpo excessivo retorna 413. Uma resposta interrompida é apresentada como falha, sem virar resultado vazio. [Contrato e testes de robustez](docs/security.md).
+O [recibo do CI de 22/09/2026](docs/evidence/frontend-ci-20260922.json), sobre `73aa1fff`, registra **69 casos Playwright**, sendo 39 puros e 30 de navegador/HTTP. A [verificação](docs/verification.md) identifica os resultados de backend, comandos e versões de cada rodada. Não houve nova avaliação paga nesta revisão documental.
 
-<p><img src="docs/readme/limites.svg" width="800" height="8" alt=""></p>
+<a id="limites-e-manutenção"></a>
+<a id="limites"></a>
 
-## Limites e manutenção
+## Limites e segurança
 
-### Manter e diagnosticar
+- Uma métrica por pergunta; pagamento, vendedor, categoria, produto específico e horário não são filtros suportados. Ranking de produtos é uma capacidade distinta.
+- Comparações exigem cobertura completa; dia ausente não vira venda zero.
+- Lucro, estoque, imposto e reembolso parcial não são modelados.
+- O orçamento local controla admissão; não garante cobrança monetária do provedor.
+- A demonstração não comprova produtividade, capacidade de produção, acessibilidade integral ou segurança universal. Publicação exige identidade, HTTPS e proteção operacional próprios.
 
-| Mudança | Onde alterar | Contrato a verificar |
-| --- | --- | --- |
-| Métrica, dinheiro ou período | `analytics/contracts.py` e `analytics/queries.py`, no backend | `test_analytics.py` e `test_money_contract.py`: valores manuais, fuso e cobertura |
-| Permissão de loja ou histórico | `auth/service.py` e `conversations/service.py`, no backend | `test_security.py`: acesso atual, IDs alheios e ausência de SQL proibido |
-| Interpretação e uso do provedor | `assistant/interpretation.py` e `assistant/budget.py`, no backend | `test_interpreters.py` e `test_budget_postgres.py`: recusa, isolamento e reserva incerta |
-| Seleção e continuação na tela | `frontend/src/features/assistant/conversation-state.ts` | `frontend/e2e/result-selection.spec.ts`: seleção não altera o último plano válido |
+Fontes: [contrato](backend/src/loja_assistente/analytics/contracts.py), [guardas de filtros](backend/src/loja_assistente/assistant/filter_limits.py), [cobertura](backend/src/loja_assistente/analytics/queries.py) e [política de orçamento](backend/src/loja_assistente/assistant/budget_policy.py), conferidas em **22/09/2026**. [Limites de rede e revisão](docs/security.md).
 
-Execute as suítes indicadas em **Testes** após mudar esses contratos. Para uma falha local, confira `dev.ps1 status` e `dev.ps1 logs`, o `request_id` mostrado em **Cálculo** e o [guia de operação](docs/local-setup.md). Relate problemas nas [issues do repositório](https://github.com/arthurjoanes/loja-assistente/issues), com passos, versão e mensagem sanitizada, sem chaves ou dados pessoais.
+<a id="manter-e-diagnosticar"></a>
 
-### Limites
+## Documentação
 
-Cada pergunta escolhe uma métrica. "Quanto vendi ontem só em dinheiro?" pede esclarecimento em vez de chutar o total. Filtros por forma de pagamento, vendedor, categoria, produto específico ou horário não cabem no plano atual; o ranking de produtos é uma capacidade distinta e está disponível. Comparações exigem cobertura completa. A base tem 6.316 pedidos fictícios em 90 dias, sem lucro, estoque, imposto ou reembolso parcial. Os testes de protocolo não medem compreensão de português, e não medi ganho de produtividade com usuários reais. [Parser demo](docs/demo-parser.md) · [métricas](docs/metrics.md) · [decisões técnicas](docs/decisoes-tecnicas.md).
+| Para entender ou fazer         | Guia                                                                                                                   |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Percorrer problema e resultado | [Problema e solução](docs/problem-solution.md) · [Demo](docs/demo.md)                                                  |
+| Conferir o que é calculado     | [Métricas](docs/metrics.md) · [Dados](docs/data-contract.md) · [HTTP](docs/api-contract.md)                            |
+| Entender a implementação       | [Arquitetura](docs/architecture.md) · [Decisões](docs/decisoes-tecnicas.md)                                            |
+| Usar o provedor                | [Integração](docs/llm-integration.md) · [Orçamento](docs/provider-budget.md) · [Avaliação](docs/azure-live-results.md) |
+| Conferir afirmações e datas    | [Fontes e afirmações](docs/fontes-e-afirmacoes.md)                                                                     |
+| Manter e verificar             | [Operação](docs/local-setup.md) · [Testes](docs/verification.md) · [Padrão documental](docs/padrao-documentacao.md)    |
 
-Este repositório entrega uma demonstração local. Comparação visual pareada, zoom nativo, leitor de tela, acessibilidade integral e desempenho percebido continuam sem comprovação; as jornadas automatizadas têm o escopo registrado em [verificação](docs/verification.md). Implantação pública exige configuração própria de identidade, HTTPS, cookies e proteção operacional.
+Para diagnosticar, confira `dev.ps1 status`, `dev.ps1 logs` e o `request_id` de **Cálculo**. Relate passos e versão nas [issues](https://github.com/arthurjoanes/loja-assistente/issues), sem chaves ou dados pessoais.
 
-Código sob MIT. Source Sans 3 mantém sua [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e [origem](frontend/src/app/fonts/sources.json).
+## Autor e licença
 
-Ícones da stack: [Devicon — licença MIT](docs/stack/LICENSE.devicon).
+Desenvolvido por **Arthur Joanes**. Para conversar sobre análise de vendas, interpretação e dados verificáveis:
+
+<p>
+  <a href="https://www.linkedin.com/in/arthur-joanes-6a2967373/">
+    <img src="docs/contact/linkedin.svg" alt="" width="24" height="24">
+    <strong>Arthur Joanes no LinkedIn</strong>
+  </a>
+</p>
+
+Código sob [licença MIT](LICENSE). Source Sans 3 mantém a [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e a [origem](frontend/src/app/fonts/sources.json). Ícones da stack e LinkedIn: [Devicon, licença MIT](docs/stack/LICENSE.devicon). Licenças conferidas nos arquivos em **22/09/2026**.

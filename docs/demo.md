@@ -1,5 +1,7 @@
 # Roteiro da demonstração
 
+> Roteiro proposto; tempos sugeridos não são medição com usuários. Fontes: [seed](../backend/src/loja_assistente/seed.py), [casos independentes](../evals/cases/manual-v1.json) e [captura com resposta](screenshots/current-20260922/capture.json). Conferência documental: **22/09/2026**.
+
 A interface mantém um resultado selecionado na área central. Use **Resultados
 desta análise** para rever perguntas da conversa e **Cálculo** para conferir a
 evidência. O bloco recolhível **Dados fictícios · acesso e métricas** reúne as
@@ -40,7 +42,7 @@ O cliente usa `http://frontend:3102` dentro da rede Docker; no navegador, o ende
 
 A avaliação registrada usou **gpt-5.6-luna, versão 2026-07-09, GlobalStandard, recurso East US 2, reasoning effort `none`**. Configure seu próprio endpoint, deployment e chave para habilitar LLM na aplicação; Demo continua disponível sem chave. O protocolo de [avaliação delimitada](live-evaluation.md) é separado do uso pela interface.
 
-Smoke, desenvolvimento e final somaram 55 chamadas e 48.788 tokens, com estimativa conservadora de US$ 0,01550395, usando US$ 0,25 por milhão de entrada e US$ 1,20 por milhão de saída. A estimativa não é fatura. O [relatório](azure-live-results.md) preserva a falha, a origem dos preços e os resultados originais; não houve ajuste de prompt nem repetição após examinar o holdout. Utilidade com usuários e qualidade em produção não foram avaliadas.
+Smoke, desenvolvimento e final somaram 55 chamadas e 48.788 tokens, com estimativa conservadora de US$ 0,01550395, usando **US$ 0,25 por milhão como coeficiente conservador para toda entrada** e US$ 1,20 por milhão de saída. A [fonte de 21/09/2026](evidence/azure-live/azure-prices.json) distingue entrada normal (US$ 0,20) de escrita de cache (US$ 0,25), por milhão de tokens. A estimativa não é fatura. O [relatório](azure-live-results.md) preserva a falha, a origem dos preços e os resultados originais; não houve ajuste de prompt nem repetição após examinar o holdout. Utilidade com usuários e qualidade em produção não foram avaliadas.
 
 ## Avaliar a utilidade da demonstração
 
