@@ -1,0 +1,35 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "blocked": false,
+    "blocked_reason": null,
+    "committed": {
+      "calls": 0,
+      "input_units": 0,
+      "output_units": 0
+    },
+    "contract": "Cumulative operational allowance. Known reported tokens replace reservations; unknown calls remain reserved. No prices, invoice guarantee or automatic expiry.",
+    "limits": {
+      "calls": 2,
+      "input_units": 200000,
+      "output_units": 2000
+    },
+    "reservations": [
+      {
+        "call_id": "099eb9a7-a893-4d79-85bc-a57966ab1993",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": null,
+        "observation_source": null,
+        "request_id": "32f47b0c-687e-4a55-9c22-7588b1bf20fb",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "canceled"
+      }
+    ],
+    "tenant_id": "budget-a5be2222ee4e4e2fb5255b4f4b486afb"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 0,
+  "test": "tests/test_budget_postgres.py::test_predispatch_evaluation_refusal_cancels_once_without_network",
+  "transport": "httpx.MockTransport; no paid provider"
+}

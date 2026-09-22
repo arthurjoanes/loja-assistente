@@ -264,13 +264,19 @@ def run(mode: str, stage: str, authorization: Path | None) -> int:
                     )
                 budget.append({"event": "stage_started", "stage": stage, "run_id": run_id})
             operation_phase = "database_transaction"
+            if budget:
+                from evals.api_budget import prepare_api_budget
+
+                operation_phase = "application_budget_setup"
+                metadata["application_budget"] = prepare_api_budget(engine, budget)
+                operation_phase = "database_transaction"
             outer = connection.begin()
             resources.callback(outer.rollback)
             session = Session(bind=connection, join_transaction_mode="create_savepoint")
             resources.callback(session.close)
             environment["postgresql"] = connection.scalar(text("SHOW server_version"))
             operation_phase = "seed_manual"
-            seed_manual(session)
+            seed_manual(session, organizations_preseeded=budget is not None)
             session.commit()
 
             def override_database():

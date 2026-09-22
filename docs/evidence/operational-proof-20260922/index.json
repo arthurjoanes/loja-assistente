@@ -1,0 +1,406 @@
+{
+  "attempts": [
+    {
+      "diagnosis": "Preparation failure: non-root Ruff cache path was unwritable. No tests ran. Corrected cache directories to /tmp in proof Compose.",
+      "proof": {
+        "bytes": 65844,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/a711fbccb5524ba8bb885f2cf7249da6/proof.json",
+        "sha256": "7d158f236c038de2a98513032a9a806467b463b182a55a495b364642eacfbd37"
+      },
+      "run_id": "a711fbccb5524ba8bb885f2cf7249da6",
+      "status": "FAILED"
+    },
+    {
+      "diagnosis": "One new test incorrectly expected RuntimeError to escape existing HTTP middleware. Corrected to require sanitized HTTP500, rollback of conversation/answer, and durable unknown reservation. Application behavior was unchanged.",
+      "proof": {
+        "bytes": 70296,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/0207ff27ec8e40d0b32d456ac7df2662/proof.json",
+        "sha256": "64a430d04a7c5f7b2cb53ea4396a22fea84b195207ac38939e1b9caaf4cf2e31"
+      },
+      "run_id": "0207ff27ec8e40d0b32d456ac7df2662",
+      "status": "FAILED"
+    },
+    {
+      "diagnosis": "Backend353 and offline57 passed. UI65/68: three login contrast labels, outdated LLM notice selector, partially offscreen focused input. Subsequent corrections retained all gates.",
+      "proof": {
+        "bytes": 100324,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/30792079e0d948258f4ab91d767529c0/proof.json",
+        "sha256": "164d4539c4c0720ac2f71e58d664e12cb2e7adf4770e385d8f7b6f829f055cd0"
+      },
+      "run_id": "30792079e0d948258f4ab91d767529c0",
+      "status": "FAILED"
+    },
+    {
+      "diagnosis": "UI66/68. Login contrast and LLM recovery passed; next Axe stage exposed suggestion-label contrast4.47:1. Input focus passed all7 geometries; deferred focus callback conflicted with immediate evidence scrolling in the collector. Removed extra deferral, synchronized collector on focus before scrolling, retained all geometry assertions.",
+      "proof": {
+        "bytes": 90218,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/42386628095e44669126d5eefafd1bc6/proof.json",
+        "sha256": "1cec896ae625c9d509e9ef19d29493599f36ad86961fe6350f10a5229dcd472c"
+      },
+      "run_id": "42386628095e44669126d5eefafd1bc6",
+      "status": "FAILED"
+    },
+    {
+      "diagnosis": null,
+      "proof": {
+        "bytes": 90904,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/96ae56f146d044d8ada235c3dbfc1c0c/proof.json",
+        "sha256": "0177494660548baa02ab103d60ea6d8e0d06922e8ccd0bfb13d4626b20e6a626"
+      },
+      "run_id": "96ae56f146d044d8ada235c3dbfc1c0c",
+      "status": "PASSED"
+    },
+    {
+      "diagnosis": null,
+      "proof": {
+        "bytes": 91158,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/proof.json",
+        "sha256": "fcdca5b41e5ac6ed63d7fe57934468b9435dceeeb8d17b098e4bb0016cabbb3d"
+      },
+      "run_id": "f98ee94864384422bd835bcabd8f3a11",
+      "status": "PASSED"
+    }
+  ],
+  "backend_run": "30792079e0d948258f4ab91d767529c0",
+  "capture_review": {
+    "capture_policy": {
+      "animations": "disabled",
+      "method": "Playwright screenshot fast-forwards finite CSS transitions; no image editing.",
+      "viewport": {
+        "height": 1000,
+        "width": 1440
+      }
+    },
+    "comparison": "Same synthetic-v1 fixture, gerente Aurora, question, scope, dates and 1440x1000 viewport; new request IDs are expected. No image editing.",
+    "legibility": "Scope, formula, refusal, daily rows and totals are legible.",
+    "previous_capture_limit": {
+      "record": {
+        "legibility": "Scope, formula, refusal, daily rows and totals are legible.",
+        "third_png_controls": "The table was captured immediately after becoming visible. ResultChart defines no disabled attribute on the chart/table controls; global CSS transitions their text/background colors over140ms. Their pale appearance is consistent with an intermediate transition frame, but computed styles were not recorded at capture time. No image was edited or recaptured; table values and the68 test results remain valid.",
+        "three_pngs_visually_inspected": true
+      },
+      "run_id": "96ae56f146d044d8ada235c3dbfc1c0c"
+    },
+    "three_pngs_visually_inspected": true
+  },
+  "current_workspace_ui_validation": "PASSED_CURRENT_CANDIDATE_WITH_EXPLICIT_COLLECTOR_CHANGE",
+  "limits": [
+    "Functional local proof with synthetic data and httpx.MockTransport for LLM; no paid provider or billing validation.",
+    "Foreign workloads were explicitly allowed and recorded; durations are observations, not benchmark or service-level guarantees.",
+    "API budget uses cumulative calls and conservative units, not currency. Unknown dispatches retain reservations; overrun blocking is sticky.",
+    "Persistence test: the initial process attempted three requests (two dispatches); a separate process then read the same ledger. It did not restart the complete API or attempt another dispatch in that new process.",
+    "No human study was performed. Templates are not observations from people.",
+    "Backend353/offline57 belong to their recorded run. Final UI retest reused the100 original backend/evals/data files byte-identically, added the separately tested historical-verifier test, and used subsequent UI/collector changes.",
+    "All failed attempts remain visible. Source snapshots, full logs and traces are private and are not claimed as published artifacts."
+  ],
+  "post_proof_supplements": [
+    {
+      "bytes": 5810,
+      "path_from_repository_root": "docs/evidence/operational-proof-20260922/historical-source-supplement.json",
+      "sha256": "25a4bedd9e524d3559af926364d38d37ce62966bfe99e9fa833083d2ef1cf708"
+    }
+  ],
+  "previous_selected_ui_run": "96ae56f146d044d8ada235c3dbfc1c0c",
+  "selected_ui_run": "f98ee94864384422bd835bcabd8f3a11",
+  "source_changes_after_backend_run": [
+    "backend/tests/test_historical_evidence.py",
+    "frontend/e2e/journeys.spec.ts",
+    "frontend/e2e/operational-story.spec.ts",
+    "frontend/e2e/quality.spec.ts",
+    "frontend/e2e/round-2-fields.spec.ts",
+    "frontend/src/app/globals.css",
+    "frontend/src/features/analytics/visualization.tsx",
+    "frontend/src/features/assistant/analysis-sidebar.tsx",
+    "frontend/src/features/assistant/operations.tsx",
+    "frontend/src/features/assistant/question-composer.tsx",
+    "scripts/prove_budget_ui.py",
+    "scripts/verify_evidence.py"
+  ],
+  "status": "PASSED_LOCAL_FUNCTIONAL",
+  "story": {
+    "dataset_version": "synthetic-v1",
+    "first_request_id": "03c7b318-a6ce-49b4-8ea5-fa9895e84b34",
+    "mode": "demo",
+    "period": {
+      "end": "2026-08-17",
+      "start": "2026-08-10"
+    },
+    "recovered_request_id": "8f9ea472-8bde-49b5-a3ba-9ffb5aa88aba",
+    "reference_date": "2026-08-17",
+    "refused_request_id": "8c53a155-5b39-44b8-8eb8-3a9e31a1ea1b",
+    "same_rows_and_totals_after_valid_retry": true,
+    "scope": [
+      {
+        "id": "a001",
+        "name": "Centro"
+      }
+    ],
+    "totals": {
+      "average_ticket_cents": "19305.26785714285714285714286",
+      "orders": 56,
+      "revenue_cents": "1081095",
+      "units": 227
+    }
+  },
+  "validation": {
+    "backend": {
+      "failed": 0,
+      "groups": {
+        "api_budget_evaluation": 3,
+        "budget_adapter": 6,
+        "budget_policy": 14,
+        "budget_postgres": 12,
+        "budget_proof_runner": 5
+      },
+      "new_budget_related_cases": 40,
+      "new_postgresql_cases": 13,
+      "passed": 353,
+      "postgresql_composition": {
+        "integration_case_in_test_api_budget_evaluation": 1,
+        "test_budget_postgres": 12
+      },
+      "skipped": 0,
+      "tests": 353
+    },
+    "backend_source_bridge": {
+      "added_files_after_backend_run": [
+        "backend/tests/test_historical_evidence.py"
+      ],
+      "assertion": "all files matched; backend results were not rerun or attributed to the newer full image",
+      "byte_identical_files": 100,
+      "from_run": "30792079e0d948258f4ab91d767529c0",
+      "prefixes": [
+        "backend/",
+        "evals/",
+        "data/"
+      ],
+      "to_run": "f98ee94864384422bd835bcabd8f3a11"
+    },
+    "frontend": {
+      "existing_browser_http_cases": 29,
+      "format": "PASSED",
+      "geometry_cases_in_single_test": 7,
+      "lint": "PASSED",
+      "new_story_case": 1,
+      "playwright_passed": 68,
+      "production_build": "PASSED",
+      "pure_cases": 38,
+      "retries": 0,
+      "typecheck": "PASSED"
+    },
+    "frontend_candidate_bridge": {
+      "candidate_files": 45,
+      "deliberate_collector_change": [
+        "frontend/e2e/operational-story.spec.ts"
+      ],
+      "hashes": {
+        "frontend/.dockerignore": {
+          "candidate_sha256_lf": "643f8a0b2055a54c0a80db2cecccfda65a769f8f1519bb147bff9e4910b3be32",
+          "executed_sha256_lf": "643f8a0b2055a54c0a80db2cecccfda65a769f8f1519bb147bff9e4910b3be32"
+        },
+        "frontend/.prettierignore": {
+          "candidate_sha256_lf": "78fcf1f735665fd6d85521149831f05d674d9a6fa60403b3ec28f60ea7782b3a",
+          "executed_sha256_lf": "78fcf1f735665fd6d85521149831f05d674d9a6fa60403b3ec28f60ea7782b3a"
+        },
+        "frontend/.prettierrc.json": {
+          "candidate_sha256_lf": "dbad71140e6bf6e9d64ca636d921e7855036f1a8739ab3f94ce2978e99d40fb1",
+          "executed_sha256_lf": "dbad71140e6bf6e9d64ca636d921e7855036f1a8739ab3f94ce2978e99d40fb1"
+        },
+        "frontend/Dockerfile": {
+          "candidate_sha256_lf": "8b408304c6f1d3cfe13e04dbba2d72709d11e15b1ebf568a50a31bc0cef7179e",
+          "executed_sha256_lf": "8b408304c6f1d3cfe13e04dbba2d72709d11e15b1ebf568a50a31bc0cef7179e"
+        },
+        "frontend/Dockerfile.e2e": {
+          "candidate_sha256_lf": "200c935841f96346f8113db393d895748c484b83fb587ca6b5b02a70276ef426",
+          "executed_sha256_lf": "200c935841f96346f8113db393d895748c484b83fb587ca6b5b02a70276ef426"
+        },
+        "frontend/e2e/domain.spec.ts": {
+          "candidate_sha256_lf": "c5190d0a96a204798fffc09cfbbdb6899fdd5018ca10611a0cd6e7ece1843dfa",
+          "executed_sha256_lf": "c5190d0a96a204798fffc09cfbbdb6899fdd5018ca10611a0cd6e7ece1843dfa"
+        },
+        "frontend/e2e/journeys.spec.ts": {
+          "candidate_sha256_lf": "290d6d15af59807b8b69d666289673681d7208ada0ea16f8f6507f6157258507",
+          "executed_sha256_lf": "290d6d15af59807b8b69d666289673681d7208ada0ea16f8f6507f6157258507"
+        },
+        "frontend/e2e/operational-story.spec.ts": {
+          "candidate_sha256_lf": "f083bea8e8e2c171cc84eaad263e9b256a942a552a82838720e7edc122a8596e",
+          "executed_sha256_lf": "2d32bd3840af95abb9941d28ff54be525073d0ea1486984695598347685abca6"
+        },
+        "frontend/e2e/proxy-streams.spec.ts": {
+          "candidate_sha256_lf": "3e3c6e035e5b0ce0f36fc463f94aa79bf87e0e6205e4aedf5756d04d3d64e423",
+          "executed_sha256_lf": "3e3c6e035e5b0ce0f36fc463f94aa79bf87e0e6205e4aedf5756d04d3d64e423"
+        },
+        "frontend/e2e/quality.spec.ts": {
+          "candidate_sha256_lf": "a528fdd7bad9163f7e62eaa942fcdb9252a8af64cd9041c8cfe96936d269eddc",
+          "executed_sha256_lf": "a528fdd7bad9163f7e62eaa942fcdb9252a8af64cd9041c8cfe96936d269eddc"
+        },
+        "frontend/e2e/result-selection.spec.ts": {
+          "candidate_sha256_lf": "a84abac1bc9aec954720162ad5624a1ccbb6a2e6273c5659c3f73accefeefff2",
+          "executed_sha256_lf": "a84abac1bc9aec954720162ad5624a1ccbb6a2e6273c5659c3f73accefeefff2"
+        },
+        "frontend/e2e/review.spec.ts": {
+          "candidate_sha256_lf": "16257f16ff3655631378dba9d19005bd31a811a037cbdccc0453c795b73431cc",
+          "executed_sha256_lf": "16257f16ff3655631378dba9d19005bd31a811a037cbdccc0453c795b73431cc"
+        },
+        "frontend/e2e/round-2-fields.spec.ts": {
+          "candidate_sha256_lf": "8b6743cf6d6a9ac39429520a2b742b447bd62af645e579963919f29021131996",
+          "executed_sha256_lf": "8b6743cf6d6a9ac39429520a2b742b447bd62af645e579963919f29021131996"
+        },
+        "frontend/eslint.config.mjs": {
+          "candidate_sha256_lf": "678a50481348cb6654d217f2c47429390deeef061ad8bfb28cbe08f63cd78bd2",
+          "executed_sha256_lf": "678a50481348cb6654d217f2c47429390deeef061ad8bfb28cbe08f63cd78bd2"
+        },
+        "frontend/next-env.d.ts": {
+          "candidate_sha256_lf": "04f71d342a4a5bfc120ebc1fd1eca5b18716c7929a16bcb2d29ed9bb9e248236",
+          "executed_sha256_lf": "04f71d342a4a5bfc120ebc1fd1eca5b18716c7929a16bcb2d29ed9bb9e248236"
+        },
+        "frontend/next.config.ts": {
+          "candidate_sha256_lf": "ecec43de1f34dc24fee5c734838b61063b5d2305fa49d7b5dace73ac13dac504",
+          "executed_sha256_lf": "ecec43de1f34dc24fee5c734838b61063b5d2305fa49d7b5dace73ac13dac504"
+        },
+        "frontend/package-lock.json": {
+          "candidate_sha256_lf": "d3245df97bca42c0ef615ab15aad8d39a69844e772b8cdbc9c9d231fd2ebe9c3",
+          "executed_sha256_lf": "d3245df97bca42c0ef615ab15aad8d39a69844e772b8cdbc9c9d231fd2ebe9c3"
+        },
+        "frontend/package.json": {
+          "candidate_sha256_lf": "e9087e84e28ca83549ede891aee11fbb7992b3f69289bea55b3c0999fa5af666",
+          "executed_sha256_lf": "e9087e84e28ca83549ede891aee11fbb7992b3f69289bea55b3c0999fa5af666"
+        },
+        "frontend/playwright.config.ts": {
+          "candidate_sha256_lf": "671d7e518b61143a670511b4c2047598b91bf22d7dcee4db37aadbdf3cda6fd0",
+          "executed_sha256_lf": "671d7e518b61143a670511b4c2047598b91bf22d7dcee4db37aadbdf3cda6fd0"
+        },
+        "frontend/src/app/api/[...path]/route.ts": {
+          "candidate_sha256_lf": "36b2c21aa94849bb27c61649f4b8e9f61f0eb13a1191239bb535e09ebd14785c",
+          "executed_sha256_lf": "36b2c21aa94849bb27c61649f4b8e9f61f0eb13a1191239bb535e09ebd14785c"
+        },
+        "frontend/src/app/globals.css": {
+          "candidate_sha256_lf": "97be3d5be859b31e1ab4a944b8af17c66a37eb041135405a5d44111cee014bd2",
+          "executed_sha256_lf": "97be3d5be859b31e1ab4a944b8af17c66a37eb041135405a5d44111cee014bd2"
+        },
+        "frontend/src/app/layout.tsx": {
+          "candidate_sha256_lf": "860e0fcc1947827ad12d5b50a9e6abe8a23b72d3c32753c386acf2c21aa4f443",
+          "executed_sha256_lf": "860e0fcc1947827ad12d5b50a9e6abe8a23b72d3c32753c386acf2c21aa4f443"
+        },
+        "frontend/src/app/page.tsx": {
+          "candidate_sha256_lf": "356882114fe375885346fa137df82528a29b3baa1cf5ebefc88d6e1c55ed5512",
+          "executed_sha256_lf": "356882114fe375885346fa137df82528a29b3baa1cf5ebefc88d6e1c55ed5512"
+        },
+        "frontend/src/components/icon.tsx": {
+          "candidate_sha256_lf": "d0939f4d8e51f6cf016f5c09fe154eb3fc789383027d9a761726684154da414f",
+          "executed_sha256_lf": "d0939f4d8e51f6cf016f5c09fe154eb3fc789383027d9a761726684154da414f"
+        },
+        "frontend/src/features/analytics/daily-series.ts": {
+          "candidate_sha256_lf": "72e93e224f14194b35bc10645f44493cf1adc4ee415e017061fd8b4d0f632cd4",
+          "executed_sha256_lf": "72e93e224f14194b35bc10645f44493cf1adc4ee415e017061fd8b4d0f632cd4"
+        },
+        "frontend/src/features/analytics/evidence.tsx": {
+          "candidate_sha256_lf": "64f01755263d01faad742b89df6d05eabcf5b01d5107a4314b5e8baf4646b200",
+          "executed_sha256_lf": "64f01755263d01faad742b89df6d05eabcf5b01d5107a4314b5e8baf4646b200"
+        },
+        "frontend/src/features/analytics/result.tsx": {
+          "candidate_sha256_lf": "f0af97e16c291f5580891f691a3b28f892923cf61c117755196d4782024d95aa",
+          "executed_sha256_lf": "f0af97e16c291f5580891f691a3b28f892923cf61c117755196d4782024d95aa"
+        },
+        "frontend/src/features/analytics/visualization.tsx": {
+          "candidate_sha256_lf": "d69a502ae46b74bc9d09db1503747e904f7e59e5c8161fbe0d5c64b7a8aee26e",
+          "executed_sha256_lf": "d69a502ae46b74bc9d09db1503747e904f7e59e5c8161fbe0d5c64b7a8aee26e"
+        },
+        "frontend/src/features/assistant/analysis-context.tsx": {
+          "candidate_sha256_lf": "ed22e53fd11839d08a75773b99532403def847f737147d996f396eb9b5032689",
+          "executed_sha256_lf": "ed22e53fd11839d08a75773b99532403def847f737147d996f396eb9b5032689"
+        },
+        "frontend/src/features/assistant/analysis-filters.tsx": {
+          "candidate_sha256_lf": "58a5b5a690fdda9e45ef3c439ff64b22606c70456f5973b73802458fbc50c4c3",
+          "executed_sha256_lf": "58a5b5a690fdda9e45ef3c439ff64b22606c70456f5973b73802458fbc50c4c3"
+        },
+        "frontend/src/features/assistant/analysis-sidebar.tsx": {
+          "candidate_sha256_lf": "3f3efe2493218caa73a4b8c7f55cc1deecb69d3cf4eb228ff7e03f7d3e6bcd53",
+          "executed_sha256_lf": "3f3efe2493218caa73a4b8c7f55cc1deecb69d3cf4eb228ff7e03f7d3e6bcd53"
+        },
+        "frontend/src/features/assistant/analysis-start.tsx": {
+          "candidate_sha256_lf": "e4c2ced3508b998ffcf754d26af7be6eab25887e97756c072a86b4b3876f0e0a",
+          "executed_sha256_lf": "e4c2ced3508b998ffcf754d26af7be6eab25887e97756c072a86b4b3876f0e0a"
+        },
+        "frontend/src/features/assistant/conversation-state.ts": {
+          "candidate_sha256_lf": "513f764a4b02e9c8b0bd51253b9d6152c81773048369d8be7ea0ee5675b8b588",
+          "executed_sha256_lf": "513f764a4b02e9c8b0bd51253b9d6152c81773048369d8be7ea0ee5675b8b588"
+        },
+        "frontend/src/features/assistant/login.tsx": {
+          "candidate_sha256_lf": "2d332f13bf109921a5df7da443bfaf1ccbb5abec7bb6ee9a04833c34131a070a",
+          "executed_sha256_lf": "2d332f13bf109921a5df7da443bfaf1ccbb5abec7bb6ee9a04833c34131a070a"
+        },
+        "frontend/src/features/assistant/operations.tsx": {
+          "candidate_sha256_lf": "9cd49f533d4e4224e00abf875b4f3bb05cd51d1640ad09d730543f56c781a934",
+          "executed_sha256_lf": "9cd49f533d4e4224e00abf875b4f3bb05cd51d1640ad09d730543f56c781a934"
+        },
+        "frontend/src/features/assistant/period-selection.ts": {
+          "candidate_sha256_lf": "3cc938316305115c080662aa974c6d6a408c4747e2625f5b9cf6af42a7aebbdc",
+          "executed_sha256_lf": "3cc938316305115c080662aa974c6d6a408c4747e2625f5b9cf6af42a7aebbdc"
+        },
+        "frontend/src/features/assistant/question-composer.tsx": {
+          "candidate_sha256_lf": "c8382b577143dbc7f9c26675dba07d33867f3bfaa3ab755429617d145ff9e756",
+          "executed_sha256_lf": "c8382b577143dbc7f9c26675dba07d33867f3bfaa3ab755429617d145ff9e756"
+        },
+        "frontend/src/features/assistant/use-workspace.ts": {
+          "candidate_sha256_lf": "badb61c6b667cf2b80521a891b43707f56495e5e3df988fe545730d41c1257e6",
+          "executed_sha256_lf": "badb61c6b667cf2b80521a891b43707f56495e5e3df988fe545730d41c1257e6"
+        },
+        "frontend/src/features/assistant/workspace.tsx": {
+          "candidate_sha256_lf": "084bdc7e67030918ff4f76b669ab79e67329e4a5e754655831fa7e5fc1ae4b60",
+          "executed_sha256_lf": "084bdc7e67030918ff4f76b669ab79e67329e4a5e754655831fa7e5fc1ae4b60"
+        },
+        "frontend/src/lib/api.ts": {
+          "candidate_sha256_lf": "a092f1b28aeccb677556dd1c985918c8dd48fa885ae3e97ac95e201f401c49d2",
+          "executed_sha256_lf": "a092f1b28aeccb677556dd1c985918c8dd48fa885ae3e97ac95e201f401c49d2"
+        },
+        "frontend/src/lib/contracts.ts": {
+          "candidate_sha256_lf": "7c0f3d0213ce30d52c28cde0d19b2d2a6d4429affbc72dd5f6d114d1aa2adea7",
+          "executed_sha256_lf": "7c0f3d0213ce30d52c28cde0d19b2d2a6d4429affbc72dd5f6d114d1aa2adea7"
+        },
+        "frontend/src/lib/format.ts": {
+          "candidate_sha256_lf": "7cd768073f8338d587e5e56768e2a37995d47b2129a673bdaefa499850efa165",
+          "executed_sha256_lf": "7cd768073f8338d587e5e56768e2a37995d47b2129a673bdaefa499850efa165"
+        },
+        "frontend/src/lib/server/proxy-lifetime.ts": {
+          "candidate_sha256_lf": "65bf95964e941766e47bcabec2c2381e0cf5471e25bd5a9efb9ecb677ebef838",
+          "executed_sha256_lf": "65bf95964e941766e47bcabec2c2381e0cf5471e25bd5a9efb9ecb677ebef838"
+        },
+        "frontend/src/lib/server/request-body.ts": {
+          "candidate_sha256_lf": "36f1cac673914d2916d6dddcefb173f26f5d5b7b9894c47deea3a00f5e52dd20",
+          "executed_sha256_lf": "36f1cac673914d2916d6dddcefb173f26f5d5b7b9894c47deea3a00f5e52dd20"
+        },
+        "frontend/tsconfig.json": {
+          "candidate_sha256_lf": "36814e212df22ec60bd30af2b8a85f8d4361dee6ff3a20c12440a114e9e049aa",
+          "executed_sha256_lf": "36814e212df22ec60bd30af2b8a85f8d4361dee6ff3a20c12440a114e9e049aa"
+        }
+      },
+      "manifest": {
+        "bytes": 22722,
+        "path_from_repository_root": "docs/evidence/frontend-quality-static-20260922.json",
+        "sha256": "3cf25db4b5ff4bd408d658fae2b8207f86bcf4aa7b63dd0e03f3737d8dcb65d2"
+      },
+      "reason": "Disable CSS animations in screenshot capture and record policy/viewport; product sources and assertions preserved.",
+      "unchanged_files": 44
+    },
+    "historical_evidence_host_supplement": {
+      "passed": 11,
+      "scope": "test_historical_evidence.py; no database or paid provider; subsequent to backend353 run",
+      "supplement": {
+        "bytes": 5810,
+        "path_from_repository_root": "docs/evidence/operational-proof-20260922/historical-source-supplement.json",
+        "sha256": "25a4bedd9e524d3559af926364d38d37ce62966bfe99e9fa833083d2ef1cf708"
+      }
+    },
+    "host_runner_after_frontend_only_option": {
+      "note": "The same five cases were rerun on host after adding --frontend-only; this is a separate later result, not five additional distinct tests or an assertion that all353 reran.",
+      "passed": 5,
+      "scope": "test_budget_proof_runner.py; no PostgreSQL"
+    },
+    "offline_evaluation": {
+      "paid_calls": 0,
+      "passed": 57,
+      "total": 57
+    }
+  }
+}

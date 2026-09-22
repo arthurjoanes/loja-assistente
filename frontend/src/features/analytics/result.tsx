@@ -15,9 +15,6 @@ export function AnswerCard({
   const result = answer.result;
   return (
     <article className="answer-block" data-testid="answer">
-      <div className="question-row">
-        <p>{answer.question}</p>
-      </div>
       <div className="answer-head">
         <span className="assistant-mark">
           <Icon
@@ -31,30 +28,22 @@ export function AnswerCard({
             size={18}
           />
         </span>
-        <h2>
-          {result
-            ? result.intent === "daily"
-              ? "Evolução diária"
-              : result.intent === "ranking"
-                ? "Ranking de produtos"
-                : "Resumo do período"
-            : answer.status === "needs_clarification"
-              ? "Reformule a pergunta"
-              : "Consulta não concluída"}
-        </h2>
+        <h2>{answer.question}</h2>
         <span className="answer-mode">
-          {answer.mode === "demo" ? "DEMO" : "IA"}
+          {answer.mode === "demo" ? "Demo sem IA" : "Interpretação com IA"}
         </span>
       </div>
       <div className="answer-content">
-        <p
-          className={
-            "answer-message " +
-            (answer.status !== "ready" ? "answer-limitation" : "")
-          }
-        >
-          {answer.message}
-        </p>
+        {(!result || result.coverage.status === "absent") && (
+          <p
+            className={
+              "answer-message " +
+              (answer.status !== "ready" ? "answer-limitation" : "")
+            }
+          >
+            {answer.message}
+          </p>
+        )}
         {result && (
           <>
             <div className="result-context" aria-label="Lojas consultadas">
@@ -110,6 +99,12 @@ export function AnswerCard({
                 {(result.intent === "ranking" || result.intent === "daily") &&
                   result.rows.length > 0 && <ResultChart result={result} />}
               </>
+            )}
+            {result.coverage.status !== "absent" && (
+              <details className="result-description">
+                <summary>Resumo em texto</summary>
+                <p className="answer-message">{answer.message}</p>
+              </details>
             )}
             <EvidencePanel answerId={answer.id} onError={onError} />
           </>

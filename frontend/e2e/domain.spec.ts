@@ -13,7 +13,66 @@ import {
   RequestBodyTooLarge,
 } from "../src/lib/server/request-body";
 import { money } from "../src/lib/format";
-import type { Answer } from "../src/lib/contracts";
+import type { Answer, Row } from "../src/lib/contracts";
+import { dailySeries } from "../src/features/analytics/daily-series";
+
+for (const days of [1, 7, 30]) {
+  test(`série de ${days} dias preserva zero, indisponível e valores exatos`, () => {
+    const rows: Row[] = Array.from({ length: days }, (_, index) => ({
+      key: `2026-07-${String(index + 1).padStart(2, "0")}`,
+      label: `2026-07-${String(index + 1).padStart(2, "0")}`,
+      revenue_cents: index === 0 ? "9007199254740993" : "0",
+      orders: index === 0 ? 1 : 0,
+      units: index === 0 ? 1 : 0,
+      average_ticket_cents: index === 0 ? "9007199254740993" : null,
+    }));
+    const before = structuredClone(rows);
+    const period = {
+      start: "2026-07-01",
+      end: `2026-07-${String(days + 1).padStart(2, "0")}`,
+    };
+    const revenue = dailySeries(rows, "revenue", period);
+    expect(revenue.points.map(({ row }) => row?.key)).toEqual(
+      rows.map((row) => row.key),
+    );
+    expect(revenue.points[0].height).toBe(100);
+    expect(money(revenue.points[0].value)).toBe("R$ 90.071.992.547.409,93");
+    expect(revenue.axisIndices[0]).toBe(0);
+    expect(revenue.axisIndices.at(-1)).toBe(days - 1);
+    expect(revenue.axisIndices.length).toBeLessThanOrEqual(3);
+    for (const point of revenue.points.slice(1)) {
+      expect(point.height).toBe(0);
+      expect(point.value).toBe("0");
+    }
+    const ticket = dailySeries(rows, "average_ticket", period);
+    expect(ticket.points.slice(1).every((point) => point.value === null)).toBe(
+      true,
+    );
+    expect(
+      dailySeries(
+        rows.map((row) => ({ ...row, revenue_cents: "0" })),
+        "revenue",
+        period,
+      ).points.every((point) => point.height === 0),
+    ).toBe(true);
+    expect(rows).toEqual(before);
+    if (days > 1) {
+      const incomplete = dailySeries(
+        rows.filter((_, index) => index !== 1),
+        "revenue",
+        period,
+      );
+      expect(incomplete.points).toHaveLength(days);
+      expect(incomplete.points[1]).toMatchObject({
+        date: "2026-07-02",
+        row: null,
+        value: null,
+        height: 0,
+      });
+      expect(incomplete.points[2].row?.key).toBe("2026-07-03");
+    }
+  });
+}
 
 for (const [start, end, valid] of [
   ["2026-08-16", "2026-08-17", true],

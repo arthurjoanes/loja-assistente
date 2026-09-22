@@ -11,7 +11,7 @@ from pydantic import ValidationError
 
 from loja_assistente.analytics.contracts import Period, QueryPlan, StoreScope
 from loja_assistente.assistant.contracts import Interpretation
-from loja_assistente.assistant.provider_trace import ProviderTrace, evaluation_hooks
+from loja_assistente.assistant.provider_trace import ProviderBudget, ProviderTrace, evaluation_hooks
 
 VERSION = "openai-structured-v5"
 MAX_OUTPUT_TOKENS = 1000
@@ -97,6 +97,7 @@ def interpret(
     client: OpenAI,
     model: str,
     reasoning_effort: ReasoningEffort | None = None,
+    budget: ProviderBudget | None = None,
 ) -> Interpretation:
     context = {
         "question": question,
@@ -115,17 +116,25 @@ def interpret(
         reasoning_effort=reasoning_effort,
     )
     hooks = evaluation_hooks()
-    if hooks:
-        # UTF-8 bytes plus explicit protocol margin is a conservative operational reservation,
-        # not a claim about the provider's exact tokenizer or final invoice.
-        reserved_input = (
-            len((SYSTEM_PROMPT + serialized_context).encode("utf-8"))
-            + len(json.dumps(provider_schema()).encode("utf-8"))
-            + 8192
-        )
-        hooks.reserve(trace.call_id, reserved_input, MAX_OUTPUT_TOKENS)
+    # Both ledgers see the same operational estimate. Neither claims an exact tokenizer/invoice.
+    reserved_input = (
+        len((SYSTEM_PROMPT + serialized_context).encode("utf-8"))
+        + len(json.dumps(provider_schema()).encode("utf-8"))
+        + 8192
+    )
+    app_reserved = app_dispatched = evaluation_reserved = False
     started = perf_counter()
     try:
+        if budget:
+            budget.reserve(trace, reserved_input, MAX_OUTPUT_TOKENS)
+            app_reserved = True
+        if hooks:
+            hooks.reserve(trace.call_id, reserved_input, MAX_OUTPUT_TOKENS)
+            evaluation_reserved = True
+        if budget:
+            # This commit finishes before create(); a crash afterwards retains the reservation.
+            budget.dispatch(trace.call_id)
+            app_dispatched = True
         raw = client.responses.with_raw_response.create(
             model=model,
             input=[
@@ -213,5 +222,14 @@ def interpret(
         if trace.status == "started":
             trace.status = "unexpected_error"
         trace.duration_ms = round((perf_counter() - started) * 1000)
-        if hooks:
-            hooks.record(trace)
+        try:
+            if budget and app_reserved:
+                if app_dispatched:
+                    budget.record(trace)
+                else:
+                    # Only the durable 'reserved' state may cancel. An ambiguous dispatch
+                    # commit is refused by the ledger, never silently refunded.
+                    budget.cancel_before_dispatch(trace.call_id)
+        finally:
+            if hooks and evaluation_reserved:
+                hooks.record(trace)

@@ -52,8 +52,8 @@ export function AnalysisSidebar({
     }
     if (event.key !== "Tab") return;
     const controls = Array.from(
-      navigation.current?.querySelectorAll<HTMLButtonElement>(
-        "button:not(:disabled)",
+      navigation.current?.querySelectorAll<HTMLElement>(
+        "button:not(:disabled), summary",
       ) ?? [],
     ).filter((control) => control.getBoundingClientRect().width > 0);
     const first = controls[0];
@@ -101,16 +101,18 @@ export function AnalysisSidebar({
       <nav className="main-nav">
         <button
           className={view === "assistant" ? "active" : ""}
+          aria-current={view === "assistant" ? "page" : undefined}
           onClick={() => {
             onShowAnalysis();
             onClose();
           }}
         >
           <Icon name="spark" size={19} />
-          Assistente <span className="nav-dot" />
+          Análises
         </button>
         <button
           className={view === "operations" ? "active" : ""}
+          aria-current={view === "operations" ? "page" : undefined}
           onClick={() => void onShowOperations()}
           disabled={locked}
         >
@@ -118,50 +120,54 @@ export function AnalysisSidebar({
           Atendimentos
         </button>
       </nav>
-      <div className="history-heading">
-        Conversas <Icon name="clock" size={13} />
-      </div>
-      <nav className="history-list" aria-label="Histórico pessoal">
-        {history.length === 0 ? (
-          <p className="history-empty">Nenhuma conversa</p>
-        ) : (
-          history.map((item) => (
-            <button
-              key={item.id}
-              title={item.title}
-              aria-current={
-                conversationId === item.id && view === "assistant"
-                  ? "page"
-                  : undefined
-              }
-              className={
-                conversationId === item.id && view === "assistant"
-                  ? "selected"
-                  : ""
-              }
-              onClick={() => void onOpenConversation(item.id)}
-              disabled={locked}
-            >
-              <Icon name="list" size={15} />
-              <span className="history-entry">
-                <span className="history-title">{item.title}</span>
-                <time
-                  className="history-date"
-                  dateTime={item.created_at}
-                  title={new Date(item.created_at).toLocaleString("pt-BR", {
-                    timeZoneName: "short",
-                  })}
-                >
-                  {new Date(item.created_at).toLocaleString("pt-BR", {
-                    dateStyle: "short",
-                    timeStyle: "short",
-                  })}
-                </time>
-              </span>
-            </button>
-          ))
-        )}
-      </nav>
+      <details className="history-menu">
+        <summary>
+          <Icon name="clock" size={14} /> Histórico{" "}
+          <span>{history.length} conversas</span>
+          <Icon name="chevron" size={12} />
+        </summary>
+        <nav className="history-list" aria-label="Histórico pessoal">
+          {history.length === 0 ? (
+            <p className="history-empty">Nenhuma conversa</p>
+          ) : (
+            history.map((item) => (
+              <button
+                key={item.id}
+                title={item.title}
+                aria-current={
+                  conversationId === item.id && view === "assistant"
+                    ? "page"
+                    : undefined
+                }
+                className={
+                  conversationId === item.id && view === "assistant"
+                    ? "selected"
+                    : ""
+                }
+                onClick={() => void onOpenConversation(item.id)}
+                disabled={locked}
+              >
+                <Icon name="list" size={15} />
+                <span className="history-entry">
+                  <span className="history-title">{item.title}</span>
+                  <time
+                    className="history-date"
+                    dateTime={item.created_at}
+                    title={new Date(item.created_at).toLocaleString("pt-BR", {
+                      timeZoneName: "short",
+                    })}
+                  >
+                    {new Date(item.created_at).toLocaleString("pt-BR", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                    })}
+                  </time>
+                </span>
+              </button>
+            ))
+          )}
+        </nav>
+      </details>
       <div className="sidebar-bottom">
         <div className="profile">
           <span className="profile-avatar">{initials}</span>

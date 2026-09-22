@@ -1,0 +1,50 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "blocked": true,
+    "blocked_reason": "observed_usage_exceeded_reservation:4f5d4e49-5b4c-447c-be64-845c36c1d3fe",
+    "committed": {
+      "calls": 1,
+      "input_units": 250000,
+      "output_units": 10
+    },
+    "contract": "Cumulative operational allowance. Known reported tokens replace reservations; unknown calls remain reserved. No prices, invoice guarantee or automatic expiry.",
+    "limits": {
+      "calls": 10,
+      "input_units": 500000,
+      "output_units": 10000
+    },
+    "reservations": [
+      {
+        "call_id": "4f5d4e49-5b4c-447c-be64-845c36c1d3fe",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": {
+          "attempts": 1,
+          "call_id": "4f5d4e49-5b4c-447c-be64-845c36c1d3fe",
+          "duration_ms": 9,
+          "input_tokens": 250000,
+          "model_requested": "gpt-4.1-mini-2025-04-14",
+          "model_returned": "gpt-4.1-mini",
+          "output_tokens": 10,
+          "prompt_sha256": "2ca81cee3f1762dad0334e12a759fe5a9d6bc46bcdd1e8652a9093c4e31e031e",
+          "provider_request_id": "provider-budget-1",
+          "reasoning_effort": null,
+          "response_id": "response-budget-1",
+          "schema_sha256": "34bbe594dac0f803b64f06208a1250680e63a49193e422b2773dd05ab574eea3",
+          "status": "completed",
+          "total_tokens": 250010
+        },
+        "observation_source": "adapter",
+        "request_id": "601eaaa0-fc79-4768-9792-f8e8d01d97c4",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "reconciled"
+      }
+    ],
+    "tenant_id": "budget-bfd5522203be45e782fb90515be7fb62"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 1,
+  "test": "tests/test_budget_postgres.py::test_observed_overrun_blocks_next_api_call_without_erasing_actual_usage",
+  "transport": "httpx.MockTransport; no paid provider"
+}

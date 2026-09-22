@@ -1,0 +1,823 @@
+{
+  "cases_version": "manual-v1",
+  "categories": {
+    "authorization": {
+      "executed": 14,
+      "failed": 0,
+      "passed": 14,
+      "skipped": 0
+    },
+    "calculation": {
+      "executed": 14,
+      "failed": 0,
+      "passed": 14,
+      "skipped": 0
+    },
+    "interpretation": {
+      "executed": 18,
+      "failed": 0,
+      "passed": 18,
+      "skipped": 0
+    },
+    "presentation": {
+      "executed": 3,
+      "failed": 0,
+      "passed": 3,
+      "skipped": 0
+    },
+    "query": {
+      "executed": 8,
+      "failed": 0,
+      "passed": 8,
+      "skipped": 0
+    }
+  },
+  "classification_note": "category agrupa o caso; failure_stage indica a checagem que falhou. Exceções sem classificação usam infrastructure/unknown.",
+  "dataset_version": "manual-v1",
+  "environment": {
+    "database": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with",
+    "python": "3.12.14",
+    "transport": "FastAPI TestClient / HTTP ASGI"
+  },
+  "executed": 57,
+  "failed": 0,
+  "failure_stages": {},
+  "generated_at": "2026-09-22T07:55:14.144111+00:00",
+  "live_llm_evaluated": false,
+  "modes": [
+    "demo",
+    "interpreter_stub",
+    "structured"
+  ],
+  "passed": 57,
+  "results": [
+    {
+      "category": "interpretation",
+      "duration_ms": 159,
+      "id": "direct_revenue",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "d2a265b4-57e0-459d-8b5c-c3f56dfb753c",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 73,
+      "id": "paraphrase_revenue",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "a1f0f4c3-da3b-41f1-9a53-58618f5318fd",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 73,
+      "id": "paraphrase_sales",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "a46400fa-a794-48d7-8aad-9256b9071317",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 70,
+      "id": "direct_orders",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "419ea58c-e256-4dd0-8395-1986797cd864",
+        "status": "ready",
+        "value": "2"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 69,
+      "id": "direct_ticket",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "681899d1-46a2-4d43-bfc1-2983eff27208",
+        "status": "ready",
+        "value": "1500.00"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 75,
+      "id": "direct_units",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "4178fbfd-a73a-4622-8c0b-9cffa6426657",
+        "status": "ready",
+        "value": "8"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 78,
+      "id": "ranking_revenue",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "80f4edde-03c6-42fb-b9a7-85953b0eb8aa",
+        "status": "ready",
+        "value": "7100"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 76,
+      "id": "ranking_units",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "f299b810-9fdb-4d72-ad3d-12d9792a1b1b",
+        "status": "ready",
+        "value": "15"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 69,
+      "id": "daily_series",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "3b0c1b77-9244-4a88-98b6-8fd1bd7717f7",
+        "status": "ready",
+        "value": "7100"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 71,
+      "id": "supervisor_total",
+      "identity": "supervisor_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "e13b9409-9b3e-4b60-82a1-ec18b31789bf",
+        "status": "ready",
+        "value": "4600"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 72,
+      "id": "other_tenant",
+      "identity": "manager_b",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "01895199-df06-428c-8c1c-ce4e17814249",
+        "status": "ready",
+        "value": "3300"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 71,
+      "id": "explicit_day14",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "df97d209-224a-43dd-81ce-a46d29bc309b",
+        "status": "ready",
+        "value": "2500"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 71,
+      "id": "explicit_day15",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "95bbb9a6-e286-4cb4-9a27-a0d9fdff985b",
+        "status": "ready",
+        "value": "1600"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 69,
+      "id": "last_seven_days",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "92c8d14e-5f7f-47fb-8c64-078896054259",
+        "status": "ready",
+        "value": "7100"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 67,
+      "id": "full_period",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "ca949a8d-32e2-4ea0-af14-7f1581602445",
+        "status": "ready",
+        "value": "7100"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 68,
+      "id": "multi_item_count",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "a801265b-806e-4d74-bd03-adeb4f97b949",
+        "status": "ready",
+        "value": "4"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 69,
+      "id": "discount_total",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "7588a7f7-1e88-4614-a3cc-d9b4a429dc6a",
+        "status": "ready",
+        "value": "2500"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 67,
+      "id": "cancelled_excluded",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "9b141744-c176-42c8-b7a1-3c40c1cd902d",
+        "status": "ready",
+        "value": "8"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 69,
+      "id": "revenue_tie",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "ba10a105-1608-4c49-9304-c29a14db5f06",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 70,
+      "id": "previous_comparison",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "7f1000c2-6bf7-4d3c-9dda-6ad3910aeef2",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 71,
+      "id": "ticket_comparison",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "fd966158-5434-40b4-a7a9-f44ec511c283",
+        "status": "ready",
+        "value": "1500.00"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 73,
+      "id": "zero_baseline",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "f11f7ae1-f98f-4713-8cb5-755526ac90be",
+        "status": "ready",
+        "value": "7100"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 70,
+      "id": "covered_zero",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "9b3f4f0d-223f-4188-9a83-1288c2000c5a",
+        "status": "ready",
+        "value": "0"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "calculation",
+      "duration_ms": 66,
+      "id": "zero_ticket",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "644e4291-0828-494f-8d1f-6dedd26bd9e7",
+        "status": "ready",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 66,
+      "id": "outside_coverage",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "3628eb14-f6cd-45d0-a95c-652d1677f896",
+        "status": "no_data",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 68,
+      "id": "partial_coverage",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "3fc7239c-0b0d-44ef-b8f8-dd89a7eb22f9",
+        "status": "ready",
+        "value": "2500"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 71,
+      "id": "partial_comparison",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "42705467-68f2-41e3-ad33-be19813143b1",
+        "status": "ready",
+        "value": "2500"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 61,
+      "id": "unsupported_profit",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "a6ef473a-38a8-4cbe-865e-18035db54449",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 62,
+      "id": "unsupported_stock",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "3aed9da1-426b-443a-94ab-04b5e26f7a5d",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 61,
+      "id": "unsupported_forecast",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "1316671b-2a15-4e33-932b-899acd38a3f7",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 60,
+      "id": "unsupported_recommendation",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "e65ada70-b33c-4239-95c4-dc0d082535d1",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 61,
+      "id": "unsupported_cause",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "864a3ea6-40d5-4409-8ed2-a2b02c59875f",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 61,
+      "id": "unsupported_customer",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "b06c4d25-92ff-40f3-8b35-0a8d18128888",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 93,
+      "id": "ambiguous",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "192348ea-1dd7-48f7-a5a0-ee7e3c61c5ac",
+        "status": "needs_clarification",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 62,
+      "id": "injection_rules",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "e83e4599-2166-4864-b7f0-b9fd62795a0b",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 62,
+      "id": "injection_admin",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "00dda18a-0fb9-4d35-8052-ed9eba7dd7fb",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 61,
+      "id": "injection_sql",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "b7983335-0abc-4cdc-a16b-ff11ccb1e3d8",
+        "status": "unsupported",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 59,
+      "id": "forbidden_store",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 403
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 60,
+      "id": "forbidden_tenant",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 403
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 65,
+      "id": "mixed_scope",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 403
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 66,
+      "id": "manager_b_isolation",
+      "identity": "manager_b",
+      "mode": "structured",
+      "observed": {
+        "http_status": 200,
+        "request_id": "1a048de7-c449-4e0b-886c-c07a0399425b",
+        "status": null,
+        "value": "3300"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 65,
+      "id": "tenant_field_injected",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 62,
+      "id": "user_field_injected",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 64,
+      "id": "sql_field_injected",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 59,
+      "id": "invalid_metric",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 59,
+      "id": "ranking_limit",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 59,
+      "id": "inverted_period",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 57,
+      "id": "excessive_period",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 422
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 64,
+      "id": "supervisor_subset",
+      "identity": "supervisor_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 200,
+        "request_id": "429cf21d-b3a6-4952-8ca2-83644556c95f",
+        "status": null,
+        "value": "1600"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 66,
+      "id": "midnight_before",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 200,
+        "request_id": "78b9e4c6-8bb8-4f74-a4ca-57d8fe9a6451",
+        "status": null,
+        "value": "2500"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "query",
+      "duration_ms": 67,
+      "id": "midnight_after",
+      "identity": "manager_a",
+      "mode": "structured",
+      "observed": {
+        "http_status": 200,
+        "request_id": "66ee2da7-1973-4d07-b0b6-900549101586",
+        "status": null,
+        "value": "1600"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 88,
+      "id": "context_previous_seven",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "3b234f80-bd52-4562-a605-5e10b9d9b9a2",
+        "status": "no_data",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "interpretation",
+      "duration_ms": 63,
+      "id": "context_without_plan",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "a5f7520d-34d2-4fd1-9375-27522db415db",
+        "status": "needs_clarification",
+        "value": null
+      },
+      "status": "passed"
+    },
+    {
+      "category": "presentation",
+      "duration_ms": 72,
+      "id": "presentation_currency",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "6dc41e62-e22c-4498-9608-e7c1df51e14e",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "presentation",
+      "duration_ms": 67,
+      "id": "presentation_zero_is_data",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "fd7ea0e3-935e-43d9-bf99-a05a01ea64ed",
+        "status": "ready",
+        "value": "0"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "presentation",
+      "duration_ms": 72,
+      "id": "presentation_growth",
+      "identity": "manager_a",
+      "mode": "demo",
+      "observed": {
+        "http_status": 200,
+        "request_id": "2507459d-99f9-4e56-8275-ce7ba2f163a6",
+        "status": "ready",
+        "value": "3000"
+      },
+      "status": "passed"
+    },
+    {
+      "category": "authorization",
+      "duration_ms": 62,
+      "id": "malicious_well_formed_interpreter",
+      "identity": "manager_a",
+      "mode": "interpreter_stub",
+      "observed": {
+        "http_status": 403
+      },
+      "status": "passed"
+    }
+  ],
+  "seed": 0,
+  "skipped": 0
+}

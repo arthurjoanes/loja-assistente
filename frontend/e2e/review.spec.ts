@@ -37,12 +37,10 @@ for (const size of [
     const visible = await page
       .locator(".suggestions button")
       .evaluateAll((buttons) => {
-        const composer = document
-          .querySelector(".composer-container")!
-          .getBoundingClientRect();
-        return buttons.filter(
-          (button) => button.getBoundingClientRect().bottom <= composer.top,
-        ).length;
+        return buttons.filter((button) => {
+          const rect = button.getBoundingClientRect();
+          return rect.top >= 0 && rect.bottom <= innerHeight && rect.width > 0;
+        }).length;
       });
     expect(visible).toBeGreaterThanOrEqual(size.width > 720 ? 6 : 4);
     const readability = await page.evaluate(() => {

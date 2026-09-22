@@ -48,21 +48,26 @@ export function AnalysisStart({
 }) {
   return (
     <section className="welcome">
-      <h2>Consultas</h2>
+      <span className="eyebrow">Consultas disponíveis</span>
+      <h2>Comece por uma pergunta de negócio.</h2>
+      <p className="welcome-description">
+        Escolha uma consulta abaixo ou use o campo Pergunta. O resultado reúne o
+        indicador, seu recorte e o cálculo que permite conferir os números.
+      </p>
 
       <div className="suggestions">
-        {suggestions.map((item) => (
+        {suggestions.map((item, index) => (
           <button
             key={item.title}
             onClick={() => onAsk(item.question)}
             disabled={disabled}
           >
             <span className="suggestion-icon">
-              <Icon name={item.icon} size={18} />
+              {String(index + 1).padStart(2, "0")}
             </span>
             <strong>{item.title}</strong>
             <span>{item.description}</span>
-            <Icon name="arrow" size={17} />
+            <Icon name={item.icon} size={19} />
           </button>
         ))}
       </div>

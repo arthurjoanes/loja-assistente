@@ -11,6 +11,8 @@ async function enter(page: Page) {
   ).toBeVisible();
 }
 async function query(page: Page, question: string): Promise<Answer> {
+  if (!(await page.getByLabel("Pergunta", { exact: true }).isVisible()))
+    await page.getByRole("button", { name: "Editar pergunta" }).click();
   const response = page.waitForResponse(
     (response) =>
       response.url().endsWith("/api/assistant/query") &&
@@ -61,6 +63,7 @@ test("histórico tardio não apaga a conversa recém-criada", async ({ page }) =
   await snapshotReady;
   try {
     await query(page, "Quanto vendi em 2026-08-15?");
+    await page.locator(".history-menu > summary").click();
     const selected = page
       .getByRole("navigation", { name: "Histórico pessoal" })
       .locator('button[aria-current="page"]');
@@ -94,6 +97,7 @@ test("histórico distingue horários, revela título longo e drawer devolve foco
   const selected = page
     .getByRole("navigation", { name: "Histórico pessoal" })
     .locator('button[aria-current="page"]');
+  await page.locator(".history-menu > summary").click();
   await selected.focus();
   await expect(selected.locator("time")).toBeVisible();
   expect(await selected.locator("time").getAttribute("datetime")).toBeTruthy();
@@ -108,7 +112,9 @@ test("histórico distingue horários, revela título longo e drawer devolve foco
   const opener = page.getByRole("button", { name: "Abrir menu" });
   await opener.focus();
   await page.keyboard.press("Tab");
-  await expect(page.getByLabel("Loja", { exact: true })).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Editar pergunta" }),
+  ).toBeFocused();
   await opener.click();
   const dialog = page.getByRole("dialog", { name: "Navegação principal" });
   await expect(dialog).toBeVisible();
@@ -126,7 +132,7 @@ test("histórico distingue horários, revela título longo e drawer devolve foco
   await expect(opener).toBeFocused();
 });
 
-test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometrias", async ({
+test("evidência, foco, alvos e refluxo permanecem acessíveis em sete geometrias", async ({
   page,
 }, testInfo) => {
   await enter(page);
@@ -154,6 +160,7 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
   const sizes = [
     { width: 1440, height: 900, name: "1440x900" },
     { width: 1366, height: 768, name: "1366x768" },
+    { width: 1024, height: 768, name: "1024x768" },
     { width: 768, height: 1024, name: "768x1024" },
     { width: 390, height: 844, name: "390x844" },
     { width: 320, height: 844, name: "320x844" },
@@ -162,6 +169,10 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
   const checks = [];
   for (const size of sizes) {
     await page.setViewportSize({ width: size.width, height: size.height });
+    // Also check the expanded editor: hiding it must not mask overlap regressions.
+    await page.getByRole("button", { name: "Editar pergunta" }).click();
+    await expect(page.getByLabel("Pergunta", { exact: true })).toBeFocused();
+    await settleLayout(page);
     await end.evaluate((element) =>
       element.scrollIntoView({ block: "end", behavior: "instant" }),
     );
@@ -186,6 +197,7 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
       const endRect = rect(end);
       const mainRect = rect(main);
       const composerRect = rect(composer);
+      const chart = document.querySelector<HTMLElement>(".daily-chart")!;
       const centerX = Math.min(
         innerWidth - 2,
         Math.max(2, endRect.x + endRect.width / 2),
@@ -236,22 +248,26 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
         },
         pageWidth: document.documentElement.scrollWidth,
         horizontalOverflow: document.documentElement.scrollWidth > innerWidth,
+        dailyChartFits: chart.scrollWidth <= chart.clientWidth + 1,
         scrollMode: getComputedStyle(main).overflowY,
         main: mainRect,
         evidenceEnd: endRect,
         composer: composerRect,
         evidenceEndReached: endReached,
-        evidenceClearOfComposer: endRect.bottom <= composerRect.y + 1,
+        evidenceClearOfComposer:
+          endRect.bottom <= composerRect.y + 1 ||
+          composerRect.bottom <= endRect.y + 1 ||
+          endRect.right <= composerRect.x + 1 ||
+          composerRect.right <= endRect.x + 1,
         targets,
         smallTargets: targets.filter(
           (target) => target.width < 24 || target.height < 24,
         ),
       };
     });
-    // Walk backwards from the composer into the last keyboard stop of the evidence.
-    await page.getByLabel("Pergunta", { exact: true }).focus();
-    await page.keyboard.press("Shift+Tab");
-    await page.keyboard.press("Shift+Tab");
+    // Enter the evidence table from its disclosure using the keyboard.
+    await page.locator(".evidence > summary").last().focus();
+    await page.keyboard.press("Tab");
     await settleLayout(page);
     const keyboard = await page.evaluate(() => {
       const active = document.activeElement as HTMLElement;
@@ -262,17 +278,13 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
         Math.max(2, rect.y + rect.height / 2),
       );
       const hit = document.elementFromPoint(x, y);
-      const composer = document
-        .querySelector<HTMLElement>(".composer-container")!
-        .getBoundingClientRect();
       return {
         role: active.getAttribute("role"),
         label: active.getAttribute("aria-label"),
         insideEvidence: Boolean(active.closest(".evidence")),
         visibleHeight: Math.max(
           0,
-          Math.min(rect.bottom, innerHeight, composer.y) -
-            Math.max(rect.top, 0),
+          Math.min(rect.bottom, innerHeight) - Math.max(rect.top, 0),
         ),
         uncovered: hit === active || active.contains(hit),
         focusOutline: getComputedStyle(active).outlineStyle,
@@ -293,7 +305,7 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
     await page.screenshot({ path: screenshotPath });
     await page.getByLabel("Pergunta", { exact: true }).focus();
     await settleLayout(page);
-    const input = await page
+    const focusedInput = await page
       .getByLabel("Pergunta", { exact: true })
       .evaluate((element) => {
         const rect = element.getBoundingClientRect();
@@ -302,9 +314,16 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
           rect.y + rect.height / 2,
         );
         return {
-          visible: rect.top >= 0 && rect.bottom <= innerHeight,
-          uncovered: hit === element,
-          focused: document.activeElement === element,
+          state: {
+            visible: rect.top >= 0 && rect.bottom <= innerHeight,
+            uncovered: hit === element,
+            focused: document.activeElement === element,
+          },
+          geometry: {
+            top: rect.top,
+            bottom: rect.bottom,
+            viewportHeight: innerHeight,
+          },
         };
       });
     if (size.height === 256 && screenshotDir && !baseline) {
@@ -312,7 +331,13 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
         path: screenshotDir + "/quality-lowheight-composer.png",
       });
     }
-    checks.push({ name: size.name, ...layout, keyboard, input });
+    checks.push({
+      name: size.name,
+      ...layout,
+      keyboard,
+      input: focusedInput.state,
+      inputGeometry: focusedInput.geometry,
+    });
   }
   const report = {
     capturedAt: new Date().toISOString(),
@@ -359,6 +384,12 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
         .toBe(false);
       expect
         .soft(
+          check.dailyChartFits,
+          check.name + ": série diária inteira na largura",
+        )
+        .toBe(true);
+      expect
+        .soft(
           check.evidenceEndReached,
           check.name + ": fim da evidência acessível",
         )
@@ -397,6 +428,45 @@ test("evidência, foco, alvos e refluxo permanecem acessíveis em seis geometria
           uncovered: true,
           focused: true,
         });
+    }
+  }
+  // Exercise the same backend result contract with short and longer time series.
+  for (const days of [1, 30]) {
+    const series = await query(
+      page,
+      days === 1
+        ? "Mostre a evolução diária da receita em 2026-08-16"
+        : "Mostre a evolução diária da receita nos últimos 30 dias",
+    );
+    expect(series.result?.intent).toBe("daily");
+    expect(series.result?.rows).toHaveLength(days);
+    const card = page.getByTestId("answer").last();
+    await expect(card.locator(".daily-column")).toHaveCount(days);
+    for (const width of [1440, 1024, 768, 390, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(
+        await card
+          .locator(".daily-chart")
+          .evaluate(
+            (element) => element.scrollWidth <= element.clientWidth + 1,
+          ),
+        `${days} dias em ${width}px`,
+      ).toBe(true);
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+    }
+    await card.getByRole("button", { name: "Tabela", exact: true }).click();
+    await expect(card.locator(".chart-panel tbody tr")).toHaveCount(days);
+    for (const row of series.result!.rows) {
+      const tableRow = card.locator(".chart-panel tbody tr").filter({
+        has: page.getByRole("rowheader", { name: row.label, exact: true }),
+      });
+      await expect(tableRow.locator("td").first()).toHaveText(
+        money(row.revenue_cents),
+      );
     }
   }
 });

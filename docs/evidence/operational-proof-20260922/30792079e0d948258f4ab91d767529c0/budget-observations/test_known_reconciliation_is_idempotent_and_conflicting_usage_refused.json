@@ -1,0 +1,50 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "blocked": false,
+    "blocked_reason": null,
+    "committed": {
+      "calls": 1,
+      "input_units": 100,
+      "output_units": 10
+    },
+    "contract": "Cumulative operational allowance. Known reported tokens replace reservations; unknown calls remain reserved. No prices, invoice guarantee or automatic expiry.",
+    "limits": {
+      "calls": 2,
+      "input_units": 200000,
+      "output_units": 2000
+    },
+    "reservations": [
+      {
+        "call_id": "component-call",
+        "evidence_reference": null,
+        "model_requested": "controlled-model",
+        "observation": {
+          "attempts": 1,
+          "call_id": "component-call",
+          "duration_ms": 0,
+          "input_tokens": 100,
+          "model_requested": "controlled-model",
+          "model_returned": null,
+          "output_tokens": 10,
+          "prompt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "provider_request_id": "fake-evidence",
+          "reasoning_effort": null,
+          "response_id": null,
+          "schema_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "status": "started",
+          "total_tokens": 110
+        },
+        "observation_source": "adapter",
+        "request_id": "component-test",
+        "reserved_input": 1000,
+        "reserved_output": 100,
+        "state": "reconciled"
+      }
+    ],
+    "tenant_id": "budget-de70ac6f45be4a41911a69179fbd75ed"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 0,
+  "test": "tests/test_budget_postgres.py::test_known_reconciliation_is_idempotent_and_conflicting_usage_refused",
+  "transport": "httpx.MockTransport; no paid provider"
+}

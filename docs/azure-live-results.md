@@ -1,5 +1,9 @@
 # Avaliação com Azure Foundry
 
+Este relatório descreve a **versão avaliada em 21/09/2026**. O orçamento persistente foi acrescentado depois e tem [prova própria, com provedor simulado](provider-budget.md). Os 47/48 abaixo não são uma nova avaliação semântica do código atual.
+
+Para manter o resultado conferível após a evolução do código, o [manifesto histórico](evidence/azure-live/historical-source-20260921.json) associa 62 arquivos de fonte e dois conjuntos de casos aos bytes originais, preservados em `docs/evidence/azure-live/source-20260921/`. O verificador compara esse arquivo histórico ao freeze original e aos 65 artefatos publicados; alterações no código ativo são informadas separadamente. Não houve nova chamada Azure para produzir esse arquivo.
+
 Em 21/09/2026, a integração com GPT-5.6 Luna, versão 2026-07-09, passou na avaliação final definida antes da execução. Recurso em East US 2, deployment GlobalStandard; inferência por Azure OpenAI v1. Usei um recurso Azure próprio, com teto de US$ 15 para a avaliação; nenhum recurso novo foi provisionado. A chave fica no `.env` ignorado.
 
 O problema é transformar português variado em uma consulta financeira correta e autorizada. O modelo interpreta intenção, lojas e datas; o PostgreSQL calcula. Não há SQL gerado pelo modelo nem números financeiros escritos por ele.

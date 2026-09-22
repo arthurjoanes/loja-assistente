@@ -1,23 +1,11 @@
 # Interface e organização
 
-Resultado, filtros e pergunta ficam na área principal. Dados, limites e detalhes dos atendimentos ficam em painéis recolhíveis.
+O [guia da interface](interface.md) explica pergunta, resultado selecionado, recorte aplicado, cobertura e cálculo. A [revisão de qualidade](frontend-quality.md) registra inventário de telas/estados, matriz das 11 dimensões antes/depois, decisões, referências, verificações e pendências.
 
-O resultado destaca a métrica solicitada e mantém os outros totais como contexto. Receita, ticket, pedidos e unidades têm definições próprias. O modo demo exige uma métrica principal por pergunta; não transforma “ticket e pedidos” em escolha silenciosa. Ranking explica que o total cobre todas as vendas do período/escopo, não apenas produtos exibidos. O painel Cálculo é agregado por dia, com fórmula, cobertura, lojas, datas e request_id.
+A composição atual coloca o resultado à frente, com preparação da próxima consulta em área própria, histórico recolhível e cálculo sob demanda. A divisão entre coordenação de sessão/HTTP, transições da conversa, filtros, resultado, visualização e cálculo preserva a separação entre interpretação e conta feita pelo servidor.
 
-Seis atalhos de consulta. Texto e controles de 14–16 px, metadados a partir de 12 px. O select usa rótulos curtos; o campo de pergunta mostra o modo escolhido.
+As imagens [notebook](screenshots/welcome-1280x720.png), [celular](screenshots/welcome-390x844.png) e [consulta com cálculo](screenshots/consulta-com-evidencia.png), assim como [viewport-checks.json](screenshots/viewport-checks.json), são **evidências da interface anterior**. Não validam a reconstrução atual. A [história operacional](operational-story.md) contém capturas mais recentes e a rodada de 68 verificações das fontes que identifica. Para os incrementos posteriores desta revisão de qualidade, as 30 jornadas de navegador/HTTP e novas capturas continuam não executadas pelo bloqueio de inicialização; build e testes puros têm escopo separado em [verificação](verification.md).
 
-| Estado | Comportamento |
-|---|---|
-| Pergunta sem conteúdo ou período inválido | Envio desabilitado; datas conservam edição e apontam para erro associado ao par. |
-| Enviando | Escopo e pergunta bloqueados; proteção síncrona contra duplicação. |
-| Falha de rede/conflito | Rascunho e resposta anterior preservados; usuário pode reenviar. |
-| Cálculo indisponível | Erro local e repetição, sem descartar resultado. Resposta de tela antiga é ignorada após troca de identidade. |
-| Atendimentos sem atualização | Última amostra permanece explicitamente marcada como antiga; detalhes técnicos recolhidos por linha. |
-| Nova análise | Resultado e filtros de conversa reiniciados; foco retorna à pergunta. |
-| Menu móvel | Contém foco quando aberto, Escape fecha e devolve foco; fechado não recebe Tab. |
+## Prova posterior da candidata
 
-O código foi dividido por responsabilidade. `workspace.tsx` compõe UI e foco; `use-workspace.ts` coordena HTTP/sessão; `conversation-state.ts` reúne transições de estado e `period-selection.ts` trata calendário. Resultado, visualização e leitura do cálculo estão em módulos separados. Não há cálculo financeiro no JSX nem framework novo.
-
-As capturas [notebook](screenshots/welcome-1280x720.png), [celular](screenshots/welcome-390x844.png) e [consulta com cálculo](screenshots/consulta-com-evidencia.png) vieram da aplicação real em ambiente E2E novo. A principal começa com uma conversa; testes de campos rodam depois. [viewport-checks.json](screenshots/viewport-checks.json) verifica seis geometrias, acesso ao fim do cálculo, campo focado, alvos e ausência de overflow global; tabelas têm rolagem própria. 320×256 CSS px reproduz a geometria equivalente a 400%, sem medir zoom nativo.
-
-CSS global exige revisão visual ao alterar seletores compartilhados. [Testes](verification.md).
+A rodada `f98ee94864384422bd835bcabd8f3a11` passou em 68 casos, com build/checks e três capturas reais da candidata. [Escopo executado](verification.md#validação-final-da-candidata-de-interface) e [história com os mesmos dados](operational-story.md). Este resultado posterior não transforma os limites da revisão estática acima em uma auditoria visual completa.

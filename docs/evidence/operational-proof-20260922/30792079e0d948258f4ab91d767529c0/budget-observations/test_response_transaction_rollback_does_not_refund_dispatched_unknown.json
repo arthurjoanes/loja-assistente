@@ -1,0 +1,50 @@
+{
+  "final_observation_before_fixture_cleanup": {
+    "blocked": false,
+    "blocked_reason": null,
+    "committed": {
+      "calls": 1,
+      "input_units": 12131,
+      "output_units": 1000
+    },
+    "contract": "Cumulative operational allowance. Known reported tokens replace reservations; unknown calls remain reserved. No prices, invoice guarantee or automatic expiry.",
+    "limits": {
+      "calls": 2,
+      "input_units": 200000,
+      "output_units": 2000
+    },
+    "reservations": [
+      {
+        "call_id": "e7566b7b-d61a-4e92-8e52-3f3ef5fa32c6",
+        "evidence_reference": null,
+        "model_requested": "gpt-4.1-mini-2025-04-14",
+        "observation": {
+          "attempts": 1,
+          "call_id": "e7566b7b-d61a-4e92-8e52-3f3ef5fa32c6",
+          "duration_ms": 10,
+          "input_tokens": null,
+          "model_requested": "gpt-4.1-mini-2025-04-14",
+          "model_returned": null,
+          "output_tokens": null,
+          "prompt_sha256": "2ca81cee3f1762dad0334e12a759fe5a9d6bc46bcdd1e8652a9093c4e31e031e",
+          "provider_request_id": null,
+          "reasoning_effort": null,
+          "response_id": null,
+          "schema_sha256": "34bbe594dac0f803b64f06208a1250680e63a49193e422b2773dd05ab574eea3",
+          "status": "timeout",
+          "total_tokens": null
+        },
+        "observation_source": "adapter",
+        "request_id": "09e34915-0f3a-4d8b-8d01-ed40c3a06ddd",
+        "reserved_input": 12131,
+        "reserved_output": 1000,
+        "state": "unknown"
+      }
+    ],
+    "tenant_id": "budget-a8ae9f951f6b44ccbce8ec3d3a99b368"
+  },
+  "pass_fail_authority": "JUnit test result, not this observation",
+  "provider_calls": 1,
+  "test": "tests/test_budget_postgres.py::test_response_transaction_rollback_does_not_refund_dispatched_unknown",
+  "transport": "httpx.MockTransport; no paid provider"
+}

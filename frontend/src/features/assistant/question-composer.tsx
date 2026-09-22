@@ -6,6 +6,7 @@ type ComposerProps = {
   mode: Mode;
   llmAvailable: boolean;
   hasPlan: boolean;
+  reviewingEarlier: boolean;
   busy: boolean;
   periodInvalid: boolean;
   question: string;
@@ -18,6 +19,7 @@ export function QuestionComposer({
   mode,
   llmAvailable,
   hasPlan,
+  reviewingEarlier,
   busy,
   periodInvalid,
   question,
@@ -32,10 +34,16 @@ export function QuestionComposer({
     !(mode === "llm" && !llmAvailable);
   return (
     <div className="composer-container">
+      {reviewingEarlier && (
+        <p className="reviewing-note">
+          Você está revendo um resultado anterior. A continuação usa o último
+          plano válido desta conversa.
+        </p>
+      )}
       {mode === "llm" && !llmAvailable && (
         <div className="notice warning" role="status">
-          Provedor indisponível. Configure a integração no servidor ou selecione
-          demo.
+          A interpretação com IA não está disponível. Selecione demonstração
+          para continuar consultando os dados.
         </div>
       )}
       {hasPlan && (
@@ -55,7 +63,7 @@ export function QuestionComposer({
           if (canSend) onAsk(question);
         }}
       >
-        <label htmlFor="question" className="sr-only">
+        <label htmlFor="question" className="composer-label">
           Pergunta
         </label>
         <textarea
@@ -64,7 +72,18 @@ export function QuestionComposer({
           value={question}
           placeholder="Ex.: quanto vendi ontem?"
           onChange={(event) => onQuestionChange(event.target.value)}
+          onFocus={(event) => {
+            const field = event.currentTarget;
+            const bounds = field.getBoundingClientRect();
+            if (bounds.top < 0 || bounds.bottom > window.innerHeight)
+              field.scrollIntoView({
+                block: "center",
+                inline: "nearest",
+                behavior: "instant",
+              });
+          }}
           onKeyDown={(event) => {
+            if (event.nativeEvent.isComposing) return;
             if (event.key === "Enter" && !event.shiftKey) {
               event.preventDefault();
               if (canSend) onAsk(question);
@@ -72,7 +91,7 @@ export function QuestionComposer({
           }}
           maxLength={1000}
           aria-describedby="question-guidance"
-          rows={2}
+          rows={3}
           disabled={busy}
         />
         <div className="composer-bottom">
@@ -86,6 +105,7 @@ export function QuestionComposer({
             aria-label="Enviar pergunta"
             disabled={!canSend}
           >
+            <span>{busy ? "Consultando" : "Consultar"}</span>
             {busy ? (
               <span className="spinner" />
             ) : (

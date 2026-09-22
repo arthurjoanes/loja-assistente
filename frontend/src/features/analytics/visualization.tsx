@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { Icon } from "@/components/icon";
+import { dailySeries } from "./daily-series";
 import type { Result, Row } from "@/lib/contracts";
 import {
   dateLabel,
@@ -55,12 +56,15 @@ export function ResultChart({ result }: { result: Result }) {
               : "Série por dia comercial"
           }
         />
+      ) : !ranking ? (
+        <DailyChart result={result} />
       ) : (
         <div
-          className={"bar-chart " + (ranking ? "ranking-chart" : "daily-chart")}
+          className="bar-chart ranking-chart"
+          tabIndex={0}
           role="img"
           aria-label={
-            (ranking ? "Ranking" : "Evolução") +
+            "Ranking" +
             ": " +
             result.rows
               .map(
@@ -75,23 +79,24 @@ export function ResultChart({ result }: { result: Result }) {
           {result.rows.map((row, index) => (
             <div className="chart-row" key={row.key}>
               <span className="chart-label">
-                {ranking && <small>{String(index + 1).padStart(2, "0")}</small>}
-                {ranking
-                  ? row.label
-                  : /^\d{4}-\d{2}-\d{2}$/.test(row.label)
-                    ? dateLabel(row.label, true)
-                    : row.label}
+                <small>{String(index + 1).padStart(2, "0")}</small>
+                {row.label}
               </span>
               <span className="bar-track">
                 <span
                   className={"bar " + (index === 0 ? "bar-first" : "")}
-                  style={{
-                    width:
-                      (Math.max(0, Number(rowValue(row, result.metric) ?? 0)) /
-                        max) *
-                        100 +
-                      "%",
-                  }}
+                  style={
+                    {
+                      "--bar-size":
+                        (Math.max(
+                          0,
+                          Number(rowValue(row, result.metric) ?? 0),
+                        ) /
+                          max) *
+                          100 +
+                        "%",
+                    } as CSSProperties
+                  }
                 />
               </span>
               <strong className="chart-value">
@@ -110,6 +115,60 @@ export function ResultChart({ result }: { result: Result }) {
     </section>
   );
 }
+function DailyChart({ result }: { result: Result }) {
+  const { points, axisIndices } = dailySeries(
+    result.rows,
+    result.metric,
+    result.period,
+  );
+  const pointLabel = (point: (typeof points)[number]) =>
+    `${dateLabel(point.date)}: ${point.row ? metricValue(point.value, result.metric) : "Sem dados carregados"}`;
+  return (
+    <figure className="daily-overview">
+      <div
+        className="daily-chart"
+        role="img"
+        aria-label={"Evolução diária. " + points.map(pointLabel).join("; ")}
+      >
+        <div
+          className="daily-bars"
+          style={{ "--points": points.length } as CSSProperties}
+          aria-hidden="true"
+        >
+          {points.map((point) => (
+            <div
+              className="daily-column"
+              key={point.date}
+              title={pointLabel(point)}
+            >
+              {point.value === null ? (
+                <span className="daily-missing" />
+              ) : (
+                <span
+                  className="daily-bar"
+                  style={{ height: point.height + "%" }}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="daily-axis" aria-hidden="true">
+          {axisIndices.map((index) => (
+            <span key={points[index].date}>
+              {dateLabel(points[index].date, true)}
+            </span>
+          ))}
+        </div>
+      </div>
+      <figcaption>
+        {points.length === 1 ? "1 dia" : `${points.length} dias`} · Colunas a
+        partir de zero. Valores exatos em Tabela.
+        {points.some(({ value }) => value === null) &&
+          " Traço: dado ausente ou valor indisponível."}
+      </figcaption>
+    </figure>
+  );
+}
 export function DataTable({ rows, caption }: { rows: Row[]; caption: string }) {
   return (
     <div
@@ -123,10 +182,18 @@ export function DataTable({ rows, caption }: { rows: Row[]; caption: string }) {
         <thead>
           <tr>
             <th scope="col">Referência</th>
-            <th scope="col">Receita</th>
-            <th scope="col">Pedidos</th>
-            <th scope="col">Unidades</th>
-            <th scope="col">Ticket</th>
+            <th scope="col" className="numeric">
+              Receita
+            </th>
+            <th scope="col" className="numeric">
+              Pedidos
+            </th>
+            <th scope="col" className="numeric">
+              Unidades
+            </th>
+            <th scope="col" className="numeric">
+              Ticket
+            </th>
           </tr>
         </thead>
         <tbody>

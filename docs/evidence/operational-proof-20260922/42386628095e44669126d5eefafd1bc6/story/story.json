@@ -1,0 +1,517 @@
+{
+  "captured_at_utc": "2026-09-22T08:05:49.330Z",
+  "dataset_version": "synthetic-v1",
+  "evidence": {
+    "comparison": null,
+    "coverage": {
+      "covered_days": 7,
+      "expected_days": 7,
+      "missing": [],
+      "status": "complete"
+    },
+    "currency": "BRL",
+    "dataset_version": "synthetic-v1",
+    "evidence": [
+      {
+        "average_ticket_cents": "17308.88888888888888888888889",
+        "key": "2026-08-10",
+        "label": "2026-08-10",
+        "orders": 9,
+        "revenue_cents": "155780",
+        "units": 26
+      },
+      {
+        "average_ticket_cents": null,
+        "key": "2026-08-11",
+        "label": "2026-08-11",
+        "orders": 0,
+        "revenue_cents": "0",
+        "units": 0
+      },
+      {
+        "average_ticket_cents": null,
+        "key": "2026-08-12",
+        "label": "2026-08-12",
+        "orders": 0,
+        "revenue_cents": "0",
+        "units": 0
+      },
+      {
+        "average_ticket_cents": "20344.44444444444444444444444",
+        "key": "2026-08-13",
+        "label": "2026-08-13",
+        "orders": 9,
+        "revenue_cents": "183100",
+        "units": 37
+      },
+      {
+        "average_ticket_cents": "14033.63636363636363636363636",
+        "key": "2026-08-14",
+        "label": "2026-08-14",
+        "orders": 11,
+        "revenue_cents": "154370",
+        "units": 48
+      },
+      {
+        "average_ticket_cents": "13445.38461538461538461538462",
+        "key": "2026-08-15",
+        "label": "2026-08-15",
+        "orders": 13,
+        "revenue_cents": "174790",
+        "units": 57
+      },
+      {
+        "average_ticket_cents": "29503.92857142857142857142857",
+        "key": "2026-08-16",
+        "label": "2026-08-16",
+        "orders": 14,
+        "revenue_cents": "413055",
+        "units": 59
+      }
+    ],
+    "formula": "Soma de quantidade × preço unitário − desconto total do item, nos pedidos concluídos.",
+    "intent": "daily",
+    "metric": "revenue",
+    "period": {
+      "end": "2026-08-17",
+      "start": "2026-08-10"
+    },
+    "request_id": "05389f27-50ca-4aed-a78f-92e607e2ee33",
+    "rows": [
+      {
+        "average_ticket_cents": "17308.88888888888888888888889",
+        "key": "2026-08-10",
+        "label": "2026-08-10",
+        "orders": 9,
+        "revenue_cents": "155780",
+        "units": 26
+      },
+      {
+        "average_ticket_cents": null,
+        "key": "2026-08-11",
+        "label": "2026-08-11",
+        "orders": 0,
+        "revenue_cents": "0",
+        "units": 0
+      },
+      {
+        "average_ticket_cents": null,
+        "key": "2026-08-12",
+        "label": "2026-08-12",
+        "orders": 0,
+        "revenue_cents": "0",
+        "units": 0
+      },
+      {
+        "average_ticket_cents": "20344.44444444444444444444444",
+        "key": "2026-08-13",
+        "label": "2026-08-13",
+        "orders": 9,
+        "revenue_cents": "183100",
+        "units": 37
+      },
+      {
+        "average_ticket_cents": "14033.63636363636363636363636",
+        "key": "2026-08-14",
+        "label": "2026-08-14",
+        "orders": 11,
+        "revenue_cents": "154370",
+        "units": 48
+      },
+      {
+        "average_ticket_cents": "13445.38461538461538461538462",
+        "key": "2026-08-15",
+        "label": "2026-08-15",
+        "orders": 13,
+        "revenue_cents": "174790",
+        "units": 57
+      },
+      {
+        "average_ticket_cents": "29503.92857142857142857142857",
+        "key": "2026-08-16",
+        "label": "2026-08-16",
+        "orders": 14,
+        "revenue_cents": "413055",
+        "units": 59
+      }
+    ],
+    "scope": [
+      {
+        "id": "a001",
+        "name": "Centro"
+      }
+    ],
+    "timezone": "America/Sao_Paulo",
+    "totals": {
+      "average_ticket_cents": "19305.26785714285714285714286",
+      "orders": 56,
+      "revenue_cents": "1081095",
+      "units": 227
+    },
+    "unit": "centavos",
+    "value": "1081095"
+  },
+  "first": {
+    "conversation_id": "7a787c70-e07d-4b4a-b32c-aeafc24e8dad",
+    "created_at": "2026-09-22T08:05:48.501731Z",
+    "id": "10a46bfa-bb6c-4f8c-a513-90a6e104628b",
+    "message": "Receita líquida: R$ 10.810,95 de 10/08/2026 a 16/08/2026.",
+    "mode": "demo",
+    "plan": {
+      "comparison": null,
+      "grouping": "day",
+      "intent": "daily",
+      "limit": 5,
+      "metric": "revenue",
+      "period": {
+        "end": "2026-08-17",
+        "start": "2026-08-10"
+      },
+      "store_references": [
+        "a001"
+      ]
+    },
+    "question": "Mostre a evolução diária da receita nos últimos 7 dias",
+    "request_id": "05389f27-50ca-4aed-a78f-92e607e2ee33",
+    "result": {
+      "comparison": null,
+      "coverage": {
+        "covered_days": 7,
+        "expected_days": 7,
+        "missing": [],
+        "status": "complete"
+      },
+      "currency": "BRL",
+      "dataset_version": "synthetic-v1",
+      "evidence": [
+        {
+          "average_ticket_cents": "17308.88888888888888888888889",
+          "key": "2026-08-10",
+          "label": "2026-08-10",
+          "orders": 9,
+          "revenue_cents": "155780",
+          "units": 26
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-11",
+          "label": "2026-08-11",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-12",
+          "label": "2026-08-12",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": "20344.44444444444444444444444",
+          "key": "2026-08-13",
+          "label": "2026-08-13",
+          "orders": 9,
+          "revenue_cents": "183100",
+          "units": 37
+        },
+        {
+          "average_ticket_cents": "14033.63636363636363636363636",
+          "key": "2026-08-14",
+          "label": "2026-08-14",
+          "orders": 11,
+          "revenue_cents": "154370",
+          "units": 48
+        },
+        {
+          "average_ticket_cents": "13445.38461538461538461538462",
+          "key": "2026-08-15",
+          "label": "2026-08-15",
+          "orders": 13,
+          "revenue_cents": "174790",
+          "units": 57
+        },
+        {
+          "average_ticket_cents": "29503.92857142857142857142857",
+          "key": "2026-08-16",
+          "label": "2026-08-16",
+          "orders": 14,
+          "revenue_cents": "413055",
+          "units": 59
+        }
+      ],
+      "formula": "Soma de quantidade × preço unitário − desconto total do item, nos pedidos concluídos.",
+      "intent": "daily",
+      "metric": "revenue",
+      "period": {
+        "end": "2026-08-17",
+        "start": "2026-08-10"
+      },
+      "request_id": "05389f27-50ca-4aed-a78f-92e607e2ee33",
+      "rows": [
+        {
+          "average_ticket_cents": "17308.88888888888888888888889",
+          "key": "2026-08-10",
+          "label": "2026-08-10",
+          "orders": 9,
+          "revenue_cents": "155780",
+          "units": 26
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-11",
+          "label": "2026-08-11",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-12",
+          "label": "2026-08-12",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": "20344.44444444444444444444444",
+          "key": "2026-08-13",
+          "label": "2026-08-13",
+          "orders": 9,
+          "revenue_cents": "183100",
+          "units": 37
+        },
+        {
+          "average_ticket_cents": "14033.63636363636363636363636",
+          "key": "2026-08-14",
+          "label": "2026-08-14",
+          "orders": 11,
+          "revenue_cents": "154370",
+          "units": 48
+        },
+        {
+          "average_ticket_cents": "13445.38461538461538461538462",
+          "key": "2026-08-15",
+          "label": "2026-08-15",
+          "orders": 13,
+          "revenue_cents": "174790",
+          "units": 57
+        },
+        {
+          "average_ticket_cents": "29503.92857142857142857142857",
+          "key": "2026-08-16",
+          "label": "2026-08-16",
+          "orders": 14,
+          "revenue_cents": "413055",
+          "units": 59
+        }
+      ],
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "timezone": "America/Sao_Paulo",
+      "totals": {
+        "average_ticket_cents": "19305.26785714285714285714286",
+        "orders": 56,
+        "revenue_cents": "1081095",
+        "units": 227
+      },
+      "unit": "centavos",
+      "value": "1081095"
+    },
+    "status": "ready"
+  },
+  "limits": "Synthetic fixture; no paid calls or human study. Row sum checks displayed result, not an independent source oracle.",
+  "mode": "demo",
+  "recovered": {
+    "conversation_id": "7a787c70-e07d-4b4a-b32c-aeafc24e8dad",
+    "created_at": "2026-09-22T08:05:49.054792Z",
+    "id": "3b2e960d-59ad-49f9-83e3-34b6628e6015",
+    "message": "Receita líquida: R$ 10.810,95 de 10/08/2026 a 16/08/2026.",
+    "mode": "demo",
+    "plan": {
+      "comparison": null,
+      "grouping": "day",
+      "intent": "daily",
+      "limit": 5,
+      "metric": "revenue",
+      "period": {
+        "end": "2026-08-17",
+        "start": "2026-08-10"
+      },
+      "store_references": [
+        "a001"
+      ]
+    },
+    "question": "Mostre a evolução diária da receita nos últimos 7 dias",
+    "request_id": "dd075a0f-4930-4dd8-8e8c-e4b59df6a1a1",
+    "result": {
+      "comparison": null,
+      "coverage": {
+        "covered_days": 7,
+        "expected_days": 7,
+        "missing": [],
+        "status": "complete"
+      },
+      "currency": "BRL",
+      "dataset_version": "synthetic-v1",
+      "evidence": [
+        {
+          "average_ticket_cents": "17308.88888888888888888888889",
+          "key": "2026-08-10",
+          "label": "2026-08-10",
+          "orders": 9,
+          "revenue_cents": "155780",
+          "units": 26
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-11",
+          "label": "2026-08-11",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-12",
+          "label": "2026-08-12",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": "20344.44444444444444444444444",
+          "key": "2026-08-13",
+          "label": "2026-08-13",
+          "orders": 9,
+          "revenue_cents": "183100",
+          "units": 37
+        },
+        {
+          "average_ticket_cents": "14033.63636363636363636363636",
+          "key": "2026-08-14",
+          "label": "2026-08-14",
+          "orders": 11,
+          "revenue_cents": "154370",
+          "units": 48
+        },
+        {
+          "average_ticket_cents": "13445.38461538461538461538462",
+          "key": "2026-08-15",
+          "label": "2026-08-15",
+          "orders": 13,
+          "revenue_cents": "174790",
+          "units": 57
+        },
+        {
+          "average_ticket_cents": "29503.92857142857142857142857",
+          "key": "2026-08-16",
+          "label": "2026-08-16",
+          "orders": 14,
+          "revenue_cents": "413055",
+          "units": 59
+        }
+      ],
+      "formula": "Soma de quantidade × preço unitário − desconto total do item, nos pedidos concluídos.",
+      "intent": "daily",
+      "metric": "revenue",
+      "period": {
+        "end": "2026-08-17",
+        "start": "2026-08-10"
+      },
+      "request_id": "dd075a0f-4930-4dd8-8e8c-e4b59df6a1a1",
+      "rows": [
+        {
+          "average_ticket_cents": "17308.88888888888888888888889",
+          "key": "2026-08-10",
+          "label": "2026-08-10",
+          "orders": 9,
+          "revenue_cents": "155780",
+          "units": 26
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-11",
+          "label": "2026-08-11",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": null,
+          "key": "2026-08-12",
+          "label": "2026-08-12",
+          "orders": 0,
+          "revenue_cents": "0",
+          "units": 0
+        },
+        {
+          "average_ticket_cents": "20344.44444444444444444444444",
+          "key": "2026-08-13",
+          "label": "2026-08-13",
+          "orders": 9,
+          "revenue_cents": "183100",
+          "units": 37
+        },
+        {
+          "average_ticket_cents": "14033.63636363636363636363636",
+          "key": "2026-08-14",
+          "label": "2026-08-14",
+          "orders": 11,
+          "revenue_cents": "154370",
+          "units": 48
+        },
+        {
+          "average_ticket_cents": "13445.38461538461538461538462",
+          "key": "2026-08-15",
+          "label": "2026-08-15",
+          "orders": 13,
+          "revenue_cents": "174790",
+          "units": 57
+        },
+        {
+          "average_ticket_cents": "29503.92857142857142857142857",
+          "key": "2026-08-16",
+          "label": "2026-08-16",
+          "orders": 14,
+          "revenue_cents": "413055",
+          "units": 59
+        }
+      ],
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "timezone": "America/Sao_Paulo",
+      "totals": {
+        "average_ticket_cents": "19305.26785714285714285714286",
+        "orders": 56,
+        "revenue_cents": "1081095",
+        "units": 227
+      },
+      "unit": "centavos",
+      "value": "1081095"
+    },
+    "status": "ready"
+  },
+  "reference_date": "2026-08-17",
+  "refused": {
+    "conversation_id": "7a787c70-e07d-4b4a-b32c-aeafc24e8dad",
+    "created_at": "2026-09-22T08:05:48.887910Z",
+    "id": "a4ba5ec1-ebdc-43a7-ba4e-9ad4393dd624",
+    "message": "Filtro não suportado. Use loja e período; não há filtros por pagamento, vendedor, categoria, canal ou cupom.",
+    "mode": "demo",
+    "plan": null,
+    "question": "Mostre a receita dos últimos 7 dias somente em dinheiro",
+    "request_id": "38b9879b-ce5e-4fb8-815c-53b1221f2b41",
+    "result": null,
+    "status": "needs_clarification"
+  }
+}

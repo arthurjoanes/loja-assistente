@@ -1,0 +1,497 @@
+{
+  "capturedAt": "2026-09-22T08:09:30.558Z",
+  "chartControls": [
+    {
+      "height": 30,
+      "name": "Gráfico",
+      "width": 76.6875
+    },
+    {
+      "height": 30,
+      "name": "Tabela",
+      "width": 73.375
+    }
+  ],
+  "checks": [
+    {
+      "composer": {
+        "bottom": 223.734375,
+        "height": 325.609375,
+        "right": 315,
+        "width": 290,
+        "x": 25,
+        "y": -101.875
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 900.453125,
+        "height": 33.046875,
+        "right": 1391,
+        "width": 1030,
+        "x": 361,
+        "y": 867.40625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 496.8125,
+        "top": 402.8125,
+        "viewportHeight": 900
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 924.453125,
+        "height": 1344.859375,
+        "right": 1415,
+        "width": 1078,
+        "x": 337,
+        "y": -420.40625
+      },
+      "name": "1440x900",
+      "pageWidth": 1440,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 38.59375,
+          "name": "Resumo em texto",
+          "width": 1030
+        },
+        {
+          "height": 40,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 1030
+        },
+        {
+          "height": 94,
+          "name": "TEXTAREA",
+          "width": 254
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 254
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "composer": {
+        "bottom": 93.734375,
+        "height": 325.609375,
+        "right": 315,
+        "width": 290,
+        "x": 25,
+        "y": -231.875
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 768.390625,
+        "height": 33.046875,
+        "right": 1317,
+        "width": 956,
+        "x": 361,
+        "y": 735.34375
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 455.8125,
+        "top": 361.8125,
+        "viewportHeight": 768
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 792.390625,
+        "height": 1342.796875,
+        "right": 1341,
+        "width": 1004,
+        "x": 337,
+        "y": -550.40625
+      },
+      "name": "1366x768",
+      "pageWidth": 1366,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 38.59375,
+          "name": "Resumo em texto",
+          "width": 956
+        },
+        {
+          "height": 40,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 956
+        },
+        {
+          "height": 46,
+          "name": "Dados fictícios · acesso e métricas",
+          "width": 254
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 768,
+        "width": 1366
+      }
+    },
+    {
+      "composer": {
+        "bottom": 1176.484375,
+        "height": 298.015625,
+        "right": 999,
+        "width": 487,
+        "x": 512,
+        "y": 878.46875
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 768.1875,
+        "height": 33.046875,
+        "right": 975,
+        "width": 926,
+        "x": 49,
+        "y": 735.140625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 566.15625,
+        "top": 472.15625,
+        "viewportHeight": 768
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 792.1875,
+        "height": 1397.59375,
+        "right": 999,
+        "width": 974,
+        "x": 25,
+        "y": -605.40625
+      },
+      "name": "1024x768",
+      "pageWidth": 1024,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 38.59375,
+          "name": "Resumo em texto",
+          "width": 926
+        },
+        {
+          "height": 40,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 926
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 768,
+        "width": 1024
+      }
+    },
+    {
+      "composer": {
+        "bottom": 1432.109375,
+        "height": 298.015625,
+        "right": 751,
+        "width": 367,
+        "x": 384,
+        "y": 1134.09375
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 1023.8125,
+        "height": 33.046875,
+        "right": 727,
+        "width": 686,
+        "x": 41,
+        "y": 990.765625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 829.78125,
+        "top": 735.78125,
+        "viewportHeight": 1024
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 1047.8125,
+        "height": 1519.96875,
+        "right": 751,
+        "width": 734,
+        "x": 17,
+        "y": -472.15625
+      },
+      "name": "768x1024",
+      "pageWidth": 768,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 38.59375,
+          "name": "Resumo em texto",
+          "width": 686
+        },
+        {
+          "height": 40,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 686
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 1024,
+        "width": 768
+      }
+    },
+    {
+      "composer": {
+        "bottom": 1392.171875,
+        "height": 255.96875,
+        "right": 379,
+        "width": 368,
+        "x": 11,
+        "y": 1136.203125
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 843.953125,
+        "height": 53.09375,
+        "right": 367,
+        "width": 344,
+        "x": 23,
+        "y": 790.859375
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 681.890625,
+        "top": 587.890625,
+        "viewportHeight": 844
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 861.953125,
+        "height": 1652.40625,
+        "right": 379,
+        "width": 368,
+        "x": 11,
+        "y": -790.453125
+      },
+      "name": "390x844",
+      "pageWidth": 390,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 58.734375,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 344
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "composer": {
+        "bottom": 1429.40625,
+        "height": 274.5625,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": 1154.84375
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 844,
+        "height": 53.09375,
+        "right": 297,
+        "width": 274,
+        "x": 23,
+        "y": 790.90625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 663.53125,
+        "top": 569.53125,
+        "viewportHeight": 844
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 369.625
+      },
+      "main": {
+        "bottom": 862,
+        "height": 1699.953125,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": -837.953125
+      },
+      "name": "320x844",
+      "pageWidth": 320,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [
+        {
+          "height": 58.734375,
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "width": 274
+        }
+      ],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 844,
+        "width": 320
+      }
+    },
+    {
+      "composer": {
+        "bottom": 841.40625,
+        "height": 274.5625,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": 566.84375
+      },
+      "dailyChartFits": true,
+      "evidenceClearOfComposer": true,
+      "evidenceEnd": {
+        "bottom": 256,
+        "height": 53.09375,
+        "right": 297,
+        "width": 274,
+        "x": 23,
+        "y": 202.90625
+      },
+      "evidenceEndReached": true,
+      "horizontalOverflow": false,
+      "input": {
+        "focused": true,
+        "uncovered": true,
+        "visible": true
+      },
+      "inputGeometry": {
+        "bottom": 199.53125,
+        "top": 105.53125,
+        "viewportHeight": 256
+      },
+      "keyboard": {
+        "focusOutline": "solid",
+        "insideEvidence": true,
+        "label": "Totais por dia",
+        "role": "region",
+        "uncovered": true,
+        "visibleHeight": 256
+      },
+      "main": {
+        "bottom": 274,
+        "height": 1699.953125,
+        "right": 309,
+        "width": 298,
+        "x": 11,
+        "y": -1425.953125
+      },
+      "name": "320x256-zoom-equivalent",
+      "pageWidth": 320,
+      "scrollMode": "visible",
+      "smallTargets": [],
+      "targets": [],
+      "viewport": {
+        "deviceScaleFactor": 1,
+        "height": 256,
+        "width": 320
+      }
+    }
+  ],
+  "mode": "verification",
+  "scenario": "Consulta diária real, evidência real aberta e navegação por teclado.",
+  "zoomMethod": "320×256 CSS px reproduz a geometria de 1280×1024 em 400%; zoom nativo da interface do navegador não foi medido."
+}

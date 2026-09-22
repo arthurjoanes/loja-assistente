@@ -244,8 +244,15 @@ def test_provider_hooks_follow_real_http_authorization_and_calculation(
     store_id: str,
     expected_status: int,
 ) -> None:
+    from test_budget_adapter import ControlledBudget
+
     from loja_assistente.assistant import interpretation
+    from loja_assistente.assistant import service as assistant_service
     from loja_assistente.config import settings
+
+    # This older authorization/calculation test uses an uncommitted savepoint fixture.
+    # Ledger durability is covered separately with committed tenants and sessions.
+    monkeypatch.setattr(assistant_service, "DurableBudget", lambda *_args: ControlledBudget([]))
 
     records = []
     reservations = []

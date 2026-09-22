@@ -63,6 +63,9 @@ Para a suíte completa com navegador e banco novos, use `dev.ps1 e2e`, conforme
 
 ## O que esta rodada não comprova
 
+O incremento posterior de [orçamento persistente](provider-budget.md) controla admissão de chamadas no caminho LLM da aplicação. Reserva e despacho ficam em transações próprias; resultado incerto não é liberado por rollback, reinício ou prazo do proxy. Esse controle tem verificação separada e não completa a auditoria adversarial anterior de autenticação/RBAC, nem impõe limite de cobrança a outros clientes da mesma credencial.
+
+
 Trata-se de revisão de robustez do transporte e regressão funcional. Não é
 pentest completo, nova revisão adversarial de autenticação/RBAC, teste de carga
 ou validação de implantação pública. Um timeout por requisição não limita o
