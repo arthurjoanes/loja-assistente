@@ -2,13 +2,19 @@
 
 Desenvolvi um assistente de análise de vendas para o gerente ou supervisor que precisa fazer uma pergunta e conferir o recorte e a conta. A demonstração usa lojas e vendas fictícias. O problema não é apenas somar: “Quanto vendi ontem somente em dinheiro?” não pode virar a receita geral quando o sistema não conhece a forma de pagamento.
 
+![Tela inicial da Loja Assistente com seis consultas de negócio e preparação da próxima pergunta](docs/screenshots/publication-20260922/inicio.png)
+
+*Tela inicial executada no [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226), em 1280×720, modo Demo sem IA. As consultas usam somente lojas autorizadas; esta imagem não apresenta o resultado da conta manual abaixo. [Proveniência](docs/evidence/frontend-ci-20260922.json).*
+
+## Uma conta pequena e um caso de consulta
+
 Na pequena fixture manual, dois pedidos concluídos em 16/08/2026 somam **R$ 20 + R$ 10 = R$ 30**, com oito unidades e ticket de R$ 15. O pedido cancelado não entra; a loja de outra organização também não. A IA, quando habilitada, interpreta a pergunta; autorização e cálculo continuam no servidor. [Conta passo a passo](docs/problem-solution.md#uma-conta-pequena-que-pode-ser-refeita) · [decisões e código](docs/decisoes-tecnicas.md).
 
 A imagem abaixo usa outra base: a massa maior `synthetic-v1`, loja Centro, de 10 a 16/08/2026. Seus R$ 10.810,95 não são a conta manual de R$ 30.
 
 ![Evolução diária com receita, período, cobertura e cálculo consultável](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png)
 
-*Captura histórica real de 22/09/2026, rodada `f98ee948…`, modo Demo sem IA: Centro, 10–16/08, R$ 10.810,95 e cobertura 7/7. É a massa `synthetic-v1`, diferente da fixture manual de R$ 30. Confira pergunta, período e linhas do cálculo na [imagem completa](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png). A [história de consulta, recusa e recuperação](docs/operational-story.md) identifica versões e limites. **A composição local posterior ainda não foi executada no navegador**: [qualidade do frontend](docs/frontend-quality.md).*
+*Captura histórica real de 22/09/2026, rodada `f98ee948…`, modo Demo sem IA: Centro, 10–16/08, R$ 10.810,95 e cobertura 7/7. É a massa `synthetic-v1`, diferente da fixture manual de R$ 30. Confira pergunta, período e linhas do cálculo na [imagem completa](docs/screenshots/operational-proof-20260922/f98ee94864384422bd835bcabd8f3a11/01-calculation.png). A [história de consulta, recusa e recuperação](docs/operational-story.md) identifica versões e limites. A interface posterior passou no [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226); a imagem acima continua vinculada à prova histórica identificada, sem transferir seus resultados: [qualidade do frontend](docs/frontend-quality.md).*
 
 ## O que eu implementei
 
@@ -63,7 +69,7 @@ O caminho LLM da API exige [orçamento persistente por organização](docs/provi
 
 ## Testes
 
-`dev.ps1 test` roda o backend; `dev.ps1 e2e` reúne casos puros e jornadas de navegador. Nesta revisão, construí o backend atual e executei **364 testes**, **57 casos offline** e **39 testes puros de frontend**. Instalação pelo lock, lint, formato, tipos e build passaram. As **30 jornadas de navegador/HTTP do frontend atual não foram executadas**, devido ao bloqueio de inicialização já registrado.
+`dev.ps1 test` roda o backend; `dev.ps1 e2e` reúne casos puros e jornadas de navegador. O backend atual passou em **364 testes** e **57 casos offline**; instalação pelo lock, lint, formato, tipos e build também passaram. O [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226) aprovou **69 casos Playwright: 39 puros e 30 de navegador/HTTP**, sem falha, skip ou retry. Os [resultados e limites](docs/verification.md) identificam as versões e preservam as tentativas anteriores.
 
 A prova histórica `f98ee948…` aprovou 68 casos (38 puros e 30 de navegador/HTTP) na composição anterior. Suas capturas não validam a fonte e a hierarquia locais posteriores. [Resultados, falhas de preparação, ambientes e limites](docs/verification.md#revisão-autoral-de-portfólio--22092026).
 
@@ -73,6 +79,6 @@ O proxy limita a entrada a 16 KiB e usa um prazo total de 45 s para receber o co
 
 Cada pergunta escolhe uma métrica. "Quanto vendi ontem só em dinheiro?" pede esclarecimento em vez de chutar o total. Filtros por forma de pagamento, vendedor, categoria, produto específico ou horário não cabem no plano atual; o ranking de produtos é uma capacidade distinta e está disponível. Comparações exigem cobertura completa. A base tem 6.316 pedidos fictícios em 90 dias, sem lucro, estoque, imposto ou reembolso parcial. Os testes de protocolo não medem compreensão de português, e não medi ganho de produtividade com usuários reais. [Parser demo](docs/demo-parser.md) · [métricas](docs/metrics.md) · [decisões técnicas](docs/decisoes-tecnicas.md).
 
-O design foi aprovado pelo autor em 22/09/2026. A **validação de execução do frontend atual permanece pendente**. Os checks desta revisão documental, as provas históricas e o bloqueio de novas jornadas estão separados em [verificação](docs/verification.md). Não houve chamada paga nesta revisão.
+O design foi aprovado pelo autor em 22/09/2026. A execução automatizada do frontend foi comprovada no [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226). Comparação visual pareada com o baseline, zoom nativo, leitor de tela, acessibilidade integral e desempenho percebido continuam sem comprovação. Não houve chamada paga nesta revisão.
 
 Código sob MIT. Source Sans 3 mantém sua [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e [origem](frontend/src/app/fonts/sources.json).

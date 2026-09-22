@@ -1,5 +1,17 @@
 # Testes locais
 
+## CI da interface publicada — 22/09/2026
+
+O [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226), SHA **`73aa1fff1e061b6f7c562d788544f4c968b50b7e`**, tentativa 1, terminou com sucesso: **69 casos Playwright em 55,626 s**, sendo 39 puros e 30 de navegador/HTTP, sem falha, skip ou retry. Chromium/Playwright 1.63.0, um worker, Next 16.3.5 e React 19.3.0. Build, 364 testes de backend, avaliação offline, frontend checks, demo HTTP, scans e limpeza também passaram. O modo Demo estava ativo, `LLM_ENABLED=false`, chave vazia; `LAYOUT_BASELINE` não estava definido, portanto os checks de reflow/foco foram exigidos.
+
+O resultado preserva duas falhas anteriores. No [run `35745146492`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35745146492), `2e8edd1`, passaram 67 casos e falharam dois: o painel inicial empurrava os atalhos para fora da primeira tela, com zero botões inteiros visíveis onde se exigiam seis em 1280×720 e quatro em 390×844. A preparação foi movida para depois dos atalhos e estes passaram a ocupar duas colunas no celular, mantendo o formulário disponível. No [run `35746622056`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35746622056), `f48941e`, os dois casos passaram; restou uma falha entre 69 porque outra jornada ainda exigia a ordem DOM anterior. Atualizei essa expectativa para a ordem deliberada e acrescentei Tab pelos seis atalhos nomeados antes do filtro Loja. Não removi testes nem reduzi contagens, timeouts, retries, asserts de consulta/escopo ou recuperação.
+
+O [artefato verification-evidence](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226/artifacts/10703737289) inclui `frontend/test-results/results.json`, a história operacional e capturas. O [recibo](evidence/frontend-ci-20260922.json) vincula SHA/run/artefato e a [tela inicial](screenshots/publication-20260922/inicio.png), copiada sem alteração. Arquivos de capturas históricas já versionados também integram o pacote e não devem ser contados como produção nova. Os testes de geometria usam sete viewports, incluindo 320×256 CSS px; isso não mede zoom nativo.
+
+Algumas capturas `fullPage` de resultado mostram o link “Ir para o conteúdo” sobre o documento. A análise das fontes aponta como explicação a captura além do viewport após rolagem: o link não focado fica em `position: fixed; top: -100px`, enquanto Playwright captura o documento inteiro sem voltar ao topo. Não houve registro de `activeElement` no instante dessas capturas aprovadas; portanto essa explicação é uma inferência, não uma comprovação de foco. O único trace da rodada anterior pertence à falha inicial móvel. A tela inicial publicada usa captura do viewport no início da página; nenhuma imagem teve pixels editados e o CSS do link foi preservado.
+
+O bloqueio local anterior de inicialização continua registrado e não foi contornado. O CI remoto é uma execução distinta no SHA acima; não valida automaticamente um commit posterior de documentação. Comparação pareada com baseline, zoom nativo, leitor de tela, acessibilidade integral e desempenho percebido continuam fora dessa prova.
+
 ## Revisão autoral de portfólio — 22/09/2026
 
 Revisei problema, conta manual, decisões, código e as três capturas reais de `f98ee948…`. A fixture `manual-v1` de R$ 30 permanece separada do caso visual `synthetic-v1` de R$ 10.810,95. O README identifica minhas contribuições e as bibliotecas que integrei; a arquitetura, o orçamento e os contratos não foram alterados.
@@ -16,7 +28,7 @@ Trivy 0.74.0 retornou **zero vulnerabilidades** na imagem de backend atual, via 
 
 `python scripts/verify_evidence.py` passou sem escrita ou rede: 65 artefatos, 62 fontes históricas, dois conjuntos de casos, contagens e somas. O verificador identifica as nove fontes alteradas e os 11 módulos posteriores; não transfere 47/48 da avaliação paga para o código atual. Os resultados originais e a falha `final-bf-04` permanecem preservados. O [recibo desta revisão](evidence/portfolio-review-20260922.json) separa instalação, testes, scans e imagens históricas.
 
-**Situação: design aprovado pelo autor em 22/09/2026; validação de execução do frontend atual pendente.** A recusa automática anterior de inicialização continua respeitada, sem repetição nem método alternativo. Nenhuma das 30 jornadas de navegador/HTTP foi executada nesta revisão; não há nova captura ou validação interativa; a aprovação do design pelo autor não substitui esses testes. A prova `f98ee948…` abaixo corresponde à sua versão congelada, anterior à nova marca, fonte e composição descritas em [qualidade do frontend](frontend-quality.md). O procedimento completo `setup/start/e2e` não foi repetido.
+**Situação posterior: design aprovado pelo autor e 69 casos aprovados no [CI do commit `73aa1fff`](https://github.com/arthurjoanes/loja-assistente/actions/runs/35747541226), incluindo as 30 jornadas de navegador/HTTP.** A revisão autoral local descrita acima respeitou a recusa automática de inicialização, sem repetição nem método alternativo. O CI posterior produziu provas remotas distintas. A prova `f98ee948…` abaixo continua vinculada à versão congelada anterior à nova marca, fonte e composição. O procedimento local `setup/start/e2e` não foi repetido.
 
 ## Validação final da candidata de interface
 
@@ -49,7 +61,7 @@ A avaliação histórica de linguagem, os scans anteriores e a auditoria adversa
 
 ## Histórico da revisão da interface — estado anterior à prova completa
 
-Os parágrafos desta seção registram a etapa parcial que precedeu a entrega acima. Suas pendências de navegador foram tratadas na prova posterior; foram encerradas naquela versão. A direção visual local posterior tem novas jornadas pendentes, descritas em [qualidade do frontend](frontend-quality.md).
+Os parágrafos desta seção registram a etapa parcial que precedeu a entrega acima. Suas pendências de navegador foram tratadas na prova posterior; foram encerradas naquela versão. A direção visual posterior foi executada no CI identificado no início deste documento, com limites em [qualidade do frontend](frontend-quality.md).
 
 A interface passou a exibir um resultado selecionado por vez, com histórico,
 filtros, gráfico/tabela e cálculo preservados. Build de produção Next.js,
