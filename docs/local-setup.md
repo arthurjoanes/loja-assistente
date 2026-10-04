@@ -42,11 +42,11 @@ docker compose -f compose.e2e.yaml up --abort-on-container-exit --exit-code-from
 docker compose -f compose.e2e.yaml down
 ```
 
-Os testes usam bancos exclusivos; o banco E2E fica em memória. Não alteram o banco da demonstração. No Windows, os atalhos são `dev.ps1 test`, `dev.ps1 check-frontend` e `dev.ps1 e2e`.
+Os testes usam bancos exclusivos, separados da demonstração; o banco E2E fica em memória. No Windows, os atalhos são `dev.ps1 test`, `dev.ps1 check-frontend` e `dev.ps1 e2e`.
 
 Para parar a demonstração e manter seus dados: `docker compose --profile test down`, ou `dev.ps1 stop` no Windows. Para iniciá-la novamente: `docker compose up -d --wait`. O volume `postgres_data` conserva o histórico entre reinícios.
 
-Este ambiente publica portas somente em `127.0.0.1`. Disponibilizar a aplicação na internet exige configuração própria de HTTPS, cookies seguros, identidade e proteção operacional; o Compose entregue é a demonstração local.
+Este ambiente publica portas somente em `127.0.0.1`. Disponibilizar a aplicação na internet exige configuração própria de HTTPS, cookies seguros, identidade e proteção operacional. O Compose entregue executa a demonstração local.
 
 ## Código e evidências relacionados
 

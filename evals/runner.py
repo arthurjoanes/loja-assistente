@@ -10,6 +10,7 @@ import time
 from collections import Counter
 from datetime import UTC, date, datetime
 from pathlib import Path
+from unittest.mock import patch
 
 
 def run(output_directory: Path) -> int:
@@ -23,13 +24,14 @@ def run(output_directory: Path) -> int:
     from fastapi.testclient import TestClient
     from manual_fixture import IDENTITIES, ORIGIN, PASSWORD, seed_manual
     from sqlalchemy import text
-    from sqlalchemy.orm import Session
+    from sqlalchemy.orm import Session, sessionmaker
 
     from evals.database import prepare_test_database
     from evals.harness import EvaluationFailure, check_http, execute_case, load_suite
     from loja_assistente.app import app
+    from loja_assistente.auth import admission
     from loja_assistente.config import settings
-    from loja_assistente.database import get_db
+    from loja_assistente.database import Base, get_db
 
     logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.getLogger("loja_assistente.operations").setLevel(logging.WARNING)
@@ -41,12 +43,19 @@ def run(output_directory: Path) -> int:
     settings.reference_date = date(2026, 8, 17)
     suite = load_suite()
     engine = prepare_test_database(url)
+    tables = ", ".join('"' + table.name + '"' for table in Base.metadata.sorted_tables)
+    reset = text(f"TRUNCATE {tables} RESTART IDENTITY CASCADE")
     outcomes = []
     try:
-        with engine.connect() as connection:
-            outer = connection.begin()
-            session = Session(bind=connection, join_transaction_mode="create_savepoint")
+        # The dedicated *_test database may contain fixtures committed by pytest.
+        # Real login commits must release their advisory locks before the next case.
+        with engine.begin() as connection:
+            connection.execute(reset)
             database_version = connection.scalar(text("SELECT version()"))
+        with (
+            Session(engine) as session,
+            patch.object(admission, "SessionLocal", sessionmaker(bind=engine)),
+        ):
             seed_manual(session)
             session.commit()
 
@@ -89,10 +98,12 @@ def run(output_directory: Path) -> int:
                     outcomes.append(outcome)
             finally:
                 app.dependency_overrides.clear()
-                session.close()
-                outer.rollback()
     finally:
-        engine.dispose()
+        try:
+            with engine.begin() as connection:
+                connection.execute(reset)
+        finally:
+            engine.dispose()
     counts = Counter(item["status"] for item in outcomes)
     categories = {}
     for category in sorted({item["category"] for item in outcomes}):

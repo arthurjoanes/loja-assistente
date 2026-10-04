@@ -20,4 +20,4 @@ COPY --chown=app:app data /app/data
 COPY --chown=app:app scripts /app/scripts
 USER app
 EXPOSE 8102
-CMD ["uvicorn", "loja_assistente.app:app", "--host", "0.0.0.0", "--port", "8102"]
+CMD ["uvicorn", "loja_assistente.app:app", "--host", "0.0.0.0", "--port", "8102", "--no-proxy-headers"]

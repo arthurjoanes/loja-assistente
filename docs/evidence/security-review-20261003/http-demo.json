@@ -1,0 +1,123 @@
+{
+  "mode": "demo",
+  "base_url": "http://frontend:3102",
+  "verified_at": "2026-10-03T23:53:36.944492+00:00",
+  "checks": [
+    {
+      "question": "Quanto vendi ontem?",
+      "status": "ready",
+      "request_id": "9cc0899f-4e92-437c-a872-6e1d8cc69e1c",
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "value": "413055",
+      "period": {
+        "start": "2026-08-16",
+        "end": "2026-08-17"
+      }
+    },
+    {
+      "question": "Quais os 5 produtos com maior receita nos últimos 7 dias?",
+      "status": "ready",
+      "request_id": "67969620-1347-47f6-aa04-13bcfae0f4d9",
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "value": "1081095",
+      "period": {
+        "start": "2026-08-10",
+        "end": "2026-08-17"
+      }
+    },
+    {
+      "question": "Compare a receita dos últimos 7 dias com o período anterior",
+      "status": "ready",
+      "request_id": "d606effa-37d9-41a6-9011-e4a28d9f2185",
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "value": "1081095",
+      "period": {
+        "start": "2026-08-10",
+        "end": "2026-08-17"
+      }
+    },
+    {
+      "question": "E nos sete dias anteriores?",
+      "status": "ready",
+      "request_id": "cdc31d78-f0eb-47c5-960f-23e112bd06e5",
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "value": "1526060",
+      "period": {
+        "start": "2026-08-03",
+        "end": "2026-08-10"
+      }
+    },
+    {
+      "scenario": "direct_forbidden_store",
+      "http_status": 403
+    },
+    {
+      "question": "Qual foi o lucro ontem?",
+      "status": "unsupported",
+      "request_id": "017c92fa-b219-4664-91e1-615ee02a6e1e",
+      "scope": null,
+      "value": null,
+      "period": null
+    },
+    {
+      "question": "Receita em 2025-01-01",
+      "status": "no_data",
+      "request_id": "b5c68ab5-4174-47b3-a368-82345c11b518",
+      "scope": [
+        {
+          "id": "a001",
+          "name": "Centro"
+        }
+      ],
+      "value": null,
+      "period": {
+        "start": "2025-01-01",
+        "end": "2025-01-02"
+      }
+    },
+    {
+      "scenario": "logout_invalidates_session",
+      "http_status": 401
+    },
+    {
+      "question": "Quanto vendi ontem?",
+      "status": "ready",
+      "request_id": "0c01cadf-3f0a-4aef-8cb5-f1ae25fa5073",
+      "scope": [
+        {
+          "id": "b001",
+          "name": "Centro"
+        }
+      ],
+      "value": "253545",
+      "period": {
+        "start": "2026-08-16",
+        "end": "2026-08-17"
+      }
+    },
+    {
+      "scenario": "cross_user_evidence",
+      "http_status": 404
+    }
+  ]
+}

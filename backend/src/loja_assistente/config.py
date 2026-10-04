@@ -59,6 +59,8 @@ class Settings(BaseSettings):
             or len(self.session_secret) < 32
         ):
             raise ValueError("Fora de DEMO_MODE, SESSION_SECRET deve ter pelo menos 32 caracteres.")
+        if not self.demo_mode and not self.cookie_secure:
+            raise ValueError("Fora de DEMO_MODE, COOKIE_SECURE deve estar habilitado.")
         return self
 
 

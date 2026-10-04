@@ -38,7 +38,11 @@ async function proxy(
       signal: lifetime.signal,
     });
     const responseHeaders = new Headers({ "Cache-Control": "no-store" });
-    for (const name of ["x-request-id", "x-content-type-options"]) {
+    for (const name of [
+      "x-request-id",
+      "x-content-type-options",
+      "retry-after",
+    ]) {
       const value = upstream.headers.get(name);
       if (value) responseHeaders.set(name, value);
     }

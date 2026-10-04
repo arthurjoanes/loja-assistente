@@ -7,6 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from loja_assistente.auth.admission import admit_login, release_success
 from loja_assistente.auth.service import (
     SESSION_COOKIE,
     Principal,
@@ -64,6 +65,7 @@ def login(
     db: Annotated[Session, Depends(get_db)],
 ) -> dict[str, Any]:
     require_origin(request)
+    admitted = admit_login(payload.email, request.client.host if request.client else "unknown")
     user = db.scalar(select(User).where(User.email == payload.email.strip().lower()))
     valid = verify_password(payload.password, user.password_hash if user else _dummy_hash)
     if user is None or not valid or (not settings.demo_mode and user.email.endswith("@demo.local")):
@@ -83,6 +85,7 @@ def login(
         expires_at=datetime.now(UTC) + timedelta(hours=settings.session_hours),
     )
     db.add(session)
+    release_success(db, admitted)
     db.commit()
     response.set_cookie(
         SESSION_COOKIE,

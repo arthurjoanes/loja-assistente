@@ -1,4 +1,16 @@
-# Robustez do proxy e limites da revisão
+# Segurança do login e do proxy
+
+## Login e cookies
+
+Desde a revisão de 03/10/2026, o login reserva uma tentativa no PostgreSQL antes de verificar a senha com Argon2. O limite é de cinco tentativas malsucedidas ou em andamento por conta normalizada e trinta por origem, em janelas de 60 segundos. O limite de conta vale mesmo quando a origem muda. A admissão usa transação própria: uma resposta 401 ou rollback do login conserva a tentativa. Um login concluído libera apenas sua reserva; não apaga outras falhas. Ao atingir o limite, a API retorna 429 e `Retry-After`, que o proxy também encaminha.
+
+As chaves dos contadores usam HMAC com `SESSION_SECRET`; a tabela não armazena e-mail nem endereço de rede. Locks em ordem estável coordenam processos e conexões concorrentes. A limpeza remove até 100 contadores expirados por admissão e ignora linhas já bloqueadas, evitando esperar por outra autenticação durante a limpeza.
+
+Uvicorn inicia com `--no-proxy-headers`. A identidade da origem vem da conexão, sem aceitar um `X-Forwarded-For` escolhido pelo cliente. O proxy Next.js compartilha uma origem entre seus usuários; eles também compartilham a cota. Uma implantação pública precisa definir uma borda confiável e seus limites por cliente.
+
+Fora de `DEMO_MODE`, a configuração exige segredo de sessão com pelo menos 32 caracteres e `COOKIE_SECURE=true`. A sessão usa cookie `HttpOnly`, `SameSite=Lax`, validade entre uma e 24 horas e token aleatório cujo HMAC fica no banco. Mutações conferem a origem e o token CSRF. HTTP com cookie sem `Secure` continua disponível na demonstração local.
+
+A migração `0004` acrescenta somente `login_admission`. Aplique `alembic upgrade head` no procedimento de atualização antes de iniciar o backend novo. Ela não apaga sessões, vendas ou conversas. Resultados, dependências e limites da revisão estão na [matriz de 03/10/2026](SECURITY-REVIEW-2026-10-03.md).
 
 ## Prazo de leitura e resposta
 

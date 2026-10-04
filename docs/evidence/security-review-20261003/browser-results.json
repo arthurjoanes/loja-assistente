@@ -1,0 +1,998 @@
+{
+  "raw_report_sha256": "bb3e05725db195da992434d9912723557be99c25a32b4e77d1857add05a9b3a0",
+  "redaction": "Only stats, test file/title/status/attempt counts and durations; config, attachments and logs omitted.",
+  "playwright": "1.63.0",
+  "browser": "Playwright Chromium 1.63.0 Linux noble, headless",
+  "workers": 1,
+  "retries": 0,
+  "stats": {
+    "startTime": "2026-10-03T23:46:27.179Z",
+    "duration": 47685.82,
+    "expected": 70,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "file": "domain.spec.ts",
+      "line": 20,
+      "title": "série de 1 dias preserva zero, indisponível e valores exatos",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 22,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 20,
+      "title": "série de 7 dias preserva zero, indisponível e valores exatos",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 9,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 20,
+      "title": "série de 30 dias preserva zero, indisponível e valores exatos",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 55,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-08-16 / 2026-08-17",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 2,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-05-19 / 2026-08-17",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-05-18 / 2026-08-17",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-08-17 / 2026-08-17",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-08-18 / 2026-08-17",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro vazio / 2026-08-17",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-08-16 / vazio",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 0,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 0001-01-01 / 0001-01-02",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 0,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 0000-01-01 / 0000-01-02",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 0,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 9999-12-30 / 9999-12-31",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2026-02-29 / 2026-03-01",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 0,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 91,
+      "title": "intervalo puro 2024-02-29 / 2024-03-01",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 0,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 96,
+      "title": "preset personalizado preserva edição e pergunta remove filtro",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 103,
+      "title": "esclarecimento preserva filtros; troca de identidade limpa toda análise",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 2,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 136,
+      "title": "proxy conta bytes do stream com Content-Length null",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 5,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 136,
+      "title": "proxy conta bytes do stream com Content-Length 1",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 136,
+      "title": "proxy conta bytes do stream com Content-Length 16385",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 136,
+      "title": "proxy conta bytes do stream com Content-Length invalid",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 156,
+      "title": "proxy preserva 16 KiB e centavos grandes formatam sem Number",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 4,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "domain.spec.ts",
+      "line": 171,
+      "title": "teto da série mantém precisão de centavos grandes, frações e ausência",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 2,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "journeys.spec.ts",
+      "line": 37,
+      "title": "gestor consulta receita, evidência, ranking, comparação e continuação",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 2785,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "journeys.spec.ts",
+      "line": 160,
+      "title": "paráfrase e cortesia preservam cálculo; qualificador recusado não vira total",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1528,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "journeys.spec.ts",
+      "line": 199,
+      "title": "login e análise atendem verificações automatizadas de acessibilidade",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1927,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "journeys.spec.ts",
+      "line": 238,
+      "title": "troca de usuário isola histórico, resposta e evidência no backend",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1200,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "journeys.spec.ts",
+      "line": 278,
+      "title": "limitação, provedor indisponível e expiração têm estados recuperáveis",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 754,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "journeys.spec.ts",
+      "line": 315,
+      "title": "celular permite teclado, filtros e leitura sem overflow horizontal",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1034,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "operational-story.spec.ts",
+      "line": 23,
+      "title": "operational story: calculation, unsupported dimension and valid recovery",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1783,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 28,
+      "title": "leitura sem primeiro chunk expira e não espera cancel hook pendente",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 16,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 48,
+      "title": "chunks intermediários não renovam o prazo total de leitura",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 21,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 76,
+      "title": "excesso de bytes cancela sem esperar hook, declarado=undefined",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 76,
+      "title": "excesso de bytes cancela sem esperar hook, declarado=16385",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 95,
+      "title": "aborto do chamador cancela leitura e remove listener",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 2,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 114,
+      "title": "aborto anterior não é ignorado por chunks já disponíveis",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 131,
+      "title": "sucesso libera listener e dispose remove o timer",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 26,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 149,
+      "title": "resposta entrega primeiro chunk antes de EOF e libera prazo ao concluir",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 2,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 174,
+      "title": "resposta incompleta expira após o primeiro chunk e cancela upstream",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 17,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 195,
+      "title": "prazo da resposta vale mesmo sem consumo do downstream",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 27,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 217,
+      "title": "cancelamento downstream interrompe fetch e não aguarda cancel hook",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 236,
+      "title": "erro upstream é propagado e resposta sem corpo não mantém deadline",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 27,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 256,
+      "title": "rota responde 408 com identificador e sem cache quando leitura expira",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 5,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 278,
+      "title": "rota preserva 413 e cabeçalhos ao recusar corpo excessivo",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 291,
+      "title": "rota mantém streaming e cabeçalhos; aborto fecha resposta já iniciada",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 3,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 339,
+      "title": "proxy preserva recusa de login e prazo para tentar novamente",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "proxy-streams.spec.ts",
+      "line": 364,
+      "title": "cliente não trata JSON interrompido como resultado bem-sucedido",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "quality.spec.ts",
+      "line": 38,
+      "title": "histórico tardio não apaga a conversa recém-criada",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 609,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "quality.spec.ts",
+      "line": 87,
+      "title": "histórico distingue horários, revela título longo e drawer devolve foco",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 697,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "quality.spec.ts",
+      "line": 135,
+      "title": "evidência, foco, alvos e refluxo permanecem acessíveis em sete geometrias",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 5477,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "quality.spec.ts",
+      "line": 475,
+      "title": "zero coberto, receita de 90 dias e cobertura parcial preservam o significado dos números",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1556,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "quality.spec.ts",
+      "line": 539,
+      "title": "preferência de movimento reduzido evita rolagem animada da conversa",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 569,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "result-selection.spec.ts",
+      "line": 17,
+      "title": "rever um resultado preserva os dados e a continuação do último plano",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1711,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "review.spec.ts",
+      "line": 3,
+      "title": "filtro não suportado não aparece como receita geral",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 532,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "review.spec.ts",
+      "line": 30,
+      "title": "atalhos de análise aparecem cedo em 1280×720",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 490,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "review.spec.ts",
+      "line": 30,
+      "title": "atalhos de análise aparecem cedo em 390×844",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 455,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 30,
+      "title": "senha vazia, incorreta e limite preservam validação e recuperação",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 815,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 64,
+      "title": "datas personalizadas mantêm edição real, bloqueiam inválidas e enviam recorte exato",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1145,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 114,
+      "title": "lojas e períodos rápidos refletem seleção e datas explícitas prevalecem",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1497,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 141,
+      "title": "pergunta respeita espaços, acentos, quebra de linha, tamanho e múltiplas métricas",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1408,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 194,
+      "title": "falha network preserva pergunta, resultado anterior e permite tentar novamente",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1072,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 194,
+      "title": "falha 409 preserva pergunta, resultado anterior e permite tentar novamente",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1112,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 194,
+      "title": "falha 503 preserva pergunta, resultado anterior e permite tentar novamente",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1147,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 233,
+      "title": "resposta lenta bloqueia envio duplicado e alterações de escopo",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 973,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 267,
+      "title": "histórico, operação indisponível e nova análise mantêm contexto e foco",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1669,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 309,
+      "title": "sessão expirada entre identificação e histórico volta ao login",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 553,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 328,
+      "title": "proxy recusa JSON grande com contexto público consistente",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 114,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 343,
+      "title": "evidência com falha pode ser repetida sem perder o resultado",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1036,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 363,
+      "title": "erro tardio de evidência antiga não expira a nova identidade",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 1728,
+          "retry": 0
+        }
+      ]
+    },
+    {
+      "file": "round-2-fields.spec.ts",
+      "line": 402,
+      "title": "falha de conexão no login não acusa senha inválida",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "duration_ms": 582,
+          "retry": 0
+        }
+      ]
+    }
+  ]
+}

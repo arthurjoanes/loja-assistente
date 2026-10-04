@@ -34,6 +34,17 @@ class Organization(Base):
     name: Mapped[str] = mapped_column(String(120))
 
 
+class LoginAdmission(Base):
+    __tablename__ = "login_admission"
+    key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    window_start: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    attempts: Mapped[int] = mapped_column(BigInteger)
+    __table_args__ = (
+        CheckConstraint("attempts >= 0", name="login_admission_nonnegative"),
+        Index("ix_login_admission_window", "window_start"),
+    )
+
+
 class ProviderBudgetAccount(Base):
     __tablename__ = "provider_budget_accounts"
     tenant_id: Mapped[str] = mapped_column(ForeignKey("organizations.id"), primary_key=True)

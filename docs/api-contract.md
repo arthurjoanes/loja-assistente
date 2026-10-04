@@ -1,6 +1,6 @@
 # Contrato HTTP e integração interna
 
-Todos os caminhos possuem prefixo `/api`; Next.js faz proxy para o backend. Erros HTTP usam `detail` textual. Cookie de sessão: `la_session`. POST exige `Origin` permitido; depois do login também exige `X-CSRF-Token`. JSON usa `snake_case`.
+Todos os caminhos têm prefixo `/api`, e Next.js encaminha as requisições ao backend. Erros HTTP usam `detail` textual. A sessão usa o cookie `la_session`. POST exige `Origin` permitido; depois do login também exige `X-CSRF-Token`. JSON usa `snake_case`.
 
 ## Rotas
 
@@ -17,7 +17,7 @@ Todos os caminhos possuem prefixo `/api`; Next.js faz proxy para o backend. Erro
 | `GET /answers/{id}`          | ID                                    | Resposta                                                                    |
 | `GET /answers/{id}/evidence` | ID                                    | Resultado autorizado                                                        |
 | `GET /operations`            | Sessão                                | `entries`, `total`, `errors`, `tokens: null`, `cost: null`                  |
-| `GET /health`                | —                                     | `status: "ok"`; prontidão verifica `SELECT 1`                               |
+| `GET /health`                | Sem entrada                                     | `status: "ok"`; prontidão verifica `SELECT 1`                               |
 
 O usuário de `/auth/me` contém `id`, `name`, `email`, `role`, `organization` (`id`, `name`) e `stores` (lista de `id`, `name`). Cada entrada operacional contém `request_id`, `mode`, `capability`, `status`, `interpretation_ms`, `query_ms`, `response_ms`, `created_at` e `interpreter_version`.
 
@@ -100,7 +100,11 @@ erro. Isso limita recursos desta requisição no processo, não a quantidade de
 conexões simultâneas nem a execução já iniciada no backend. Não há nesta rodada
 medição de carga ou garantia contra saturação da infraestrutura.
 
-Pergunta: 1–1.000 caracteres, rejeição de conteúdo só com espaços, trim externo. `store_ids`: até seis referências, sem itens vazios ou maiores que 64 caracteres; duplicatas válidas são removidas sem ampliar escopo. `period` aceita 1–90 dias, datas ISO válidas e fim exclusivo. No formulário, datas vazias/invertidas mantêm a edição, mostram erro associado aos campos e desabilitam envio. A API valida de forma independente. Email aceita 3–254 caracteres, senha 1–200; a senha não é aparada, enquanto email é normalizado para a busca. O login público não revela se a conta existe.
+Pergunta: 1 a 1.000 caracteres, rejeição de conteúdo só com espaços, trim externo. `store_ids`: até seis referências, sem itens vazios ou maiores que 64 caracteres; duplicatas válidas são removidas sem ampliar escopo. `period` aceita 1 a 90 dias, datas ISO válidas e fim exclusivo. No formulário, datas vazias/invertidas mantêm a edição, mostram erro associado aos campos e desabilitam envio. A API valida de forma independente. Email aceita 3 a 254 caracteres, senha 1 a 200; a senha não é aparada, enquanto email é normalizado para a busca. O login público não revela se a conta existe.
+
+## Admissão do login
+
+`POST /auth/login` retorna 429 e `Retry-After` em segundos ao atingir cinco tentativas malsucedidas ou em andamento por conta normalizada, ou trinta por origem. A janela dura 60 segundos desde a primeira reserva. O PostgreSQL registra a admissão antes do Argon2 e conserva o contador após 401 ou rollback. Um login concluído libera apenas sua própria reserva. A conta compartilha a cota entre origens; clientes do proxy Next.js compartilham a cota da conexão do proxy. A [política de segurança](security.md) descreve a migração e os limites desse controle.
 
 ## Código e evidências relacionados
 

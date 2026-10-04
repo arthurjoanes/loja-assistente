@@ -1,0 +1,27 @@
+{
+  "upgrade": "0003 -> 0004",
+  "repeat_head": "passed",
+  "rows_before_after_identical": true,
+  "preserved_table_counts": {
+    "datasets": 1,
+    "organizations": 2,
+    "products": 4,
+    "provider_budget_accounts": 0,
+    "stores": 3,
+    "users": 3,
+    "conversations": 0,
+    "coverage": 21,
+    "login_sessions": 1,
+    "operations": 0,
+    "orders": 7,
+    "provider_reservations": 0,
+    "store_permissions": 4,
+    "answers": 0,
+    "order_items": 11
+  },
+  "existing_session_http": 200,
+  "login_http": 200,
+  "cross_tenant_store_http": 403,
+  "successful_reservations_remaining": 0,
+  "provider_calls": 0
+}
