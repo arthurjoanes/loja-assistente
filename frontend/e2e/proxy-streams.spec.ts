@@ -336,6 +336,31 @@ test("rota mantém streaming e cabeçalhos; aborto fecha resposta já iniciada",
   }
 });
 
+test("proxy preserva recusa de login e prazo para tentar novamente", async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () =>
+    Response.json(
+      { detail: "Muitas tentativas de entrada." },
+      { status: 429, headers: { "Retry-After": "60" } },
+    );
+  try {
+    const response = await POST(
+      new NextRequest("http://local.test/api/auth/login", {
+        method: "POST",
+        body: "{}",
+      }),
+      { params: Promise.resolve({ path: ["auth", "login"] }) },
+    );
+    expect(response.status).toBe(429);
+    expect(response.headers.get("retry-after")).toBe("60");
+    expect(await response.json()).toEqual({
+      detail: "Muitas tentativas de entrada.",
+    });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("cliente não trata JSON interrompido como resultado bem-sucedido", async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () =>

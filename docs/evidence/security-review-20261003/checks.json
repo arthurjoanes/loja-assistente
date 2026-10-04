@@ -1,0 +1,552 @@
+{
+  "review_date": "2026-10-03",
+  "project": "loja-assistente",
+  "baseline_commit": "aebc1bbd32c4c77750deed3945d16439577db4a2",
+  "scope": "Código atual e demonstração local; sem validação de implantação pública.",
+  "backend": {
+    "command": "python /app/scripts/check.py",
+    "python_version": "3.12.14",
+    "postgresql_version": "17.11",
+    "tests": 381,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds_junit": 49.572,
+    "started_at": "2026-10-03T23:41:53.382086+00:00",
+    "database_runtime_role": "security (somente banco descartável)",
+    "database_owner_separate": false,
+    "database_test_suffix_enforced": true,
+    "database_storage": "tmpfs",
+    "database_container_removed_after_tests": true,
+    "platform": "Linux Docker amd64"
+  },
+  "static_checks": {
+    "ruff_check": "passed",
+    "ruff_format_check": "passed",
+    "mypy": "passed",
+    "eslint": "passed",
+    "prettier_check": "passed",
+    "typescript": "passed",
+    "next_production_build": "passed",
+    "docker_backend_build": "passed",
+    "docker_frontend_build": "passed"
+  },
+  "python_audit": {
+    "tool": "pip-audit 2.10.1",
+    "export": "uv export --frozen --no-hashes --no-emit-project",
+    "command": "pip-audit --disable-pip --no-deps -r <export congelado>",
+    "known_vulnerabilities": 0,
+    "uv_lock_modified": false
+  },
+  "node_audit": {
+    "next": "16.3.8",
+    "eslint_config_next": "16.3.8",
+    "runtime_findings": 0,
+    "full_flagged_nodes": 5,
+    "full_high_nodes": 5,
+    "full_critical_nodes": 0,
+    "distinct_remaining_advisories": [
+      "GHSA-vfj7-8cjw-p6xm"
+    ],
+    "remaining_dependency": "braces@3.0.3 (somente desenvolvimento)",
+    "remaining_advisory_patch_available": false,
+    "incompatible_tinyglobby_override_removed": true
+  },
+  "image_audit": {
+    "tool": "Trivy 0.74.0",
+    "scanner_image_digest": "sha256:62b1e65e8869bc4b4c6aa4fa2b21595256c7c2f6018a9d9ad61caf87187c1969",
+    "database": {
+      "Version": 2,
+      "NextUpdate": "2026-10-04T19:02:38.737369504Z",
+      "UpdatedAt": "2026-10-03T19:02:38.737369755Z",
+      "DownloadedAt": "2026-10-03T22:33:41.370315008Z"
+    },
+    "all_severities_scanned": true,
+    "images": [
+      {
+        "tag": "security-loja-backend:gates-20261003",
+        "id": "sha256:ffdacd927651bb9f940e8dabd12f8c2ff0ff05b864da4e1beb30ef550ad318d4",
+        "scan_created_at": "2026-10-03T23:44:48.974876386Z",
+        "findings": 0,
+        "severities": {},
+        "targets": [
+          {
+            "target": "/scan/loja-backend-gates.tar (alpine 3.24.2)",
+            "type": "alpine",
+            "vulnerabilities": 0
+          },
+          {
+            "target": "Python",
+            "type": "python-pkg",
+            "vulnerabilities": 0
+          }
+        ],
+        "raw_report_sha256": "201f79e364aa1e7d37b40b58ede62af7e8027b0d5a56916c496e7f6d7e8b536f",
+        "redacted_report_file": "trivy-backend.json",
+        "redacted_report_sha256": "9cdf335db78dd17c6fab6b6ab54f470bc5983ac4f245c740c3539bb5a1dc327e",
+        "packages_in_redacted_report": 132
+      },
+      {
+        "tag": "security-loja-frontend:20261003",
+        "id": "sha256:c0a12576339bcc2f6404896dde884f416779d54f6336bae6d7847583ade05ec3",
+        "scan_created_at": "2026-10-03T22:41:31.299431054Z",
+        "findings": 0,
+        "severities": {},
+        "targets": [
+          {
+            "target": "/scan/loja-frontend.tar (alpine 3.24.1)",
+            "type": "alpine",
+            "vulnerabilities": 0
+          },
+          {
+            "target": "Node.js",
+            "type": "node-pkg",
+            "vulnerabilities": 0
+          }
+        ],
+        "raw_report_sha256": "ecf9b549ecb521d966b9044f91179a64d37b29a772d07f05e6e80b43f74da06f",
+        "redacted_report_file": "trivy-frontend.json",
+        "redacted_report_sha256": "1d0bf846d36fa0bb2edb0bf6b335acac7bab90dd44ac61591afff0e7c79b45f7",
+        "packages_in_redacted_report": 38
+      }
+    ],
+    "warning": "Alpine 3.24 não consta da lista EOL do scanner; não comprova duração de suporte.",
+    "redaction": {
+      "policy": "allowlist",
+      "metadata_fields": [
+        "ImageID",
+        "OS"
+      ],
+      "package_fields": [
+        "Name",
+        "Version"
+      ],
+      "excluded": [
+        "Config.Env",
+        "image configuration",
+        "history",
+        "SecretMatches"
+      ],
+      "raw_report_location": "Somente fora do repositório; os hashes raw_report_sha256 identificam os arquivos originais.",
+      "committed_report_location": "Relatórios Trivy curados nesta pasta. artifacts_sha256 identifica os blobs Git; redacted_report_sha256 identifica os bytes curados antes da normalização Git, e raw_report_sha256 os originais mantidos fora do repositório."
+    },
+    "initial_backend_image": {
+      "tag": "security-loja-backend:20261003",
+      "id": "sha256:943db2439bc89804d4debc56037757fea12f9158dac935ed24a52eb376560e75",
+      "scan_created_at": "2026-10-03T22:44:31.829419933Z",
+      "findings": 0,
+      "severities": {},
+      "targets": [
+        {
+          "target": "/scan/loja-backend.tar (alpine 3.24.2)",
+          "type": "alpine",
+          "vulnerabilities": 0
+        },
+        {
+          "target": "Python",
+          "type": "python-pkg",
+          "vulnerabilities": 0
+        }
+      ],
+      "raw_report_sha256": "6deb511e1c0ee06495a2672f6bdae1e66c1f08e8b87f63b1e5fe6488c2387fdf",
+      "redacted_report_file": "trivy-backend-initial.json",
+      "redacted_report_sha256": "fe71bba4e04a0fe960297ebe48aae4eb65c029ee4766efed85a74d3d3f782b1b",
+      "packages_in_redacted_report": 132
+    }
+  },
+  "secrets": {
+    "tool": "Gitleaks 8.30.1",
+    "git_history_findings": 0,
+    "publicable_files_findings": 0,
+    "existing_config_unchanged": true,
+    "ignored_private_files_not_published": true,
+    "final_snapshot_command": "gitleaks dir --config .gitleaks.toml --redact . (cwd: snapshot com caminhos relativos, mesmas exceções existentes)",
+    "final_snapshot_findings": 0
+  },
+  "humanizer": {
+    "skill_version": "3.1.0",
+    "mode": "file",
+    "workflow": "leitura, identificação, rascunho, conferência de fatos e padrões, versão final",
+    "files": [
+      "README.md",
+      "docs/security.md",
+      "docs/api-contract.md",
+      "docs/local-setup.md",
+      "docs/SECURITY-REVIEW-2026-10-03.md"
+    ],
+    "existing_fenced_code_identical": true,
+    "existing_link_targets_preserved": true,
+    "existing_inline_code_preserved": true,
+    "historical_evidence_changed": false,
+    "complementary_sections_reviewed": true,
+    "final_file_sha256": [
+      {
+        "file": "README.md",
+        "sha256": "063bae699d8b8f60798498ce33cf8c82099d042d19b7004b49b0a8330954326e"
+      },
+      {
+        "file": "docs/security.md",
+        "sha256": "230161f0635cf812d889af0a06a8338add1ba81412638bbc6610993650c1a422"
+      },
+      {
+        "file": "docs/api-contract.md",
+        "sha256": "95e307bd7ef03f87f1503f2957ba1bb66ab1c07d7f2ed3f4f8ff783f56a827b2"
+      },
+      {
+        "file": "docs/local-setup.md",
+        "sha256": "4c539c363de45bdda64ba162795f9c10eef4ef9d047f2c7d3716dc03ef4779c0"
+      },
+      {
+        "file": "docs/SECURITY-REVIEW-2026-10-03.md",
+        "sha256": "1e86bcf8e30b1a97f3127ac1552261c08bdfadfb38c915d96fb70b4a11da854c"
+      }
+    ],
+    "reviewed_worktree_file_sha256": [
+      {
+        "file": "README.md",
+        "sha256": "063bae699d8b8f60798498ce33cf8c82099d042d19b7004b49b0a8330954326e"
+      },
+      {
+        "file": "docs/security.md",
+        "sha256": "230161f0635cf812d889af0a06a8338add1ba81412638bbc6610993650c1a422"
+      },
+      {
+        "file": "docs/api-contract.md",
+        "sha256": "6aae28ef6bfe5adcf7c3fce97619dd97fc2ff2cecfbea6ffb5897d25ea545bf3"
+      },
+      {
+        "file": "docs/local-setup.md",
+        "sha256": "4c539c363de45bdda64ba162795f9c10eef4ef9d047f2c7d3716dc03ef4779c0"
+      },
+      {
+        "file": "docs/SECURITY-REVIEW-2026-10-03.md",
+        "sha256": "ba9fa29253aa4cfa635e7f0d4ba34076dff879b49cb3cdd05a7920bd17067d85"
+      }
+    ],
+    "hash_representation": "final_file_sha256 identifica os blobs Git publicados; reviewed_worktree_file_sha256 conserva os bytes do worktree revisto."
+  },
+  "reviewed_source_sha256": [
+    {
+      "file": "README.md",
+      "sha256": "063bae699d8b8f60798498ce33cf8c82099d042d19b7004b49b0a8330954326e"
+    },
+    {
+      "file": "backend/Dockerfile",
+      "sha256": "071c7cbc6fa57ac1cfe2304340b595faf0d682c489e341cf16cdfda24070e411"
+    },
+    {
+      "file": "backend/migrations/versions/0004_login_admission.py",
+      "sha256": "58a3d173319d80ce589a08bc380e8b5b2e9489b23c8e5bc154febaf67c659f63"
+    },
+    {
+      "file": "backend/src/loja_assistente/auth/admission.py",
+      "sha256": "d48573ec17132efaa453df78750d8c748b25f1bf503c47d461cac637459b05c6"
+    },
+    {
+      "file": "backend/src/loja_assistente/auth/routes.py",
+      "sha256": "e088bb6848f19d094b8ec83a14e9ea98e5b1b51ca6460344b531cabe94619b9f"
+    },
+    {
+      "file": "backend/src/loja_assistente/config.py",
+      "sha256": "36c3872bfba34b4960f83b9f01771bab010d5244183fd8780c7cbe7f7f5ba5c2"
+    },
+    {
+      "file": "backend/src/loja_assistente/models.py",
+      "sha256": "0d8bac6e79bf906beaebbb02464aec05e57977d192122bd89b0cd9391dfb7c02"
+    },
+    {
+      "file": "backend/tests/conftest.py",
+      "sha256": "6f3c114fc48a8899db7071dd39163d5a23724206abf7a5190e7945bce42b7d50"
+    },
+    {
+      "file": "backend/tests/test_evaluation_runner.py",
+      "sha256": "6543041576c12bbfe974f0b4db5556e6c5b4fda90556e0f37ec0ace06753be80"
+    },
+    {
+      "file": "backend/tests/test_login_admission.py",
+      "sha256": "52d41ec7f7473f11ceefee1129ed2ac871343f22575dce1bb8ec4c18d7293d45"
+    },
+    {
+      "file": "backend/tests/test_secure_config.py",
+      "sha256": "d349f5bbf8efd67c1c63180029da7d49dc4dd0a7abf84fdfc841039a0be8b59b"
+    },
+    {
+      "file": "compose.e2e.yaml",
+      "sha256": "f1f660c279b33a9e33267749938e8518019968b3a742f0ae71fbaa4465b6a67a"
+    },
+    {
+      "file": "docs/SECURITY-REVIEW-2026-10-03.md",
+      "sha256": "ba9fa29253aa4cfa635e7f0d4ba34076dff879b49cb3cdd05a7920bd17067d85"
+    },
+    {
+      "file": "docs/api-contract.md",
+      "sha256": "6aae28ef6bfe5adcf7c3fce97619dd97fc2ff2cecfbea6ffb5897d25ea545bf3"
+    },
+    {
+      "file": "docs/local-setup.md",
+      "sha256": "4c539c363de45bdda64ba162795f9c10eef4ef9d047f2c7d3716dc03ef4779c0"
+    },
+    {
+      "file": "docs/security.md",
+      "sha256": "230161f0635cf812d889af0a06a8338add1ba81412638bbc6610993650c1a422"
+    },
+    {
+      "file": "evals/runner.py",
+      "sha256": "d3aaaf5be374bc103e063556d74b947e084b479dba73bd76843d678059904527"
+    },
+    {
+      "file": "frontend/Dockerfile",
+      "sha256": "337fcd7cc948d3851da060e0fe47de6a4cab5ebda621b0d9e8fe46a1fdfbeca5"
+    },
+    {
+      "file": "frontend/e2e/proxy-streams.spec.ts",
+      "sha256": "0a2e2e18b4e82326d00d92cfba582b9ebdcbdf8588d4644f86420f0a9c1c2c17"
+    },
+    {
+      "file": "frontend/package-lock.json",
+      "sha256": "2f44af1c166af27231197b2b7be916d7ccb13d420e4b6a967b3477362f41124a"
+    },
+    {
+      "file": "frontend/package.json",
+      "sha256": "351728cb4609f3740ffcc1fcddaa6217461a5cf9df1d17270410a3f1b37a1587"
+    },
+    {
+      "file": "frontend/src/app/api/[...path]/route.ts",
+      "sha256": "27cb621d622dce8c7f2c6a3aed870f3168a4ab00562263ef673bd812957ba504"
+    }
+  ],
+  "artifacts_sha256": {
+    "backend-gate.log": "62c77c50c531227b571e574aa5b17c0a72f3d083dee8bc18ef06c48f2fe9fd08",
+    "browser-results.json": "7a8643fb1ec57a0e7e685c9062fdae76d5bc808eef6df69fc55ef7c4ba2c0a03",
+    "cleanup.log": "a06562a5a207e900dc143809eb5d3494b0a3926776aeaa695ecb476eb10e6d0d",
+    "database-upgrade.json": "87769ea50a8097464ecd8ffb34e1ab0448402b5658b25bb51d593d821ae9a174",
+    "gitleaks-publicable.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "http-demo.json": "e98ad1afb60769f8e909b0121f1b51cced8ba852dfc2355f6dcfd2917162000d",
+    "npm-audit-full.json": "d474366350bdc5def61f2d7dfbf86455c6408bf499c653fb2bdb84c3690f5cfa",
+    "npm-audit-runtime.json": "dd77a73a34a7bc777b7b3e8d140d63da4d1096b72e787b28220d2fe864b907fc",
+    "pytest-initial-windows.xml": "e1a83e2bfac66550d225eac329151fccb2c4a0575d73b719608f23316a22bf61",
+    "pytest.xml": "8a72eedd0784b360e2d862765f15d97bd79704eb0e33bdfcb8a191d1c429f5bb",
+    "standalone-evaluation.json": "59e8c7c487839cfcc64cfb690dd6a1afe17b76df725743ed73bbdf8dcfbba4bd",
+    "trivy-backend-initial.json": "fe71bba4e04a0fe960297ebe48aae4eb65c029ee4766efed85a74d3d3f782b1b",
+    "trivy-backend.json": "9cdf335db78dd17c6fab6b6ab54f470bc5983ac4f245c740c3539bb5a1dc327e",
+    "trivy-frontend.json": "1d0bf846d36fa0bb2edb0bf6b335acac7bab90dd44ac61591afff0e7c79b45f7"
+  },
+  "frontend_tests": {
+    "command": "npx playwright test e2e/domain.spec.ts e2e/proxy-streams.spec.ts",
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "retried": 0,
+    "browser_journeys_executed": false,
+    "seconds_console": 2.3,
+    "scope": "Initial validation before the complementary CI checks; these values describe the earlier run, not the final browser coverage.",
+    "complementary_results_path": "ci_gates.browser"
+  },
+  "historical_evidence": {
+    "command": "python scripts/verify_evidence.py",
+    "status": "passed",
+    "evidence_hashes_checked": 65,
+    "frozen_source_files_checked": 62,
+    "pages_byte_identical": true,
+    "network_calls": 0,
+    "provider_calls": 0
+  },
+  "initial_backend_validation": {
+    "command": "uv run --frozen pytest --junitxml=<arquivo temporário>",
+    "python_version": "3.12.14",
+    "postgresql_version": "17.11",
+    "tests": 380,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds_junit": 37.23,
+    "started_at": "2026-10-03T19:42:05.230681-03:00",
+    "database_runtime_role": "security (somente banco descartável)",
+    "database_owner_separate": false,
+    "database_test_suffix_enforced": true,
+    "database_storage": "tmpfs",
+    "database_container_removed_after_tests": true
+  },
+  "ci_gates": {
+    "scope": "Complemento dos gates já exigidos pelo workflow; sem implantação pública.",
+    "backend_exact_gate": "passed",
+    "upgrade_probe": "passed",
+    "database_storage": "tmpfs",
+    "cleanup": {
+      "own_gate_network_removed": true,
+      "own_database_containers_removed": true,
+      "demos_untouched": true
+    },
+    "provider_calls": 0,
+    "standalone_evaluation": {
+      "executed": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "real_provider": false,
+      "historical_cases_unchanged": 48
+    },
+    "documented_http_demo": {
+      "command": "python /app/scripts/demo_check.py",
+      "exit_code": 0,
+      "report_records": 10,
+      "provider_calls": 0
+    },
+    "browser": {
+      "command": "docker compose -f compose.e2e.yaml -f TEMP/compose.override.json up --abort-on-container-exit --exit-code-from e2e",
+      "container_exit_code": 0,
+      "passed": 70,
+      "real_browser_or_http_cases": 30,
+      "domain_proxy_cases_included": 40,
+      "skipped": 0,
+      "retried": 0,
+      "flaky": 0,
+      "seconds": 47.68582,
+      "workers": 1,
+      "playwright": "1.63.0",
+      "browser": "Linux Chromium bundled with Playwright",
+      "test_file_counts": {
+        "domain.spec.ts": 23,
+        "journeys.spec.ts": 6,
+        "operational-story.spec.ts": 1,
+        "proxy-streams.spec.ts": 17,
+        "quality.spec.ts": 5,
+        "result-selection.spec.ts": 1,
+        "review.spec.ts": 3,
+        "round-2-fields.spec.ts": 14
+      },
+      "project": "security-loja-browser-gates-20261003",
+      "cleanup_complete": true
+    },
+    "published_evidence_gate": {
+      "command": "python scripts/verify_evidence.py",
+      "status": "passed",
+      "hashes": 65,
+      "frozen_sources": 62,
+      "historical_pages_byte_identical": true,
+      "provider_calls": 0
+    }
+  },
+  "reviewed_source_hash_representation": "SHA-256 dos bytes do worktree usados na revisão, antes da normalização de fim de linha do Git.",
+  "published_source_sha256": [
+    {
+      "file": "README.md",
+      "sha256": "063bae699d8b8f60798498ce33cf8c82099d042d19b7004b49b0a8330954326e"
+    },
+    {
+      "file": "backend/Dockerfile",
+      "sha256": "071c7cbc6fa57ac1cfe2304340b595faf0d682c489e341cf16cdfda24070e411"
+    },
+    {
+      "file": "backend/migrations/versions/0004_login_admission.py",
+      "sha256": "58a3d173319d80ce589a08bc380e8b5b2e9489b23c8e5bc154febaf67c659f63"
+    },
+    {
+      "file": "backend/src/loja_assistente/auth/admission.py",
+      "sha256": "d48573ec17132efaa453df78750d8c748b25f1bf503c47d461cac637459b05c6"
+    },
+    {
+      "file": "backend/src/loja_assistente/auth/routes.py",
+      "sha256": "e088bb6848f19d094b8ec83a14e9ea98e5b1b51ca6460344b531cabe94619b9f"
+    },
+    {
+      "file": "backend/src/loja_assistente/config.py",
+      "sha256": "36c3872bfba34b4960f83b9f01771bab010d5244183fd8780c7cbe7f7f5ba5c2"
+    },
+    {
+      "file": "backend/src/loja_assistente/models.py",
+      "sha256": "0d8bac6e79bf906beaebbb02464aec05e57977d192122bd89b0cd9391dfb7c02"
+    },
+    {
+      "file": "backend/tests/conftest.py",
+      "sha256": "6f3c114fc48a8899db7071dd39163d5a23724206abf7a5190e7945bce42b7d50"
+    },
+    {
+      "file": "backend/tests/test_evaluation_runner.py",
+      "sha256": "6543041576c12bbfe974f0b4db5556e6c5b4fda90556e0f37ec0ace06753be80"
+    },
+    {
+      "file": "backend/tests/test_login_admission.py",
+      "sha256": "52d41ec7f7473f11ceefee1129ed2ac871343f22575dce1bb8ec4c18d7293d45"
+    },
+    {
+      "file": "backend/tests/test_secure_config.py",
+      "sha256": "d349f5bbf8efd67c1c63180029da7d49dc4dd0a7abf84fdfc841039a0be8b59b"
+    },
+    {
+      "file": "compose.e2e.yaml",
+      "sha256": "f1f660c279b33a9e33267749938e8518019968b3a742f0ae71fbaa4465b6a67a"
+    },
+    {
+      "file": "docs/SECURITY-REVIEW-2026-10-03.md",
+      "sha256": "1e86bcf8e30b1a97f3127ac1552261c08bdfadfb38c915d96fb70b4a11da854c"
+    },
+    {
+      "file": "docs/api-contract.md",
+      "sha256": "95e307bd7ef03f87f1503f2957ba1bb66ab1c07d7f2ed3f4f8ff783f56a827b2"
+    },
+    {
+      "file": "docs/local-setup.md",
+      "sha256": "4c539c363de45bdda64ba162795f9c10eef4ef9d047f2c7d3716dc03ef4779c0"
+    },
+    {
+      "file": "docs/security.md",
+      "sha256": "230161f0635cf812d889af0a06a8338add1ba81412638bbc6610993650c1a422"
+    },
+    {
+      "file": "evals/runner.py",
+      "sha256": "d3aaaf5be374bc103e063556d74b947e084b479dba73bd76843d678059904527"
+    },
+    {
+      "file": "frontend/Dockerfile",
+      "sha256": "337fcd7cc948d3851da060e0fe47de6a4cab5ebda621b0d9e8fe46a1fdfbeca5"
+    },
+    {
+      "file": "frontend/e2e/proxy-streams.spec.ts",
+      "sha256": "0a2e2e18b4e82326d00d92cfba582b9ebdcbdf8588d4644f86420f0a9c1c2c17"
+    },
+    {
+      "file": "frontend/package-lock.json",
+      "sha256": "2f44af1c166af27231197b2b7be916d7ccb13d420e4b6a967b3477362f41124a"
+    },
+    {
+      "file": "frontend/package.json",
+      "sha256": "351728cb4609f3740ffcc1fcddaa6217461a5cf9df1d17270410a3f1b37a1587"
+    },
+    {
+      "file": "frontend/src/app/api/[...path]/route.ts",
+      "sha256": "27cb621d622dce8c7f2c6a3aed870f3168a4ab00562263ef673bd812957ba504"
+    }
+  ],
+  "reviewed_worktree_artifacts_sha256": {
+    "backend-gate.log": "62c77c50c531227b571e574aa5b17c0a72f3d083dee8bc18ef06c48f2fe9fd08",
+    "browser-results.json": "7a8643fb1ec57a0e7e685c9062fdae76d5bc808eef6df69fc55ef7c4ba2c0a03",
+    "cleanup.log": "09b123a6e136538def5da1fd0fa9942773b0ce4490143658458fc475cffa0623",
+    "database-upgrade.json": "87769ea50a8097464ecd8ffb34e1ab0448402b5658b25bb51d593d821ae9a174",
+    "gitleaks-publicable.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "http-demo.json": "e98ad1afb60769f8e909b0121f1b51cced8ba852dfc2355f6dcfd2917162000d",
+    "npm-audit-full.json": "d474366350bdc5def61f2d7dfbf86455c6408bf499c653fb2bdb84c3690f5cfa",
+    "npm-audit-runtime.json": "dd77a73a34a7bc777b7b3e8d140d63da4d1096b72e787b28220d2fe864b907fc",
+    "pytest-initial-windows.xml": "e1a83e2bfac66550d225eac329151fccb2c4a0575d73b719608f23316a22bf61",
+    "pytest.xml": "8a72eedd0784b360e2d862765f15d97bd79704eb0e33bdfcb8a191d1c429f5bb",
+    "standalone-evaluation.json": "59e8c7c487839cfcc64cfb690dd6a1afe17b76df725743ed73bbdf8dcfbba4bd",
+    "trivy-backend-initial.json": "fe71bba4e04a0fe960297ebe48aae4eb65c029ee4766efed85a74d3d3f782b1b",
+    "trivy-backend.json": "9cdf335db78dd17c6fab6b6ab54f470bc5983ac4f245c740c3539bb5a1dc327e",
+    "trivy-frontend.json": "1d0bf846d36fa0bb2edb0bf6b335acac7bab90dd44ac61591afff0e7c79b45f7"
+  },
+  "artifacts_hash_representation": "artifacts_sha256 identifica os blobs Git; reviewed_worktree_artifacts_sha256 conserva os bytes da conferência local anterior à publicação.",
+  "publication_preparation": {
+    "branch": "main",
+    "baseline_commit": "aebc1bbd32c4c77750deed3945d16439577db4a2",
+    "reviewed_receipt_sha256_before_publication": "0cf5513f1fc13ff3a16c066ffc55f13d7db18943297f1110cfea07a7d0d3c3a1",
+    "original_receipt_kept_outside_git": true,
+    "curated_logs": [
+      "backend-gate.log",
+      "cleanup.log"
+    ],
+    "cleanup_log_curation": "Removidos somente espaços e tabulações finais; linhas e nomes de recursos preservados.",
+    "cleanup_original_sha256": "09b123a6e136538def5da1fd0fa9942773b0ce4490143658458fc475cffa0623",
+    "private_environment_and_raw_trivy_reports_excluded": true,
+    "historical_evidence_outside_this_review_changed": false
+  }
+}

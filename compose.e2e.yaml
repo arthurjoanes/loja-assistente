@@ -27,7 +27,7 @@ services:
       DATASET_VERSION: synthetic-v1
       LLM_ENABLED: 'false'
       OPENAI_API_KEY: ''
-    command: [sh, -c, 'alembic upgrade head && python -m loja_assistente.seed && exec uvicorn loja_assistente.app:app --host 0.0.0.0 --port 8102']
+    command: [sh, -c, 'alembic upgrade head && python -m loja_assistente.seed && exec uvicorn loja_assistente.app:app --host 0.0.0.0 --port 8102 --no-proxy-headers']
     depends_on:
       db:
         condition: service_healthy

@@ -6,11 +6,12 @@ import pytest
 from evals.database import prepare_test_database
 from fastapi.testclient import TestClient
 from manual_fixture import IDENTITIES, ORIGIN, PASSWORD, seed_manual
-from sqlalchemy import Engine
-from sqlalchemy.orm import Session
+from sqlalchemy import Engine, text
+from sqlalchemy.orm import Session, sessionmaker
 
+from loja_assistente.auth import admission
 from loja_assistente.config import settings
-from loja_assistente.database import get_db
+from loja_assistente.database import Base, get_db
 
 
 @pytest.fixture(scope="session")
@@ -25,18 +26,18 @@ def test_engine() -> Iterator[Engine]:
 
 @pytest.fixture
 def db(test_engine: Engine, monkeypatch: pytest.MonkeyPatch) -> Iterator[Session]:
+    monkeypatch.setattr(admission, "SessionLocal", sessionmaker(bind=test_engine))
+    names = ", ".join('"' + table.name + '"' for table in Base.metadata.sorted_tables)
+    with test_engine.begin() as connection:
+        connection.execute(text(f"TRUNCATE {names} RESTART IDENTITY CASCADE"))
     monkeypatch.setattr(settings, "dataset_version", "manual-v1")
     monkeypatch.setattr(settings, "reference_date", date(2026, 8, 17))
-    with test_engine.connect() as connection:
-        transaction = connection.begin()
-        session = Session(bind=connection, join_transaction_mode="create_savepoint")
+    # Real commits release advisory locks; a surrounding savepoint would keep
+    # login reservations locked while the next independent admission waits.
+    with Session(test_engine) as session:
         seed_manual(session)
         session.commit()
-        try:
-            yield session
-        finally:
-            session.close()
-            transaction.rollback()
+        yield session
 
 
 @pytest.fixture

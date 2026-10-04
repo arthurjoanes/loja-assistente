@@ -1,6 +1,6 @@
 # Loja Assistente
 
-Assistente de análise de vendas para perguntar em português e conferir as lojas, o período e a conta usados na resposta. Desenvolvi interpretação, autorização, consultas e interface sobre vendas fictícias; o modo Demo funciona sem chamadas a um modelo.
+Assistente para consultar vendas em português e conferir quais lojas, período e cálculo a resposta usou. Desenvolvi a interpretação das perguntas, a autorização e as consultas, além da interface, com vendas fictícias. O modo Demo funciona sem chamadas a um modelo.
 
 <!-- Navegação do README -->
 <p>
@@ -13,7 +13,7 @@ Assistente de análise de vendas para perguntar em português e conferir as loja
 
 ## Visão geral
 
-A pergunta vira um plano limitado; o servidor confere as permissões e calcula. **“Quanto vendi ontem somente em dinheiro?”** pede esclarecimento porque forma de pagamento não existe no contrato. Uma soma correta não basta se responder à pergunta errada.
+A pergunta vira um plano limitado, que o servidor autoriza antes de calcular. A pergunta “Quanto vendi ontem somente em dinheiro?” pede esclarecimento porque forma de pagamento não existe no contrato. A resposta precisa respeitar o recorte pedido e calcular a soma corretamente.
 
 | Responsabilidade       | Implementação                                                               |
 | ---------------------- | --------------------------------------------------------------------------- |
@@ -152,7 +152,7 @@ O [recibo do CI de 22/09/2026](docs/evidence/frontend-ci-20260922.json), sobre `
 - A [política de orçamento](backend/src/loja_assistente/assistant/budget_policy.py) controla admissão; não garante cobrança monetária do provedor.
 - A demonstração não comprova produtividade, capacidade de produção, acessibilidade integral ou segurança universal. Publicação exige identidade, HTTPS e proteção operacional próprios.
 
-O guia de [segurança](docs/security.md) detalha os limites de rede e das verificações.
+O guia de [segurança](docs/security.md) detalha os limites de rede e das verificações. A [revisão de 03/10/2026](docs/SECURITY-REVIEW-2026-10-03.md) registra os 18 itens do checklist, as correções e a dependência de desenvolvimento que ainda aguarda correção do fornecedor.
 
 <a id="manter-e-diagnosticar"></a>
 
