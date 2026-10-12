@@ -2088,6 +2088,7 @@ tbody tr:hover {
   }
   .composer-bottom {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     gap: 7px;
   }

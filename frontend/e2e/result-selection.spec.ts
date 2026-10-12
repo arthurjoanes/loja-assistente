@@ -22,6 +22,8 @@ test("rever um resultado preserva os dados e a continuação do último plano", 
   await expect(
     page.getByRole("heading", { name: "Análise de vendas" }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "Nova análise", exact: true }).click();
+  await expect(page.getByTestId("answer")).toHaveCount(0);
   const first = await ask(page, "Quanto vendi ontem?");
   const latest = await ask(
     page,
@@ -33,6 +35,7 @@ test("rever um resultado preserva os dados e a continuação do último plano", 
   page.on("request", (request) => {
     if (request.url().endsWith("/api/assistant/query")) queries += 1;
   });
+  await expect(selected).toBeEnabled();
   await selected.focus();
   await selected.press("Home");
   await expect(selected).toHaveValue(first.id);
