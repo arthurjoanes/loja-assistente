@@ -219,9 +219,12 @@ class Conversation(Base):
     title: Mapped[str] = mapped_column(String(160), default="Nova conversa")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     last_plan: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
+    pending_clarification: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
+    clarification_revision: Mapped[int] = mapped_column(BigInteger, default=0, server_default="0")
     __table_args__ = (
         ForeignKeyConstraint(["tenant_id", "user_id"], ["users.tenant_id", "users.id"]),
         UniqueConstraint("tenant_id", "user_id", "id"),
+        CheckConstraint("clarification_revision >= 0", name="clarification_revision_nonnegative"),
         Index("ix_conversations_owner", "tenant_id", "user_id", "created_at"),
     )
 
@@ -239,7 +242,36 @@ class AnswerRecord(Base):
             ["tenant_id", "user_id", "conversation_id"],
             ["conversations.tenant_id", "conversations.user_id", "conversations.id"],
         ),
+        UniqueConstraint("tenant_id", "user_id", "id", name="uq_answers_owner_id"),
         Index("ix_answers_conversation", "tenant_id", "user_id", "conversation_id"),
+    )
+
+
+class FavoriteRecord(Base):
+    __tablename__ = "favorites"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=new_id)
+    tenant_id: Mapped[str] = mapped_column(String(64))
+    user_id: Mapped[str] = mapped_column(String(64))
+    name: Mapped[str] = mapped_column(String(120))
+    plan: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    schema_version: Mapped[int] = mapped_column(BigInteger, default=1)
+    source_answer_id: Mapped[str] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    revision: Mapped[int] = mapped_column(BigInteger, default=1)
+    __table_args__ = (
+        ForeignKeyConstraint(["tenant_id", "user_id"], ["users.tenant_id", "users.id"]),
+        ForeignKeyConstraint(
+            ["tenant_id", "user_id", "source_answer_id"],
+            ["answers.tenant_id", "answers.user_id", "answers.id"],
+            name="fk_favorites_source_owner",
+        ),
+        UniqueConstraint(
+            "tenant_id", "user_id", "source_answer_id", name="uq_favorites_owner_source"
+        ),
+        CheckConstraint("revision >= 1", name="favorite_revision_positive"),
+        CheckConstraint("schema_version >= 1", name="favorite_schema_positive"),
+        Index("ix_favorites_owner", "tenant_id", "user_id", "created_at"),
     )
 
 

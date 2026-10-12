@@ -11,8 +11,10 @@ from sqlalchemy.orm import Session
 
 from loja_assistente.assistant.routes import router as assistant_router
 from loja_assistente.auth.routes import router as auth_router
+from loja_assistente.clarifications.routes import router as clarifications_router
 from loja_assistente.conversations.routes import router as conversations_router
 from loja_assistente.database import get_db
+from loja_assistente.favorites.routes import router as favorites_router
 from loja_assistente.observability.routes import router as operations_router
 from loja_assistente.request_limits import RequestBodyLimit
 
@@ -22,7 +24,14 @@ app = FastAPI(
     version="0.1.0",
     description="Consulta indicadores de vendas. Entre pela interface local; mutações exigem Origin e X-CSRF-Token.",
 )
-for router in (auth_router, assistant_router, conversations_router, operations_router):
+for router in (
+    auth_router,
+    assistant_router,
+    conversations_router,
+    clarifications_router,
+    favorites_router,
+    operations_router,
+):
     app.include_router(router, prefix="/api")
 
 # The context middleware declared below wraps rejections with the same public headers.

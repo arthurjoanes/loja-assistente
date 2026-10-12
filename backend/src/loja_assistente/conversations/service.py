@@ -14,6 +14,8 @@ from loja_assistente.auth.service import (
     permitted_stores,
     resolve_store_references,
 )
+from loja_assistente.clarifications.contracts import PendingClarification
+from loja_assistente.clarifications.state import read_pending, validate_pending_access
 from loja_assistente.models import AnswerRecord, Conversation
 
 
@@ -21,6 +23,7 @@ class ConversationSummary(BaseModel):
     id: str
     title: str
     created_at: datetime
+    pending_clarification: PendingClarification | None = None
 
 
 class ConversationDetail(ConversationSummary):
@@ -68,12 +71,29 @@ def get_conversation(
         resolve_store_references(
             db, principal, QueryPlan.model_validate(conversation.last_plan).store_references
         )
+    pending = read_pending(conversation)
+    if pending:
+        validate_pending_access(db, principal, pending)
+    # Questions with partial plans can also expose a store in the conversation title.
+    historical_pending = db.scalars(
+        select(AnswerRecord.payload["pending_clarification"]).where(
+            AnswerRecord.conversation_id == conversation.id,
+            AnswerRecord.tenant_id == principal.tenant_id,
+            AnswerRecord.user_id == principal.user_id,
+            AnswerRecord.payload["pending_clarification"].astext.is_not(None),
+        )
+    )
+    for payload in historical_pending:
+        validate_pending_access(db, principal, PendingClarification.model_validate(payload))
     return conversation
 
 
 def summary(conversation: Conversation) -> ConversationSummary:
     return ConversationSummary(
-        id=conversation.id, title=conversation.title, created_at=conversation.created_at
+        id=conversation.id,
+        title=conversation.title,
+        created_at=conversation.created_at,
+        pending_clarification=read_pending(conversation),
     )
 
 
@@ -94,6 +114,8 @@ def validate_answer_access(db: Session, principal: Principal, record: AnswerReco
         assert_store_access(db, principal, [store.id for store in answer.result.scope])
     if answer.plan:
         resolve_store_references(db, principal, answer.plan.store_references)
+    if answer.pending_clarification:
+        validate_pending_access(db, principal, answer.pending_clarification)
     return answer
 
 

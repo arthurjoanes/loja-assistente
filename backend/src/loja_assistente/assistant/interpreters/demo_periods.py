@@ -7,6 +7,14 @@ from typing import Literal
 from loja_assistente.analytics.contracts import Period, QueryPlan
 
 
+class MissingPeriod(ValueError):
+    """A supported question has no textual or selected period."""
+
+    def __init__(self, message: str, comparison: Literal["previous_period"] | None) -> None:
+        super().__init__(message)
+        self.comparison = comparison
+
+
 def continuation_plan(text: str, previous: QueryPlan | None) -> QueryPlan | None:
     matched = re.fullmatch(r"e (?:nos?|nas?) (?:sete|7|\d+)?\s*dias? anteriores\??", text)
     if not matched and text not in ("e no periodo anterior?", "e no periodo anterior"):
@@ -57,7 +65,10 @@ def select_period(
     except (ValueError, OverflowError) as error:
         raise ValueError("Use 1 a 90 dias. Ex.: de 2026-08-10 a 2026-08-16.") from error
     if period is None:
-        raise ValueError("Qual período? Ex.: ontem, últimos 7 dias ou de 2026-08-10 a 2026-08-16.")
+        raise MissingPeriod(
+            "Qual período? Ex.: ontem, últimos 7 dias ou de 2026-08-10 a 2026-08-16.",
+            "previous_period" if comparison else None,
+        )
     return period, "previous_period" if comparison else None
 
 

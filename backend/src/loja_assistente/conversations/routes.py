@@ -61,15 +61,21 @@ def list_conversations(db: Database, principal: Identity) -> list[ConversationSu
             )
         )
     )
-    return [
-        summary(conversation)
-        for conversation in conversations
-        if conversation.id not in hidden_ids
-        and (
-            not conversation.last_plan
-            or set(conversation.last_plan["store_references"]).issubset(allowed)
-        )
-    ]
+    visible = []
+    for conversation in conversations:
+        if conversation.id in hidden_ids or (
+            conversation.last_plan
+            and not set(conversation.last_plan["store_references"]).issubset(allowed)
+        ):
+            continue
+        try:
+            get_conversation(db, principal, conversation.id)
+        except HTTPException as error:
+            if error.status_code not in (403, 409):
+                raise
+            continue
+        visible.append(summary(conversation))
+    return visible
 
 
 @router.post("/conversations")
@@ -98,7 +104,8 @@ def conversation_detail(
     )
     messages = [validate_answer_access(db, principal, record) for record in records]
     return ConversationDetail(
-        **summary(conversation).model_dump(), messages=list(reversed(messages))
+        **summary(conversation).model_dump(),
+        messages=list(reversed(messages)),
     )
 
 

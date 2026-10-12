@@ -10,7 +10,7 @@ from loja_assistente.analytics.contracts import QueryPlan, StoreScope
 from loja_assistente.analytics.service import execute_query
 from loja_assistente.assistant.budget import DurableBudget
 from loja_assistente.assistant.budget_policy import BudgetRejected
-from loja_assistente.assistant.contracts import Answer, AskRequest
+from loja_assistente.assistant.contracts import Answer, AskRequest, DemoInterpretation
 from loja_assistente.assistant.interpretation import interpret_request
 from loja_assistente.assistant.interpreters import demo, openai_adapter
 from loja_assistente.assistant.presentation import describe
@@ -20,6 +20,7 @@ from loja_assistente.auth.service import (
     permitted_stores,
     resolve_store_references,
 )
+from loja_assistente.clarifications.state import create_pending, read_pending, revise_pending
 from loja_assistente.config import settings
 from loja_assistente.conversations.service import create_conversation, get_conversation
 from loja_assistente.models import AnswerRecord, Operation, utcnow
@@ -57,6 +58,9 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
         db.commit()
         raise
     previous = QueryPlan.model_validate(conversation.last_plan) if conversation.last_plan else None
+    # A new question invalidates old tab submissions, including when the provider fails.
+    # The pending state itself remains pending on provider failure.
+    revise_pending(conversation)
     stores = [StoreScope(id=store.id, name=store.name) for store in permitted_stores(db, principal)]
     answer = Answer(
         id=str(uuid4()),
@@ -82,6 +86,23 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
         interpretation_ms = round((perf_counter() - interpretation_start) * 1000)
         answer.status = interpreted.status
         answer.message = interpreted.message
+        if isinstance(interpreted, DemoInterpretation):
+            if interpreted.authorization_references:
+                resolve_store_references(db, principal, interpreted.authorization_references)
+            if interpreted.clarification:
+                answer.pending_clarification = create_pending(
+                    db,
+                    principal,
+                    conversation,
+                    interpreted.clarification,
+                    request.question,
+                    request.mode,
+                    settings.reference_date,
+                )
+        if answer.pending_clarification is None:
+            current = read_pending(conversation)
+            if current and current.status == "pending":
+                revise_pending(conversation, "cancelled")
         if interpreted.plan:
             # Resolve first; execute_query independently checks the current grants again.
             scope = resolve_store_references(db, principal, interpreted.plan.store_references)
@@ -101,6 +122,7 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
         interpretation_ms = round((perf_counter() - start) * 1000)
         answer.status = "provider_error"
         answer.message = str(error)
+        answer.pending_clarification = read_pending(conversation)
     except HTTPException as error:
         record_operation(
             db,
@@ -116,15 +138,7 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
         )
         db.commit()
         raise
-    db.add(
-        AnswerRecord(
-            id=answer.id,
-            tenant_id=principal.tenant_id,
-            user_id=principal.user_id,
-            conversation_id=conversation.id,
-            payload=answer.model_dump(mode="json"),
-        )
-    )
+    persist_answer(db, principal, answer)
     record_operation(
         db,
         principal,
@@ -139,6 +153,18 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
     )
     db.commit()
     return answer
+
+
+def persist_answer(db: Session, principal: Principal, answer: Answer) -> None:
+    db.add(
+        AnswerRecord(
+            id=answer.id,
+            tenant_id=principal.tenant_id,
+            user_id=principal.user_id,
+            conversation_id=answer.conversation_id,
+            payload=answer.model_dump(mode="json"),
+        )
+    )
 
 
 def record_operation(
