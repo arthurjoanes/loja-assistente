@@ -42,6 +42,14 @@ O SHA-256 identifica a massa gerada. Repetir o seed confere contagens, sem recal
 
 A fixture de valores manuais é independente da massa e do algoritmo financeiro. Veja [manual-fixture.md](manual-fixture.md) e `backend/tests/manual_fixture.py`. Ela é executada somente em PostgreSQL dedicado com nome terminado em `_test`.
 
+## Evolução 0005
+
+`favorites` guarda ID, organização/usuário, nome de até 120 caracteres, plano canônico JSONB com IDs de lojas, `schema_version=1`, resposta de origem, revisão positiva e datas UTC. A chave única `(tenant_id,user_id,source_answer_id)` define criação idempotente. A FK composta aponta `(tenant_id,user_id,id)` de `answers`, cuja constraint única é acrescentada pela migração. Uma referência de outra conta não satisfaz essa relação.
+
+Conversas recebem `pending_clarification` JSONB nullable e `clarification_revision` não negativa com padrão zero. A pendência tem contrato próprio; não pode ser enviada a `execute_query`. Expiração usa horário UTC real. Períodos das escolhas usam a referência analítica capturada, America/Sao_Paulo e fim exclusivo. Pendências resolvidas, canceladas ou expiradas recusam escolhas antigas. Respostas novas podem incluir o estado da interação, enquanto JSONB legado continua aceito sem esses campos.
+
+A migração 0005 sucede 0004 e não altera 0001 a 0004. Upgrade conserva sessões, respostas, contas/reservas de provedor e dados de vendas. Instalação vazia e upgrade com registros legados são exercitados em bancos descartáveis exclusivos com sufixo `_test`; nenhum teste autoriza resetar a demonstração. [Testes de migração](../backend/tests/test_migrations.py).
+
 ## Código e evidências relacionados
 
 | Tema                 | Implementação e critérios                                                                                     |

@@ -48,6 +48,22 @@ Para parar a demonstração e manter seus dados: `docker compose --profile test 
 
 Este ambiente publica portas somente em `127.0.0.1`. Disponibilizar a aplicação na internet exige configuração própria de HTTPS, cookies seguros, identidade e proteção operacional. O Compose entregue executa a demonstração local.
 
+## Verificação isolada da evolução
+
+Pare agentes e editores que possam alterar as fontes antes da prova. Na raiz, com Python 3.11+ e Docker/Compose saudável:
+
+```powershell
+python scripts/verify_evidence.py
+python scripts/prove_evolution.py --output C:/Temp/la-evo
+python scripts/verify_evidence.py
+```
+
+O executor copia as fontes para uma pasta privada, confere hashes durante e após a execução e constrói imagens próprias. Registra HEAD, branch e diff, incluindo hashes dos arquivos novos que HEAD não identifica. Cada rodada usa `pf-loja-assistente-evolucao-20261012-RUN`, tags exclusivas, arquivo público de teste novo, `LLM_ENABLED=false` e chave vazia. Inventaria engine, projetos, containers, redes e rotas sem imprimir Env; escolhe subnet livre entre as redes inspecionadas. O Compose é chamado com `-p`, `--env-file` e `-f` explícitos.
+
+A stack não publica portas. PostgreSQL de integração fica em `test-db`, exclusivo da rodada com nome `evolution_test`; o PostgreSQL da demonstração E2E fica em `db`. Testes de migração criam outro banco exclusivo terminado em `_test`. Capturas, relatórios e logs privados ficam sob a saída dessa rodada, sem usar binds históricos. O executor roda backend completo, avaliação offline, frontend-checks, demo HTTP pelo proxy, Playwright e scans de imagem; `--skip-image-scans` serve apenas ao desenvolvimento e fica registrado como omissão.
+
+A limpeza confere projeto e label da rodada antes de remover seus containers e rede. As imagens com tags próprias ficam disponíveis para inspeção; remover essas tags após revisar o recibo é opcional. Nenhum recurso da demo ou de outra QA é encerrado. O atalho `dev.ps1 e2e` pertence ao projeto padrão e não é usado para esta rodada isolada. Se Docker não iniciar, preserve a falha no recibo e recupere a engine sem resetar banco/WSL ou mudar o daemon.
+
 ## Código e evidências relacionados
 
 [Compose](../compose.yaml) · [gerador de configuração](../scripts/setup_env.py) · [PowerShell](../scripts/dev.ps1) · [Compose E2E](../compose.e2e.yaml).
