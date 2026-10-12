@@ -1,12 +1,20 @@
 """Store names are requests to authorize, never an authorization source."""
 
 import re
+from dataclasses import dataclass
 
 from loja_assistente.analytics.contracts import StoreScope
 from loja_assistente.assistant.filter_limits import normalize
 
 
-def resolve_mentions(text: str, stores: list[StoreScope]) -> list[str] | None:
+@dataclass(frozen=True)
+class MentionResolution:
+    resolved_ids: list[str]
+    ambiguous: dict[str, list[StoreScope]]
+    unknown: list[str]
+
+
+def inspect_mentions(text: str, stores: list[StoreScope]) -> MentionResolution:
     # Resolve only against the authorized roster. Unknown references remain requests to deny.
     references = re.findall(r"\b[ab]\d{3}\b", text)
     names = {normalize(store.name) for store in stores} | {"centro", "jardins", "norte"}
@@ -25,13 +33,27 @@ def resolve_mentions(text: str, stores: list[StoreScope]) -> list[str] | None:
         references.append("organization:brisa")
     if "aurora" in text:
         references.append("organization:aurora")
-    resolved = []
-    for reference in references:
-        matches = [store.id for store in stores if reference in (normalize(store.name), store.id)]
+    resolved: list[str] = []
+    ambiguous: dict[str, list[StoreScope]] = {}
+    unknown: list[str] = []
+    for reference in dict.fromkeys(references):
+        matches = [
+            store for store in stores if reference in (normalize(store.name), store.id.casefold())
+        ]
         if len(matches) > 1:
-            return None
-        resolved.append(matches[0] if matches else reference)
-    return list(dict.fromkeys(resolved))
+            ambiguous[reference] = matches
+        elif matches:
+            resolved.append(matches[0].id)
+        else:
+            unknown.append(reference)
+    return MentionResolution(list(dict.fromkeys(resolved)), ambiguous, unknown)
+
+
+def resolve_mentions(text: str, stores: list[StoreScope]) -> list[str] | None:
+    mentions = inspect_mentions(text, stores)
+    if mentions.ambiguous:
+        return None
+    return [*mentions.resolved_ids, *mentions.unknown]
 
 
 def explicit_store_names(text: str) -> list[str]:

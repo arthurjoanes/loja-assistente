@@ -5,7 +5,7 @@ from datetime import date
 from pydantic import ValidationError
 
 from loja_assistente.analytics.contracts import Period, QueryPlan, StoreScope
-from loja_assistente.assistant.contracts import Interpretation
+from loja_assistente.assistant.contracts import DemoInterpretation, Interpretation
 from loja_assistente.assistant.filter_limits import (
     unsupported_filter,
     without_conversational_prefix,
@@ -14,10 +14,19 @@ from loja_assistente.assistant.interpreters.demo_language import (
     parse_capability,
     supported_vocabulary,
 )
-from loja_assistente.assistant.interpreters.demo_periods import continuation_plan, select_period
-from loja_assistente.assistant.interpreters.store_mentions import resolve_mentions
+from loja_assistente.assistant.interpreters.demo_periods import (
+    MissingPeriod,
+    continuation_plan,
+    select_period,
+)
+from loja_assistente.assistant.interpreters.store_mentions import inspect_mentions
+from loja_assistente.clarifications.contracts import (
+    ClarificationChoice,
+    ClarificationDraft,
+    PartialPlan,
+)
 
-VERSION = "demo-patterns-v4"
+VERSION = "demo-patterns-v5"
 HELP = "Informe um indicador e um período. Ex.: receita de ontem."
 
 
@@ -86,19 +95,70 @@ def interpret(
         if not supported_vocabulary(text, stores):
             return clarify("Termos ou filtros não reconhecidos. Ex.: receita da loja Centro ontem.")
         capability = parse_capability(text)
-        effective_period, comparison = select_period(text, reference_date, period)
-        references = resolve_mentions(text, stores)
-        if references is None:
-            return clarify("Nome de loja ambíguo. Use o ID da loja.")
-        plan = QueryPlan(
+        mentions = inspect_mentions(text, stores)
+        try:
+            effective_period, comparison = select_period(text, reference_date, period)
+        except MissingPeriod as missing:
+            effective_period, comparison = None, missing.comparison
+        if mentions.unknown:
+            if effective_period is not None and not mentions.ambiguous:
+                # Preserve the ready-domain refusal path for existing complete questions.
+                plan = QueryPlan(
+                    intent=capability.intent,
+                    metric=capability.metric,
+                    store_references=[*mentions.resolved_ids, *mentions.unknown],
+                    period=effective_period,
+                    comparison=comparison,
+                    grouping="day" if capability.intent == "daily" else None,
+                    limit=capability.limit,
+                )
+                return Interpretation(status="ready", plan=plan, message="")
+            # Keep every unrecognized request for server authorization, including mixed scope.
+            return DemoInterpretation(
+                status="needs_clarification",
+                plan=None,
+                message="Escopo de loja não autorizado.",
+                authorization_references=mentions.unknown,
+            )
+        partial = PartialPlan(
             intent=capability.intent,
             metric=capability.metric,
-            store_references=references or store_ids or [store.id for store in stores],
+            store_ids=mentions.resolved_ids
+            if mentions.ambiguous
+            else mentions.resolved_ids or store_ids or [store.id for store in stores],
             period=effective_period,
             comparison=comparison,
             grouping="day" if capability.intent == "daily" else None,
             limit=capability.limit,
         )
+        if mentions.ambiguous:
+            if len(mentions.ambiguous) != 1:
+                return clarify("Há mais de um nome ambíguo. Informe os IDs das lojas.")
+            matches = next(iter(mentions.ambiguous.values()))
+            choices = [
+                ClarificationChoice(
+                    id="store:" + store.id,
+                    label=f"{store.name} · {store.id}",
+                    store_ids=list(dict.fromkeys([*partial.store_ids, store.id])),
+                )
+                for store in matches
+            ]
+            return DemoInterpretation(
+                status="needs_clarification",
+                plan=None,
+                message="Qual loja? O nome corresponde a mais de uma loja permitida. Escolha pelo ID.",
+                clarification=ClarificationDraft(
+                    partial_plan=partial, missing_field="store", choices=choices
+                ),
+            )
+        if effective_period is None:
+            return DemoInterpretation(
+                status="needs_clarification",
+                plan=None,
+                message="Qual período deseja consultar? O indicador e as lojas serão preservados.",
+                clarification=ClarificationDraft(partial_plan=partial, missing_field="period"),
+            )
+        plan = partial.executable()
     except (ValueError, OverflowError) as error:
         # Domain errors explain the choice; schema errors may include internal input values.
         if isinstance(error, ValidationError):

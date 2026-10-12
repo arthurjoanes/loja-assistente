@@ -4,6 +4,11 @@ from typing import Literal, Self
 from pydantic import Field, field_validator, model_validator
 
 from loja_assistente.analytics.contracts import AnalyticsResult, Period, QueryPlan, StrictModel
+from loja_assistente.clarifications.contracts import (
+    ClarificationDraft,
+    ClarificationSelection,
+    PendingClarification,
+)
 
 
 class Interpretation(StrictModel):
@@ -41,6 +46,12 @@ class AskRequest(StrictModel):
         return list(dict.fromkeys(values))
 
 
+class DemoInterpretation(Interpretation):
+    # Local parser metadata does not expand the strict Azure transport contract.
+    clarification: ClarificationDraft | None = None
+    authorization_references: list[str] = Field(default_factory=list, max_length=20)
+
+
 class Answer(StrictModel):
     id: str
     conversation_id: str
@@ -52,3 +63,5 @@ class Answer(StrictModel):
     result: AnalyticsResult | None
     request_id: str
     created_at: datetime
+    pending_clarification: PendingClarification | None = None
+    clarification_response: ClarificationSelection | None = None
