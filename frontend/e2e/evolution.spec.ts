@@ -15,12 +15,17 @@ function screenshotPath(info: TestInfo, name: string) {
 }
 async function login(page: Page, account = /Gerente · Aurora Casa/) {
   await page.goto("/");
-  if (
-    await page.getByRole("heading", { name: "Entrar", exact: true }).isVisible()
-  ) {
-    await page.getByRole("radio", { name: account }).check();
-    await page.getByRole("button", { name: "Entrar", exact: true }).click();
-  }
+  await expect(
+    page.getByRole("heading", { name: "Entrar", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("radio", { name: account }).check();
+  const response = page.waitForResponse(
+    (reply) =>
+      reply.url().endsWith("/api/auth/login") &&
+      reply.request().method() === "POST",
+  );
+  await page.getByRole("button", { name: "Entrar", exact: true }).click();
+  expect((await response).status()).toBe(200);
   await expect(
     page.getByRole("heading", { name: "Análise de vendas", exact: true }),
   ).toBeVisible();
@@ -632,7 +637,11 @@ test("CSRF de sessão substituída limpa dados protegidos na interface", async (
     await expect(page.getByTestId("favorite")).toHaveCount(0);
     await expect(page.getByTestId("answer")).toHaveCount(0);
     await expect(page.locator(".clarification-panel")).toHaveCount(0);
-    await expect(page.getByRole("alert")).toBeVisible();
+    const csrfAlert = page
+      .getByRole("alert")
+      .filter({ hasText: "Token CSRF inválido" });
+    await expect(csrfAlert).toBeVisible();
+    await expect(csrfAlert).toContainText("Recarregue a página.");
   } finally {
     await removeFavorite(page, saved);
   }

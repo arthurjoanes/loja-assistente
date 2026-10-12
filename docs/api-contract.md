@@ -125,9 +125,11 @@ Favorito: `id`, `name`, `plan`, `schema_version=1`, `source_answer_id`, `created
 
 Um favorito revogado é omitido da listagem; detalhe e ações retornam 403 sem nome/plano. IDs alheios retornam 404. Schema ou plano persistido inválido não é executado. Salvar, listar e reexecutar reconsultam permissões; favoritos não são transferidos entre contas.
 
-`Answer` e detalhe da conversa acrescentam `pending_clarification` opcional, com padrão null para persistência antiga. `PartialPlan` contém `intent`, `metric`, `store_ids`, `period` nullable, `comparison`, `grouping` e `limit`. `PendingClarification` contém `id`, `revision`, `status` (`pending`, `resolved`, `cancelled`, `expired`), `original_question`, `partial_plan`, `missing_field` (`period` ou `store`), `choices`, `created_at`, `expires_at`, `schema_version=1`, `mode` e `reference_date`. Cada escolha contém `id`, `label`, `period` nullable e `store_ids` nullable.
+`Answer`, resumo e detalhe da conversa acrescentam `pending_clarification` opcional, com padrão null para persistência antiga. `PartialPlan` contém `intent`, `metric`, `store_ids`, `period` nullable, `comparison`, `grouping` e `limit`. `PendingClarification` contém `id`, `revision`, `status` (`pending`, `resolved`, `cancelled`, `expired`), `original_question`, `partial_plan`, `missing_field` (`period` ou `store`), `choices`, `created_at`, `expires_at`, `schema_version=1`, `mode` e `reference_date`. Cada escolha contém `id`, `label`, `period` nullable e `store_ids` nullable.
 
 Escolhas de período: ontem, últimos 7 dias e últimos 30 dias; o servidor resolve datas pela referência analítica capturada, com fim exclusivo. Escolhas de loja contêm até seis IDs autorizados, com nomes e IDs para distinguir duplicatas. A pendência expira em 30 minutos pelo relógio real. Resposta a pendência terminal, substituída ou com revisão antiga recebe 409. Refresh recupera o estado pelo detalhe da conversa. A conclusão reautoriza cada loja e valida QueryPlan antes de executar sem interpretador/LLM. Sem seleção, todas as lojas permitidas continuam sendo o padrão. Filtro fora do domínio não produz opções executáveis.
+
+`Answer.clarification_response` opcional registra `pending_id`, `revision`, `choice_id` e `label` da escolha recebida. As respostas antigas permanecem aceitas sem esse campo.
 
 Fontes: [contratos favoritos](../backend/src/loja_assistente/favorites/contracts.py), [contratos esclarecimento](../backend/src/loja_assistente/clarifications/contracts.py), [TypeScript](../frontend/src/lib/contracts.ts).
 

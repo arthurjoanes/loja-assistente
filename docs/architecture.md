@@ -6,7 +6,7 @@
 
 O adaptador v5 usa um schema de transporte compatível com Azure e valida novamente no mesmo Pydantic de domínio antes de consultar. O esforço de raciocínio pode ser omitido ou configurado; o deployment Luna foi avaliado com none. Conserva somente metadata permitida de uso/correlação, inclusive quando o parsing falha, e fornece hooks de avaliação por contexto da requisição. O runner usa o endpoint FastAPI e PostgreSQL descartável; reserva orçamento persistente antes de enviar cada tentativa, sem retries ou fallback. O modo offline não acessa o provedor. [Protocolo e limites](live-evaluation.md). A [avaliação Azure](azure-live-results.md) passou nos limiares definidos antes; os testes de contrato simulado permanecem separados.
 
-Prefixos de cortesia são removidos apenas no início da guarda/parser; qualificadores posteriores permanecem sujeitos à recusa. O demo v4 aceita pronome em “quanto eu vendi” e ajuda numa saudação isolada. Essas correções não transformam o parser em modelo nem mostram generalização.
+Prefixos de cortesia são removidos apenas no início da guarda/parser; qualificadores posteriores permanecem sujeitos à recusa. O demo v5 conserva o pronome em “quanto eu vendi” e a ajuda numa saudação isolada, além de guardar os campos resolvidos nos esclarecimentos tipados. Essas correções não transformam o parser em modelo nem mostram generalização.
 
 ## Problema, usuários e limites
 
