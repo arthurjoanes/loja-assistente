@@ -1,4 +1,10 @@
-import type { Answer, ConversationDetail, Mode, Period } from "@/lib/contracts";
+import type {
+  Answer,
+  ConversationDetail,
+  Mode,
+  PendingClarification,
+  Period,
+} from "@/lib/contracts";
 
 export type AnalysisState = {
   conversationId: string | null;
@@ -8,6 +14,7 @@ export type AnalysisState = {
   storeIds: string[];
   period: Period | null;
   periodPreset: string;
+  pendingClarification: PendingClarification | null;
 };
 
 export function emptyAnalysis(
@@ -22,6 +29,7 @@ export function emptyAnalysis(
     storeIds,
     period: null,
     periodPreset: "question",
+    pendingClarification: null,
   };
 }
 
@@ -31,6 +39,7 @@ type AnalysisAction =
   | { type: "mode"; value: Mode }
   | { type: "stores"; value: string[] }
   | { type: "period"; value: Period | null; preset: string }
+  | { type: "clarification"; value: PendingClarification | null }
   | { type: "answer"; value: Answer }
   | { type: "conversation"; value: ConversationDetail; stores: string[] };
 
@@ -49,12 +58,15 @@ export function analysisReducer(
       return { ...state, storeIds: action.value };
     case "period":
       return { ...state, period: action.value, periodPreset: action.preset };
+    case "clarification":
+      return { ...state, pendingClarification: action.value };
     case "answer": {
       const answer = action.value;
       return {
         ...state,
         conversationId: answer.conversation_id,
         answers: [...state.answers, answer],
+        pendingClarification: answer.pending_clarification ?? null,
         period: answer.plan?.period ?? state.period,
         periodPreset: answer.plan ? "effective" : state.periodPreset,
         storeIds:
@@ -69,6 +81,7 @@ export function analysisReducer(
         ...state,
         conversationId: action.value.id,
         answers: action.value.messages,
+        pendingClarification: action.value.pending_clarification ?? null,
         period: last?.plan?.period ?? null,
         periodPreset: last?.plan ? "effective" : "question",
         storeIds: last?.result?.scope.map((store) => store.id) ?? action.stores,

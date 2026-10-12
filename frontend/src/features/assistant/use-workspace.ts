@@ -5,8 +5,10 @@ import type {
   Answer,
   Conversation,
   ConversationDetail,
+  Favorite,
   Mode,
   Operations,
+  PendingClarification,
   Period,
   Session,
 } from "@/lib/contracts";
@@ -19,14 +21,22 @@ export function useWorkspace() {
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<Conversation[]>([]);
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
+  const [favoritesLoading, setFavoritesLoading] = useState(false);
+  const [conflict, setConflict] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [pendingQuestion, setPendingQuestion] = useState<string | null>(null);
-  const [view, setView] = useState<"assistant" | "operations">("assistant");
+  const [view, setView] = useState<"assistant" | "operations" | "favorites">(
+    "assistant",
+  );
   const [mobileMenu, setMobileMenu] = useState(false);
   const [operations, setOperations] = useState<Operations | null>(null);
   const [operationsLoading, setOperationsLoading] = useState(false);
   const generation = useRef(0);
   const historyRevision = useRef(0);
+  const favoritesRevision = useRef(0);
+  const analysisRevision = useRef(0);
   const [analysis, dispatch] = useReducer(analysisReducer, undefined, () =>
     emptyAnalysis(),
   );
@@ -38,6 +48,7 @@ export function useWorkspace() {
     storeIds,
     period,
     periodPreset,
+    pendingClarification,
   } = analysis;
   const requestActive = useRef(false);
   const [operationsStale, setOperationsStale] = useState(false);
@@ -61,13 +72,37 @@ export function useWorkspace() {
           value: current.user.stores.map((store) => store.id),
         });
         const revision = ++historyRevision.current;
-        const conversations = await api<Conversation[]>("/conversations");
+        const favoriteRevision = ++favoritesRevision.current;
+        const [conversations, saved] = await Promise.all([
+          api<Conversation[]>("/conversations"),
+          api<Favorite[]>("/favorites"),
+        ]);
         if (
           active &&
           generation.current === currentGeneration &&
           revision === historyRevision.current
         )
           setHistory(conversations);
+        if (
+          active &&
+          generation.current === currentGeneration &&
+          favoriteRevision === favoritesRevision.current
+        )
+          setFavorites(saved);
+        const pending = conversations.find(
+          (item) => item.pending_clarification?.status === "pending",
+        );
+        if (pending && active && generation.current === currentGeneration) {
+          const detail = await api<ConversationDetail>(
+            `/conversations/${pending.id}`,
+          );
+          if (active && generation.current === currentGeneration)
+            dispatch({
+              type: "conversation",
+              value: detail,
+              stores: current.user.stores.map((store) => store.id),
+            });
+        }
       })
       .catch((error) => {
         if (!active || generation.current !== currentGeneration) return;
@@ -75,7 +110,15 @@ export function useWorkspace() {
           setSession(null);
           dispatch({ type: "reset" });
           setHistory([]);
+          setFavorites([]);
           if (authenticated) setNotice("Sessão expirada. Entre novamente.");
+        } else if (error instanceof ApiError && error.status === 403) {
+          generation.current += 1;
+          setSession(null);
+          dispatch({ type: "reset" });
+          setHistory([]);
+          setFavorites([]);
+          setNotice("Acesso alterado. Entre novamente.");
         } else {
           setNotice(
             error instanceof Error ? error.message : "Serviço indisponível.",
@@ -98,6 +141,10 @@ export function useWorkspace() {
     setOperationsLoading(false);
     setSession(null);
     setHistory([]);
+    setFavorites([]);
+    setFavoritesLoading(false);
+    setConflict(false);
+    setSuccess(null);
     setError(null);
     setNotice(message);
     setOperations(null);
@@ -110,6 +157,42 @@ export function useWorkspace() {
     if (error instanceof ApiError && error.status === 401) {
       clearSession("Sessão expirada. Entre novamente.");
     } else {
+      if (error instanceof ApiError && error.status === 403) {
+        generation.current += 1;
+        const currentGeneration = generation.current;
+        dispatch({ type: "reset" });
+        setHistory([]);
+        setFavorites([]);
+        setOperations(null);
+        setOperationsLoading(false);
+        setOperationsStale(true);
+        setBusy(false);
+        setFavoritesLoading(false);
+        setConflict(false);
+        setPendingQuestion(null);
+        setSuccess(null);
+        requestActive.current = false;
+        setSession((current) =>
+          current
+            ? { ...current, user: { ...current.user, stores: [] } }
+            : null,
+        );
+        void api<Session>("/auth/me")
+          .then((current) => {
+            if (generation.current !== currentGeneration) return;
+            setSession(current);
+            setStoreIds(current.user.stores.map((store) => store.id));
+          })
+          .catch((received) => {
+            if (
+              generation.current === currentGeneration &&
+              received instanceof ApiError &&
+              received.status === 401
+            )
+              clearSession("Sessão expirada. Entre novamente.");
+          });
+      }
+      if (error instanceof ApiError && error.status === 409) setConflict(true);
       setError(
         error instanceof Error
           ? error.message
@@ -121,16 +204,55 @@ export function useWorkspace() {
     generation.current += 1;
     const currentGeneration = generation.current;
     const revision = ++historyRevision.current;
+    const favoriteRevision = ++favoritesRevision.current;
+    const analysisVersion = ++analysisRevision.current;
+    dispatch({
+      type: "reset",
+      stores: current.user.stores.map((store) => store.id),
+    });
+    setFavorites([]);
+    setHistory([]);
+    setSuccess(null);
+    setConflict(false);
     setSession(current);
     setNotice(null);
     setStoreIds(current.user.stores.map((store) => store.id));
     try {
-      const conversations = await api<Conversation[]>("/conversations");
+      const [conversations, saved] = await Promise.all([
+        api<Conversation[]>("/conversations"),
+        api<Favorite[]>("/favorites"),
+      ]);
       if (
         generation.current === currentGeneration &&
         revision === historyRevision.current
       )
         setHistory(conversations);
+      if (
+        generation.current === currentGeneration &&
+        favoriteRevision === favoritesRevision.current
+      )
+        setFavorites(saved);
+      const pending = conversations.find(
+        (item) => item.pending_clarification?.status === "pending",
+      );
+      if (
+        pending &&
+        generation.current === currentGeneration &&
+        analysisVersion === analysisRevision.current
+      ) {
+        const detail = await api<ConversationDetail>(
+          `/conversations/${pending.id}`,
+        );
+        if (
+          generation.current === currentGeneration &&
+          analysisVersion === analysisRevision.current
+        )
+          dispatch({
+            type: "conversation",
+            value: detail,
+            stores: current.user.stores.map((store) => store.id),
+          });
+      }
     } catch (error) {
       if (
         generation.current === currentGeneration &&
@@ -152,16 +274,20 @@ export function useWorkspace() {
     }
   }
   function freshConversation() {
+    analysisRevision.current += 1;
     dispatch({
       type: "reset",
       stores: session?.user.stores.map((store) => store.id) ?? [],
       mode,
     });
     setError(null);
+    setSuccess(null);
+    setConflict(false);
     setView("assistant");
     setMobileMenu(false);
   }
   async function openConversation(id: string) {
+    const analysisVersion = ++analysisRevision.current;
     const currentGeneration = generation.current;
     setBusy(true);
     setError(null);
@@ -170,13 +296,19 @@ export function useWorkspace() {
       const conversation = await api<ConversationDetail>(
         "/conversations/" + id,
       );
-      if (currentGeneration !== generation.current) return;
+      if (
+        currentGeneration !== generation.current ||
+        analysisVersion !== analysisRevision.current
+      )
+        return;
       dispatch({
         type: "conversation",
         value: conversation,
         stores: session?.user.stores.map((store) => store.id) ?? [],
       });
       setView("assistant");
+      setConflict(false);
+      return conversation;
     } catch (error) {
       if (currentGeneration === generation.current) handleError(error);
     } finally {
@@ -195,9 +327,11 @@ export function useWorkspace() {
     )
       return;
     requestActive.current = true;
+    analysisRevision.current += 1;
     const currentGeneration = generation.current;
     setBusy(true);
     setError(null);
+    setSuccess(null);
     setPendingQuestion(text.trim());
     setQuestion("");
     setView("assistant");
@@ -214,6 +348,7 @@ export function useWorkspace() {
       });
       if (currentGeneration !== generation.current) return;
       dispatch({ type: "answer", value: answer });
+      setConflict(false);
       const revision = ++historyRevision.current;
       try {
         const conversations = await api<Conversation[]>("/conversations");
@@ -232,7 +367,7 @@ export function useWorkspace() {
     } catch (error) {
       if (currentGeneration === generation.current) {
         handleError(error);
-        if (!(error instanceof ApiError && error.status === 401))
+        if (!(error instanceof ApiError && [401, 403].includes(error.status)))
           setQuestion(text);
       }
     } finally {
@@ -272,6 +407,255 @@ export function useWorkspace() {
       preset: value,
     });
   }
+  async function refreshLists(currentGeneration: number) {
+    const historyVersion = ++historyRevision.current;
+    const favoriteVersion = ++favoritesRevision.current;
+    const [conversations, saved] = await Promise.all([
+      api<Conversation[]>("/conversations"),
+      api<Favorite[]>("/favorites"),
+    ]);
+    if (generation.current !== currentGeneration) return;
+    if (historyVersion === historyRevision.current) setHistory(conversations);
+    if (favoriteVersion === favoritesRevision.current) setFavorites(saved);
+  }
+  async function showFavorites() {
+    const currentGeneration = generation.current;
+    const revision = ++favoritesRevision.current;
+    setView("favorites");
+    setMobileMenu(false);
+    setFavoritesLoading(true);
+    setError(null);
+    try {
+      const saved = await api<Favorite[]>("/favorites");
+      if (
+        generation.current === currentGeneration &&
+        revision === favoritesRevision.current
+      ) {
+        setFavorites(saved);
+        setConflict(false);
+      }
+    } catch (received) {
+      if (generation.current === currentGeneration) handleError(received);
+    } finally {
+      if (generation.current === currentGeneration) setFavoritesLoading(false);
+    }
+  }
+  async function perform<T>(
+    path: string,
+    body: unknown,
+    onComplete: (value: T) => void,
+    message: string,
+    execution = false,
+  ) {
+    if (
+      !session ||
+      busy ||
+      operationsLoading ||
+      requestActive.current ||
+      conflict
+    )
+      return false;
+    requestActive.current = true;
+    const currentGeneration = generation.current;
+    setBusy(true);
+    setError(null);
+    setSuccess(null);
+    try {
+      const received = await api<T>(path, { body, csrf: session.csrf_token });
+      if (generation.current !== currentGeneration) return false;
+      onComplete(received);
+      setSuccess(message);
+      return true;
+    } catch (received) {
+      if (generation.current === currentGeneration) {
+        handleError(received);
+        if (
+          execution &&
+          received instanceof ApiError &&
+          [0, 408, 503, 504].includes(received.status)
+        ) {
+          setConflict(true);
+          setError(
+            "Não foi possível confirmar a execução. Verifique o histórico e recarregue o estado antes de executar outra vez; a consulta pode ter sido concluída.",
+          );
+        }
+      }
+      return false;
+    } finally {
+      if (generation.current === currentGeneration) {
+        requestActive.current = false;
+        setBusy(false);
+      }
+    }
+  }
+  function receiveFavorite(favorite: Favorite) {
+    setFavorites((current) =>
+      [favorite, ...current.filter((item) => item.id !== favorite.id)].slice(
+        0,
+        50,
+      ),
+    );
+  }
+  function saveFavorite(answerId: string, name: string) {
+    return perform<Favorite>(
+      "/favorites",
+      { answer_id: answerId, name },
+      receiveFavorite,
+      "Consulta salva nos favoritos.",
+    );
+  }
+  function renameFavorite(favorite: Favorite, name: string) {
+    return perform<Favorite>(
+      `/favorites/${favorite.id}/rename`,
+      { revision: favorite.revision, name },
+      receiveFavorite,
+      "Nome do favorito atualizado.",
+    );
+  }
+  function deleteFavorite(favorite: Favorite) {
+    return perform<void>(
+      `/favorites/${favorite.id}/delete`,
+      { revision: favorite.revision },
+      () => {
+        setFavorites((current) =>
+          current.filter((item) => item.id !== favorite.id),
+        );
+      },
+      "Favorito excluído.",
+    );
+  }
+  async function runFavorite(favorite: Favorite) {
+    const currentGeneration = generation.current;
+    const completed = await perform<Answer>(
+      `/favorites/${favorite.id}/run`,
+      { revision: favorite.revision },
+      (answer) => {
+        analysisRevision.current += 1;
+        dispatch({
+          type: "reset",
+          stores: session?.user.stores.map((store) => store.id) ?? [],
+        });
+        dispatch({ type: "answer", value: answer });
+        setView("assistant");
+      },
+      "Nova execução registrada. O cálculo anterior permanece no histórico.",
+      true,
+    );
+    if (completed && generation.current === currentGeneration) {
+      try {
+        await refreshLists(currentGeneration);
+      } catch (received) {
+        if (generation.current === currentGeneration) handleError(received);
+      }
+    }
+  }
+  async function openRecordedCalculation(favorite: Favorite) {
+    if (!session || busy || requestActive.current) return;
+    const currentGeneration = generation.current;
+    const analysisVersion = ++analysisRevision.current;
+    setBusy(true);
+    setError(null);
+    setSuccess(null);
+    try {
+      const answer = await api<Answer>(`/answers/${favorite.source_answer_id}`);
+      if (
+        generation.current !== currentGeneration ||
+        analysisVersion !== analysisRevision.current
+      )
+        return;
+      const conversation = await api<ConversationDetail>(
+        `/conversations/${answer.conversation_id}`,
+      );
+      if (
+        generation.current !== currentGeneration ||
+        analysisVersion !== analysisRevision.current
+      )
+        return;
+      dispatch({
+        type: "conversation",
+        value: conversation,
+        stores: session.user.stores.map((store) => store.id),
+      });
+      setView("assistant");
+      setSuccess(
+        "Cálculo registrado aberto. Nenhuma nova execução foi solicitada.",
+      );
+      return {
+        conversationId: conversation.id,
+        latestId: conversation.messages.at(-1)?.id,
+        id: answer.id,
+      };
+    } catch (received) {
+      if (generation.current === currentGeneration) handleError(received);
+    } finally {
+      if (generation.current === currentGeneration) setBusy(false);
+    }
+  }
+  function respondClarification(choiceId: string) {
+    if (
+      !pendingClarification ||
+      pendingClarification.status !== "pending" ||
+      !conversationId
+    )
+      return Promise.resolve(false);
+    return perform<Answer>(
+      `/conversations/${conversationId}/clarification/respond`,
+      {
+        pending_id: pendingClarification.id,
+        revision: pendingClarification.revision,
+        choice_id: choiceId,
+      },
+      (answer) => dispatch({ type: "answer", value: answer }),
+      "Escolha registrada.",
+      true,
+    );
+  }
+  function cancelClarification() {
+    if (
+      !pendingClarification ||
+      pendingClarification.status !== "pending" ||
+      !conversationId
+    )
+      return Promise.resolve(false);
+    return perform<PendingClarification>(
+      `/conversations/${conversationId}/clarification/cancel`,
+      {
+        pending_id: pendingClarification.id,
+        revision: pendingClarification.revision,
+      },
+      (received) => dispatch({ type: "clarification", value: received }),
+      "Esclarecimento cancelado.",
+    );
+  }
+  async function reloadWorkspace() {
+    const currentGeneration = generation.current;
+    setBusy(true);
+    setError(null);
+    try {
+      const detail = conversationId
+        ? api<ConversationDetail>(`/conversations/${conversationId}`)
+        : Promise.resolve(null);
+      const [conversation] = await Promise.all([
+        detail,
+        refreshLists(currentGeneration),
+      ]);
+      if (generation.current !== currentGeneration) return;
+      if (conversation)
+        dispatch({
+          type: "conversation",
+          value: conversation,
+          stores: session?.user.stores.map((store) => store.id) ?? [],
+        });
+      setConflict(false);
+      setSuccess(
+        "Dados recarregados. Confira o estado atual antes de continuar.",
+      );
+    } catch (received) {
+      if (generation.current === currentGeneration) handleError(received);
+    } finally {
+      if (generation.current === currentGeneration) setBusy(false);
+    }
+  }
   return {
     session,
     booting,
@@ -279,6 +663,11 @@ export function useWorkspace() {
     error,
     setError,
     history,
+    favorites,
+    favoritesLoading,
+    conflict,
+    success,
+    pendingClarification,
     conversationId,
     answers,
     question,
@@ -307,5 +696,14 @@ export function useWorkspace() {
     showOperations,
     choosePeriod,
     handleError,
+    showFavorites,
+    saveFavorite,
+    renameFavorite,
+    deleteFavorite,
+    runFavorite,
+    openRecordedCalculation,
+    respondClarification,
+    cancelClarification,
+    reloadWorkspace,
   };
 }

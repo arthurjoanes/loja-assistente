@@ -25,6 +25,50 @@ export type Plan = {
   grouping: "day" | null;
   limit: number;
 };
+export type Favorite = {
+  id: string;
+  name: string;
+  plan: Plan;
+  schema_version: 1;
+  source_answer_id: string;
+  created_at: string;
+  updated_at: string;
+  revision: number;
+};
+export type PartialPlan = Omit<Plan, "store_references" | "period"> & {
+  store_ids: string[];
+  period: Period | null;
+};
+export type ClarificationChoice = {
+  id: string;
+  label: string;
+  period: Period | null;
+  store_ids: string[] | null;
+};
+export type PendingClarification = {
+  id: string;
+  revision: number;
+  status: "pending" | "resolved" | "cancelled" | "expired";
+  original_question: string;
+  partial_plan: PartialPlan;
+  missing_field: "period" | "store";
+  choices: ClarificationChoice[];
+  created_at: string;
+  expires_at: string;
+  schema_version: 1;
+  mode: Mode;
+  reference_date: string;
+};
+export type SaveFavoriteRequest = { answer_id: string; name: string };
+export type FavoriteRevisionRequest = { revision: number };
+export type RenameFavoriteRequest = FavoriteRevisionRequest & { name: string };
+export type ClarificationRevisionRequest = {
+  pending_id: string;
+  revision: number;
+};
+export type RespondClarificationRequest = ClarificationRevisionRequest & {
+  choice_id: string;
+};
 export type Totals = {
   revenue_cents: string;
   orders: number;
@@ -76,9 +120,24 @@ export type Answer = {
   result: Result | null;
   request_id: string;
   created_at: string;
+  pending_clarification?: PendingClarification | null;
+  clarification_response?: {
+    pending_id: string;
+    revision: number;
+    choice_id: string;
+    label: string;
+  } | null;
 };
-export type Conversation = { id: string; title: string; created_at: string };
-export type ConversationDetail = Conversation & { messages: Answer[] };
+export type Conversation = {
+  id: string;
+  title: string;
+  created_at: string;
+  pending_clarification?: PendingClarification | null;
+};
+export type ConversationDetail = Conversation & {
+  messages: Answer[];
+  pending_clarification?: PendingClarification | null;
+};
 export type Operations = {
   entries: {
     request_id: string;

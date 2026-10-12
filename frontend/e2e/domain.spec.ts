@@ -13,7 +13,7 @@ import {
   RequestBodyTooLarge,
 } from "../src/lib/server/request-body";
 import { money } from "../src/lib/format";
-import type { Answer, Row } from "../src/lib/contracts";
+import type { Answer, PendingClarification, Row } from "../src/lib/contracts";
 import { dailySeries } from "../src/features/analytics/daily-series";
 
 for (const days of [1, 7, 30]) {
@@ -130,6 +130,83 @@ test("esclarecimento preserva filtros; troca de identidade limpa toda análise",
     emptyAnalysis(),
   );
   expect(previous.answers).toHaveLength(0);
+});
+
+test("pendência ativa vem do estado da conversa e resposta antiga não a ressuscita", () => {
+  const pending: PendingClarification = {
+    id: "pending",
+    revision: 1,
+    status: "pending",
+    original_question: "Receita da loja Centro",
+    partial_plan: {
+      intent: "aggregate",
+      metric: "revenue",
+      store_ids: ["a001"],
+      period: null,
+      comparison: null,
+      grouping: null,
+      limit: 5,
+    },
+    missing_field: "period",
+    choices: [
+      {
+        id: "yesterday",
+        label: "Ontem",
+        period: { start: "2026-08-16", end: "2026-08-17" },
+        store_ids: null,
+      },
+    ],
+    created_at: "2026-10-12T12:00:00Z",
+    expires_at: "2026-10-12T12:30:00Z",
+    schema_version: 1,
+    mode: "demo",
+    reference_date: "2026-08-17",
+  };
+  const answer: Answer = {
+    id: "answer",
+    conversation_id: "conversation",
+    question: pending.original_question,
+    status: "needs_clarification",
+    message: "Escolha o período",
+    mode: "demo",
+    plan: null,
+    result: null,
+    request_id: "request",
+    created_at: pending.created_at,
+    pending_clarification: pending,
+  };
+  const active = analysisReducer(emptyAnalysis(["a001"]), {
+    type: "answer",
+    value: answer,
+  });
+  expect(active.pendingClarification).toEqual(pending);
+  const cancelled = { ...pending, status: "cancelled" as const, revision: 2 };
+  const loaded = analysisReducer(active, {
+    type: "conversation",
+    stores: ["a001"],
+    value: {
+      id: "conversation",
+      title: answer.question,
+      created_at: answer.created_at,
+      messages: [answer],
+      pending_clarification: cancelled,
+    },
+  });
+  expect(loaded.pendingClarification).toEqual(cancelled);
+  const legacy = analysisReducer(active, {
+    type: "conversation",
+    stores: ["a001"],
+    value: {
+      id: "conversation",
+      title: answer.question,
+      created_at: answer.created_at,
+      messages: [answer],
+    },
+  });
+  expect(legacy.pendingClarification).toBeNull();
+  expect(
+    analysisReducer(active, { type: "reset" }).pendingClarification,
+  ).toBeNull();
 });
 
 for (const declared of [null, "1", "16385", "invalid"]) {

@@ -4,13 +4,20 @@ import type { Answer, Metric, Result, Totals } from "@/lib/contracts";
 import { metricLabels, metricValue, periodLabel } from "@/lib/format";
 import { EvidencePanel } from "./evidence";
 import { ResultChart } from "./visualization";
+import { SaveFavorite } from "../assistant/save-favorite";
 
 export function AnswerCard({
   answer,
   onError,
+  busy,
+  saved,
+  onSave,
 }: {
   answer: Answer;
   onError: (error: unknown) => void;
+  busy: boolean;
+  saved: boolean;
+  onSave: (answerId: string, name: string) => Promise<boolean>;
 }) {
   const result = answer.result;
   return (
@@ -34,6 +41,23 @@ export function AnswerCard({
         </span>
       </div>
       <div className="answer-content">
+        <p className="calculation-version">
+          Cálculo registrado em{" "}
+          <time dateTime={answer.created_at}>
+            {new Date(answer.created_at).toLocaleString("pt-BR", {
+              timeZone: "America/Sao_Paulo",
+              dateStyle: "short",
+              timeStyle: "short",
+            })}
+          </time>
+          {result ? ` · dataset ${result.dataset_version}` : ""}
+        </p>
+        {answer.clarification_response && (
+          <p className="calculation-version">
+            Esclarecimento confirmado: {answer.clarification_response.label} ·
+            revisão {answer.clarification_response.revision}
+          </p>
+        )}
         {(!result || result.coverage.status === "absent") && (
           <p
             className={
@@ -115,6 +139,14 @@ export function AnswerCard({
               </details>
             )}
             <EvidencePanel answerId={answer.id} onError={onError} />
+            {answer.plan && (
+              <SaveFavorite
+                answerId={answer.id}
+                busy={busy}
+                saved={saved}
+                onSave={onSave}
+              />
+            )}
           </>
         )}
         {!result && (

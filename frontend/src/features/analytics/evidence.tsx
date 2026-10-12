@@ -35,7 +35,10 @@ export function EvidencePanel({
       setEvidenceError(
         error instanceof Error ? error.message : "Falha ao carregar o cálculo.",
       );
-      if (error instanceof ApiError && error.status === 401) onError(error);
+      if (error instanceof ApiError && [401, 403].includes(error.status)) {
+        setEvidence(null);
+        onError(error);
+      }
     } finally {
       if (mounted.current) setEvidenceLoading(false);
     }

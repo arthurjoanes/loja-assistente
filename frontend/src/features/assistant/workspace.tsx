@@ -12,6 +12,7 @@ import { AnalysisStart } from "./analysis-start";
 import { QuestionComposer } from "./question-composer";
 import { useWorkspace } from "./use-workspace";
 import { validPeriod } from "./period-selection";
+import { FavoritesPanel } from "./favorites-panel";
 
 export function Workspace() {
   const {
@@ -21,6 +22,11 @@ export function Workspace() {
     error,
     setError,
     history,
+    favorites,
+    favoritesLoading,
+    conflict,
+    success,
+    pendingClarification,
     conversationId,
     answers,
     question,
@@ -49,6 +55,15 @@ export function Workspace() {
     showOperations,
     choosePeriod,
     handleError,
+    showFavorites,
+    saveFavorite,
+    renameFavorite,
+    deleteFavorite,
+    runFavorite,
+    openRecordedCalculation,
+    respondClarification,
+    cancelClarification,
+    reloadWorkspace,
   } = useWorkspace();
   const latestId = answers.at(-1)?.id;
   const [queryExpanded, setQueryExpanded] = useState(true);
@@ -99,7 +114,7 @@ export function Workspace() {
     return (
       <Login onLogin={(current) => void signedIn(current)} notice={notice} />
     );
-  const locked = busy || operationsLoading;
+  const locked = busy || operationsLoading || favoritesLoading;
   const periodInvalid = !validPeriod(period);
   const hasResponse = answers.length > 0;
   const queryControls = (
@@ -155,6 +170,12 @@ export function Workspace() {
         textareaRef={composer}
         onQuestionChange={setQuestion}
         onAsk={(text) => void ask(text)}
+        pendingClarification={pendingClarification}
+        stores={session.user.stores}
+        conflict={conflict}
+        onRespond={respondClarification}
+        onCancel={cancelClarification}
+        onReload={() => void reloadWorkspace()}
       />
       <AnalysisContext
         stores={session.user.stores}
@@ -188,6 +209,7 @@ export function Workspace() {
         onNewAnalysis={startAnalysis}
         onShowAnalysis={() => setView("assistant")}
         onShowOperations={() => void showOperations()}
+        onShowFavorites={() => void showFavorites()}
         onOpenConversation={(id) => void openConversation(id)}
         onSignOut={() => void logout()}
       />
@@ -208,7 +230,11 @@ export function Workspace() {
                 {session.user.organization.name}
               </span>
               <h1>
-                {view === "assistant" ? "Análise de vendas" : "Atendimentos"}
+                {view === "assistant"
+                  ? "Análise de vendas"
+                  : view === "favorites"
+                    ? "Favoritos"
+                    : "Atendimentos"}
               </h1>
             </div>
           </div>
@@ -226,6 +252,15 @@ export function Workspace() {
             ref={errorNotice}
           >
             <span>{error}</span>
+            {conflict && (
+              <button
+                className="text-button"
+                disabled={locked}
+                onClick={() => void reloadWorkspace()}
+              >
+                Recarregar estado atual
+              </button>
+            )}
             <button
               className="icon-button"
               aria-label="Fechar mensagem de erro"
@@ -235,6 +270,11 @@ export function Workspace() {
             </button>
           </div>
         )}
+        {success && (
+          <p className="notice workspace-notice" role="status">
+            {success}
+          </p>
+        )}
 
         {view === "operations" ? (
           <main id="main-content" className="operations-scroll" tabIndex={-1}>
@@ -243,6 +283,25 @@ export function Workspace() {
               loading={operationsLoading}
               stale={operationsStale}
               onRefresh={() => void showOperations()}
+            />
+          </main>
+        ) : view === "favorites" ? (
+          <main id="main-content" className="operations-scroll" tabIndex={-1}>
+            <FavoritesPanel
+              favorites={favorites}
+              stores={session.user.stores}
+              loading={favoritesLoading}
+              busy={busy}
+              conflict={conflict}
+              onRefresh={() => void showFavorites()}
+              onAnalysis={() => setView("assistant")}
+              onRename={renameFavorite}
+              onDelete={deleteFavorite}
+              onRun={(favorite) => void runFavorite(favorite)}
+              onOpen={async (favorite) => {
+                const focused = await openRecordedCalculation(favorite);
+                if (focused) setSelection(focused);
+              }}
             />
           </main>
         ) : (
@@ -323,7 +382,16 @@ export function Workspace() {
                     )}
                     {answers.map((answer) => (
                       <div key={answer.id} hidden={answer.id !== selectedId}>
-                        <AnswerCard answer={answer} onError={handleError} />
+                        <AnswerCard
+                          answer={answer}
+                          onError={handleError}
+                          busy={busy || conflict}
+                          saved={favorites.some(
+                            (favorite) =>
+                              favorite.source_answer_id === answer.id,
+                          )}
+                          onSave={saveFavorite}
+                        />
                       </div>
                     ))}
                   </div>

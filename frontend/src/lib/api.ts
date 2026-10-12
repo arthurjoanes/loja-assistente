@@ -30,6 +30,7 @@ export async function api<T>(
   } catch {
     throw new ApiError(0, "Falha na conexão. Tente novamente.");
   }
+  if (response.status === 204) return undefined as T;
   let payload: unknown;
   try {
     payload = await response.json();
