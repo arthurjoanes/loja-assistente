@@ -1,0 +1,4465 @@
+{
+  "version": 2,
+  "stage": "after",
+  "browser": "firefox",
+  "started_at_utc": "2026-10-12T13:51:31.080Z",
+  "execution": "real application; synthetic-v1 Demo; no intercepted API responses",
+  "profile": "Gerente · Aurora Casa",
+  "reference_date": "2026-08-17",
+  "paid_calls": 0,
+  "screenshot_method": "viewport screenshots; document and all scrolled containers reset naturally and stable at zero for three animation frames before top captures; keyboard focus captures use natural focus scrolling; no CSS injection or pixel editing",
+  "native_zoom": "not verified",
+  "screen_reader": "not verified",
+  "mobile_emulation": "Chromium at 320/390 CSS px: isMobile and touch enabled, device scale factor 1. Firefox/WebKit: touch and narrow viewport, without mobile-layout emulation. These are browser emulations, not physical-device or native-zoom tests.",
+  "states": [
+    {
+      "state": "inicio",
+      "width": 390,
+      "height": 900,
+      "route": "/",
+      "initial": "New empty analysis; Centro; period defined by question; Demo",
+      "expected": "Question and quick actions available without submitting",
+      "top_reset": {
+        "before": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 323,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1223
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "eyebrow",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 158,
+            "scroll_height": 16
+          }
+        ],
+        "after": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1223
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "eyebrow",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 158,
+            "scroll_height": 16
+          }
+        ],
+        "stable_frames": 3,
+        "sampled_frames": 3,
+        "container_resets": 0
+      },
+      "screenshot": "after-firefox-inicio-390.png",
+      "png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "axe": "after-firefox-inicio-390-axe.json",
+      "captured_at_utc": "2026-10-12T13:51:36.360Z",
+      "axe_summary": {
+        "violations": [],
+        "incomplete": [],
+        "passes": 27
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1223
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "eyebrow",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 158,
+            "scroll_height": 16
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Receita de ontemReceita líquida da sua loja",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Ranking de produtosTop 5 produtos por receita",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Evolução diáriaReceita de cada um dos últimos 7 dias",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Ticket médioValor médio por pedido concluído",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Comparação de períodosCompare dois períodos equivalentes",
+            "width": 163,
+            "height": 107
+          },
+          {
+            "name": "Unidades vendidasQuantidade vendida ontem",
+            "width": 163,
+            "height": 107
+          },
+          {
+            "name": "Centro",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+            "width": 346,
+            "height": 38
+          }
+        ],
+        "focus": {
+          "name": "(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,",
+          "tag": "BODY",
+          "outline": "none",
+          "visible": false,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      },
+      "focus_screenshot": "after-firefox-inicio-390-focus.png",
+      "focus_png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "focus_metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 323
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 323,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1223
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "eyebrow",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 158,
+            "scroll_height": 16
+          }
+        ],
+        "header_top": -323,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Receita de ontemReceita líquida da sua loja",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Ranking de produtosTop 5 produtos por receita",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Evolução diáriaReceita de cada um dos últimos 7 dias",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Ticket médioValor médio por pedido concluído",
+            "width": 163,
+            "height": 86
+          },
+          {
+            "name": "Comparação de períodosCompare dois períodos equivalentes",
+            "width": 163,
+            "height": 107
+          },
+          {
+            "name": "Unidades vendidasQuantidade vendida ontem",
+            "width": 163,
+            "height": 107
+          },
+          {
+            "name": "Centro",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "question",
+            "width": 346,
+            "height": 94
+          },
+          {
+            "name": "Dados fictícios · acesso e métricas",
+            "width": 346,
+            "height": 46
+          }
+        ],
+        "focus": {
+          "name": "question",
+          "tag": "TEXTAREA",
+          "outline": "solid",
+          "visible": true,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      }
+    },
+    {
+      "state": "pendente",
+      "width": 390,
+      "height": 900,
+      "route": "/",
+      "initial": "Revenue for Centro with no period; yesterday selected, not submitted",
+      "expected": "Preview preserves revenue and Centro, with 16/08 included–17/08 excluded",
+      "top_reset": {
+        "before": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1894
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "after": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1894
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "stable_frames": 3,
+        "sampled_frames": 3,
+        "container_resets": 0
+      },
+      "screenshot": "after-firefox-pendente-390.png",
+      "png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "axe": "after-firefox-pendente-390-axe.json",
+      "captured_at_utc": "2026-10-12T13:51:38.514Z",
+      "axe_summary": {
+        "violations": [],
+        "incomplete": [],
+        "passes": 29
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1894
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Ontem",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Últimos 7 dias",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Últimos 30 dias",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Identificadores e limites do período",
+            "width": 312,
+            "height": 32
+          },
+          {
+            "name": "Confirmar escolha",
+            "width": 151.88333129882812,
+            "height": 46
+          },
+          {
+            "name": "Cancelar esclarecimento",
+            "width": 180.18333435058594,
+            "height": 44
+          }
+        ],
+        "focus": {
+          "name": "(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,",
+          "tag": "BODY",
+          "outline": "none",
+          "visible": false,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      },
+      "focus_screenshot": "after-firefox-pendente-390-focus.png",
+      "focus_png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "focus_metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1894
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Ontem",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Últimos 7 dias",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Últimos 30 dias",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Identificadores e limites do período",
+            "width": 312,
+            "height": 32
+          },
+          {
+            "name": "Confirmar escolha",
+            "width": 151.88333129882812,
+            "height": 46
+          },
+          {
+            "name": "Cancelar esclarecimento",
+            "width": 180.18333435058594,
+            "height": 44
+          }
+        ],
+        "focus": {
+          "name": "clarification-d0b2139c-79a0-403f-8aa9-e0f4282fbae3",
+          "tag": "INPUT",
+          "outline": "solid",
+          "visible": true,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      }
+    },
+    {
+      "state": "resultado",
+      "width": 390,
+      "height": 900,
+      "route": "/",
+      "initial": "Seven-day Centro revenue; server calculation expanded",
+      "expected": "Exact totals, applied scope, day coverage and calculation remain readable",
+      "top_reset": {
+        "before": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 717.5,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 2743
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "class": "table-scroll",
+            "x": 0,
+            "y": 0,
+            "client_width": 312,
+            "client_height": 364,
+            "scroll_width": 491,
+            "scroll_height": 364
+          }
+        ],
+        "after": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 2743
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "class": "table-scroll",
+            "x": 0,
+            "y": 0,
+            "client_width": 312,
+            "client_height": 364,
+            "scroll_width": 491,
+            "scroll_height": 364
+          }
+        ],
+        "stable_frames": 3,
+        "sampled_frames": 3,
+        "container_resets": 0
+      },
+      "screenshot": "after-firefox-resultado-390.png",
+      "png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "axe": "after-firefox-resultado-390-axe.json",
+      "captured_at_utc": "2026-10-12T13:51:41.022Z",
+      "axe_summary": {
+        "violations": [],
+        "incomplete": [],
+        "passes": 33
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 2743
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "class": "table-scroll",
+            "x": 0,
+            "y": 0,
+            "client_width": 312,
+            "client_height": 364,
+            "scroll_width": 491,
+            "scroll_height": 364
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Editar pergunta",
+            "width": 109.89999389648438,
+            "height": 32
+          },
+          {
+            "name": "Gráfico",
+            "width": 79.41667175292969,
+            "height": 31
+          },
+          {
+            "name": "Tabela",
+            "width": 76.84999084472656,
+            "height": 31
+          }
+        ],
+        "focus": {
+          "name": "(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,",
+          "tag": "BODY",
+          "outline": "none",
+          "visible": false,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      },
+      "focus_screenshot": "after-firefox-resultado-390-focus.png",
+      "focus_png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "focus_metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 717
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 717,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 2743
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          },
+          {
+            "tag": "DIV",
+            "id": "",
+            "class": "table-scroll",
+            "x": 0,
+            "y": 0,
+            "client_width": 312,
+            "client_height": 364,
+            "scroll_width": 491,
+            "scroll_height": 364
+          }
+        ],
+        "header_top": -717,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Resumo em texto",
+            "width": 346,
+            "height": 38.5
+          },
+          {
+            "name": "CálculoFórmula, cobertura e totais por dia",
+            "width": 314,
+            "height": 57.5
+          }
+        ],
+        "focus": {
+          "name": "CálculoFórmula, cobertura e totais por dia",
+          "tag": "SUMMARY",
+          "outline": "solid",
+          "visible": true,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      }
+    },
+    {
+      "state": "favorito",
+      "width": 390,
+      "height": 900,
+      "route": "/",
+      "initial": "Personal saved seven-day Centro plan with fixed dates",
+      "expected": "Open recorded calculation and execute again are distinct actions",
+      "top_reset": {
+        "before": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1081
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          }
+        ],
+        "after": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1081
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          }
+        ],
+        "stable_frames": 3,
+        "sampled_frames": 3,
+        "container_resets": 0
+      },
+      "screenshot": "after-firefox-favorito-390.png",
+      "png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "axe": "after-firefox-favorito-390-axe.json",
+      "captured_at_utc": "2026-10-12T13:51:42.468Z",
+      "axe_summary": {
+        "violations": [],
+        "incomplete": [],
+        "passes": 25
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1081
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Recarregar favoritos",
+            "width": 149.93333435058594,
+            "height": 34
+          },
+          {
+            "name": "Identificadores e limites do período",
+            "width": 316,
+            "height": 32
+          },
+          {
+            "name": "Executar novamente",
+            "width": 166.25,
+            "height": 46
+          },
+          {
+            "name": "Abrir cálculo registrado",
+            "width": 170.75,
+            "height": 44
+          }
+        ],
+        "focus": {
+          "name": "(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,",
+          "tag": "BODY",
+          "outline": "none",
+          "visible": false,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      },
+      "focus_screenshot": "after-firefox-favorito-390-focus.png",
+      "focus_png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "focus_metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1081
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Recarregar favoritos",
+            "width": 149.93333435058594,
+            "height": 34
+          },
+          {
+            "name": "Identificadores e limites do período",
+            "width": 316,
+            "height": 32
+          },
+          {
+            "name": "Executar novamente",
+            "width": 166.25,
+            "height": 46
+          },
+          {
+            "name": "Abrir cálculo registrado",
+            "width": 170.75,
+            "height": 44
+          }
+        ],
+        "focus": {
+          "name": "Executar novamente",
+          "tag": "BUTTON",
+          "outline": "solid",
+          "visible": true,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      }
+    },
+    {
+      "state": "sem-dados",
+      "width": 390,
+      "height": 900,
+      "route": "/",
+      "initial": "Centro on 01/01/2025, outside the synthetic coverage",
+      "expected": "No numerical total substitutes missing data",
+      "top_reset": {
+        "before": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 121,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1241
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "after": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1241
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "stable_frames": 3,
+        "sampled_frames": 3,
+        "container_resets": 0
+      },
+      "screenshot": "after-firefox-sem-dados-390.png",
+      "png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "axe": "after-firefox-sem-dados-390-axe.json",
+      "captured_at_utc": "2026-10-12T13:51:44.548Z",
+      "axe_summary": {
+        "violations": [],
+        "incomplete": [],
+        "passes": 27
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1241
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Editar pergunta",
+            "width": 109.89999389648438,
+            "height": 32
+          },
+          {
+            "name": "CálculoFórmula, cobertura e totais por dia",
+            "width": 314,
+            "height": 57.5
+          },
+          {
+            "name": "Salvar consulta favorita",
+            "width": 171.96665954589844,
+            "height": 34
+          },
+          {
+            "name": "Recolher próxima consulta",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Centro",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado01/01/2025",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+            "width": 346,
+            "height": 38
+          }
+        ],
+        "focus": {
+          "name": "(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,",
+          "tag": "BODY",
+          "outline": "none",
+          "visible": false,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      },
+      "focus_screenshot": "after-firefox-sem-dados-390-focus.png",
+      "focus_png_dimensions": {
+        "width": 390,
+        "height": 900
+      },
+      "focus_metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1241
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Editar pergunta",
+            "width": 109.89999389648438,
+            "height": 32
+          },
+          {
+            "name": "CálculoFórmula, cobertura e totais por dia",
+            "width": 314,
+            "height": 57.5
+          },
+          {
+            "name": "Salvar consulta favorita",
+            "width": 171.96665954589844,
+            "height": 34
+          },
+          {
+            "name": "Recolher próxima consulta",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Centro",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Definido pela perguntaOntemÚltimos 7 diasÚltimos 30 diasPersonalizado01/01/2025",
+            "width": 346,
+            "height": 38
+          },
+          {
+            "name": "Demonstração (sem IA)Modelo de IA · indisponível",
+            "width": 346,
+            "height": 38
+          }
+        ],
+        "focus": {
+          "name": "Editar pergunta",
+          "tag": "BUTTON",
+          "outline": "solid",
+          "visible": true,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "state": "pending-after-editor-collapse",
+      "width": 390,
+      "radio_visible": true,
+      "confirm_visible": true,
+      "top_reset": {
+        "before": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 373,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1273
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "after": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1273
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "stable_frames": 3,
+        "sampled_frames": 3,
+        "container_resets": 0
+      },
+      "screenshot": "after-firefox-pending-collapsed-390.png",
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 900,
+          "device_pixel_ratio": 1
+        },
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "scroll_containers": [
+          {
+            "tag": "HTML",
+            "id": "",
+            "class": "productfont_1eae82f4-module__tnkAGG__variable",
+            "x": 0,
+            "y": 0,
+            "client_width": 390,
+            "client_height": 900,
+            "scroll_width": 390,
+            "scroll_height": 1273
+          },
+          {
+            "tag": "SMALL",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 142,
+            "scroll_height": 19
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "class": "history-title",
+            "x": 0,
+            "y": 0,
+            "client_width": 242,
+            "client_height": 21,
+            "scroll_width": 242,
+            "scroll_height": 42
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 103,
+            "scroll_height": 19
+          },
+          {
+            "tag": "TIME",
+            "id": "",
+            "class": "",
+            "x": 0,
+            "y": 0,
+            "client_width": 0,
+            "client_height": 0,
+            "scroll_width": 96,
+            "scroll_height": 18
+          }
+        ],
+        "header_top": 0,
+        "horizontal_overflow": false,
+        "document_width": 390,
+        "small_targets": [],
+        "controls": [
+          {
+            "name": "Abrir menu",
+            "width": 34,
+            "height": 34
+          },
+          {
+            "name": "Ontem",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Últimos 7 dias",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Últimos 30 dias",
+            "width": 344,
+            "height": 46
+          },
+          {
+            "name": "Identificadores e limites do período",
+            "width": 312,
+            "height": 32
+          },
+          {
+            "name": "Cancelar esclarecimento",
+            "width": 180.18333435058594,
+            "height": 44
+          }
+        ],
+        "focus": {
+          "name": "(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,",
+          "tag": "BODY",
+          "outline": "none",
+          "visible": false,
+          "uncovered": true
+        },
+        "fonts": {
+          "status": "loaded",
+          "families": [
+            "\"productFont\", \"productFont Fallback\", Arial, Arial, sans-serif"
+          ]
+        },
+        "links": [
+          {
+            "text": "Ir para o conteúdo",
+            "href": "#main-content",
+            "local_target_exists": true
+          }
+        ],
+        "reduced_motion": true
+      },
+      "png_dimensions": {
+        "width": 390,
+        "height": 900
+      }
+    },
+    {
+      "width": 390,
+      "pending": {
+        "metric": "revenue",
+        "stores": [
+          "a001"
+        ]
+      },
+      "result": {
+        "plan": {
+          "intent": "daily",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-10",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": "day",
+          "limit": 5
+        },
+        "coverage": "complete",
+        "totals": {
+          "revenue_cents": "1081095",
+          "orders": 56,
+          "units": 227,
+          "average_ticket_cents": "19305.26785714285714285714286"
+        },
+        "rows": 7
+      },
+      "favorite": {
+        "name": "Receita semanal · Centro",
+        "plan": {
+          "intent": "daily",
+          "metric": "revenue",
+          "store_references": [
+            "a001"
+          ],
+          "period": {
+            "start": "2026-08-10",
+            "end": "2026-08-17"
+          },
+          "comparison": null,
+          "grouping": "day",
+          "limit": 5
+        }
+      },
+      "absent": {
+        "status": "no_data",
+        "coverage": "absent",
+        "totals": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "width": 390,
+      "context": {
+        "css_width": 390,
+        "css_height": 900,
+        "device_scale_factor": 1,
+        "has_touch": true,
+        "is_mobile": false,
+        "mode": "narrow desktop viewport with touch; mobile layout emulation not used"
+      },
+      "console_errors": [],
+      "console_error_details": [],
+      "page_errors": [],
+      "request_failures": [],
+      "http_errors": [
+        {
+          "method": "GET",
+          "url": "http://frontend:3102/api/auth/me",
+          "status": 401,
+          "classification": "expected anonymous session check before login"
+        }
+      ],
+      "assets": [
+        {
+          "type": "font",
+          "url": "http://frontend:3102/_next/static/media/source_sans_3-s.p.0bgocza2xk39f.woff2",
+          "status": 200
+        },
+        {
+          "type": "stylesheet",
+          "url": "http://frontend:3102/_next/static/chunks/32u4id-e7jgv4.css",
+          "status": 200
+        },
+        {
+          "type": "script",
+          "url": "http://frontend:3102/_next/static/chunks/3l04zcqx63h3y.js",
+          "status": 200
+        },
+        {
+          "type": "script",
+          "url": "http://frontend:3102/_next/static/chunks/20pkwklkbp1q4.js",
+          "status": 200
+        },
+        {
+          "type": "script",
+          "url": "http://frontend:3102/_next/static/chunks/turbopack-03h4qq07e4vwr.js",
+          "status": 200
+        },
+        {
+          "type": "script",
+          "url": "http://frontend:3102/_next/static/chunks/1rj7ns8rte9vc.js",
+          "status": 200
+        },
+        {
+          "type": "script",
+          "url": "http://frontend:3102/_next/static/chunks/3fntmmi971322.js",
+          "status": 200
+        },
+        {
+          "type": "script",
+          "url": "http://frontend:3102/_next/static/chunks/3km2gb_aqupze.js",
+          "status": 200
+        },
+        {
+          "type": "image",
+          "url": "http://frontend:3102/icon.svg",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "browser_version": "155.0",
+  "status": "captured",
+  "finished_at_utc": "2026-10-12T13:51:45.455Z"
+}

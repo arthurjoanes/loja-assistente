@@ -1,8 +1,21 @@
 # Capturas da interface
 
+As capturas atuais de [12/10/2026](uiux-20261012.md) têm comparação pareada em `screenshots/uiux-20261012/`, com a aplicação real em Demo. O recibo em `evidence/uiux-20261012/` registra hashes, origem, jornadas, geometria e scanner; as capturas de setembro abaixo conservam seu contexto histórico.
+
+| Estado | Antes | Depois |
+| --- | --- | --- |
+| Início em 320 px | [Antes](screenshots/uiux-20261012/before-chromium-inicio-320.png) | [Depois](screenshots/uiux-20261012/after-chromium-inicio-320.png) |
+| Escolha do período em 390 px | [Antes](screenshots/uiux-20261012/before-chromium-pendente-390.png) | [Depois](screenshots/uiux-20261012/after-chromium-pendente-390.png) |
+| Editor recolhido em 390 px | [Antes](screenshots/uiux-20261012/before-chromium-pending-collapsed-390.png) | [Depois](screenshots/uiux-20261012/after-chromium-pending-collapsed-390.png) |
+| Resultado em 1440 px | [Antes](screenshots/uiux-20261012/before-chromium-resultado-1440.png) | [Depois](screenshots/uiux-20261012/after-chromium-resultado-1440.png) |
+| Favoritos em 768 px | [Antes](screenshots/uiux-20261012/before-chromium-favorito-768.png) | [Depois](screenshots/uiux-20261012/after-chromium-favorito-768.png) |
+| Ausência em 1024 px | [Antes](screenshots/uiux-20261012/before-chromium-sem-dados-1024.png) | [Depois](screenshots/uiux-20261012/after-chromium-sem-dados-1024.png) |
+
+## Capturas de 22/09/2026
+
 As seis capturas de `screenshots/current-20260922/` vieram do Chromium/Playwright 1.63.0 acessando a aplicação local em 22/09/2026. As telas autenticadas correspondem à fonte `6361280d`; o [registro](screenshots/current-20260922/capture.json) contém horário, viewports, respostas reais e SHA-256. Uma alteração concorrente posterior de login não faz parte desta captura: nenhuma imagem de login é apresentada. São recortes nativos de componentes e de coordenadas do navegador, sem edição de pixels: viewport desktop 1440×1000 ou móvel 390×844. O registro identifica o seletor e as dimensões; os recortes móveis têm no máximo 650 px de altura. As provas históricas completas ficam apenas em links.
 
-| Tela atual                                                                    | O que conferir                                                                  |
+| Tela histórica                                                                    | O que conferir                                                                  |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [Início](screenshots/current-20260922/inicio.png)                             | Seis consultas disponíveis, em 1392×329 px                                      |
 | [Início no celular](screenshots/current-20260922/inicio-mobile.png)           | As seis consultas em 370×506 px, sem corte horizontal global                    |
@@ -35,7 +48,7 @@ O [coletor](../scripts/capture_docs.cjs) exige pasta vazia, usa gerente Aurora/C
 
 - Os 15 PNGs diretamente em `screenshots/` mostram a interface lateral verde de 21/09/2026: seis telas de jornada, sete vistas `quality-*` e duas `welcome-*`. Conservam as provas de [verificação histórica](verification.md#arquivo-histórico-da-interface-anterior--21092026), [revisão anterior](quality-review.md) e [parser](evidence/problem-review/README.md). Não representam o produto atual.
 - Os seis PNGs dos dois diretórios `screenshots/operational-proof-20260922/` têm hashes e fontes em manifestos. A [história operacional](operational-story.md) apresenta essas execuções anteriores, com barra azul e preparação lateral.
-- A [tela inicial do CI](screenshots/publication-20260922/inicio.png) conserva o [recibo histórico](evidence/frontend-ci-20260922.json). Tem a direção visual atual, mas é o recorte 1280×720 daquela execução.
+- A [tela inicial do CI](screenshots/publication-20260922/inicio.png) conserva o [recibo histórico](evidence/frontend-ci-20260922.json). Tem a direção visual de setembro, no recorte 1280×720 daquela execução.
 - Os quatro PNGs em `design/` são propostas e espécimes, explicitamente identificados na [decisão visual](frontend-quality.md); não são captura da aplicação.
 
 A revisão inventariou os 26 PNGs anteriores, referências e hashes, sem duplicatas binárias internas. Todos têm função documental; nenhuma prova foi excluída. Cópias de fontes do experimento Azure, freeze e fingerprints preservam a reprodução da avaliação, e os snapshots antes/depois iguais comprovam que o refresh não alterou os dados; não são arquivos descartáveis.

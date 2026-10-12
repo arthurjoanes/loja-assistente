@@ -1,5 +1,9 @@
 # Ler e conferir uma análise
 
+A [revisão de UI/UX de 12/10/2026](uiux-20261012.md) registra a comparação pareada atual, jornadas, decisões e limites. O esclarecimento pendente ocupa a área de leitura antes da resposta, com escolhas e prévia de escopo sempre disponíveis, inclusive quando **Próxima consulta** está recolhida. Confirmar leva ao novo resultado; cancelar devolve ao campo da pergunta. A chegada da pendência após uma ação explícita leva o foco à escolha, sem impor foco durante o carregamento inicial.
+
+Nos favoritos, **Executar novamente** é a ação principal do plano salvo. **Abrir cálculo registrado** acessa a resposta de origem; renomear e excluir têm controles próprios. Nomes e dias incluídos ficam em primeiro plano; **Identificadores e limites do período** conserva os IDs e o fim exclusivo. Recarregar após conflito preserva nome e filtros editados enquanto o acesso continua válido. Falha da lista é distinta de uma lista vazia confirmada.
+
 Consulte a [jornada histórica com três capturas verificadas](operational-story.md) para acompanhar consulta, recusa e nova tentativa válida. Os [resultados de validação](verification.md) identificam as versões e as correções de contraste/foco.
 
 Os filtros definem lojas e período para a próxima consulta. Datas escritas na pergunta têm precedência; as lojas continuam sujeitas à autorização no servidor. O resultado conserva o recorte efetivamente consultado, mesmo depois de mudar um filtro.

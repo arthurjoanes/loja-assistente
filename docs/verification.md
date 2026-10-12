@@ -1,5 +1,11 @@
 # Testes locais
 
+## UI/UX de 12/10/2026
+
+A candidata do commit `2f372dd91f7392efb632cc6ac3f7c8605c4cceab` passou na rodada isolada `aa8b330b814c`: 477 testes de backend, 57/57 avaliações offline, build/lint/tipos/Prettier e 85 casos Playwright (41 puros/proxy, 44 navegador/HTTP), sem skips, retries ou flaky. Trivy não encontrou HIGH/CRITICAL nas imagens de runtime e Gitleaks aprovou histórico/fonte. Os hashes de fonte congelada e host permaneceram iguais durante a rodada.
+
+A comparação tem 25 estados Chromium pareados em cinco larguras e cinco estados Firefox. Axe registrou zero violações/inconclusivos no candidato; teclado, foco, reflow, alvos visíveis, console, rede e assets foram conferidos. Zoom nativo e leitor de tela permanecem não verificados. [Decisões, resultados e limites](uiux-20261012.md) · [Recibo e hashes](evidence/uiux-20261012/index.json) · [Capturas antes/depois](image-captures.md).
+
 ## Evolução de 12/10/2026
 
 Favoritos e esclarecimentos persistidos foram validados na candidata `f34a33eeadc6c6530064dd65653c044d1ae7e59b`, branch `feat/evolucao-loja-assistente-20261012`. O [CI da candidata](https://github.com/arthurjoanes/loja-assistente/actions/runs/38205298403) passou, e a rodada local `c72532e80bad` executou os mesmos fluxos em imagens próprias. O [recibo](evidence/evolution-20261012/index.json) registra fontes, hashes, imagens, ambiente, testes e falhas preservadas. O [manifesto](evidence/evolution-20261012/sources.json) contém os bytes do snapshot local; HEAD e diff também foram registrados, sem depender apenas do commit para identificar as fontes.
