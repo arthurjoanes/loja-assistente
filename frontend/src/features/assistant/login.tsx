@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Brand, Icon } from "@/components/icon";
 import { api, ApiError } from "@/lib/api";
 import type { Session } from "@/lib/contracts";
@@ -36,6 +36,7 @@ export function Login({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [credentialError, setCredentialError] = useState(false);
+  const passwordInput = useRef<HTMLInputElement>(null);
   async function submit(event: React.FormEvent) {
     event.preventDefault();
     setBusy(true);
@@ -44,10 +45,12 @@ export function Login({
     try {
       onLogin(await api<Session>("/auth/login", { body: { email, password } }));
     } catch (error) {
-      setCredentialError(
-        error instanceof ApiError && [401, 422].includes(error.status),
-      );
+      const invalidCredentials =
+        error instanceof ApiError && [401, 422].includes(error.status);
+      setCredentialError(invalidCredentials);
       setError(error instanceof Error ? error.message : "Falha ao entrar.");
+      if (invalidCredentials)
+        requestAnimationFrame(() => passwordInput.current?.focus());
     } finally {
       setBusy(false);
     }
@@ -126,6 +129,8 @@ export function Login({
             </label>
             <input
               id="password"
+              name="password"
+              ref={passwordInput}
               className="text-input"
               type="password"
               value={password}

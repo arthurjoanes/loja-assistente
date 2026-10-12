@@ -13,6 +13,7 @@ import { QuestionComposer } from "./question-composer";
 import { useWorkspace } from "./use-workspace";
 import { validPeriod } from "./period-selection";
 import { FavoritesPanel } from "./favorites-panel";
+import { ClarificationPanel } from "./clarification-panel";
 
 export function Workspace() {
   const {
@@ -24,6 +25,7 @@ export function Workspace() {
     history,
     favorites,
     favoritesLoading,
+    favoritesError,
     conflict,
     success,
     pendingClarification,
@@ -78,19 +80,52 @@ export function Workspace() {
       ? selection.id
       : latestId;
   const resultStart = useRef<HTMLDivElement>(null);
+  const pendingStart = useRef<HTMLDivElement>(null);
+  const clarificationHeading = useRef<HTMLHeadingElement>(null);
   const errorNotice = useRef<HTMLDivElement>(null);
   const composer = useRef<HTMLTextAreaElement>(null);
   const editQuestionButton = useRef<HTMLButtonElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
+  function focusAnalysis(preferClarification = true) {
+    requestAnimationFrame(() => {
+      const target = preferClarification
+        ? (clarificationHeading.current ?? resultStart.current)
+        : resultStart.current;
+      target?.focus();
+      target?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+  }
+  async function submitQuestion(text: string) {
+    const answer = await ask(text);
+    if (answer) focusAnalysis();
+  }
+  async function selectConversation(id: string) {
+    const conversation = await openConversation(id);
+    if (conversation) focusAnalysis();
+  }
+  async function confirmClarification(choiceId: string) {
+    const answer = await respondClarification(choiceId);
+    if (answer) focusAnalysis();
+    return answer;
+  }
+  async function stopClarification() {
+    const cancelled = await cancelClarification();
+    if (cancelled) editQuestion();
+    return cancelled;
+  }
   useEffect(() => {
-    const target = error ? errorNotice.current : resultStart.current;
+    if (!error && !pendingQuestion) return;
+    const target = error
+      ? errorNotice.current
+      : (pendingStart.current ?? resultStart.current);
+    if (error) target?.focus();
     target?.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "instant"
         : "smooth",
       block: "start",
     });
-  }, [latestId, pendingQuestion, error]);
+  }, [pendingQuestion, error]);
   function startAnalysis() {
     freshConversation();
     setQueryExpanded(true);
@@ -169,13 +204,7 @@ export function Workspace() {
         question={question}
         textareaRef={composer}
         onQuestionChange={setQuestion}
-        onAsk={(text) => void ask(text)}
-        pendingClarification={pendingClarification}
-        stores={session.user.stores}
-        conflict={conflict}
-        onRespond={respondClarification}
-        onCancel={cancelClarification}
-        onReload={() => void reloadWorkspace()}
+        onAsk={(text) => void submitQuestion(text)}
       />
       <AnalysisContext
         stores={session.user.stores}
@@ -210,7 +239,7 @@ export function Workspace() {
         onShowAnalysis={() => setView("assistant")}
         onShowOperations={() => void showOperations()}
         onShowFavorites={() => void showFavorites()}
-        onOpenConversation={(id) => void openConversation(id)}
+        onOpenConversation={(id) => void selectConversation(id)}
         onSignOut={() => void logout()}
       />
 
@@ -250,6 +279,7 @@ export function Workspace() {
             className="notice danger workspace-notice"
             role="alert"
             ref={errorNotice}
+            tabIndex={-1}
           >
             <span>{error}</span>
             {conflict && (
@@ -291,16 +321,23 @@ export function Workspace() {
               favorites={favorites}
               stores={session.user.stores}
               loading={favoritesLoading}
+              error={favoritesError}
               busy={busy}
               conflict={conflict}
               onRefresh={() => void showFavorites()}
               onAnalysis={() => setView("assistant")}
               onRename={renameFavorite}
               onDelete={deleteFavorite}
-              onRun={(favorite) => void runFavorite(favorite)}
+              onRun={async (favorite) => {
+                const answer = await runFavorite(favorite);
+                if (answer) focusAnalysis();
+              }}
               onOpen={async (favorite) => {
                 const focused = await openRecordedCalculation(favorite);
-                if (focused) setSelection(focused);
+                if (focused) {
+                  setSelection(focused);
+                  focusAnalysis(false);
+                }
               }}
             />
           </main>
@@ -312,6 +349,23 @@ export function Workspace() {
             aria-busy={busy}
           >
             <div className="conversation-column" key="result">
+              {pendingClarification && (
+                <ClarificationPanel
+                  key={
+                    pendingClarification.id +
+                    ":" +
+                    pendingClarification.revision
+                  }
+                  pending={pendingClarification}
+                  stores={session.user.stores}
+                  busy={busy}
+                  conflict={conflict}
+                  headingRef={clarificationHeading}
+                  onRespond={confirmClarification}
+                  onCancel={stopClarification}
+                  onReload={() => void reloadWorkspace()}
+                />
+              )}
               {hasResponse && (
                 <div className="result-toolbar">
                   {answers.length > 1 && (
@@ -364,13 +418,12 @@ export function Workspace() {
                       periodInvalid ||
                       (mode === "llm" && !session.llm_available)
                     }
-                    onAsk={(text) => void ask(text)}
+                    onAsk={(text) => void submitQuestion(text)}
                   />
                 ) : (
                   <div className="conversation-thread">
-                    <div ref={resultStart} />
                     {pendingQuestion && (
-                      <div className="pending-answer">
+                      <div className="pending-answer" ref={pendingStart}>
                         <div className="question-row">
                           <p>{pendingQuestion}</p>
                         </div>
@@ -381,11 +434,24 @@ export function Workspace() {
                       </div>
                     )}
                     {answers.map((answer) => (
-                      <div key={answer.id} hidden={answer.id !== selectedId}>
+                      <div
+                        key={answer.id}
+                        hidden={answer.id !== selectedId}
+                        ref={answer.id === selectedId ? resultStart : undefined}
+                        tabIndex={-1}
+                        className="analysis-result-focus"
+                        role="region"
+                        aria-label={`Resultado: ${answer.question}`}
+                      >
                         <AnswerCard
                           answer={answer}
                           onError={handleError}
                           busy={busy || conflict}
+                          clarificationActive={
+                            pendingClarification?.status === "pending" &&
+                            pendingClarification.id ===
+                              answer.pending_clarification?.id
+                          }
                           saved={favorites.some(
                             (favorite) =>
                               favorite.source_answer_id === answer.id,
