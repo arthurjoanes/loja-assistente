@@ -33,6 +33,150 @@ select,
 textarea {
   font: inherit;
 }
+.favorites-panel {
+  max-width: 1050px;
+  padding: 24px;
+}
+.favorites-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.favorites-heading p,
+.favorites-empty p,
+.scope-guidance {
+  color: var(--muted);
+  margin: 8px 0 14px;
+}
+.favorites-list {
+  display: grid;
+  gap: 18px;
+}
+.favorite-item,
+.favorites-empty {
+  padding: 20px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.favorite-item h3 {
+  margin-bottom: 4px;
+}
+.favorite-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: 12px;
+}
+.primary-button {
+  background: var(--accent);
+  color: white;
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  padding: 10px 14px;
+  min-height: 44px;
+}
+.primary-button:hover:not(:disabled) {
+  background: var(--accent-dark);
+}
+.text-button.danger-action {
+  color: #9a2424;
+}
+.favorite-item label,
+.save-favorite label {
+  display: block;
+  margin: 12px 0 5px;
+  font-weight: 600;
+}
+.favorite-item input,
+.save-favorite input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 9px 10px;
+  background: white;
+  color: var(--ink);
+}
+.plan-scope {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+  overflow-wrap: anywhere;
+}
+.plan-scope dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+.plan-scope dd {
+  font-size: 14px;
+}
+.save-favorite,
+.saved-favorite {
+  margin-top: 20px;
+}
+.calculation-version {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.clarification-panel {
+  margin-bottom: 20px;
+  padding: 14px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+.clarification-panel h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.clarification-panel fieldset {
+  border: 0;
+  padding: 0;
+  margin: 16px 0;
+  min-width: 0;
+}
+.clarification-panel legend {
+  font-weight: 600;
+}
+.clarification-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.clarification-preview {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.clarification-preview h4 {
+  margin: 0;
+  font-size: 14px;
+}
+.clarification-state {
+  padding-bottom: 12px;
+}
+@media (max-width: 600px) {
+  .favorites-panel {
+    padding: 12px;
+  }
+  .favorite-item {
+    padding: 14px;
+  }
+  .favorite-actions > button {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
 button,
 select,
 summary {

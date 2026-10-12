@@ -1,6 +1,7 @@
 import type { RefObject } from "react";
 import { Icon } from "@/components/icon";
-import type { Mode } from "@/lib/contracts";
+import type { Mode, PendingClarification, Store } from "@/lib/contracts";
+import { ClarificationPanel } from "./clarification-panel";
 
 type ComposerProps = {
   mode: Mode;
@@ -13,6 +14,12 @@ type ComposerProps = {
   textareaRef: RefObject<HTMLTextAreaElement | null>;
   onQuestionChange: (question: string) => void;
   onAsk: (question: string) => void;
+  pendingClarification: PendingClarification | null;
+  stores: Store[];
+  conflict: boolean;
+  onRespond: (choiceId: string) => Promise<boolean>;
+  onCancel: () => Promise<boolean>;
+  onReload: () => void;
 };
 
 export function QuestionComposer({
@@ -26,6 +33,12 @@ export function QuestionComposer({
   textareaRef,
   onQuestionChange,
   onAsk,
+  pendingClarification,
+  stores,
+  conflict,
+  onRespond,
+  onCancel,
+  onReload,
 }: ComposerProps) {
   const canSend =
     !busy &&
@@ -34,6 +47,18 @@ export function QuestionComposer({
     !(mode === "llm" && !llmAvailable);
   return (
     <div className="composer-container">
+      {pendingClarification && (
+        <ClarificationPanel
+          key={pendingClarification.id + ":" + pendingClarification.revision}
+          pending={pendingClarification}
+          stores={stores}
+          busy={busy}
+          conflict={conflict}
+          onRespond={onRespond}
+          onCancel={onCancel}
+          onReload={onReload}
+        />
+      )}
       {reviewingEarlier && (
         <p className="reviewing-note">
           Você está revendo um resultado anterior. A continuação usa o último

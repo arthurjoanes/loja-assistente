@@ -6,7 +6,7 @@ type SidebarProps = {
   user: Session["user"];
   history: Conversation[];
   conversationId: string | null;
-  view: "assistant" | "operations";
+  view: "assistant" | "operations" | "favorites";
   mobileMenu: boolean;
   returnFocusTo: RefObject<HTMLButtonElement | null>;
   locked: boolean;
@@ -14,6 +14,7 @@ type SidebarProps = {
   onNewAnalysis: () => void;
   onShowAnalysis: () => void;
   onShowOperations: () => void;
+  onShowFavorites: () => void;
   onOpenConversation: (id: string) => void;
   onSignOut: () => void;
 };
@@ -30,6 +31,7 @@ export function AnalysisSidebar({
   onNewAnalysis,
   onShowAnalysis,
   onShowOperations,
+  onShowFavorites,
   onOpenConversation,
   onSignOut,
 }: SidebarProps) {
@@ -111,6 +113,15 @@ export function AnalysisSidebar({
           Análises
         </button>
         <button
+          className={view === "favorites" ? "active" : ""}
+          aria-current={view === "favorites" ? "page" : undefined}
+          onClick={onShowFavorites}
+          disabled={locked}
+        >
+          <Icon name="list" size={19} />
+          Favoritos
+        </button>
+        <button
           className={view === "operations" ? "active" : ""}
           aria-current={view === "operations" ? "page" : undefined}
           onClick={() => void onShowOperations()}
@@ -150,6 +161,9 @@ export function AnalysisSidebar({
                 <Icon name="list" size={15} />
                 <span className="history-entry">
                   <span className="history-title">{item.title}</span>
+                  {item.pending_clarification?.status === "pending" && (
+                    <small>Esclarecimento pendente</small>
+                  )}
                   <time
                     className="history-date"
                     dateTime={item.created_at}
