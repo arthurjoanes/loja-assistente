@@ -195,6 +195,20 @@ O público pretendido é quem consulta indicadores de lojas e precisa conferir o
 
 Separar interpretação e cálculo impede que uma frase plausível substitua uma conta definida, mas custa manter uma matriz de capacidades e recusar pedidos fora dela. Um modelo pode interpretar melhor algumas formulações e ainda pedir esclarecimento desnecessário, como na falha histórica `final-bf-04`. Evoluir para SQL livre, RAG ou novos serviços não decorre desse resultado: exige outro problema e outro contrato de verificação.
 
+## Favoritos e esclarecimentos
+
+Favoritos pertencem à organização e ao usuário da sessão. O navegador envia apenas `answer_id` e nome para salvar; o servidor lê a resposta, reautoriza as lojas e copia o QueryPlan com IDs canônicos. Listagem limitada, detalhe e mutações validam schema, plano e acesso antes de serializar nome ou escopo. Reexecutar usa `execute_query`, cria conversa e resposta identificáveis e mantém a origem histórica. Esse caminho não instancia interpretador nem reserva orçamento de provedor.
+
+Criação é idempotente por organização, usuário e resposta de origem. Renomear, excluir e executar exigem revisão. O lock `NOWAIT` serializa o favorito; uma execução aceita aumenta sua revisão, portanto reenviar a revisão anterior recebe 409. Depois de timeout o cliente recarrega para conferir o estado, sem repetir a execução automaticamente. A interface distingue evidência salva da execução sobre o dataset atual.
+
+O parser Demo produz um rascunho tipado somente quando falta período ou há nome de loja realmente duplicado entre lojas permitidas. O servidor persiste `PartialPlan` e `PendingClarification` na conversa, com pergunta original, campo solicitado, escolhas autorizadas, revisão, versão, referência analítica e expiração de 30 minutos no relógio real. Resolver ou cancelar exige lock da conversa e a revisão atual. Duas lacunas geram duas pendências sucessivas; cada escolha conserva os campos já resolvidos. Nova pergunta invalida escolhas antigas, e erro de provedor conserva a pendência. A conclusão revalida domínio e acesso antes de calcular; `last_plan` só muda após resultado válido.
+
+Sem seleção de loja, a pergunta continua abrangendo todas as lojas autorizadas. Período escrito prevalece sobre filtro visual. Referências proibidas, desconhecidas ou misturadas recebem recusa genérica antes da consulta. Filtros por pagamento, vendedor ou produto individual recebem explicação sem rascunho executável. A resolução é determinística e não chama o LLM. `Interpretation` e o transporte Azure estrito v5 permanecem compatíveis; campos de persistência novos são opcionais ao ler respostas antigas.
+
+A migração [0005](../backend/migrations/versions/0005_favorites_clarifications.py) acrescenta favoritos e campos de pendência, além da unicidade composta necessária para a FK da resposta de origem. Não reescreve JSONB de respostas, sessões, vendas nem o ledger do provedor. [Contrato de dados](data-contract.md#evolução-0005).
+
+Não há dependência nova. A interação considera a distinção entre [pergunta salva](https://www.metabase.com/docs/latest/questions/introduction#saving-questions-to-collections) e [bookmark pessoal](https://www.metabase.com/docs/latest/exploration-and-organization/exploration#bookmarks) do Metabase, com implementação própria. Sua [licença](https://github.com/metabase/metabase/blob/master/LICENSE.txt) reúne AGPL e partes comerciais. A validação de cada escolha segue a ideia de [Forms](https://legacy-docs-oss.rasa.com/docs/rasa/forms/#validating-form-input); o [Rasa OSS](https://github.com/RasaHQ/rasa) usa Apache 2.0 e declara maintenance mode. [MetricFlow](https://github.com/dbt-labs/metricflow) usa Apache 2.0 nas versões atuais, exige projeto dbt e oferece um catálogo e compilação de SQL que excedem estas quatro métricas. Essas fontes foram conferidas em 12/10/2026; nenhum desses frameworks foi instalado ou incorporado.
+
 ## Código e evidências relacionados
 
 | Tema                             | Implementação e critérios                                                                                                                                                          |

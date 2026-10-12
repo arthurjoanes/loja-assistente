@@ -106,6 +106,31 @@ Pergunta: 1 a 1.000 caracteres, rejeição de conteúdo só com espaços, trim e
 
 `POST /auth/login` retorna 429 e `Retry-After` em segundos ao atingir cinco tentativas malsucedidas ou em andamento por conta normalizada, ou trinta por origem. A janela dura 60 segundos desde a primeira reserva. O PostgreSQL registra a admissão antes do Argon2 e conserva o contador após 401 ou rollback. Um login concluído libera apenas sua própria reserva. A conta compartilha a cota entre origens; clientes do proxy Next.js compartilham a cota da conexão do proxy. A [política de segurança](security.md) descreve a migração e os limites desse controle.
 
+## Favoritos e esclarecimentos
+
+Todas as mutações abaixo usam POST, com sessão, Origin permitido e CSRF. O proxy Next continua encaminhando GET/POST por toda a cadeia. Identidade, tenant, planos e opções autorizadas vêm do servidor.
+
+| Método e caminho | Entrada | Retorno |
+| --- | --- | --- |
+| `GET /favorites` | Sessão | Até 50 favoritos autorizados, lista sem wrapper |
+| `GET /favorites/{id}` | ID | Favorito autorizado |
+| `POST /favorites` | `answer_id`, `name` | Favorito; 200 também em criação duplicada |
+| `POST /favorites/{id}/rename` | `name`, `revision` | Favorito com nova revisão |
+| `POST /favorites/{id}/delete` | `revision` | 204 sem corpo |
+| `POST /favorites/{id}/run` | `revision` | `Answer` novo, persistido com request_id novo |
+| `POST /conversations/{id}/clarification/respond` | `pending_id`, `revision`, `choice_id` | `Answer`, com resultado ou próxima pendência |
+| `POST /conversations/{id}/clarification/cancel` | `pending_id`, `revision` | Pendência com status `cancelled` |
+
+Favorito: `id`, `name`, `plan`, `schema_version=1`, `source_answer_id`, `created_at`, `updated_at`, `revision`. Nome aceita até 120 caracteres após trim e não pode ser vazio. O plano é copiado de uma resposta válida do próprio usuário; planos/tenant enviados pelo cliente são rejeitados. Datas são absolutas. Salvar novamente a mesma resposta retorna o favorito existente, sem renomear. Renomear, excluir e executar exigem revisão atual e lock `NOWAIT`. Executar também aumenta revisão. 409 exige recarregar; depois de timeout não há retry automático de execução. Histórico e evidência de origem permanecem imutáveis.
+
+Um favorito revogado é omitido da listagem; detalhe e ações retornam 403 sem nome/plano. IDs alheios retornam 404. Schema ou plano persistido inválido não é executado. Salvar, listar e reexecutar reconsultam permissões; favoritos não são transferidos entre contas.
+
+`Answer` e detalhe da conversa acrescentam `pending_clarification` opcional, com padrão null para persistência antiga. `PartialPlan` contém `intent`, `metric`, `store_ids`, `period` nullable, `comparison`, `grouping` e `limit`. `PendingClarification` contém `id`, `revision`, `status` (`pending`, `resolved`, `cancelled`, `expired`), `original_question`, `partial_plan`, `missing_field` (`period` ou `store`), `choices`, `created_at`, `expires_at`, `schema_version=1`, `mode` e `reference_date`. Cada escolha contém `id`, `label`, `period` nullable e `store_ids` nullable.
+
+Escolhas de período: ontem, últimos 7 dias e últimos 30 dias; o servidor resolve datas pela referência analítica capturada, com fim exclusivo. Escolhas de loja contêm até seis IDs autorizados, com nomes e IDs para distinguir duplicatas. A pendência expira em 30 minutos pelo relógio real. Resposta a pendência terminal, substituída ou com revisão antiga recebe 409. Refresh recupera o estado pelo detalhe da conversa. A conclusão reautoriza cada loja e valida QueryPlan antes de executar sem interpretador/LLM. Sem seleção, todas as lojas permitidas continuam sendo o padrão. Filtro fora do domínio não produz opções executáveis.
+
+Fontes: [contratos favoritos](../backend/src/loja_assistente/favorites/contracts.py), [contratos esclarecimento](../backend/src/loja_assistente/clarifications/contracts.py), [TypeScript](../frontend/src/lib/contracts.ts).
+
 ## Código e evidências relacionados
 
 | Tema                             | Implementação e critérios                                                                                                                                                                                                                                                                                                   |

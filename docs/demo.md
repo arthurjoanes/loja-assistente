@@ -46,6 +46,16 @@ Smoke, desenvolvimento e final somaram 55 chamadas e 48.788 tokens, com estimati
 
 Para transformar apresentação em avaliação, use o [protocolo de consulta versus controles](usage-comparison.md): mesma tarefa/base/permissão, ordem registrada, acerto do recorte, tempo e ajuda. Os formulários estão preparados, mas ainda não houve estudo com participantes. Os valores pequenos da fixture manual não são os totais do setup demonstrado acima.
 
+## Favoritos e escolhas persistidas
+
+1. No modo Demo, pergunte **Receita da loja Centro** com o filtro de período vazio. Confira receita e Centro na prévia, selecione **Ontem** e confirme. A janela usa [16/08/2026,17/08/2026), conservando a loja. Atualizar a página antes da escolha recupera a pendência.
+2. Salve o resultado em **Favoritos**, informe um nome e confirme. Repetir o save da mesma resposta mantém um só favorito. Renomeie e confira que o novo nome permanece após refresh.
+3. Abra o favorito. **Abrir cálculo registrado** mostra a resposta de origem; **Executar novamente** pede conferir lojas e datas e grava uma resposta com nova data, request_id e versão do dataset. As datas do plano salvo não acompanham o calendário real.
+4. Exclua pelo controle com confirmação. Um erro conserva o nome em edição; conflito 409 oferece recarregar. Em outra conta, o favorito não aparece.
+5. Pergunte novamente sem período, cancele a escolha e tente uma pergunta nova. Escolhas da pendência antiga são recusadas. **Quanto vendi ontem?** sem seleção continua usando todas as lojas permitidas; **Receita ontem em dinheiro** recebe explicação sem calcular total geral.
+
+Lojas com nome duplicado são um caso da fixture de integração, não uma alteração do seed da demonstração. O esclarecimento oferece IDs claros apenas entre lojas atualmente autorizadas. [Verificação atual](verification.md#evolução-de-12102026).
+
 ## Código e evidências relacionados
 
 [seed](../backend/src/loja_assistente/seed.py) · [casos independentes](../evals/cases/manual-v1.json) · [captura com resposta](screenshots/current-20260922/capture.json).

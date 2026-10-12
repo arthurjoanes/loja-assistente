@@ -48,6 +48,8 @@ Ticket médio: **R$ 30 / 2 = R$ 15**. Pedido cancelado e vendas de outra organiz
 
 Na interface, peça **Mostre a evolução diária da receita nos últimos 7 dias**, alterne **Gráfico/Tabela** e abra **Cálculo**. Confira lojas, período e cobertura. Selecionar um resultado antigo muda a leitura; a continuação usa o último plano válido da conversa. [Roteiro](docs/demo.md) · [Interface e fontes](docs/interface.md).
 
+Salve um cálculo válido em **Favoritos** para repetir seu plano nas mesmas datas absolutas. **Abrir cálculo registrado** conserva a evidência original; **Executar novamente** consulta a base atual e registra outra resposta. O servidor confere as permissões a cada acesso. Se perguntar **Receita da loja Centro** sem período, escolha o período no esclarecimento: o indicador e a loja permanecem selecionados, inclusive após atualizar a página. [Contratos e estados](docs/api-contract.md#favoritos-e-esclarecimentos).
+
 ## Arquitetura
 
 ```mermaid
