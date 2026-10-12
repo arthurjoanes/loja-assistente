@@ -1,5 +1,27 @@
 # Testes locais
 
+## Evolução de 12/10/2026
+
+Favoritos e esclarecimentos persistidos foram validados na candidata `f34a33eeadc6c6530064dd65653c044d1ae7e59b`, branch `feat/evolucao-loja-assistente-20261012`. O [CI da candidata](https://github.com/arthurjoanes/loja-assistente/actions/runs/38205298403) passou, e a rodada local `c72532e80bad` executou os mesmos fluxos em imagens próprias. O [recibo](evidence/evolution-20261012/index.json) registra fontes, hashes, imagens, ambiente, testes e falhas preservadas. O [manifesto](evidence/evolution-20261012/sources.json) contém os bytes do snapshot local; HEAD e diff também foram registrados, sem depender apenas do commit para identificar as fontes.
+
+| Camada | Resultado |
+| --- | --- |
+| Backend | Ruff, formato e mypy aprovados; 477 testes, zero falhas, erros ou skips |
+| PostgreSQL e migração | 0001 a 0005; instalação vazia e upgrade de 0004 preservando JSONB legado, sessão, admissão e reserva `unknown`; bancos exclusivos terminados em `_test` |
+| Avaliação offline | 57/57; resultados Azure históricos e a falha paga permanecem intactos |
+| Frontend | Build de produção, ESLint, TypeScript e Prettier aprovados |
+| Playwright | 79 casos: 41 de domínio/proxy e 38 de navegador/HTTP; oito jornadas novas, zero falhas, skips, retries ou flaky |
+| Precisão e acesso | Dinheiro acima de 2²⁵³, cobertura parcial/ausente, IDs alheios, revogação, schema adulterado, histórico imutável e concorrência com conexões independentes |
+| Segurança das fontes e imagens | Gitleaks 8.30.1 redigido, histórico e snapshot completos sem achados; Trivy 0.74.0 sem HIGH/CRITICAL, usando `/dev/null` como arquivo de exclusões |
+
+As fontes foram copiadas para um snapshot privado após parar os agentes. Os builds usaram essa cópia; nenhum bind de código foi executado. Os hashes do snapshot e do host permaneceram iguais até o fim da rodada. Engine Docker 29.7.2, Python 3.12.14, Node 24.19.0, PostgreSQL 17.11 e Playwright 1.63.0. O projeto `pf-loja-assistente-evolucao-20261012-c72532e80bad` usou subnet inspecionada, tags próprias, dois bancos separados, chave vazia, LLM desligado e nenhuma porta host. A limpeza verificou labels antes de remover apenas os containers e a rede da rodada; as tags das imagens ficaram disponíveis para inspeção.
+
+As [capturas de favoritos](screenshots/evolution-20261012/evolution-favorites.png), [esclarecimento](screenshots/evolution-20261012/evolution-pending.png) e [celular](screenshots/evolution-20261012/evolution-mobile.png) vêm do Chromium com asserções sobre a aplicação real e dados sintéticos. Os bytes foram copiados sem edição e os hashes estão no recibo. O nome HTML visível na primeira captura é o dado de teste escapado. As capturas `fullPage` após interação podem incluir o link fixo “Ir para o conteúdo”, também observado nas provas anteriores; elas não substituem um screenshot de viewport no início da página.
+
+Falhas preservadas: o caminho longo da primeira cópia no Windows, a engine inicialmente indisponível, o scan de `sharp 0.35.4` e as jornadas da candidata `e37d194…`. O [aviso oficial](https://github.com/advisories/GHSA-wq5f-xc86-pv6w) motivou a atualização transitiva para 0.35.5, sem novas bibliotecas. Na prova local anterior, passaram 74 de 79 casos de navegador; o login era testado antes de terminar o boot, um alerta competia com o announcer do Next, o rodapé ultrapassava 360 px em três pixels a 200%, e uma jornada de seleção começava numa conversa restaurada. A correção aguardou a prontidão real, iniciou uma análise própria e permitiu quebra de linha no rodapé. Nenhum timeout, retry, escopo ou assert financeiro foi afrouxado.
+
+Teclado, foco, axe e reflow em 360 px com CSS zoom 2 passaram. Zoom nativo do navegador e leitor de tela manual não foram medidos. Os tempos ocorreram com outras stacks no host e não representam benchmark. Não houve chamada paga, reset da demonstração, merge automático ou deploy. Para repetir, use [o comando isolado](local-setup.md#verificação-isolada-da-evolução).
+
 ## Auditoria final sobre d702d127 — 22/09/2026
 
 Baseline: `origin=https://github.com/arthurjoanes/loja-assistente.git`, branch `main`, SHA `d702d12774bd1c69a58c881eb26058dd2385a41e`, árvore rastreada limpa em 22/09/2026, por volta de 13:00 −03. Inventário: 398 arquivos rastreados, 36 Markdown e 35 PNG/SVG; nenhum novo arquivo não ignorado. `.env`, caches e `.runtime` estavam ignorados. Credenciais existentes não foram copiadas. Foram lidos README, instruções, contratos, arquitetura, decisões, CI e caminhos críticos de autorização, cálculo, orçamento, proxy e estado da interface; testes, scripts e imagens foram amostrados. Inventário não significa leitura de cada fonte histórica.

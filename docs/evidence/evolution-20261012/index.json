@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-12",
+  "timezone": "America/Sao_Paulo",
+  "run_id": "c72532e80bad",
+  "branch": "feat/evolucao-loja-assistente-20261012",
+  "executed_head": "f34a33eeadc6c6530064dd65653c044d1ae7e59b",
+  "source_identity_sha256": "b8d9367c8f1e8c3536b38ac910d32ad739760365520e58fd84385bd979e3f46d",
+  "source_manifest": {
+    "path": "docs/evidence/evolution-20261012/sources.json",
+    "sha256": "90aaf8ea023b3f1bdf83259705722320245a748ccf33687eac20d9bda1205f3a",
+    "files": 468
+  },
+  "source_freeze": {
+    "method": "private copied snapshot built into immutable image IDs; no source binds",
+    "diff_at_freeze": "empty; all candidate changes committed",
+    "frozen_sources_unchanged": true,
+    "host_sources_unchanged": true,
+    "internal_agents": "stopped before final run"
+  },
+  "runtime": {
+    "engine": "29.7.2",
+    "project": "pf-loja-assistente-evolucao-20261012-c72532e80bad",
+    "subnet": "10.203.220.0/24",
+    "host_ports": [],
+    "python": "3.12.14",
+    "node": "24.19.0",
+    "postgres": "17.11",
+    "playwright": "1.63.0",
+    "sharp": "0.35.5",
+    "llm_enabled": false,
+    "paid_calls": 0,
+    "images": {
+      "backend": "sha256:d4ce24b208b46684deee70a3d9a2aaced647daa62dd1ae257c6f9aa9b7e38ff4",
+      "db": "sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "e2e": "sha256:0acdb8b8cef9b6ba9f385e6dd1848a82250bdd6dce10067680c4472ca9d8ee11",
+      "frontend": "sha256:3cca90448cb8cf309a7c8d29d61761fa870271e6f8f6f2ee9096a4a277a3ebfe",
+      "frontend-checks": "sha256:470001de07d443f8d07f232635d1abd5eb5030cb0984f9c1731dff8634ce2653"
+    }
+  },
+  "checks": {
+    "backend": {
+      "passed": 477,
+      "failed": 0,
+      "skipped": 0,
+      "modules": {
+        "test_analytics": 18,
+        "test_api_budget_evaluation": 3,
+        "test_auth": 7,
+        "test_budget_adapter": 6,
+        "test_budget_policy": 14,
+        "test_budget_postgres": 12,
+        "test_budget_proof_runner": 5,
+        "test_check_script": 6,
+        "test_clarifications_api": 29,
+        "test_clarifications_domain": 31,
+        "test_concurrency": 1,
+        "test_evals": 74,
+        "test_evaluation_runner": 1,
+        "test_evolution_proof_runner": 2,
+        "test_favorites": 32,
+        "test_filter_limits": 30,
+        "test_historical_evidence": 11,
+        "test_input_matrix": 55,
+        "test_interpreters": 14,
+        "test_live_evaluation": 24,
+        "test_login_admission": 5,
+        "test_migrations": 2,
+        "test_mixed_store_mentions": 20,
+        "test_money_contract": 4,
+        "test_provider_evidence": 27,
+        "test_request_limits": 7,
+        "test_secure_config": 2,
+        "test_security": 35
+      },
+      "ruff": "passed",
+      "format": "passed",
+      "mypy_sources": 46,
+      "migrations": [
+        "0001",
+        "0002",
+        "0003",
+        "0004",
+        "0005"
+      ],
+      "migration_scenarios": [
+        "empty installation and Alembic metadata check",
+        "upgrade from 0004 preserves legacy JSONB, session, admission, account and unknown reservation; new favorite saved"
+      ]
+    },
+    "offline_evaluation": {
+      "passed": 57,
+      "total": 57,
+      "historical_azure_reports_modified": false
+    },
+    "frontend": [
+      "production build",
+      "ESLint",
+      "TypeScript",
+      "Prettier"
+    ],
+    "http_demo": "passed through Next proxy",
+    "playwright": {
+      "passed": 79,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "retries": 0,
+      "new_browser_journeys": 8,
+      "pure_domain_proxy_cases": 41,
+      "browser_http_journeys": 38,
+      "keyboard": true,
+      "axe": "no violations in exercised states",
+      "mobile_width": 360,
+      "zoom": "CSS zoom 2 at 360 CSS pixels; no global horizontal overflow"
+    },
+    "runtime_scans": {
+      "scanner": "Trivy 0.74.0",
+      "severity": [
+        "HIGH",
+        "CRITICAL"
+      ],
+      "backend": "passed",
+      "frontend": "passed",
+      "ignore_file": "/dev/null"
+    },
+    "secret_scans": {
+      "scanner": "Gitleaks 8.30.1",
+      "policy": ".gitleaks.toml",
+      "redacted": true,
+      "scope": [
+        "all reachable history",
+        "whole private source snapshot"
+      ],
+      "findings": 0
+    },
+    "historical_evidence_verifier": "passed before and after final run"
+  },
+  "ci": {
+    "run_id": 38205298403,
+    "url": "https://github.com/arthurjoanes/loja-assistente/actions/runs/38205298403",
+    "head": "f34a33eeadc6c6530064dd65653c044d1ae7e59b",
+    "conclusion": "success"
+  },
+  "screenshots": [
+    {
+      "path": "docs/screenshots/evolution-20261012/evolution-favorites.png",
+      "sha256": "06021031c190785d7501fcaab05e8b238109e899af25681e955c0a26996c9713",
+      "kind": "real Chromium screenshot; synthetic data; unedited"
+    },
+    {
+      "path": "docs/screenshots/evolution-20261012/evolution-pending.png",
+      "sha256": "f2848d422f51ef1d52436b5be7d0127cb2c4548d630cdc11faf064426015ba40",
+      "kind": "real Chromium screenshot; synthetic data; unedited"
+    },
+    {
+      "path": "docs/screenshots/evolution-20261012/evolution-mobile.png",
+      "sha256": "6da0a9778ef4b8f6806673ee9b1bb8f9d0cf1c5d7f0a3d84b9d7f944e2e3099d",
+      "kind": "real Chromium screenshot; synthetic data; unedited"
+    }
+  ],
+  "preserved_failures": [
+    {
+      "run_id": "243b7651eaca",
+      "stage": "copy before testing",
+      "reason": "Windows long output path; used a shorter private C:/Temp/la-evo destination"
+    },
+    {
+      "run_id": "7ec29e4fe4e3",
+      "stage": "engine inventory",
+      "reason": "Docker Desktop engine unavailable after startup socket failure; no test resources created"
+    },
+    {
+      "ci_run_ids": [
+        38203972153,
+        38204017530
+      ],
+      "head": "337a3e6fcd7731332ecddf7ea5153117d4d980e1",
+      "stage": "runtime scan",
+      "reason": "sharp 0.35.4 GHSA-wq5f-xc86-pv6w; updated existing dependency to patched 0.35.5"
+    },
+    {
+      "ci_run_ids": [
+        38204240051
+      ],
+      "head": "e37d194324ffa4b6d05f18ac35fab24213447d3b",
+      "stage": "browser",
+      "passed": 74,
+      "failed": 5,
+      "reason": "login helper checked visibility before boot completed; alert locator matched Next announcer; readiness and input conditions fixed without timeout/retry changes",
+      "related_failure_run_id": 38204243330
+    },
+    {
+      "run_id": "c697b428d1e4",
+      "stage": "local browser",
+      "passed": 74,
+      "failed": 5,
+      "sources_stable": true,
+      "cleanup": "complete",
+      "reason": "login readiness, alert ambiguity, 3px overflow at 200% CSS zoom and history journey starting in restored pending conversation; explicit new analysis/ready selector and mobile wrapping corrected"
+    },
+    {
+      "stage": "secret scanner invocation",
+      "reason": "absolute scan path did not match existing narrow allowlists; relative scan from snapshot root passed with unchanged policy"
+    }
+  ],
+  "cleanup": {
+    "containers": "removed after ownership label checks",
+    "network": "removed",
+    "anonymous_data": "tmpfs destroyed",
+    "own_images": "retained under run-specific tags for inspection",
+    "foreign_stacks": "not administered",
+    "demo_data": "not reset; verification used exclusive test databases"
+  },
+  "limits": [
+    "synthetic datasets and deterministic Demo; no paid LLM calls",
+    "CSS zoom exercised; browser native zoom and manual screen reader not measured",
+    "functional verification with concurrent foreign workloads; no throughput or benchmark claim",
+    "no deployment, automatic merge, shared links or scheduled execution",
+    "fullPage captures after interaction can include the fixed skip link; screenshot bytes are unedited"
+  ],
+  "reproduce": [
+    "python scripts/verify_evidence.py",
+    "python scripts/prove_evolution.py --output C:/Temp/la-evo",
+    "python scripts/verify_evidence.py"
+  ]
+}
