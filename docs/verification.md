@@ -11,7 +11,7 @@ Favoritos e esclarecimentos persistidos foram validados na candidata `f34a33eead
 | Avaliação offline | 57/57; resultados Azure históricos e a falha paga permanecem intactos |
 | Frontend | Build de produção, ESLint, TypeScript e Prettier aprovados |
 | Playwright | 79 casos: 41 de domínio/proxy e 38 de navegador/HTTP; oito jornadas novas, zero falhas, skips, retries ou flaky |
-| Precisão e acesso | Dinheiro acima de 2²⁵³, cobertura parcial/ausente, IDs alheios, revogação, schema adulterado, histórico imutável e concorrência com conexões independentes |
+| Precisão e acesso | Dinheiro acima de 2^53, cobertura parcial/ausente, IDs alheios, revogação, schema adulterado, histórico imutável e concorrência com conexões independentes |
 | Segurança das fontes e imagens | Gitleaks 8.30.1 redigido, histórico e snapshot completos sem achados; Trivy 0.74.0 sem HIGH/CRITICAL, usando `/dev/null` como arquivo de exclusões |
 
 As fontes foram copiadas para um snapshot privado após parar os agentes. Os builds usaram essa cópia; nenhum bind de código foi executado. Os hashes do snapshot e do host permaneceram iguais até o fim da rodada. Engine Docker 29.7.2, Python 3.12.14, Node 24.19.0, PostgreSQL 17.11 e Playwright 1.63.0. O projeto `pf-loja-assistente-evolucao-20261012-c72532e80bad` usou subnet inspecionada, tags próprias, dois bancos separados, chave vazia, LLM desligado e nenhuma porta host. A limpeza verificou labels antes de remover apenas os containers e a rede da rodada; as tags das imagens ficaram disponíveis para inspeção.
