@@ -50,6 +50,8 @@ Na interface, peça **Mostre a evolução diária da receita nos últimos 7 dias
 
 Salve um cálculo válido em **Favoritos** para repetir seu plano nas mesmas datas absolutas. **Abrir cálculo registrado** conserva a evidência original; **Executar novamente** consulta a base atual e registra outra resposta. O servidor confere as permissões a cada acesso. Se perguntar **Receita da loja Centro** sem período, escolha o período no esclarecimento: o indicador e a loja permanecem selecionados, inclusive após atualizar a página. [Contratos e estados](docs/api-contract.md#favoritos-e-esclarecimentos).
 
+A [verificação da evolução](docs/verification.md#evolução-de-12102026) registra 477 testes de backend, 57/57 avaliações offline e 79 casos Playwright aprovados, com capturas reais e falhas anteriores preservadas. O [comando isolado](docs/local-setup.md#verificação-isolada-da-evolução) prepara fontes, imagens e bancos exclusivos por rodada.
+
 ## Arquitetura
 
 ```mermaid
