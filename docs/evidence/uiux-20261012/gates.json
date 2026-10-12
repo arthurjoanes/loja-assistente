@@ -1,0 +1,60 @@
+{
+  "backend": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 477,
+    "skipped": 0
+  },
+  "cleanup": "complete",
+  "code_commit": "2f372dd91f7392efb632cc6ac3f7c8605c4cceab",
+  "diff_sha256": "af0274c9bf5d30dfe0c5893f4e306c9a371fb444173192475f4bde4e56b78687",
+  "finished_at_utc": "2026-10-12T13:56:39.797398+00:00",
+  "frontend": [
+    "build",
+    "lint",
+    "typecheck",
+    "prettier"
+  ],
+  "gitleaks": "history and frozen source passed",
+  "head_at_freeze": "de6ccec95f873f51d6d330547cfd9bd329295e9b",
+  "images": {
+    "backend": "sha256:0908da346b9fb6b831ea6639b3bb8eba360b76160054670ad775663702d2ae5e",
+    "db": "sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+    "e2e": "sha256:f44916ddd1c745ae86cd1743d2cfcafcda7b04205f2330f13c5c177c156e23c8",
+    "frontend": "sha256:9efe21789669ea5b96b5fa49f8ab40f0edf766d720a8a9bb4e8ae0c3f60f9c18",
+    "frontend-checks": "sha256:98855822aa39ff6bacc99e95713fb41acbb34f8361b68964dbc97e8c4ec997ad"
+  },
+  "infrastructure_attempt": {
+    "cleanup": "complete",
+    "reason": "concurrent network inventories selected the same subnet; Docker refused overlap",
+    "resolution": "serialized stack creation; inspected separate subnets220/221",
+    "run_id": "ffb8acf13e88",
+    "sources_unchanged": true,
+    "status": "failed before tests"
+  },
+  "network": "internal; no host ports; no application source binds",
+  "offline_evaluation": {
+    "passed": 57,
+    "total": 57
+  },
+  "paid_calls": 0,
+  "playwright": {
+    "browser_http": 44,
+    "flaky": 0,
+    "passed": 85,
+    "pure": 41,
+    "retries": 0,
+    "skipped": 0
+  },
+  "previous_candidate": {
+    "role": "preliminary candidate; visual refinements followed",
+    "run_id": "502185508254",
+    "status": "passed"
+  },
+  "run_id": "aa8b330b814c",
+  "source_identity_sha256": "35089ab1494ac1bb24e283cdb17d2fca0d7d43b229b339dce4624b4e6beafad1",
+  "sources_unchanged": true,
+  "started_at_utc": "2026-10-12T13:47:46.166666+00:00",
+  "status": "passed",
+  "trivy_high_critical": 0
+}

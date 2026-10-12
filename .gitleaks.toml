@@ -26,3 +26,17 @@ condition = "AND"
 regexTarget = "match"
 paths = ['''^docs/evidence/azure-live/connection-and-authorization\.json$''']
 regexes = ['''apim-request-id"\s*:\s*"7fa9f814-6260-4faf-ac6a-da3079a5a361"''']
+
+[[rules.allowlists]]
+description = "Exact UI/UX content hashes verified against frozen file bytes; not credentials"
+condition = "AND"
+regexTarget = "match"
+paths = ['''^docs/evidence/uiux-20261012/(index|sources-before|sources-after)\.json$''']
+regexes = [
+  '''api\-contract\.md"\s*:\s*"327d4f4967cfd5e97e58b0eebca6c2ea0fc0a7a6b3ff2eb42f0fb77426b70705"''',
+  '''api\.ts"\s*:\s*"6e2bad167698e2ed9348997519ae6bdb385984033e45f4ff4b8c5b0b783ad689"''',
+  '''api_budget\.py"\s*:\s*"05330ef1d3c48f880c3acd2af421511da73f4ff4c3a7a512611d7b087c8c0225"''',
+  '''fastapi\.svg"\s*:\s*"9ad95ccc969f8092e978444da6e3880ef269bcba170af2b00d0434e176bbcfb3"''',
+  '''test_auth\.py"\s*:\s*"dc4934eca4461da4c6f9b705af261d65f5fb8ab9ffa35de1147a68513e6c7d86"''',
+  '''test_clarifications_api\.py"\s*:\s*"03e92cdb5b7dd7a3b219712a91ce97873ef66321ef2eb75d9498f6e45b9778d0"''',
+]

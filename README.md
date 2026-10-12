@@ -28,9 +28,9 @@ O código separa [interpretação](backend/src/loja_assistente/assistant/interpr
 
 ## Demonstração
 
-![Página principal do Loja Assistente](docs/readme/home.png)
+![Análise de receita com recorte e cálculo no Loja Assistente](docs/screenshots/uiux-20261012/after-chromium-resultado-1440.png)
 
-_Página principal já versionada. Os [recortes por foco](docs/image-captures.md) conservam a data, versão, dados e hashes das capturas de 22/09/2026._
+_Aplicação real em Demo, com vendas fictícias de Centro e referência analítica de 17/08/2026. A [comparação antes/depois](docs/uiux-20261012.md) e a [galeria](docs/image-captures.md) identificam fontes, estados, viewports e limites de cada captura. As imagens históricas conservam seus arquivos e hashes._
 
 <a id="uma-conta-pequena-e-um-caso-de-consulta"></a>
 
@@ -50,7 +50,17 @@ Na interface, peça **Mostre a evolução diária da receita nos últimos 7 dias
 
 Salve um cálculo válido em **Favoritos** para repetir seu plano nas mesmas datas absolutas. **Abrir cálculo registrado** conserva a evidência original; **Executar novamente** consulta a base atual e registra outra resposta. O servidor confere as permissões a cada acesso. Se perguntar **Receita da loja Centro** sem período, escolha o período no esclarecimento: o indicador e a loja permanecem selecionados, inclusive após atualizar a página. [Contratos e estados](docs/api-contract.md#favoritos-e-esclarecimentos).
 
+A escolha pendente aparece antes da resposta e permanece disponível quando o editor da próxima consulta está recolhido no celular. O escopo destaca nomes das lojas e dias incluídos; IDs e fim exclusivo ficam em detalhe conferível. Erros conservam a pergunta e, após conflito de renomeação, recarregar mantém o nome digitado. [Jornadas, decisões e validação de UI/UX](docs/uiux-20261012.md).
+
 A [verificação da evolução](docs/verification.md#evolução-de-12102026) registra 477 testes de backend, 57/57 avaliações offline e 79 casos Playwright aprovados, com capturas reais e falhas anteriores preservadas. O [comando isolado](docs/local-setup.md#verificação-isolada-da-evolução) prepara fontes, imagens e bancos exclusivos por rodada.
+
+A [revisão de UI/UX](docs/uiux-20261012.md#validação-final) aprovou 477 testes de backend, 57/57 avaliações offline e 85 casos Playwright. A comparação usa 25 estados em Chromium e mais cinco em Firefox, com as mesmas perguntas e dados sintéticos. O recibo e as capturas preservam a origem de cada execução.
+
+## Identidade visual
+
+![Paleta de marca do Loja Assistente: petróleo, tinta, ocre, cinza azulado, névoa e branco](docs/design/brand-palette.svg)
+
+Petróleo identifica ações e o símbolo; tinta escura sustenta títulos e dinheiro; cinza azulado acompanha explicações. Névoa e branco separam o fundo dos resultados. Ocre destaca o foco de teclado, com a exceção do campo Pergunta, que conserva foco petróleo. A interface usa Source Sans 3 local, com [licença OFL](frontend/src/app/fonts/source-sans-LICENSE.md). [Cores, usos e contraste](docs/uiux-20261012.md#paleta-da-marca).
 
 ## Arquitetura
 

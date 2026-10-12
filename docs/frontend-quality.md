@@ -1,6 +1,8 @@
 # Qualidade da experiência analítica
 
-As [capturas locais atuais de 22/09/2026](image-captures.md) documentam seis vistas reais sobre `6361280d`, com modo Demo explícito e bloqueio de requisições LLM. Os registros de CI, provas operacionais e design abaixo conservam suas fontes e limites históricos.
+A [revisão de 12/10/2026](uiux-20261012.md) conserva esta direção analítica e corrige o esclarecimento recolhido, a recuperação após conflito e os destinos de foco. Ela acrescenta uma comparação antes/depois própria; as provas abaixo mantêm as datas e fontes históricas.
+
+As [capturas históricas de 22/09/2026](image-captures.md#capturas-de-22092026) documentam seis vistas reais sobre `6361280d`, com modo Demo explícito e bloqueio de requisições LLM. Os registros de CI, provas operacionais e design abaixo conservam suas fontes e limites históricos.
 
 Direção visual de 22/09/2026 sobre o **estado local da interface já reconstruída**, incluindo alterações concorrentes de orçamento/provas e o refinamento anterior. O HEAD de partida era `849428f4c1fd6b166516553f43c5466d8fee6de0`, com fontes locais posteriores; o baseline foi registrado por conteúdo, incluindo `daily-series.ts`. A proposta põe **pergunta, recorte, resposta e conferência** à frente, com identidade própria. Não é um diff apenas contra aquele HEAD.
 

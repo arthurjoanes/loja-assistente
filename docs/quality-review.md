@@ -1,6 +1,8 @@
 # Interface e organização
 
-Para apresentação, use as [seis telas atuais de 22/09/2026](image-captures.md). As capturas anteriores citadas nesta página são arquivos históricos e não representam o layout atual.
+A revisão atual está em [UI/UX de 12/10/2026](uiux-20261012.md), com cinco jornadas, diagnóstico, duas composições, fontes primárias e evidências pareadas. A [galeria](image-captures.md) separa as capturas atuais dos registros históricos abaixo.
+
+Para apresentação, use as [capturas atuais de 12/10/2026](image-captures.md). As telas de setembro citadas nesta página são arquivos históricos.
 
 O [guia da interface](interface.md) explica pergunta, resultado selecionado, recorte aplicado, cobertura e cálculo. A [revisão de qualidade](frontend-quality.md) registra inventário de telas/estados, matriz das 11 dimensões antes/depois, decisões, referências, verificações e pendências.
 

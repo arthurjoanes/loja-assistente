@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="226" viewBox="0 0 960 226" role="img" aria-labelledby="title desc">
+  <title id="title">Paleta de marca do Loja Assistente</title>
+  <desc id="desc">Petróleo 0C6273 para ações, tinta 203A41 para títulos, ocre A4520A para foco, cinza azulado 52666C para apoio, névoa F0F2F3 para fundo e branco FFFFFF para resultados.</desc>
+  <rect width="960" height="226" rx="12" fill="#f0f2f3"/>
+  <g font-family="Arial, sans-serif" fill="#203a41">
+    <text x="24" y="31" font-size="18" font-weight="700">Loja Assistente · cores da marca</text>
+    <g transform="translate(24 50)">
+      <rect width="144" height="88" rx="5" fill="#0c6273"/>
+      <text x="12" y="55" fill="#ffffff" font-size="17" font-weight="700">#0C6273</text>
+      <text y="114" font-size="16" font-weight="700">Petróleo</text>
+      <text y="137" font-size="14">Ações e símbolo</text>
+    </g>
+    <g transform="translate(178 50)">
+      <rect width="144" height="88" rx="5" fill="#203a41"/>
+      <text x="12" y="55" fill="#ffffff" font-size="17" font-weight="700">#203A41</text>
+      <text y="114" font-size="16" font-weight="700">Tinta</text>
+      <text y="137" font-size="14">Títulos e números</text>
+    </g>
+    <g transform="translate(332 50)">
+      <rect width="144" height="88" rx="5" fill="#a4520a"/>
+      <text x="12" y="55" fill="#ffffff" font-size="17" font-weight="700">#A4520A</text>
+      <text y="114" font-size="16" font-weight="700">Ocre</text>
+      <text y="137" font-size="14">Foco de teclado</text>
+    </g>
+    <g transform="translate(486 50)">
+      <rect width="144" height="88" rx="5" fill="#52666c"/>
+      <text x="12" y="55" fill="#ffffff" font-size="17" font-weight="700">#52666C</text>
+      <text y="114" font-size="16" font-weight="700">Cinza azulado</text>
+      <text y="137" font-size="14">Texto de apoio</text>
+    </g>
+    <g transform="translate(640 50)">
+      <rect width="144" height="88" rx="5" fill="#f0f2f3" stroke="#7a899e"/>
+      <text x="12" y="55" font-size="17" font-weight="700">#F0F2F3</text>
+      <text y="114" font-size="16" font-weight="700">Névoa</text>
+      <text y="137" font-size="14">Fundo da aplicação</text>
+    </g>
+    <g transform="translate(794 50)">
+      <rect width="142" height="88" rx="5" fill="#ffffff" stroke="#7a899e"/>
+      <text x="12" y="55" font-size="17" font-weight="700">#FFFFFF</text>
+      <text y="114" font-size="16" font-weight="700">Branco</text>
+      <text y="137" font-size="14">Resultados e campos</text>
+    </g>
+  </g>
+</svg>

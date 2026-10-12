@@ -1,5 +1,7 @@
 # Roteiro da demonstração
 
+Para demonstrar a revisão de UI/UX, use Demo: consulte receita de Centro sem período, escolha **Ontem** no painel sempre visível e confirme; confira o resultado e abra **Cálculo**. Salve receita semanal em Favoritos e mostre separadamente **Abrir cálculo registrado** e **Executar novamente**. No celular, recolha o editor e confira que uma pendência continua acessível. A [comparação pareada](uiux-20261012.md) registra esses estados, sua fonte e a validação; o roteiro e as provas históricas abaixo conservam seu escopo.
+
 A interface mantém um resultado selecionado na área central. Use **Resultados
 desta análise** para rever perguntas da conversa e **Cálculo** para conferir a
 evidência. O bloco recolhível **Dados fictícios · acesso e métricas** reúne as
@@ -7,7 +9,7 @@ permissões e a referência dos dados. [Guia de leitura](interface.md).
 
 A [jornada histórica `f98ee948…`](operational-story.md) mostra consulta com cálculo, recusa do filtro por dinheiro e nova tentativa válida em tabela. As três capturas são da aplicação real em modo Demo, com dados sintéticos e resultados conferidos.
 
-Este roteiro completo não foi repetido nesta revisão documental. A [galeria atual de 22/09/2026](image-captures.md) mostra início, evolução diária, cálculo, celular e recusa de filtro em Demo, com asserções sobre o resultado real. As imagens da história operacional pertencem às fontes históricas identificadas, anteriores à [direção visual local](frontend-quality.md).
+Este roteiro completo não foi repetido nesta revisão documental. A [galeria histórica de 22/09/2026](image-captures.md#capturas-de-22092026) mostra início, evolução diária, cálculo, celular e recusa de filtro em Demo, com asserções sobre o resultado real. As imagens da história operacional pertencem às fontes históricas identificadas, anteriores à [direção visual local](frontend-quality.md).
 
 ## Problema e resultado em 5–8 minutos
 
