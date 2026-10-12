@@ -548,7 +548,7 @@ test("pendência nova invalida a escolha anterior; cancelar e logout limpam cont
   await expect(page.locator(".clarification-panel")).toHaveCount(0);
 });
 
-test("novos controles usam teclado e cabem em 360px e ampliação de 200%", async ({
+test("novos controles usam teclado e cabem em 360px e CSS zoom de 200%", async ({
   page,
 }, info) => {
   await page.setViewportSize({ width: 360, height: 800 });

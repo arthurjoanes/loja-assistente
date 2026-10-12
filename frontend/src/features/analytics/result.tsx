@@ -11,12 +11,14 @@ export function AnswerCard({
   onError,
   busy,
   saved,
+  clarificationActive,
   onSave,
 }: {
   answer: Answer;
   onError: (error: unknown) => void;
   busy: boolean;
   saved: boolean;
+  clarificationActive: boolean;
   onSave: (answerId: string, name: string) => Promise<boolean>;
 }) {
   const result = answer.result;
@@ -70,7 +72,11 @@ export function AnswerCard({
         )}
         {result && (
           <>
-            <div className="result-context" aria-label="Lojas consultadas">
+            <div
+              className="result-context"
+              role="group"
+              aria-label="Lojas consultadas"
+            >
               <span>
                 <Icon name="store" size={14} />
                 {result.scope.map((store) => store.name).join(" + ")}
@@ -153,7 +159,9 @@ export function AnswerCard({
           <p className="answer-help">
             {answer.status === "provider_error"
               ? "Selecione demo para continuar."
-              : "Use receita, pedidos, ticket, unidades, ranking ou evolução diária."}
+              : clarificationActive
+                ? "O esclarecimento desta análise reúne as opções autorizadas e o recorte desta pergunta."
+                : "Use receita, pedidos, ticket, unidades, ranking ou evolução diária."}
           </p>
         )}
       </div>

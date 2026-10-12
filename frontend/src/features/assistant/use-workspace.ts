@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { api, ApiError } from "@/lib/api";
 import type {
   Answer,
@@ -23,6 +23,7 @@ export function useWorkspace() {
   const [history, setHistory] = useState<Conversation[]>([]);
   const [favorites, setFavorites] = useState<Favorite[]>([]);
   const [favoritesLoading, setFavoritesLoading] = useState(false);
+  const [favoritesError, setFavoritesError] = useState<string | null>(null);
   const [conflict, setConflict] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -58,6 +59,40 @@ export function useWorkspace() {
   const setPeriod = (value: Period) =>
     dispatch({ type: "period", value, preset: "custom" });
 
+  const fetchFavorites = useCallback(
+    async (
+      currentGeneration: number,
+      revision: number,
+      isActive?: () => boolean,
+    ) => {
+      try {
+        const saved = await api<Favorite[]>("/favorites");
+        if (
+          (!isActive || isActive()) &&
+          generation.current === currentGeneration &&
+          revision === favoritesRevision.current
+        ) {
+          setFavorites(saved);
+          setFavoritesError(null);
+        }
+        return saved;
+      } catch (received) {
+        if (
+          (!isActive || isActive()) &&
+          generation.current === currentGeneration &&
+          revision === favoritesRevision.current
+        )
+          setFavoritesError(
+            received instanceof Error
+              ? received.message
+              : "Não foi possível carregar os favoritos. Tente recarregar.",
+          );
+        throw received;
+      }
+    },
+    [],
+  );
+
   useEffect(() => {
     let active = true;
     let authenticated = false;
@@ -73,9 +108,9 @@ export function useWorkspace() {
         });
         const revision = ++historyRevision.current;
         const favoriteRevision = ++favoritesRevision.current;
-        const [conversations, saved] = await Promise.all([
+        const [conversations] = await Promise.all([
           api<Conversation[]>("/conversations"),
-          api<Favorite[]>("/favorites"),
+          fetchFavorites(currentGeneration, favoriteRevision, () => active),
         ]);
         if (
           active &&
@@ -83,12 +118,6 @@ export function useWorkspace() {
           revision === historyRevision.current
         )
           setHistory(conversations);
-        if (
-          active &&
-          generation.current === currentGeneration &&
-          favoriteRevision === favoritesRevision.current
-        )
-          setFavorites(saved);
         const pending = conversations.find(
           (item) => item.pending_clarification?.status === "pending",
         );
@@ -107,10 +136,12 @@ export function useWorkspace() {
       .catch((error) => {
         if (!active || generation.current !== currentGeneration) return;
         if (error instanceof ApiError && error.status === 401) {
+          generation.current += 1;
           setSession(null);
           dispatch({ type: "reset" });
           setHistory([]);
           setFavorites([]);
+          setFavoritesError(null);
           if (authenticated) setNotice("Sessão expirada. Entre novamente.");
         } else if (error instanceof ApiError && error.status === 403) {
           generation.current += 1;
@@ -118,6 +149,7 @@ export function useWorkspace() {
           dispatch({ type: "reset" });
           setHistory([]);
           setFavorites([]);
+          setFavoritesError(null);
           setNotice("Acesso alterado. Entre novamente.");
         } else {
           setNotice(
@@ -131,7 +163,7 @@ export function useWorkspace() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [fetchFavorites]);
 
   function clearSession(message: string | null) {
     generation.current += 1;
@@ -142,6 +174,7 @@ export function useWorkspace() {
     setSession(null);
     setHistory([]);
     setFavorites([]);
+    setFavoritesError(null);
     setFavoritesLoading(false);
     setConflict(false);
     setSuccess(null);
@@ -163,6 +196,7 @@ export function useWorkspace() {
         dispatch({ type: "reset" });
         setHistory([]);
         setFavorites([]);
+        setFavoritesError(null);
         setOperations(null);
         setOperationsLoading(false);
         setOperationsStale(true);
@@ -211,6 +245,7 @@ export function useWorkspace() {
       stores: current.user.stores.map((store) => store.id),
     });
     setFavorites([]);
+    setFavoritesError(null);
     setHistory([]);
     setSuccess(null);
     setConflict(false);
@@ -218,20 +253,15 @@ export function useWorkspace() {
     setNotice(null);
     setStoreIds(current.user.stores.map((store) => store.id));
     try {
-      const [conversations, saved] = await Promise.all([
+      const [conversations] = await Promise.all([
         api<Conversation[]>("/conversations"),
-        api<Favorite[]>("/favorites"),
+        fetchFavorites(currentGeneration, favoriteRevision),
       ]);
       if (
         generation.current === currentGeneration &&
         revision === historyRevision.current
       )
         setHistory(conversations);
-      if (
-        generation.current === currentGeneration &&
-        favoriteRevision === favoritesRevision.current
-      )
-        setFavorites(saved);
       const pending = conversations.find(
         (item) => item.pending_clarification?.status === "pending",
       );
@@ -364,6 +394,7 @@ export function useWorkspace() {
         )
           handleError(error);
       }
+      if (generation.current === currentGeneration) return answer;
     } catch (error) {
       if (currentGeneration === generation.current) {
         handleError(error);
@@ -410,13 +441,12 @@ export function useWorkspace() {
   async function refreshLists(currentGeneration: number) {
     const historyVersion = ++historyRevision.current;
     const favoriteVersion = ++favoritesRevision.current;
-    const [conversations, saved] = await Promise.all([
+    const [conversations] = await Promise.all([
       api<Conversation[]>("/conversations"),
-      api<Favorite[]>("/favorites"),
+      fetchFavorites(currentGeneration, favoriteVersion),
     ]);
     if (generation.current !== currentGeneration) return;
     if (historyVersion === historyRevision.current) setHistory(conversations);
-    if (favoriteVersion === favoritesRevision.current) setFavorites(saved);
   }
   async function showFavorites() {
     const currentGeneration = generation.current;
@@ -426,12 +456,11 @@ export function useWorkspace() {
     setFavoritesLoading(true);
     setError(null);
     try {
-      const saved = await api<Favorite[]>("/favorites");
+      await fetchFavorites(currentGeneration, revision);
       if (
         generation.current === currentGeneration &&
         revision === favoritesRevision.current
       ) {
-        setFavorites(saved);
         setConflict(false);
       }
     } catch (received) {
@@ -526,10 +555,12 @@ export function useWorkspace() {
   }
   async function runFavorite(favorite: Favorite) {
     const currentGeneration = generation.current;
+    let receivedAnswer: Answer | undefined;
     const completed = await perform<Answer>(
       `/favorites/${favorite.id}/run`,
       { revision: favorite.revision },
       (answer) => {
+        receivedAnswer = answer;
         analysisRevision.current += 1;
         dispatch({
           type: "reset",
@@ -547,6 +578,7 @@ export function useWorkspace() {
       } catch (received) {
         if (generation.current === currentGeneration) handleError(received);
       }
+      if (generation.current === currentGeneration) return receivedAnswer;
     }
   }
   async function openRecordedCalculation(favorite: Favorite) {
@@ -591,24 +623,29 @@ export function useWorkspace() {
       if (generation.current === currentGeneration) setBusy(false);
     }
   }
-  function respondClarification(choiceId: string) {
+  async function respondClarification(choiceId: string) {
     if (
       !pendingClarification ||
       pendingClarification.status !== "pending" ||
       !conversationId
     )
-      return Promise.resolve(false);
-    return perform<Answer>(
+      return;
+    let receivedAnswer: Answer | undefined;
+    const completed = await perform<Answer>(
       `/conversations/${conversationId}/clarification/respond`,
       {
         pending_id: pendingClarification.id,
         revision: pendingClarification.revision,
         choice_id: choiceId,
       },
-      (answer) => dispatch({ type: "answer", value: answer }),
+      (answer) => {
+        receivedAnswer = answer;
+        dispatch({ type: "answer", value: answer });
+      },
       "Escolha registrada.",
       true,
     );
+    return completed ? receivedAnswer : undefined;
   }
   function cancelClarification() {
     if (
@@ -645,6 +682,7 @@ export function useWorkspace() {
           type: "conversation",
           value: conversation,
           stores: session?.user.stores.map((store) => store.id) ?? [],
+          preserveDraft: true,
         });
       setConflict(false);
       setSuccess(
@@ -665,6 +703,7 @@ export function useWorkspace() {
     history,
     favorites,
     favoritesLoading,
+    favoritesError,
     conflict,
     success,
     pendingClarification,

@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import type { PendingClarification, Store } from "@/lib/contracts";
+import { useEffect, useState, type RefObject } from "react";
+import type { Answer, PendingClarification, Store } from "@/lib/contracts";
 import { PlanScope } from "./plan-scope";
 
 export function ClarificationPanel({
@@ -8,6 +8,7 @@ export function ClarificationPanel({
   stores,
   busy,
   conflict,
+  headingRef,
   onRespond,
   onCancel,
   onReload,
@@ -16,7 +17,8 @@ export function ClarificationPanel({
   stores: Store[];
   busy: boolean;
   conflict: boolean;
-  onRespond: (choiceId: string) => Promise<boolean>;
+  headingRef?: RefObject<HTMLHeadingElement | null>;
+  onRespond: (choiceId: string) => Promise<Answer | undefined>;
   onCancel: () => Promise<boolean>;
   onReload: () => void;
 }) {
@@ -52,12 +54,15 @@ export function ClarificationPanel({
       className="clarification-panel"
       aria-labelledby={`clarification-${pending.id}`}
     >
-      <h3 id={`clarification-${pending.id}`}>
+      <p className="clarification-context">Esclarecimento pendente</p>
+      <h2 id={`clarification-${pending.id}`} ref={headingRef} tabIndex={-1}>
         {pending.missing_field === "period"
           ? "Qual período deseja consultar?"
           : "Qual loja deseja consultar?"}
-      </h3>
-      <p>Pergunta: {pending.original_question}</p>
+      </h2>
+      <p className="clarification-question">
+        Pergunta: {pending.original_question}
+      </p>
       {expired ? (
         <p role="status">
           Este esclarecimento expirou. Recarregue para conferir o estado e faça
@@ -70,36 +75,39 @@ export function ClarificationPanel({
             if (choice && !busy && !conflict) await onRespond(choice.id);
           }}
         >
-          <fieldset disabled={busy || conflict}>
-            <legend>
-              {pending.missing_field === "period"
-                ? "Escolha o período"
-                : "Escolha a loja"}
-            </legend>
-            {pending.choices.map((item) => (
-              <label className="clarification-choice" key={item.id}>
-                <input
-                  type="radio"
-                  name={`clarification-${pending.id}`}
-                  value={item.id}
-                  checked={choiceId === item.id}
-                  onChange={() => setChoiceId(item.id)}
-                />
-                {item.label}
-              </label>
-            ))}
-          </fieldset>
-          <div
-            className="clarification-preview"
-            aria-label="Escopo a confirmar"
-          >
-            <h4>Confira o escopo</h4>
-            <PlanScope plan={preview} stores={stores} />
+          <div className="clarification-resolution">
+            <fieldset disabled={busy || conflict}>
+              <legend>
+                {pending.missing_field === "period"
+                  ? "Escolha o período"
+                  : "Escolha a loja"}
+              </legend>
+              {pending.choices.map((item) => (
+                <label className="clarification-choice" key={item.id}>
+                  <input
+                    type="radio"
+                    name={`clarification-${pending.id}`}
+                    value={item.id}
+                    aria-describedby="clarification-guidance"
+                    checked={choiceId === item.id}
+                    onChange={() => setChoiceId(item.id)}
+                  />
+                  {item.label}
+                </label>
+              ))}
+            </fieldset>
+            <div
+              className="clarification-preview"
+              role="group"
+              aria-label="Escopo a confirmar"
+            >
+              <h3>Confira o escopo</h3>
+              <PlanScope plan={preview} stores={stores} />
+            </div>
           </div>
-          <p className="scope-guidance">
-            O indicador e as lojas já resolvidos são preservados. O período
-            informado na pergunta prevalece sobre o filtro visual. A escolha usa
-            a referência analítica da sessão.
+          <p className="scope-guidance" id="clarification-guidance">
+            A escolha completa esta pergunta e mantém o que já foi definido.
+            Confira as lojas e as datas antes de confirmar.
           </p>
           <div className="favorite-actions">
             <button
@@ -125,7 +133,7 @@ export function ClarificationPanel({
           Recarregar esclarecimento
         </button>
       )}
-      <p className="muted">
+      <p className="clarification-expiry">
         Expira em{" "}
         <time dateTime={pending.expires_at}>
           {new Date(pending.expires_at).toLocaleString("pt-BR", {

@@ -28,7 +28,11 @@ export function ResultChart({ result }: { result: Result }) {
             {metricLabels[result.metric].toLowerCase()}
           </h3>
         </div>
-        <div className="segmented" aria-label="Visualização do resultado">
+        <div
+          className="segmented"
+          role="group"
+          aria-label="Visualização do resultado"
+        >
           <button
             className={view === "chart" ? "active" : ""}
             aria-pressed={view === "chart"}

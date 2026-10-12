@@ -41,7 +41,12 @@ type AnalysisAction =
   | { type: "period"; value: Period | null; preset: string }
   | { type: "clarification"; value: PendingClarification | null }
   | { type: "answer"; value: Answer }
-  | { type: "conversation"; value: ConversationDetail; stores: string[] };
+  | {
+      type: "conversation";
+      value: ConversationDetail;
+      stores: string[];
+      preserveDraft?: boolean;
+    };
 
 export function analysisReducer(
   state: AnalysisState,
@@ -74,6 +79,13 @@ export function analysisReducer(
       };
     }
     case "conversation": {
+      if (action.preserveDraft)
+        return {
+          ...state,
+          conversationId: action.value.id,
+          answers: action.value.messages,
+          pendingClarification: action.value.pending_clarification ?? null,
+        };
       const last = action.value.messages.findLast(
         (answer) => answer.plan !== null,
       );
