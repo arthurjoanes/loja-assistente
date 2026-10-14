@@ -64,12 +64,6 @@ A [revisão de UI/UX de 12/10/2026](docs/verification.md#uiux-de-12102026) reún
 
 As rodadas têm commits e escopos próprios; suas contagens não são somadas. O [guia de verificação](docs/verification.md) centraliza comandos, versões e limites. O [comando isolado](docs/local-setup.md#verificação-isolada-da-evolução) prepara fontes, imagens e bancos exclusivos por rodada.
 
-## Identidade visual
-
-![Paleta de marca do Loja Assistente: petróleo, tinta, ocre, cinza azulado, névoa e branco](docs/design/brand-palette.svg)
-
-Petróleo identifica ações e o símbolo; tinta escura sustenta títulos e dinheiro; cinza azulado acompanha explicações. Névoa e branco separam o fundo dos resultados. Ocre destaca o foco de teclado, com a exceção do campo Pergunta, que conserva foco petróleo. A interface usa Source Sans 3 local, com [licença OFL](frontend/src/app/fonts/source-sans-LICENSE.md). [Cores, usos e contraste](docs/uiux-20261012.md#paleta-da-marca).
-
 ## Arquitetura
 
 ```mermaid
