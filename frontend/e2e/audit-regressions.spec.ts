@@ -190,7 +190,9 @@ test("LOJ-01: a lost query response recovers its durable intent without posting 
     page.getByRole("heading", { name: "Pergunta sintética recovered" }),
   ).toBeVisible();
   expect(posts).toBe(1);
-  expect(key).not.toBe("");
+  expect(key).toMatch(
+    /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/,
+  );
 });
 
 test("LOJ-03: previous conversations and the 101st response remain reachable", async ({

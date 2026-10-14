@@ -1,6 +1,7 @@
 "use client";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { api, ApiError } from "@/lib/api";
+import { createClientRequestId } from "@/lib/request-id";
 import type {
   Answer,
   Conversation,
@@ -504,8 +505,8 @@ export function useWorkspace() {
       store_ids: storeIds,
       period,
     };
-    queryIntent.current = { key: crypto.randomUUID(), body };
     try {
+      queryIntent.current = { key: createClientRequestId(), body };
       const answer = await api<Answer>("/assistant/query", {
         body: {
           ...queryIntent.current.body,
