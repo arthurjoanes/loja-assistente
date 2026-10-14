@@ -71,6 +71,8 @@ Python 3.12, Pydantic 2, SQLAlchemy 2, Alembic, Next.js 16, React 19, TypeScript
 
 O banco usa um único papel; a autorização por tenant/loja é aplicada pelo backend, apoiada por chaves compostas. A separação dos módulos do diagrama não cria isolamento de credenciais no PostgreSQL.
 
+Quando a pergunta contém `client_request_id`, a rota confirma uma admissão em `query_intents` antes de entrar em `respond`. Essa transação curta é independente da conversa e do orçamento. A chave é única por organização e usuário, vinculada ao fingerprint do corpo; uma repetição recupera a resposta já publicada ou retorna 409 se o resultado ainda é incerto, sem voltar ao interpretador. O vínculo com `AnswerRecord` é confirmado na mesma transação da resposta. Esse caminho e a recuperação autenticada estão no [contrato HTTP](api-contract.md#pergunta-e-plano); clientes sem a chave mantêm o fluxo anterior.
+
 ### Sequência de uma pergunta no modo LLM
 
 ```mermaid
@@ -106,7 +108,7 @@ sequenceDiagram
     API-->>UI: Answer JSON com request_id
 ```
 
-No modo Demo, a interpretação é local e não cria reserva. A guarda de filtros vem antes dos dois interpretadores; esclarecimentos terminam sem consulta analítica. O endpoint estruturado `/api/analytics/query` entra diretamente pelo plano, mantendo sessão, CSRF e a mesma autorização em `execute_query`.
+O diagrama detalha uma intenção admitida pela primeira vez; a admissão opcional descrita acima antecede o lock da conversa, e replay não percorre novamente essas etapas. No modo Demo, a interpretação é local e não cria reserva de orçamento, mas a admissão idempotente continua sendo registrada quando há chave. A guarda de filtros vem antes dos dois interpretadores; esclarecimentos terminam sem consulta analítica. O endpoint estruturado `/api/analytics/query` entra diretamente pelo plano, mantendo sessão, CSRF e a mesma autorização em `execute_query`.
 
 A transação principal pode manter o lock da conversa durante a chamada de rede. Uma segunda pergunta para a mesma conversa recebe 409; o lock da conta de orçamento é independente e curto. Se o processo cair depois de `dispatch`, a reserva permanece durável mesmo que a resposta e a conversa não sejam confirmadas. O diagrama descreve essa persistência local, não uma transação atômica com o provedor.
 
@@ -135,6 +137,7 @@ Organização → lojas/produtos/usuários. Permissões ligam usuário e loja. P
 | `coverage`, `datasets` | Cobertura única por tenant/loja/data comercial; dataset guarda versão e manifesto | Distingue zero de dia ausente e identifica a base do cálculo |
 | `login_sessions` | Digest da sessão, usuário/tenant, CSRF e expiração real | Autenticação em cada requisição |
 | `conversations`, `answers` | Resposta vinculada por tenant/usuário/conversa; payload JSONB conserva plano e resultado | Continuação, histórico e endpoint de cálculo com nova autorização |
+| `query_intents` | Chave do cliente por tenant/usuário, fingerprint, request ID e resposta opcional; FKs compostas para usuário/resposta | Admissão durável e recuperação autenticada sem repetir a interpretação de uma intenção incerta |
 | `operations` | Tenant, usuário e `request_id` com status e durações | Painel operacional e logs sem conteúdo da pergunta |
 | `provider_budget_accounts`, `provider_reservations` | Conta por tenant; reserva identificada por tenant/`call_id` e vinculada a usuário/`request_id` | Admissão e reconciliação de uso em transações independentes |
 

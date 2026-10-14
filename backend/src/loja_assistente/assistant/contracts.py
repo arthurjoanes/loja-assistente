@@ -24,6 +24,7 @@ class Interpretation(StrictModel):
 
 
 class AskRequest(StrictModel):
+    client_request_id: str | None = Field(default=None, min_length=1, max_length=64)
     question: str = Field(min_length=1, max_length=1000)
     conversation_id: str | None = Field(default=None, max_length=36)
     mode: Literal["demo", "llm"] = "demo"

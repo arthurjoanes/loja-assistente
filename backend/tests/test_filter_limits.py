@@ -69,7 +69,9 @@ def test_explicit_unsupported_dimensions_are_blocked_before_llm(
     from loja_assistente.config import settings
 
     monkeypatch.setattr(settings, "llm_enabled", True)
-    monkeypatch.setattr(settings, "openai_api_key", "contract-only-not-a-real-key")
+    from pydantic import SecretStr
+
+    monkeypatch.setattr(settings, "openai_api_key", SecretStr("contract-only-not-a-real-key"))
     provider = Mock(side_effect=AssertionError("Não deve chamar um provedor pago"))
     query = Mock(side_effect=AssertionError("Não deve consultar o total geral"))
     from loja_assistente.assistant import interpretation

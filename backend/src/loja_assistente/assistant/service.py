@@ -23,12 +23,18 @@ from loja_assistente.auth.service import (
 from loja_assistente.clarifications.state import create_pending, read_pending, revise_pending
 from loja_assistente.config import settings
 from loja_assistente.conversations.service import create_conversation, get_conversation
-from loja_assistente.models import AnswerRecord, Operation, utcnow
+from loja_assistente.models import AnswerRecord, Operation, QueryIntent, utcnow
 
 logger = logging.getLogger("loja_assistente.operations")
 
 
-def respond(db: Session, principal: Principal, request: AskRequest, request_id: str) -> Answer:
+def respond(
+    db: Session,
+    principal: Principal,
+    request: AskRequest,
+    request_id: str,
+    intent: QueryIntent | None = None,
+) -> Answer:
     start = perf_counter()
     interpretation_ms = 0
     query_ms = 0
@@ -139,6 +145,10 @@ def respond(db: Session, principal: Principal, request: AskRequest, request_id: 
         db.commit()
         raise
     persist_answer(db, principal, answer)
+    if intent is not None:
+        # Publish the response link atomically with the answer, never in a later commit.
+        db.flush()
+        intent.answer_id = answer.id
     record_operation(
         db,
         principal,

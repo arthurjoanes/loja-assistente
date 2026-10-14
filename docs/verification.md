@@ -1,5 +1,7 @@
 # Testes locais
 
+Os resultados abaixo são recibos históricos, vinculados às candidatas indicadas. A rodada principal é UI/UX de 12/10/2026; a evolução de favoritos e o CI de setembro são rodadas anteriores, não parcelas de um total. Alterações posteriores exigem sua própria execução e registro de validação.
+
 ## UI/UX de 12/10/2026
 
 A candidata do commit `2f372dd91f7392efb632cc6ac3f7c8605c4cceab` passou na rodada isolada `aa8b330b814c`: 477 testes de backend, 57/57 avaliações offline, build/lint/tipos/Prettier e 85 casos Playwright (41 puros/proxy, 44 navegador/HTTP), sem skips, retries ou flaky. Trivy não encontrou HIGH/CRITICAL nas imagens de runtime e Gitleaks aprovou histórico/fonte. Os hashes de fonte congelada e host permaneceram iguais durante a rodada.

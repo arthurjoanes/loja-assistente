@@ -15,6 +15,7 @@ export type AnalysisState = {
   period: Period | null;
   periodPreset: string;
   pendingClarification: PendingClarification | null;
+  messagesNextCursor: string | null;
 };
 
 export function emptyAnalysis(
@@ -30,6 +31,7 @@ export function emptyAnalysis(
     period: null,
     periodPreset: "question",
     pendingClarification: null,
+    messagesNextCursor: null,
   };
 }
 
@@ -41,6 +43,7 @@ type AnalysisAction =
   | { type: "period"; value: Period | null; preset: string }
   | { type: "clarification"; value: PendingClarification | null }
   | { type: "answer"; value: Answer }
+  | { type: "older_answers"; items: Answer[]; nextCursor: string | null }
   | {
       type: "conversation";
       value: ConversationDetail;
@@ -67,10 +70,17 @@ export function analysisReducer(
       return { ...state, pendingClarification: action.value };
     case "answer": {
       const answer = action.value;
+      const sameConversation = state.conversationId === answer.conversation_id;
       return {
         ...state,
         conversationId: answer.conversation_id,
-        answers: [...state.answers, answer],
+        answers: [
+          ...(sameConversation
+            ? state.answers.filter((item) => item.id !== answer.id)
+            : []),
+          answer,
+        ],
+        messagesNextCursor: sameConversation ? state.messagesNextCursor : null,
         pendingClarification: answer.pending_clarification ?? null,
         period: answer.plan?.period ?? state.period,
         periodPreset: answer.plan ? "effective" : state.periodPreset,
@@ -78,12 +88,24 @@ export function analysisReducer(
           answer.result?.scope.map((store) => store.id) ?? state.storeIds,
       };
     }
+    case "older_answers":
+      return {
+        ...state,
+        answers: [
+          ...action.items,
+          ...state.answers.filter(
+            (item) => !action.items.some((older) => older.id === item.id),
+          ),
+        ],
+        messagesNextCursor: action.nextCursor,
+      };
     case "conversation": {
       if (action.preserveDraft)
         return {
           ...state,
           conversationId: action.value.id,
           answers: action.value.messages,
+          messagesNextCursor: action.value.messages_next_cursor ?? null,
           pendingClarification: action.value.pending_clarification ?? null,
         };
       const last = action.value.messages.findLast(
@@ -93,6 +115,7 @@ export function analysisReducer(
         ...state,
         conversationId: action.value.id,
         answers: action.value.messages,
+        messagesNextCursor: action.value.messages_next_cursor ?? null,
         pendingClarification: action.value.pending_clarification ?? null,
         period: last?.plan?.period ?? null,
         periodPreset: last?.plan ? "effective" : "question",

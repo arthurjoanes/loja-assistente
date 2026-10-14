@@ -28,6 +28,7 @@ class ConversationSummary(BaseModel):
 
 class ConversationDetail(ConversationSummary):
     messages: list[Answer]
+    messages_next_cursor: str | None = None
 
 
 def get_conversation(

@@ -1,7 +1,12 @@
 "use client";
 import { Icon } from "@/components/icon";
 import type { Answer, Metric, Result, Totals } from "@/lib/contracts";
-import { metricLabels, metricValue, periodLabel } from "@/lib/format";
+import {
+  metricLabels,
+  metricValue,
+  periodLabel,
+  formatTimestamp,
+} from "@/lib/format";
 import { EvidencePanel } from "./evidence";
 import { ResultChart } from "./visualization";
 import { SaveFavorite } from "../assistant/save-favorite";
@@ -45,12 +50,11 @@ export function AnswerCard({
       <div className="answer-content">
         <p className="calculation-version">
           Cálculo registrado em{" "}
-          <time dateTime={answer.created_at}>
-            {new Date(answer.created_at).toLocaleString("pt-BR", {
-              timeZone: "America/Sao_Paulo",
-              dateStyle: "short",
-              timeStyle: "short",
-            })}
+          <time
+            dateTime={answer.created_at}
+            title="Horário de São Paulo (America/Sao_Paulo)"
+          >
+            {formatTimestamp(answer.created_at)}
           </time>
           {result ? ` · dataset ${result.dataset_version}` : ""}
         </p>

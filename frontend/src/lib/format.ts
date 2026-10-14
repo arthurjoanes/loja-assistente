@@ -59,3 +59,11 @@ export function periodLabel(period: Period) {
     ? dateLabel(period.start)
     : dateLabel(period.start, true) + " – " + dateLabel(last, true);
 }
+
+export function formatTimestamp(value: string) {
+  return new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    dateStyle: "short",
+    timeStyle: "short",
+  }).format(new Date(value));
+}

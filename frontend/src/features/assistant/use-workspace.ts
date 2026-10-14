@@ -10,6 +10,7 @@ import type {
   Operations,
   PendingClarification,
   Period,
+  Page,
   Session,
 } from "@/lib/contracts";
 import { analysisReducer, emptyAnalysis } from "./conversation-state";
@@ -21,6 +22,9 @@ export function useWorkspace() {
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<Conversation[]>([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState<string | null>(null);
+  const [historyCursor, setHistoryCursor] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<Favorite[]>([]);
   const [favoritesLoading, setFavoritesLoading] = useState(false);
   const [favoritesError, setFavoritesError] = useState<string | null>(null);
@@ -50,7 +54,9 @@ export function useWorkspace() {
     period,
     periodPreset,
     pendingClarification,
+    messagesNextCursor,
   } = analysis;
+  const queryIntent = useRef<{ key: string; body: object } | null>(null);
   const requestActive = useRef(false);
   const [operationsStale, setOperationsStale] = useState(false);
   const setQuestion = (value: string) => dispatch({ type: "question", value });
@@ -58,6 +64,62 @@ export function useWorkspace() {
   const setStoreIds = (value: string[]) => dispatch({ type: "stores", value });
   const setPeriod = (value: Period) =>
     dispatch({ type: "period", value, preset: "custom" });
+
+  const fetchHistory = useCallback(
+    async (
+      currentGeneration: number,
+      revision: number,
+      cursor: string | null = null,
+      isActive: () => boolean = () => true,
+    ) => {
+      setHistoryLoading(true);
+      try {
+        const page = await api<Page<Conversation>>(
+          "/conversations/page" +
+            (cursor ? "?cursor=" + encodeURIComponent(cursor) : ""),
+        );
+        if (
+          isActive() &&
+          generation.current === currentGeneration &&
+          historyRevision.current === revision
+        ) {
+          setHistory((current) =>
+            cursor
+              ? [
+                  ...current,
+                  ...page.items.filter(
+                    (item) => !current.some((old) => old.id === item.id),
+                  ),
+                ]
+              : page.items,
+          );
+          setHistoryCursor(page.next_cursor);
+          setHistoryError(null);
+        }
+        return page.items;
+      } catch (received) {
+        if (
+          isActive() &&
+          generation.current === currentGeneration &&
+          historyRevision.current === revision
+        )
+          setHistoryError(
+            received instanceof Error
+              ? received.message
+              : "Não foi possível carregar o histórico.",
+          );
+        throw received;
+      } finally {
+        if (
+          isActive() &&
+          generation.current === currentGeneration &&
+          historyRevision.current === revision
+        )
+          setHistoryLoading(false);
+      }
+    },
+    [],
+  );
 
   const fetchFavorites = useCallback(
     async (
@@ -107,11 +169,27 @@ export function useWorkspace() {
           value: current.user.stores.map((store) => store.id),
         });
         const revision = ++historyRevision.current;
+        const analysisVersion = analysisRevision.current;
         const favoriteRevision = ++favoritesRevision.current;
-        const [conversations] = await Promise.all([
-          api<Conversation[]>("/conversations"),
-          fetchFavorites(currentGeneration, favoriteRevision, () => active),
-        ]);
+        setBooting(false);
+        const favoritesRequest = fetchFavorites(
+          currentGeneration,
+          favoriteRevision,
+          () => active,
+        ).catch((received) => received);
+        const conversations = await fetchHistory(
+          currentGeneration,
+          revision,
+          null,
+          () => active,
+        ).catch((received) => {
+          if (
+            received instanceof ApiError &&
+            [401, 403].includes(received.status)
+          )
+            throw received;
+          return [];
+        });
         if (
           active &&
           generation.current === currentGeneration &&
@@ -121,17 +199,32 @@ export function useWorkspace() {
         const pending = conversations.find(
           (item) => item.pending_clarification?.status === "pending",
         );
-        if (pending && active && generation.current === currentGeneration) {
+        if (
+          pending &&
+          active &&
+          generation.current === currentGeneration &&
+          analysisVersion === analysisRevision.current
+        ) {
           const detail = await api<ConversationDetail>(
             `/conversations/${pending.id}`,
           );
-          if (active && generation.current === currentGeneration)
+          if (
+            active &&
+            generation.current === currentGeneration &&
+            analysisVersion === analysisRevision.current
+          )
             dispatch({
               type: "conversation",
               value: detail,
               stores: current.user.stores.map((store) => store.id),
             });
         }
+        const favoriteFailure = await favoritesRequest;
+        if (
+          favoriteFailure instanceof ApiError &&
+          [401, 403].includes(favoriteFailure.status)
+        )
+          throw favoriteFailure;
       })
       .catch((error) => {
         if (!active || generation.current !== currentGeneration) return;
@@ -152,7 +245,7 @@ export function useWorkspace() {
           setFavoritesError(null);
           setNotice("Acesso alterado. Entre novamente.");
         } else {
-          setNotice(
+          (authenticated ? setHistoryError : setNotice)(
             error instanceof Error ? error.message : "Serviço indisponível.",
           );
         }
@@ -163,9 +256,13 @@ export function useWorkspace() {
     return () => {
       active = false;
     };
-  }, [fetchFavorites]);
+  }, [fetchFavorites, fetchHistory]);
 
   function clearSession(message: string | null) {
+    queryIntent.current = null;
+    setHistoryError(null);
+    setHistoryCursor(null);
+    setHistoryLoading(false);
     generation.current += 1;
     dispatch({ type: "reset" });
     requestActive.current = false;
@@ -191,6 +288,10 @@ export function useWorkspace() {
       clearSession("Sessão expirada. Entre novamente.");
     } else {
       if (error instanceof ApiError && error.status === 403) {
+        queryIntent.current = null;
+        setHistoryError(null);
+        setHistoryCursor(null);
+        setHistoryLoading(false);
         generation.current += 1;
         const currentGeneration = generation.current;
         dispatch({ type: "reset" });
@@ -235,6 +336,7 @@ export function useWorkspace() {
     }
   }
   async function signedIn(current: Session) {
+    queryIntent.current = null;
     generation.current += 1;
     const currentGeneration = generation.current;
     const revision = ++historyRevision.current;
@@ -253,10 +355,21 @@ export function useWorkspace() {
     setNotice(null);
     setStoreIds(current.user.stores.map((store) => store.id));
     try {
-      const [conversations] = await Promise.all([
-        api<Conversation[]>("/conversations"),
-        fetchFavorites(currentGeneration, favoriteRevision),
-      ]);
+      const favoritesRequest = fetchFavorites(
+        currentGeneration,
+        favoriteRevision,
+      ).catch((received) => received);
+      const conversations = await fetchHistory(
+        currentGeneration,
+        revision,
+      ).catch((received) => {
+        if (
+          received instanceof ApiError &&
+          [401, 403].includes(received.status)
+        )
+          throw received;
+        return [];
+      });
       if (
         generation.current === currentGeneration &&
         revision === historyRevision.current
@@ -283,6 +396,12 @@ export function useWorkspace() {
             stores: current.user.stores.map((store) => store.id),
           });
       }
+      const favoriteFailure = await favoritesRequest;
+      if (
+        favoriteFailure instanceof ApiError &&
+        [401, 403].includes(favoriteFailure.status)
+      )
+        throw favoriteFailure;
     } catch (error) {
       if (
         generation.current === currentGeneration &&
@@ -304,6 +423,7 @@ export function useWorkspace() {
     }
   }
   function freshConversation() {
+    queryIntent.current = null;
     analysisRevision.current += 1;
     dispatch({
       type: "reset",
@@ -316,7 +436,17 @@ export function useWorkspace() {
     setView("assistant");
     setMobileMenu(false);
   }
+  function requireQueryRecovery() {
+    if (!queryIntent.current) return false;
+    setConflict(true);
+    setError(
+      "Há uma consulta sem confirmação. Recarregue o estado atual para recuperar a resposta antes de abrir outra conversa ou executar outra consulta. Nova análise abandona esta recuperação local; não cancela a execução no servidor.",
+    );
+    return true;
+  }
   async function openConversation(id: string) {
+    if (busy || requestActive.current) return;
+    if (requireQueryRecovery()) return;
     const analysisVersion = ++analysisRevision.current;
     const currentGeneration = generation.current;
     setBusy(true);
@@ -351,11 +481,13 @@ export function useWorkspace() {
       busy ||
       operationsLoading ||
       requestActive.current ||
+      conflict ||
       !text.trim() ||
       !validPeriod(period) ||
       (mode === "llm" && !session.llm_available)
     )
       return;
+    if (requireQueryRecovery()) return;
     requestActive.current = true;
     analysisRevision.current += 1;
     const currentGeneration = generation.current;
@@ -365,23 +497,29 @@ export function useWorkspace() {
     setPendingQuestion(text.trim());
     setQuestion("");
     setView("assistant");
+    const body = {
+      question: text.trim(),
+      conversation_id: conversationId,
+      mode,
+      store_ids: storeIds,
+      period,
+    };
+    queryIntent.current = { key: crypto.randomUUID(), body };
     try {
       const answer = await api<Answer>("/assistant/query", {
         body: {
-          question: text.trim(),
-          conversation_id: conversationId,
-          mode,
-          store_ids: storeIds,
-          period,
+          ...queryIntent.current.body,
+          client_request_id: queryIntent.current.key,
         },
         csrf: session.csrf_token,
       });
       if (currentGeneration !== generation.current) return;
       dispatch({ type: "answer", value: answer });
+      queryIntent.current = null;
       setConflict(false);
       const revision = ++historyRevision.current;
       try {
-        const conversations = await api<Conversation[]>("/conversations");
+        const conversations = await fetchHistory(currentGeneration, revision);
         if (
           generation.current === currentGeneration &&
           revision === historyRevision.current
@@ -400,6 +538,15 @@ export function useWorkspace() {
         handleError(error);
         if (!(error instanceof ApiError && [401, 403].includes(error.status)))
           setQuestion(text);
+        if (
+          error instanceof ApiError &&
+          [0, 408, 409, 500, 502, 503, 504].includes(error.status)
+        ) {
+          setConflict(true);
+          setError(
+            "Não foi possível confirmar a execução. Recarregue o estado para recuperar esta intenção antes de executar outra consulta; nenhuma repetição paga será automática.",
+          );
+        } else queryIntent.current = null;
       }
     } finally {
       if (currentGeneration === generation.current) {
@@ -441,12 +588,18 @@ export function useWorkspace() {
   async function refreshLists(currentGeneration: number) {
     const historyVersion = ++historyRevision.current;
     const favoriteVersion = ++favoritesRevision.current;
-    const [conversations] = await Promise.all([
-      api<Conversation[]>("/conversations"),
+    const outcomes = await Promise.allSettled([
+      fetchHistory(currentGeneration, historyVersion),
       fetchFavorites(currentGeneration, favoriteVersion),
     ]);
     if (generation.current !== currentGeneration) return;
-    if (historyVersion === historyRevision.current) setHistory(conversations);
+    for (const outcome of outcomes)
+      if (
+        outcome.status === "rejected" &&
+        outcome.reason instanceof ApiError &&
+        [401, 403].includes(outcome.reason.status)
+      )
+        throw outcome.reason;
   }
   async function showFavorites() {
     const currentGeneration = generation.current;
@@ -461,7 +614,7 @@ export function useWorkspace() {
         generation.current === currentGeneration &&
         revision === favoritesRevision.current
       ) {
-        setConflict(false);
+        setConflict(queryIntent.current !== null);
       }
     } catch (received) {
       if (generation.current === currentGeneration) handleError(received);
@@ -484,6 +637,7 @@ export function useWorkspace() {
       conflict
     )
       return false;
+    if (requireQueryRecovery()) return false;
     requestActive.current = true;
     const currentGeneration = generation.current;
     setBusy(true);
@@ -583,6 +737,7 @@ export function useWorkspace() {
   }
   async function openRecordedCalculation(favorite: Favorite) {
     if (!session || busy || requestActive.current) return;
+    if (requireQueryRecovery()) return;
     const currentGeneration = generation.current;
     const analysisVersion = ++analysisRevision.current;
     setBusy(true);
@@ -669,6 +824,38 @@ export function useWorkspace() {
     setBusy(true);
     setError(null);
     try {
+      if (queryIntent.current) {
+        const intent = queryIntent.current;
+        let answer: Answer;
+        let sentOriginalIntent = false;
+        try {
+          answer = await api<Answer>(
+            `/assistant/requests/${encodeURIComponent(intent.key)}`,
+          );
+        } catch (received) {
+          if (!(received instanceof ApiError && received.status === 404))
+            throw received;
+          // No admission was found. Resending the original key remains safe even
+          // if the first POST arrives late; only its durable owner may execute.
+          answer = await api<Answer>("/assistant/query", {
+            body: { ...intent.body, client_request_id: intent.key },
+            csrf: session?.csrf_token,
+          });
+          sentOriginalIntent = true;
+        }
+        if (generation.current !== currentGeneration) return;
+        dispatch({ type: "answer", value: answer });
+        queryIntent.current = null;
+        setConflict(false);
+        setQuestion("");
+        setSuccess(
+          sentOriginalIntent
+            ? "A mesma intenção foi enviada com segurança e sua resposta foi confirmada."
+            : "Resposta recuperada. Nenhuma nova consulta foi executada.",
+        );
+        await refreshLists(currentGeneration);
+        return;
+      }
       const detail = conversationId
         ? api<ConversationDetail>(`/conversations/${conversationId}`)
         : Promise.resolve(null);
@@ -694,6 +881,47 @@ export function useWorkspace() {
       if (generation.current === currentGeneration) setBusy(false);
     }
   }
+  async function loadHistory(older = false) {
+    const currentGeneration = generation.current;
+    try {
+      await fetchHistory(
+        currentGeneration,
+        ++historyRevision.current,
+        older ? historyCursor : null,
+      );
+    } catch (received) {
+      if (
+        generation.current === currentGeneration &&
+        received instanceof ApiError &&
+        [401, 403].includes(received.status)
+      )
+        handleError(received);
+    }
+  }
+  async function loadOlderAnswers() {
+    if (!conversationId || !messagesNextCursor || busy) return;
+    const currentGeneration = generation.current;
+    const revision = analysisRevision.current;
+    setBusy(true);
+    try {
+      const page = await api<Page<Answer>>(
+        `/conversations/${conversationId}/messages?cursor=${encodeURIComponent(messagesNextCursor)}`,
+      );
+      if (
+        generation.current === currentGeneration &&
+        analysisRevision.current === revision
+      )
+        dispatch({
+          type: "older_answers",
+          items: page.items,
+          nextCursor: page.next_cursor,
+        });
+    } catch (received) {
+      if (generation.current === currentGeneration) handleError(received);
+    } finally {
+      if (generation.current === currentGeneration) setBusy(false);
+    }
+  }
   return {
     session,
     booting,
@@ -701,6 +929,12 @@ export function useWorkspace() {
     error,
     setError,
     history,
+    historyLoading,
+    historyError,
+    historyCursor,
+    loadHistory,
+    messagesNextCursor,
+    loadOlderAnswers,
     favorites,
     favoritesLoading,
     favoritesError,

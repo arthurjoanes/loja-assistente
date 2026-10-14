@@ -19,7 +19,9 @@ WINDOW_SECONDS = 60
 
 
 def key_for(value: str) -> str:
-    return hmac.new(settings.session_secret.encode(), value.encode(), hashlib.sha256).hexdigest()
+    return hmac.new(
+        settings.session_secret.get_secret_value().encode(), value.encode(), hashlib.sha256
+    ).hexdigest()
 
 
 def lock_keys(session: Session, keys: list[str]) -> None:

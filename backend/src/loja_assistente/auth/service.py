@@ -3,6 +3,7 @@ import hmac
 import secrets
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from threading import BoundedSemaphore
 from typing import Annotated
 
 from argon2 import PasswordHasher
@@ -16,6 +17,7 @@ from loja_assistente.database import get_db
 from loja_assistente.models import LoginSession, Store, StorePermission, User
 
 password_hasher = PasswordHasher()
+PASSWORD_SLOTS = BoundedSemaphore(2)
 SESSION_COOKIE = "la_session"
 
 
@@ -38,14 +40,24 @@ def hash_password(password: str) -> str:
 
 
 def verify_password(password: str, password_hash: str) -> bool:
+    if not PASSWORD_SLOTS.acquire(blocking=False):
+        raise HTTPException(
+            status_code=503,
+            detail="Verificação de senha ocupada. Tente novamente em instantes.",
+            headers={"Retry-After": "1"},
+        )
     try:
         return password_hasher.verify(password_hash, password)
     except (VerifyMismatchError, InvalidHashError):
         return False
+    finally:
+        PASSWORD_SLOTS.release()
 
 
 def session_digest(token: str) -> str:
-    return hmac.new(settings.session_secret.encode(), token.encode(), hashlib.sha256).hexdigest()
+    return hmac.new(
+        settings.session_secret.get_secret_value().encode(), token.encode(), hashlib.sha256
+    ).hexdigest()
 
 
 def require_origin(request: Request) -> None:

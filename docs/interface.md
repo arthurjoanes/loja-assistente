@@ -1,6 +1,8 @@
 # Ler e conferir uma análise
 
-A [revisão de UI/UX de 12/10/2026](uiux-20261012.md) registra a comparação pareada atual, jornadas, decisões e limites. O esclarecimento pendente ocupa a área de leitura antes da resposta, com escolhas e prévia de escopo sempre disponíveis, inclusive quando **Próxima consulta** está recolhida. Confirmar leva ao novo resultado; cancelar devolve ao campo da pergunta. A chegada da pendência após uma ação explícita leva o foco à escolha, sem impor foco durante o carregamento inicial.
+O filtro personalizado edita **Início (incluído)** e **Até (incluído)**. A interface converte o dia final para o limite exclusivo da API em UTC, sem usar o fuso do navegador. Datas iguais representam um dia; o limite continua sendo 90 dias. O maior dia final editável é 30/12/9999 para que o limite exclusivo permaneça uma data de quatro dígitos. Histórico e respostas usam `America/Sao_Paulo`, com indicação do fuso no título do horário e atributo `dateTime` preservado.
+
+A [revisão de UI/UX de 12/10/2026](uiux-20261012.md) registra a comparação pareada daquela rodada, jornadas, decisões e limites. O esclarecimento pendente ocupa a área de leitura antes da resposta, com escolhas e prévia de escopo sempre disponíveis, inclusive quando **Próxima consulta** está recolhida. Confirmar leva ao novo resultado; cancelar devolve ao campo da pergunta. A chegada da pendência após uma ação explícita leva o foco à escolha, sem impor foco durante o carregamento inicial.
 
 Nos favoritos, **Executar novamente** é a ação principal do plano salvo. **Abrir cálculo registrado** acessa a resposta de origem; renomear e excluir têm controles próprios. Nomes e dias incluídos ficam em primeiro plano; **Identificadores e limites do período** conserva os IDs e o fim exclusivo. Recarregar após conflito preserva nome e filtros editados enquanto o acesso continua válido. Falha da lista é distinta de uma lista vazia confirmada.
 
@@ -18,7 +20,7 @@ A pergunta consultada é o título da resposta. Quando a conversa tem mais de um
 
 Uma nova resposta passa a ser o resultado selecionado. Perguntas anteriores continuam no seletor; conversas anteriores ficam no histórico pessoal. **Nova análise** abre uma conversa vazia e leva o foco ao campo **Pergunta**.
 
-Durante a consulta, **Consultando…** aparece antes do resultado anterior. Uma falha mostra o aviso de erro e preserva a análise já recebida; a pergunta pode ser corrigida ou enviada novamente. Não há reenvio automático.
+Durante a consulta, **Consultando…** aparece antes do resultado anterior. Uma falha mostra o aviso de erro e preserva a análise já recebida. Se a resposta se perder, use **Recarregar estado atual** para recuperar a mesma intenção antes de enviar outra pergunta ou abrir outra conversa. A lista de favoritos continua acessível, mas executar um favorito ou abrir seu cálculo também exige resolver a intenção pendente. **Nova análise** abandona essa recuperação local; não cancela uma execução já iniciada no servidor. Não há reenvio automático.
 
 **E nos sete dias anteriores?** continua o último plano válido da conversa. Selecionar um resultado antigo não muda essa referência. Um aviso junto da pergunta esclarece isso durante a revisão de uma resposta anterior.
 
