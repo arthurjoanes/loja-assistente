@@ -169,7 +169,7 @@ test("esclarecimento permanece acessível com a próxima consulta recolhida e re
   await expect(page.locator(".analysis-result-focus").last()).toBeFocused();
 });
 
-test("falha de consulta mantém pergunta, filtros e resultado recebido até uma tentativa explícita", async ({
+test("consulta sem confirmação preserva os filtros até a recuperação", async ({
   page,
 }) => {
   await login(page, /Supervisor · Aurora Casa/);
@@ -178,10 +178,10 @@ test("falha de consulta mantém pergunta, filtros e resultado recebido até uma 
   await page.getByLabel("Loja", { exact: true }).selectOption("a002");
   await page.getByLabel("Período", { exact: true }).selectOption("week");
   const question = "Mostre a evolução diária da receita";
-  let calls = 0;
+  const calls: Record<string, unknown>[] = [];
   await page.route("**/api/assistant/query", async (route) => {
-    calls += 1;
-    if (calls === 1)
+    calls.push(route.request().postDataJSON());
+    if (calls.length === 1)
       await route.fulfill({
         status: 500,
         contentType: "application/json",
@@ -198,25 +198,37 @@ test("falha de consulta mantém pergunta, filtros e resultado recebido até uma 
   await expect(
     page
       .getByRole("alert")
-      .filter({ hasText: "Serviço indisponível para este ensaio" }),
-  ).toContainText("Serviço indisponível para este ensaio");
+      .filter({ hasText: "Não foi possível confirmar a execução" }),
+  ).toBeVisible();
   await expect(page.getByLabel("Pergunta", { exact: true })).toHaveValue(
     question,
   );
   await expect(page.getByLabel("Loja", { exact: true })).toHaveValue("a002");
   await expect(page.getByLabel("Período", { exact: true })).toHaveValue("week");
+  await expect(page.getByLabel("Pergunta", { exact: true })).toBeDisabled();
+  await expect(page.getByLabel("Loja", { exact: true })).toBeDisabled();
+  await expect(page.getByLabel("Período", { exact: true })).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Enviar pergunta", exact: true }),
+  ).toBeDisabled();
   await expect(page.getByTestId("answer").last()).toContainText(
     money(original.result!.totals!.revenue_cents),
   );
-  expect(calls).toBe(1);
+  expect(calls).toHaveLength(1);
+  const recovery = page.waitForResponse((reply) =>
+    reply
+      .url()
+      .endsWith(`/api/assistant/requests/${calls[0].client_request_id}`),
+  );
   const retry = page.waitForResponse(
     (reply) =>
       reply.url().endsWith("/api/assistant/query") &&
       reply.request().method() === "POST",
   );
   await page
-    .getByRole("button", { name: "Enviar pergunta", exact: true })
+    .getByRole("button", { name: "Recarregar estado atual", exact: true })
     .press("Enter");
+  expect((await recovery).status()).toBe(404);
   const reply = await retry;
   expect(reply.status()).toBe(200);
   const received: Answer = await reply.json();
@@ -225,7 +237,16 @@ test("falha de consulta mantém pergunta, filtros e resultado recebido até uma 
     start: "2026-08-10",
     end: "2026-08-17",
   });
-  expect(calls).toBe(2);
+  expect(calls).toHaveLength(2);
+  expect(calls[1]).toEqual(calls[0]);
+  expect(received.conversation_id).toBe(original.conversation_id);
+  await expect(page.getByTestId("answer").last()).toContainText(question);
+  await expect(page.getByLabel("Pergunta", { exact: true })).toBeEnabled();
+  await expect(
+    page.getByText(
+      "A mesma intenção foi enviada com segurança e sua resposta foi confirmada.",
+    ),
+  ).toBeVisible();
 });
 
 test("conflito de favorito conserva edição e recarrega sem substituir filtros e pergunta", async ({

@@ -190,14 +190,15 @@ test("pergunta respeita espaços, acentos, quebra de linha, tamanho e múltiplas
 });
 
 for (const failure of ["network", "409", "503"]) {
-  test(`falha ${failure} preserva pergunta, resultado anterior e permite tentar novamente`, async ({
+  test(`falha ${failure} recupera a mesma consulta e preserva o resultado anterior`, async ({
     page,
   }) => {
     await enter(page);
     const first = await submit(page, "Receita ontem");
-    let requests = 0;
+    const requests: Record<string, unknown>[] = [];
     await page.route("**/api/assistant/query", async (route) => {
-      requests += 1;
+      requests.push(route.request().postDataJSON());
+      if (requests.length > 1) return route.continue();
       if (failure === "network") await route.abort("failed");
       else
         await route.fulfill({
@@ -219,13 +220,46 @@ for (const failure of ["network", "409", "503"]) {
       page.locator(".workspace-notice[role=alert]"),
     ).toBeInViewport();
     await expect(input).toHaveValue("Pedidos ontem");
-    await expect(input).toBeEnabled();
+    await expect(input).toBeDisabled();
+    await expect(page.getByLabel("Loja", { exact: true })).toBeDisabled();
+    await expect(page.getByLabel("Período", { exact: true })).toBeDisabled();
+    await expect(
+      page.getByRole("button", { name: "Enviar pergunta" }),
+    ).toBeDisabled();
+    await expect(page.locator(".workspace-notice[role=alert]")).toContainText(
+      "Não foi possível confirmar a execução",
+    );
     await expect(page.getByTestId("answer")).toHaveCount(1);
-    expect(requests).toBe(1);
-    await page.unroute("**/api/assistant/query");
-    const second = await submit(page, "Pedidos ontem");
+    await expect(page.getByTestId("answer")).toContainText(first.question);
+    expect(requests).toHaveLength(1);
+    const recovery = page.waitForResponse((reply) =>
+      reply
+        .url()
+        .endsWith(`/api/assistant/requests/${requests[0].client_request_id}`),
+    );
+    const retry = page.waitForResponse((reply) =>
+      reply.url().endsWith("/api/assistant/query"),
+    );
+    await page
+      .getByRole("button", { name: "Recarregar estado atual", exact: true })
+      .click();
+    expect((await recovery).status()).toBe(404);
+    const reply = await retry;
+    expect(reply.status()).toBe(200);
+    const second: Answer = await reply.json();
+    expect(requests).toHaveLength(2);
+    expect(requests[1]).toEqual(requests[0]);
     expect(second.conversation_id).toBe(first.conversation_id);
     expect(second.plan?.metric).toBe("orders");
+    await expect(page.getByTestId("answer").last()).toContainText(
+      second.question,
+    );
+    await expect(input).toBeEnabled();
+    await expect(
+      page.getByText(
+        "A mesma intenção foi enviada com segurança e sua resposta foi confirmada.",
+      ),
+    ).toBeVisible();
   });
 }
 
