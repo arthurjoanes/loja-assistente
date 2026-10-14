@@ -50,7 +50,7 @@ def conversation_page(db: Database, principal: Identity, cursor: str | None = No
         )
         .exists()
     )
-    visible = []
+    visible: list[ConversationSummary] = []
     # Fill the visible page, rather than limiting first and silently dropping revoked rows.
     while len(visible) <= 50:
         candidates = list(

@@ -5,10 +5,12 @@ import json
 from datetime import datetime
 
 from fastapi import HTTPException
-from sqlalchemy import and_, or_
+from sqlalchemy import and_, or_, true
+from sqlalchemy.sql.elements import ColumnElement
 
 from loja_assistente.auth.service import Principal
 from loja_assistente.config import settings
+from loja_assistente.models import AnswerRecord, Conversation
 
 
 def encode(principal: Principal, scope: str, created_at: datetime, item_id: str) -> str:
@@ -21,7 +23,7 @@ def encode(principal: Principal, scope: str, created_at: datetime, item_id: str)
     return base64.urlsafe_b64encode(signature + payload).decode()
 
 
-def decode(principal: Principal, scope: str, cursor: str | None):
+def decode(principal: Principal, scope: str, cursor: str | None) -> tuple[datetime, str] | None:
     if cursor is None:
         return None
     try:
@@ -48,8 +50,10 @@ def decode(principal: Principal, scope: str, cursor: str | None):
         ) from None
 
 
-def older(model, after):
+def older(
+    model: type[Conversation] | type[AnswerRecord], after: tuple[datetime, str] | None
+) -> ColumnElement[bool]:
     if after is None:
-        return True
+        return true()
     date, item_id = after
     return or_(model.created_at < date, and_(model.created_at == date, model.id < item_id))
