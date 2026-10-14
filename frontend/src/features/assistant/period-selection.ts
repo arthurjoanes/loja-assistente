@@ -1,6 +1,23 @@
 import type { Period } from "@/lib/contracts";
 import { shiftDate } from "@/lib/format";
 
+export function includedEnd(exclusive: string): string {
+  return /^\d{4}-\d{2}-\d{2}$/.test(exclusive) &&
+    Number.isFinite(Date.parse(exclusive))
+    ? shiftDate(exclusive, -1)
+    : "";
+}
+
+export function exclusiveEnd(included: string): string {
+  if (
+    !/^\d{4}-\d{2}-\d{2}$/.test(included) ||
+    included > "9999-12-30" ||
+    !Number.isFinite(Date.parse(included))
+  )
+    return "";
+  return shiftDate(included, 1);
+}
+
 export function validPeriod(period: Period | null): boolean {
   if (period === null) return true;
   for (const value of [period.start, period.end]) {

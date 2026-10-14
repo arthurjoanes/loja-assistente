@@ -258,7 +258,9 @@ def test_provider_hooks_follow_real_http_authorization_and_calculation(
     reservations = []
     statements = []
     monkeypatch.setattr(settings, "llm_enabled", True)
-    monkeypatch.setattr(settings, "openai_api_key", "simulated-contract-only")
+    from pydantic import SecretStr
+
+    monkeypatch.setattr(settings, "openai_api_key", SecretStr("simulated-contract-only"))
     payload = response_body(
         {
             "type": "output_text",

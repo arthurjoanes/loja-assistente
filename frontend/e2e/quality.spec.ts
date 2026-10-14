@@ -49,7 +49,7 @@ test("histórico tardio não apaga a conversa recém-criada", async ({ page }) =
     delivered = resolve;
   });
   let holdFirst = true;
-  await page.route("**/api/conversations", async (route) => {
+  await page.route("**/api/conversations/page", async (route) => {
     if (route.request().method() === "GET" && holdFirst) {
       holdFirst = false;
       const response = await route.fetch();

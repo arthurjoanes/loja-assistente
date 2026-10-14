@@ -120,7 +120,9 @@ def durable_api(test_engine, monkeypatch, request):
     fake = FakeProvider()
     monkeypatch.setattr(budget_module, "SessionLocal", sessions)
     monkeypatch.setattr(settings, "llm_enabled", True)
-    monkeypatch.setattr(settings, "openai_api_key", "controlled-fake-transport-only")
+    from pydantic import SecretStr
+
+    monkeypatch.setattr(settings, "openai_api_key", SecretStr("controlled-fake-transport-only"))
     monkeypatch.setattr(settings, "reference_date", date(2026, 8, 17))
     monkeypatch.setattr(
         interpretation,

@@ -23,6 +23,12 @@ export function Workspace() {
     error,
     setError,
     history,
+    historyLoading,
+    historyError,
+    historyCursor,
+    loadHistory,
+    messagesNextCursor,
+    loadOlderAnswers,
     favorites,
     favoritesLoading,
     favoritesError,
@@ -187,7 +193,7 @@ export function Workspace() {
         periodPreset={periodPreset}
         mode={mode}
         llmAvailable={session.llm_available}
-        busy={busy}
+        busy={busy || conflict}
         periodInvalid={periodInvalid}
         onStoresChange={setStoreIds}
         onPresetChange={choosePeriod}
@@ -199,7 +205,7 @@ export function Workspace() {
         llmAvailable={session.llm_available}
         hasPlan={answers.some((answer) => answer.plan !== null)}
         reviewingEarlier={selectedId !== latestId}
-        busy={busy}
+        busy={busy || conflict}
         periodInvalid={periodInvalid}
         question={question}
         textareaRef={composer}
@@ -229,6 +235,11 @@ export function Workspace() {
       <AnalysisSidebar
         user={session.user}
         history={history}
+        historyLoading={historyLoading}
+        historyError={historyError}
+        historyHasMore={!!historyCursor}
+        onReloadHistory={() => void loadHistory()}
+        onOlderHistory={() => void loadHistory(true)}
         conversationId={conversationId}
         view={view}
         mobileMenu={mobileMenu}
@@ -274,14 +285,17 @@ export function Workspace() {
           </div>
         </header>
 
-        {error && (
+        {(error || conflict) && (
           <div
             className="notice danger workspace-notice"
             role="alert"
             ref={errorNotice}
             tabIndex={-1}
           >
-            <span>{error}</span>
+            <span>
+              {error ??
+                "Confira o estado atual para resolver a execução pendente antes de continuar."}
+            </span>
             {conflict && (
               <button
                 className="text-button"
@@ -291,13 +305,15 @@ export function Workspace() {
                 Recarregar estado atual
               </button>
             )}
-            <button
-              className="icon-button"
-              aria-label="Fechar mensagem de erro"
-              onClick={() => setError(null)}
-            >
-              <Icon name="close" size={16} />
-            </button>
+            {!conflict && (
+              <button
+                className="icon-button"
+                aria-label="Fechar mensagem de erro"
+                onClick={() => setError(null)}
+              >
+                <Icon name="close" size={16} />
+              </button>
+            )}
           </div>
         )}
         {success && (
@@ -349,6 +365,15 @@ export function Workspace() {
             aria-busy={busy}
           >
             <div className="conversation-column" key="result">
+              {messagesNextCursor && (
+                <button
+                  className="prepare-question"
+                  disabled={busy}
+                  onClick={() => void loadOlderAnswers()}
+                >
+                  Carregar respostas anteriores
+                </button>
+              )}
               {pendingClarification && (
                 <ClarificationPanel
                   key={

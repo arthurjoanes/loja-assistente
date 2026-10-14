@@ -1,6 +1,6 @@
 # Conferir a pergunta, o recorte e a conta
 
-Para o layout atual, veja a [galeria local de 22/09/2026](image-captures.md). As imagens abaixo permanecem inalteradas como prova da execução histórica identificada.
+Para comparar as rodadas de setembro e de 12/10/2026, veja a [galeria de capturas](image-captures.md). As imagens abaixo permanecem inalteradas como prova da execução histórica identificada.
 
 Uma soma pode estar correta e ainda responder à pergunta errada. Se a pessoa pedir receita somente em dinheiro, devolver a receita geral esconderia uma limitação dos dados. Esta jornada mostra a consulta válida, a recusa de um filtro não representável e uma nova pergunta válida com o mesmo recorte.
 

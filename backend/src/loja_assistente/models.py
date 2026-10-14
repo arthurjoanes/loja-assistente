@@ -34,6 +34,24 @@ class Organization(Base):
     name: Mapped[str] = mapped_column(String(120))
 
 
+class QueryIntent(Base):
+    __tablename__ = "query_intents"
+    tenant_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    client_request_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    request_id: Mapped[str] = mapped_column(String(64), unique=True)
+    answer_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    __table_args__ = (
+        ForeignKeyConstraint(["tenant_id", "user_id"], ["users.tenant_id", "users.id"]),
+        ForeignKeyConstraint(
+            ["tenant_id", "user_id", "answer_id"],
+            ["answers.tenant_id", "answers.user_id", "answers.id"],
+        ),
+    )
+
+
 class LoginAdmission(Base):
     __tablename__ = "login_admission"
     key: Mapped[str] = mapped_column(String(64), primary_key=True)

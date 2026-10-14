@@ -36,7 +36,7 @@ def interpret_request(
                 "Modo LLM não configurado. Defina OPENAI_API_KEY e LLM_ENABLED no servidor, ou selecione demo."
             )
         with OpenAI(
-            api_key=settings.openai_api_key,
+            api_key=settings.openai_api_key.get_secret_value(),
             base_url=settings.openai_base_url,
             timeout=12.0,
             max_retries=0,

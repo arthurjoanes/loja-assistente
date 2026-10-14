@@ -3,22 +3,24 @@ from typing import Self
 from urllib.parse import urlsplit
 
 from openai.types.shared import ReasoningEffort
-from pydantic import Field, field_validator, model_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore", hide_input_in_errors=True)
 
-    database_url: str = "postgresql+psycopg://loja:loja_local@db:5432/loja_assistente"
+    database_url: SecretStr = SecretStr(
+        "postgresql+psycopg://loja:loja_local@db:5432/loja_assistente"
+    )
     reference_date: date = date(2026, 8, 17)
     dataset_version: str = "synthetic-v1"
     allowed_origins: list[str] = ["http://localhost:3102", "http://127.0.0.1:3102"]
-    session_secret: str = "loja-assistente-local-demo-change-for-https"
+    session_secret: SecretStr = SecretStr("loja-assistente-local-demo-change-for-https")
     session_hours: int = Field(default=8, ge=1, le=24)
     cookie_secure: bool = False
     demo_mode: bool = False
-    openai_api_key: str = ""
+    openai_api_key: SecretStr = SecretStr("")
     openai_model: str = "gpt-4.1-mini-2025-04-14"
     openai_base_url: str = "https://api.openai.com/v1/"
     openai_reasoning_effort: ReasoningEffort | None = None
@@ -55,8 +57,8 @@ class Settings(BaseSettings):
     @model_validator(mode="after")
     def reject_default_secret_outside_demo(self) -> Self:
         if not self.demo_mode and (
-            self.session_secret == "loja-assistente-local-demo-change-for-https"
-            or len(self.session_secret) < 32
+            self.session_secret.get_secret_value() == "loja-assistente-local-demo-change-for-https"
+            or len(self.session_secret.get_secret_value()) < 32
         ):
             raise ValueError("Fora de DEMO_MODE, SESSION_SECRET deve ter pelo menos 32 caracteres.")
         if not self.demo_mode and not self.cookie_secure:

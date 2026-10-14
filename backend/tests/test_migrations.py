@@ -84,10 +84,10 @@ def upgrade(engine: Engine, revision: str) -> None:
         command.upgrade(config, revision)
 
 
-def test_empty_install_matches_models_at_0005(migration_engine: Engine) -> None:
+def test_empty_install_matches_models_at_0006(migration_engine: Engine) -> None:
     upgrade(migration_engine, "head")
     with migration_engine.begin() as connection:
-        assert connection.scalar(text("SELECT version_num FROM alembic_version")) == "0005"
+        assert connection.scalar(text("SELECT version_num FROM alembic_version")) == "0006"
         tables = inspect(connection).get_table_names()
         assert {"favorites", "provider_reservations", "login_sessions"}.issubset(tables)
         constraints = inspect(connection).get_foreign_keys("favorites")

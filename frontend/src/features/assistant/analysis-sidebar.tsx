@@ -1,10 +1,16 @@
 import { Brand, Icon } from "@/components/icon";
 import { useEffect, useRef, type KeyboardEvent, type RefObject } from "react";
 import type { Conversation, Session } from "@/lib/contracts";
+import { formatTimestamp } from "@/lib/format";
 
 type SidebarProps = {
   user: Session["user"];
   history: Conversation[];
+  historyLoading: boolean;
+  historyError: string | null;
+  historyHasMore: boolean;
+  onReloadHistory: () => void;
+  onOlderHistory: () => void;
   conversationId: string | null;
   view: "assistant" | "operations" | "favorites";
   mobileMenu: boolean;
@@ -22,6 +28,11 @@ type SidebarProps = {
 export function AnalysisSidebar({
   user,
   history,
+  historyLoading,
+  historyError,
+  historyHasMore,
+  onReloadHistory,
+  onOlderHistory,
   conversationId,
   view,
   mobileMenu,
@@ -134,11 +145,26 @@ export function AnalysisSidebar({
       <details className="history-menu">
         <summary>
           <Icon name="clock" size={14} /> Histórico{" "}
-          <span>{history.length} conversas</span>
+          <span>
+            {history.length} carregadas
+            {historyHasMore ? " · há anteriores" : ""}
+          </span>
           <Icon name="chevron" size={12} />
         </summary>
         <nav className="history-list" aria-label="Histórico pessoal">
-          {history.length === 0 ? (
+          {historyLoading && <p role="status">Carregando histórico…</p>}
+          {historyError && (
+            <div role="alert">
+              <p>{historyError}</p>
+              <button
+                disabled={historyLoading || locked}
+                onClick={onReloadHistory}
+              >
+                Recarregar histórico
+              </button>
+            </div>
+          )}
+          {history.length === 0 && !historyLoading && !historyError ? (
             <p className="history-empty">Nenhuma conversa</p>
           ) : (
             history.map((item) => (
@@ -167,18 +193,21 @@ export function AnalysisSidebar({
                   <time
                     className="history-date"
                     dateTime={item.created_at}
-                    title={new Date(item.created_at).toLocaleString("pt-BR", {
-                      timeZoneName: "short",
-                    })}
+                    title="Horário de São Paulo (America/Sao_Paulo)"
                   >
-                    {new Date(item.created_at).toLocaleString("pt-BR", {
-                      dateStyle: "short",
-                      timeStyle: "short",
-                    })}
+                    {formatTimestamp(item.created_at)}
                   </time>
                 </span>
               </button>
             ))
+          )}
+          {historyHasMore && (
+            <button
+              disabled={historyLoading || locked}
+              onClick={onOlderHistory}
+            >
+              Carregar conversas anteriores
+            </button>
           )}
         </nav>
       </details>

@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from loja_assistente.analytics.contracts import AnalyticsResult, StrictModel
 from loja_assistente.assistant.contracts import Answer
 from loja_assistente.auth.service import Principal, get_principal, permitted_stores, require_csrf
+from loja_assistente.conversations.pagination import decode, encode, older
 from loja_assistente.conversations.service import (
     ConversationDetail,
     ConversationSummary,
@@ -31,15 +32,12 @@ class EmptyBody(StrictModel):
 
 @router.get("/conversations")
 def list_conversations(db: Database, principal: Identity) -> list[ConversationSummary]:
-    conversations = db.scalars(
-        select(Conversation)
-        .where(
-            Conversation.tenant_id == principal.tenant_id,
-            Conversation.user_id == principal.user_id,
-        )
-        .order_by(Conversation.created_at.desc())
-        .limit(50)
-    )
+    return conversation_page(db, principal)["items"]
+
+
+@router.get("/conversations/page")
+def conversation_page(db: Database, principal: Identity, cursor: str | None = None) -> dict:
+    after = decode(principal, "conversations", cursor)
     allowed = {store.id for store in permitted_stores(db, principal)}
     # Every persisted plan matters: the title may describe an earlier, now revoked store.
     revoked_history = (
@@ -52,30 +50,46 @@ def list_conversations(db: Database, principal: Identity) -> list[ConversationSu
         )
         .exists()
     )
-    hidden_ids = set(
-        db.scalars(
-            select(Conversation.id).where(
-                Conversation.tenant_id == principal.tenant_id,
-                Conversation.user_id == principal.user_id,
-                revoked_history,
+    visible = []
+    # Fill the visible page, rather than limiting first and silently dropping revoked rows.
+    while len(visible) <= 50:
+        candidates = list(
+            db.scalars(
+                select(Conversation)
+                .where(
+                    Conversation.tenant_id == principal.tenant_id,
+                    Conversation.user_id == principal.user_id,
+                    ~revoked_history,
+                    older(Conversation, after),
+                )
+                .order_by(Conversation.created_at.desc(), Conversation.id.desc())
+                .limit(51)
             )
         )
-    )
-    visible = []
-    for conversation in conversations:
-        if conversation.id in hidden_ids or (
-            conversation.last_plan
-            and not set(conversation.last_plan["store_references"]).issubset(allowed)
-        ):
-            continue
-        try:
-            get_conversation(db, principal, conversation.id)
-        except HTTPException as error:
-            if error.status_code not in (403, 409):
-                raise
-            continue
-        visible.append(summary(conversation))
-    return visible
+        if not candidates:
+            break
+        for conversation in candidates:
+            after = (conversation.created_at, conversation.id)
+            try:
+                get_conversation(db, principal, conversation.id)
+            except HTTPException as error:
+                if error.status_code not in (403, 409):
+                    raise
+                continue
+            visible.append(summary(conversation))
+            if len(visible) > 50:
+                break
+        if len(candidates) < 51:
+            break
+    more = len(visible) > 50
+    items = visible[:50]
+    return {
+        "items": items,
+        "has_more": more,
+        "next_cursor": encode(principal, "conversations", items[-1].created_at, items[-1].id)
+        if more
+        else None,
+    }
 
 
 @router.post("/conversations")
@@ -92,21 +106,44 @@ def conversation_detail(
     conversation_id: str, db: Database, principal: Identity
 ) -> ConversationDetail:
     conversation = get_conversation(db, principal, conversation_id)
-    records = db.scalars(
-        select(AnswerRecord)
-        .where(
-            AnswerRecord.conversation_id == conversation_id,
-            AnswerRecord.tenant_id == principal.tenant_id,
-            AnswerRecord.user_id == principal.user_id,
-        )
-        .order_by(AnswerRecord.created_at.desc())
-        .limit(100)
-    )
-    messages = [validate_answer_access(db, principal, record) for record in records]
+    messages = message_page(conversation_id, db, principal)
     return ConversationDetail(
         **summary(conversation).model_dump(),
-        messages=list(reversed(messages)),
+        messages=messages["items"],
+        messages_next_cursor=messages["next_cursor"],
     )
+
+
+@router.get("/conversations/{conversation_id}/messages")
+def message_page(
+    conversation_id: str, db: Database, principal: Identity, cursor: str | None = None
+) -> dict:
+    get_conversation(db, principal, conversation_id)
+    scope = "messages:" + conversation_id
+    after = decode(principal, scope, cursor)
+    records = list(
+        db.scalars(
+            select(AnswerRecord)
+            .where(
+                AnswerRecord.conversation_id == conversation_id,
+                AnswerRecord.tenant_id == principal.tenant_id,
+                AnswerRecord.user_id == principal.user_id,
+                older(AnswerRecord, after),
+            )
+            .order_by(AnswerRecord.created_at.desc(), AnswerRecord.id.desc())
+            .limit(101)
+        )
+    )
+    more = len(records) > 100
+    records = records[:100]
+    messages = [validate_answer_access(db, principal, record) for record in records]
+    return {
+        "items": list(reversed(messages)),
+        "has_more": more,
+        "next_cursor": encode(principal, scope, records[-1].created_at, records[-1].id)
+        if more
+        else None,
+    }
 
 
 @router.get("/answers/{answer_id}")

@@ -1,6 +1,7 @@
 import { Icon } from "@/components/icon";
 import type { Mode, Period, Store } from "@/lib/contracts";
 import { periodLabel } from "@/lib/format";
+import { includedEnd, exclusiveEnd } from "./period-selection";
 
 type FiltersProps = {
   stores: Store[];
@@ -127,21 +128,24 @@ export function AnalysisFilters({
             />
           </label>
           <label>
-            Fim (excluído)
+            Até (incluído)
             <input
               type="date"
               min="0001-01-01"
-              max="9999-12-31"
+              max="9999-12-30"
               aria-invalid={periodInvalid}
               aria-describedby={periodInvalid ? "period-error" : undefined}
-              value={period.end}
+              value={includedEnd(period.end)}
               onChange={(event) =>
-                onPeriodChange({ ...period, end: event.target.value })
+                onPeriodChange({
+                  ...period,
+                  end: exclusiveEnd(event.target.value),
+                })
               }
               disabled={busy}
             />
           </label>
-          <small>Máximo: 90 dias.</small>
+          <small>Máximo: 90 dias. Último dia suportado: 30/12/9999.</small>
         </div>
       )}{" "}
       {periodInvalid && (
@@ -150,7 +154,7 @@ export function AnalysisFilters({
           className="notice danger workspace-notice"
           role="alert"
         >
-          Use 1 a 90 dias, com fim posterior ao início.
+          Use 1 a 90 dias, com data final igual ou posterior ao início.
         </div>
       )}
     </>

@@ -98,11 +98,13 @@ def test_runner_persists_setup_failure_without_secrets_or_live_approval(
     monkeypatch.setattr(live_runner, "source_fingerprint", lambda: {})
     monkeypatch.setattr(live_runner.shutil, "which", lambda _: None)
     monkeypatch.setenv("TEST_DATABASE_URL", "postgresql+psycopg://unit:unit@invalid/setup_test")
-    monkeypatch.setenv("DATABASE_URL", settings.database_url)
+    monkeypatch.setenv("DATABASE_URL", settings.database_url.get_secret_value())
     monkeypatch.setenv("DEMO_MODE", "true")
     for field in ("llm_enabled", "reference_date", "dataset_version"):
         monkeypatch.setattr(settings, field, getattr(settings, field))
-    monkeypatch.setattr(settings, "openai_api_key", "unit-key-never-sent")
+    from pydantic import SecretStr
+
+    monkeypatch.setattr(settings, "openai_api_key", SecretStr("unit-key-never-sent"))
     monkeypatch.setattr(settings, "openai_base_url", "https://test.openai.azure.com/openai/v1/")
     monkeypatch.setattr(settings, "openai_model", "unit-model")
     monkeypatch.setattr(settings, "openai_reasoning_effort", "minimal")

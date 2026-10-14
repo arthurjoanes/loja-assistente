@@ -67,7 +67,7 @@ test("datas personalizadas mantêm edição real, bloqueiam inválidas e enviam 
   await enter(page);
   await page.getByLabel("Período", { exact: true }).selectOption("custom");
   const start = page.getByLabel("Início (incluído)");
-  const end = page.getByLabel("Fim (excluído)");
+  const end = page.getByLabel("Até (incluído)");
   const question = page.getByLabel("Pergunta", { exact: true });
   const send = page.getByRole("button", { name: "Enviar pergunta" });
   let queries = 0;
@@ -78,7 +78,6 @@ test("datas personalizadas mantêm edição real, bloqueiam inválidas e enviam 
   for (const [from, to] of [
     ["2026-08-18", "2026-08-17"],
     ["", "2026-08-17"],
-    ["2026-08-17", "2026-08-17"],
     ["2026-05-18", "2026-08-17"],
   ]) {
     await start.fill(from);
@@ -93,7 +92,7 @@ test("datas personalizadas mantêm edição real, bloqueiam inválidas e enviam 
   }
   expect(queries).toBe(0);
   await start.fill("2026-05-19");
-  await end.fill("2026-08-17");
+  await end.fill("2026-08-16");
   await expect(start).toHaveAttribute("aria-invalid", "false");
   await expect(send).toBeEnabled();
   const answer = await submit(page, "Qual foi a receita?");
@@ -104,7 +103,7 @@ test("datas personalizadas mantêm edição real, bloqueiam inválidas e enviam 
   expect(answer.result?.coverage.expected_days).toBe(90);
   await page.getByLabel("Período", { exact: true }).selectOption("custom");
   await start.fill("2026-08-15");
-  await end.fill("2026-08-16");
+  await end.fill("2026-08-15");
   expect((await submit(page, "Qual foi a receita?")).result?.period).toEqual({
     start: "2026-08-15",
     end: "2026-08-16",
@@ -310,7 +309,7 @@ test("sessão expirada entre identificação e histórico volta ao login", async
   page,
 }) => {
   await enter(page);
-  await page.route("**/api/conversations", (route) =>
+  await page.route("**/api/conversations/page", (route) =>
     route.fulfill({
       status: 401,
       contentType: "application/json",

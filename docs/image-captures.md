@@ -1,6 +1,6 @@
 # Capturas da interface
 
-As capturas atuais de [12/10/2026](uiux-20261012.md) têm comparação pareada em `screenshots/uiux-20261012/`, com a aplicação real em Demo. O recibo em `evidence/uiux-20261012/` registra hashes, origem, jornadas, geometria e scanner; as capturas de setembro abaixo conservam seu contexto histórico.
+As capturas da rodada de [12/10/2026](uiux-20261012.md) têm comparação pareada em `screenshots/uiux-20261012/`, com a aplicação real em Demo. O recibo em `evidence/uiux-20261012/` registra hashes, origem, jornadas, geometria e scanner; as capturas de setembro abaixo conservam seu contexto histórico. Elas documentam aquelas fontes; alterações posteriores precisam de uma nova captura para comprovar sua aparência.
 
 | Estado | Antes | Depois |
 | --- | --- | --- |
@@ -52,3 +52,20 @@ O [coletor](../scripts/capture_docs.cjs) exige pasta vazia, usa gerente Aurora/C
 - Os quatro PNGs em `design/` são propostas e espécimes, explicitamente identificados na [decisão visual](frontend-quality.md); não são captura da aplicação.
 
 A revisão inventariou os 26 PNGs anteriores, referências e hashes, sem duplicatas binárias internas. Todos têm função documental; nenhuma prova foi excluída. Cópias de fontes do experimento Azure, freeze e fingerprints preservam a reprodução da avaliação, e os snapshots antes/depois iguais comprovam que o refresh não alterou os dados; não são arquivos descartáveis.
+
+## Leitura visual conferida em 13/10/2026
+
+Os 149 PNGs versionados foram abertos: 123 da comparação UI/UX e 26 anteriores. A revisão manteve os arquivos e seus hashes. As conclusões abaixo distinguem o que aparece na imagem do que depende de testes e recibos.
+
+| Imagem ou conjunto | O que está visível | Conclusão e limite |
+| --- | --- | --- |
+| Resultado de 12/10, 1440 px | Pergunta, Centro, 10–16/08, R$ 10.810,95, 56 pedidos, 227 unidades, ticket R$ 193,05 e gráfico com base zero e teto R$ 4.130,55 | Explica a análise de vendas. O cálculo fica fora deste viewport; confira a [vista com Cálculo aberto](screenshots/uiux-20261012/after-chromium-resultado-1440-focus.png). |
+| Cálculo aberto, 1440 px | Fórmula, fonte fictícia, fuso, intervalo com fim exclusivo e sete linhas | As receitas somam R$ 10.810,95; os pedidos somam 56 e as unidades, 227. Nos dois dias sem pedidos, ticket aparece indisponível. A concordância da apresentação não substitui o oráculo financeiro independente. |
+| Antes/depois, início em 320/390 px | O filtro de período antes cortava o texto; depois usa uma coluna e exibe a opção completa | A mudança é visível com o mesmo estado. As imagens não certificam todos os tamanhos ou dispositivos. |
+| Antes/depois, editor recolhido em 390 px | Antes, a escolha pendente ficava escondida; depois, opções e confirmação permanecem acima da resposta | Mostra a correção do fluxo; o caso sem escolha mantém Confirmar desabilitado. |
+| Sem dados, cinco larguras | Pergunta de 01/01/2025, aviso de ausência e acesso ao cálculo | Não apresenta receita zero como se fosse venda apurada. Capturas de foco podem estar roladas e não mostram a página inteira. |
+| Favoritos, cinco larguras | Nome, recorte salvo e ações de executar/abrir registro; foco destacado | Mostra a separação das ações. A captura histórica `evolution-favorites.png` contém HTML como texto de teste escapado, conforme [verificação](verification.md#evolução-de-12102026); não é exemplo de nome comercial. |
+| Capturas móveis de setembro | A vista `current-20260922/consulta-mobile.png` contém apenas quatro indicadores; as vistas verdes anteriores pertencem a outra composição | O recorte não mostra gráfico, tabela e editor juntos; não permite avaliar essa disposição no celular. |
+| Propostas A/B, marcas e tipografia | Composições rotuladas como simulação e espécimes de identidade | Explicam a decisão visual; não comprovam páginas em execução. |
+
+O conjunto comunica pergunta, autorização de recorte, resultado e conferência. A evidência visual permanece em Demo: não comprova qualidade de interpretação por LLM, isolamento entre organizações, produtividade com pessoas ou comportamento atual após as correções de 13/10.

@@ -30,6 +30,11 @@ O usuário de `/auth/me` contém `id`, `name`, `email`, `role`, `organization` (
 | `mode`              | `demo` ou `llm`                      |
 | `store_ids`         | Lista de IDs de lojas                |
 | `period`            | `null` ou objeto com `start` e `end` |
+| `client_request_id` | Identificador da intenção, de 1 a 64 caracteres; a interface envia UUID |
+
+Com `client_request_id`, a admissão é gravada antes da interpretação, com unicidade por tenant/usuário e fingerprint do pedido. Repetição idêntica recupera a resposta existente; conteúdo diferente retorna 409. `GET /assistant/requests/{client_request_id}` recupera a resposta com autorização atual, retorna 404 sem admissão e 409 enquanto a execução não tiver publicação confirmada. Uma execução incerta nunca dispara outra chamada ao provedor ao repetir a chave. O vínculo da resposta com a intenção é publicado na mesma transação da resposta. Clientes antigos sem esse campo continuam aceitos, sem garantia de repetição segura.
+
+Após falha de transporte, a interface conserva pergunta e intenção e bloqueia outro envio e a abertura de outra conversa até **Recarregar estado atual**. Consultar a lista de favoritos não remove esse bloqueio; executar um favorito ou abrir seu cálculo também exige resolver a intenção. Se a recuperação retornar 404, reenvia o corpo original com a mesma chave e confirma esse envio; se retornar 409, mantém a incerteza. **Nova análise** abandona explicitamente a recuperação local e permite preparar outra intenção, sem cancelar nem negar uma execução já iniciada no servidor. Sair da conta limpa a intenção local, e respostas tardias da sessão anterior são descartadas. Admissões sem resposta após falha do processo devem ser investigadas; não são expiradas automaticamente como se nenhuma chamada tivesse ocorrido. A migração `0006` deve ser aplicada antes de iniciar a versão nova.
 
 | Campo do plano     | Domínio                                                                                    |
 | ------------------ | ------------------------------------------------------------------------------------------ |
@@ -79,7 +84,9 @@ Alterações neste contrato devem atualizar consumidores, documentação e teste
 
 `response_ms` mede o tempo no serviço até a gravação do registro, incluindo interpretação e consulta; exclui commit, rede e entrega no navegador. Não deve ser somado às demais durações. `/operations` retorna até 100 entradas mais recentes do próprio usuário; total/errors referem-se a essa amostra. Falhas que impedem persistir a operação aparecem apenas nos logs sanitizados, não nessa amostra. Conflito de conversa é `conflict`, contabilizado entre erros; status de acesso recusado é `denied`, sem pergunta ou loja proibida no registro. Campos tokens/cost são null. O proxy preserva `X-Request-ID`, `Cache-Control: no-store` e `X-Content-Type-Options`.
 
-Histórico examina até 50 conversas recentes e oculta aquelas com planos antigos hoje revogados; detalhe retorna até 100 mensagens recentes após reautorizar todos os planos da conversa. Paginação é uma extensão. O último plano é persistido independentemente do limite visual. Consulta concorrente na mesma conversa recebe HTTP 409 e pode ser reenviada após a primeira terminar; o campo de pergunta permanece preenchido diante desse erro.
+`GET /conversations/page?cursor=` retorna `{items,next_cursor,has_more}`, com até 50 conversas autorizadas por página, em ordem de criação/ID decrescente. Conversas revogadas são excluídas antes de completar a página. O endpoint antigo `/conversations` conserva a lista simples da primeira página. O detalhe retorna as 100 respostas mais recentes e `messages_next_cursor`; `GET /conversations/{id}/messages?cursor=` entrega anteriores no mesmo envelope paginado, com `items` em ordem cronológica para leitura. Cursors são assinados e vinculados a tenant, usuário e escopo; acesso atual é revalidado em cada página, inclusive permissões de planos e esclarecimentos anteriores. O último plano continua independente da página em leitura.
+
+Histórico e favoritos carregam de forma independente. Uma falha em favoritos não impede restaurar o esclarecimento pendente; falha do histórico tem mensagem e recarga próprias. 401/403 continuam invalidando o estado protegido. Uma intenção de consulta já admitida sem resposta confirmada deve ser recuperada pela mesma chave; iniciar outra é uma execução explícita.
 
 ## Limites de entrada antes do JSON
 

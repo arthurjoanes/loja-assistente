@@ -2,6 +2,10 @@
 
 ## Login e cookies
 
+A verificação de senha também tem limite de **duas operações Argon2 simultâneas por processo**. Excedentes recebem 503 e `Retry-After: 1`, sem fila interna ilimitada; o slot é liberado em sucesso ou exceção. Com um worker e 64 MiB por hash, são até 128 MiB de trabalho Argon2, além da memória do restante do serviço, dentro do orçamento declarado de 768 MiB. Aumentar workers multiplica esse orçamento e exige dimensionamento. Os limites duráveis por conta/origem continuam ativos; o controle de concorrência não reduz a força do hash nem substitui um ensaio de capacidade.
+
+Campos de chave de provedor, segredo de sessão e URL do banco usam `SecretStr`, com extração explícita somente nos consumidores. `hide_input_in_errors=True` impede que a representação dos erros de configuração inclua as entradas brutas. Diagnósticos não devem registrar dumps das configurações nem erros estruturados com `input`.
+
 Desde a revisão de 03/10/2026, o login reserva uma tentativa no PostgreSQL antes de verificar a senha com Argon2. O limite é de cinco tentativas malsucedidas ou em andamento por conta normalizada e trinta por origem, em janelas de 60 segundos. O limite de conta vale mesmo quando a origem muda. A admissão usa transação própria: uma resposta 401 ou rollback do login conserva a tentativa. Um login concluído libera apenas sua reserva; não apaga outras falhas. Ao atingir o limite, a API retorna 429 e `Retry-After`, que o proxy também encaminha.
 
 As chaves dos contadores usam HMAC com `SESSION_SECRET`; a tabela não armazena e-mail nem endereço de rede. Locks em ordem estável coordenam processos e conexões concorrentes. A limpeza remove até 100 contadores expirados por admissão e ignora linhas já bloqueadas, evitando esperar por outra autenticação durante a limpeza.

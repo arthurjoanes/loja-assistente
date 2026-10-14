@@ -28,9 +28,11 @@ O código separa [interpretação](backend/src/loja_assistente/assistant/interpr
 
 ## Demonstração
 
-![Análise de receita com recorte e cálculo no Loja Assistente](docs/screenshots/uiux-20261012/after-chromium-resultado-1440.png)
+![Indicadores e gráfico da receita diária da loja Centro no modo Demo](docs/screenshots/uiux-20261012/after-chromium-resultado-1440.png)
 
 _Aplicação real em Demo, com vendas fictícias de Centro e referência analítica de 17/08/2026. A [comparação antes/depois](docs/uiux-20261012.md) e a [galeria](docs/image-captures.md) identificam fontes, estados, viewports e limites de cada captura. As imagens históricas conservam seus arquivos e hashes._
+
+Esta captura de 12/10/2026 mostra os indicadores e o gráfico de 10–16/08. A [captura com Cálculo aberto](docs/screenshots/uiux-20261012/after-chromium-resultado-1440-focus.png) mostra a fórmula, a cobertura 7/7 e as sete linhas diárias que somam R$ 10.810,95.
 
 <a id="uma-conta-pequena-e-um-caso-de-consulta"></a>
 
@@ -52,9 +54,15 @@ Salve um cálculo válido em **Favoritos** para repetir seu plano nas mesmas dat
 
 A escolha pendente aparece antes da resposta e permanece disponível quando o editor da próxima consulta está recolhido no celular. O escopo destaca nomes das lojas e dias incluídos; IDs e fim exclusivo ficam em detalhe conferível. Erros conservam a pergunta e, após conflito de renomeação, recarregar mantém o nome digitado. [Jornadas, decisões e validação de UI/UX](docs/uiux-20261012.md).
 
-A [verificação da evolução](docs/verification.md#evolução-de-12102026) registra 477 testes de backend, 57/57 avaliações offline e 79 casos Playwright aprovados, com capturas reais e falhas anteriores preservadas. O [comando isolado](docs/local-setup.md#verificação-isolada-da-evolução) prepara fontes, imagens e bancos exclusivos por rodada.
+A [revisão de UI/UX de 12/10/2026](docs/verification.md#uiux-de-12102026) reúne a rodada principal de evidências históricas. O [recibo](docs/evidence/uiux-20261012/index.json) identifica a versão testada e as capturas; os resultados abaixo não abrangem alterações posteriores.
 
-A [revisão de UI/UX](docs/uiux-20261012.md#validação-final) aprovou 477 testes de backend, 57/57 avaliações offline e 85 casos Playwright. A comparação usa 25 estados em Chromium e mais cinco em Firefox, com as mesmas perguntas e dados sintéticos. O recibo e as capturas preservam a origem de cada execução.
+| Rodada histórica | Escopo registrado | Proveniência |
+| --- | --- | --- |
+| UI/UX · 12/10/2026 | 477 backend; 57/57 offline; 85 Playwright (41 puros/proxy e 44 navegador/HTTP) | [Recibo principal](docs/evidence/uiux-20261012/index.json) |
+| Favoritos e esclarecimentos · 12/10/2026 | 477 backend; 57/57 offline; 79 Playwright | [Verificação da evolução](docs/verification.md#evolução-de-12102026) |
+| CI · 22/09/2026 | 69 Playwright: 39 puros e 30 navegador/HTTP | [Recibo do CI](docs/evidence/frontend-ci-20260922.json) |
+
+As rodadas têm commits e escopos próprios; suas contagens não são somadas. O [guia de verificação](docs/verification.md) centraliza comandos, versões e limites. O [comando isolado](docs/local-setup.md#verificação-isolada-da-evolução) prepara fontes, imagens e bancos exclusivos por rodada.
 
 ## Identidade visual
 
@@ -153,7 +161,7 @@ As três etapas registraram **55 chamadas e 48.788 tokens**. O custo **estimado 
 .\scripts\dev.ps1 e2e
 ```
 
-O [recibo do CI de 22/09/2026](docs/evidence/frontend-ci-20260922.json), sobre `73aa1fff`, registra **69 casos Playwright**, sendo 39 puros e 30 de navegador/HTTP. A [verificação](docs/verification.md) identifica os resultados de backend, comandos e versões de cada rodada.
+Consulte a tabela de rodadas acima e o [guia de verificação](docs/verification.md) para relacionar cada resultado ao seu commit e escopo.
 
 <a id="limites-e-manutenção"></a>
 <a id="limites"></a>

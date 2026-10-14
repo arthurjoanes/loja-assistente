@@ -136,7 +136,13 @@ export type Conversation = {
 };
 export type ConversationDetail = Conversation & {
   messages: Answer[];
+  messages_next_cursor?: string | null;
   pending_clarification?: PendingClarification | null;
+};
+export type Page<T> = {
+  items: T[];
+  next_cursor: string | null;
+  has_more: boolean;
 };
 export type Operations = {
   entries: {
