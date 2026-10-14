@@ -102,6 +102,7 @@ O [Compose](compose.yaml) publica frontend/API em loopback e mantém o banco int
 <p>
   <img src="docs/stack/python.svg" alt="Python" width="64" height="64">
   <img src="docs/stack/fastapi.svg" alt="FastAPI" width="64" height="64">
+  <img src="docs/stack/pydantic.svg" alt="Pydantic, validação dos contratos" width="64" height="64">
   <img src="docs/stack/sqlalchemy.svg" alt="SQLAlchemy" width="64" height="64">
   <img src="docs/stack/postgresql.svg" alt="PostgreSQL" width="64" height="64">
   <img src="docs/stack/typescript.svg" alt="TypeScript" width="64" height="64">
@@ -121,6 +122,7 @@ IA opcional pelo SDK OpenAI, com endpoint OpenAI ou Azure OpenAI. O modo de demo
 | --------------- | -------------------------------------------------------------------- |
 | Interface       | Next.js, React e TypeScript; gráfico/tabela sem recalcular dinheiro  |
 | API             | Python/FastAPI, SQLAlchemy e consultas parametrizadas                |
+| Validação       | Pydantic confere o plano recebido antes da autorização e do cálculo   |
 | Dados           | PostgreSQL; autorização, cobertura e precisão financeira no servidor |
 | Modelo opcional | SDK OpenAI, com saída estruturada validada novamente pelo domínio    |
 | Execução        | Docker Compose; demo, testes e avaliação usam escopos distintos      |

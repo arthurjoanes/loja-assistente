@@ -6,6 +6,7 @@ Os ícones originais de Python, FastAPI, PostgreSQL, TypeScript, React, Next.js 
 
 | Arquivo | Imagem de origem | Licença |
 | --- | --- | --- |
+| [Pydantic](pydantic.svg) | [Simple Icons 14.15.0, fonte fixada](https://raw.githubusercontent.com/simple-icons/simple-icons/5664507081ffb65b5a2a0ed2bf2ee2b3b327cb4e/icons/pydantic.svg) | [CC0-1.0](LICENSE.simple-icons.md) |
 | [OpenAI SDK](openai.svg) | [Fonte fixada](https://raw.githubusercontent.com/simple-icons/simple-icons/5664507081ffb65b5a2a0ed2bf2ee2b3b327cb4e/icons/openai.svg) | [CC0-1.0](LICENSE.simple-icons.md) |
 | [Azure OpenAI](azure.svg) | [Fonte fixada](https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/azure/azure-original.svg) | [MIT](LICENSE.devicon) |
 | [SQLAlchemy](sqlalchemy.svg) | [Fonte fixada](https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/sqlalchemy/sqlalchemy-original.svg) | [MIT](LICENSE.devicon) |
