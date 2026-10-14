@@ -102,11 +102,19 @@ O [Compose](compose.yaml) publica frontend/API em loopback e mantém o banco int
 <p>
   <img src="docs/stack/python.svg" alt="Python" width="64" height="64">
   <img src="docs/stack/fastapi.svg" alt="FastAPI" width="64" height="64">
+  <img src="docs/stack/sqlalchemy.svg" alt="SQLAlchemy" width="64" height="64">
   <img src="docs/stack/postgresql.svg" alt="PostgreSQL" width="64" height="64">
   <img src="docs/stack/typescript.svg" alt="TypeScript" width="64" height="64">
   <img src="docs/stack/react.svg" alt="React" width="64" height="64">
   <img src="docs/stack/nextjs.svg" alt="Next.js" width="64" height="64">
   <img src="docs/stack/docker.svg" alt="Docker" width="64" height="64">
+</p>
+
+IA opcional pelo SDK OpenAI, com endpoint OpenAI ou Azure OpenAI. O modo de demonstração funciona sem chamar um modelo.
+
+<p>
+  <img src="docs/stack/openai.svg" alt="SDK OpenAI para Python, integração opcional" width="64" height="64">
+  <img src="docs/stack/azure.svg" alt="Azure OpenAI, endpoint opcional" width="64" height="64">
 </p>
 
 | Camada          | Escolha e compromisso                                                |
@@ -116,6 +124,8 @@ O [Compose](compose.yaml) publica frontend/API em loopback e mantém o banco int
 | Dados           | PostgreSQL; autorização, cobertura e precisão financeira no servidor |
 | Modelo opcional | SDK OpenAI, com saída estruturada validada novamente pelo domínio    |
 | Execução        | Docker Compose; demo, testes e avaliação usam escopos distintos      |
+
+[Fontes e licenças dos ícones](docs/stack/README.md).
 
 Esquema válido não comprova interpretação correta ou autorização. A [Microsoft documenta a saída estruturada](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/structured-outputs); este projeto valida o [plano](backend/src/loja_assistente/analytics/contracts.py) e as [permissões](backend/src/loja_assistente/auth/service.py) separadamente. [Decisões e alternativas](docs/decisoes-tecnicas.md) · [Lock Python](backend/uv.lock) · [Lock frontend](frontend/package-lock.json).
 
@@ -196,4 +206,4 @@ Desenvolvido por **Arthur Joanes**. Para conversar sobre análise de vendas, int
   </a>
 </p>
 
-Código sob [licença MIT](LICENSE). Source Sans 3 mantém a [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e a [origem](frontend/src/app/fonts/sources.json). Ícones da stack e LinkedIn: [Devicon, licença MIT](docs/stack/LICENSE.devicon).
+Código sob [licença MIT](LICENSE). Source Sans 3 mantém a [licença OFL 1.1](frontend/src/app/fonts/source-sans-LICENSE.md) e a [origem](frontend/src/app/fonts/sources.json). Ícones Devicon e Simple Icons: [fontes e licenças](docs/stack/README.md). LinkedIn: [Devicon, licença MIT](docs/stack/LICENSE.devicon).
