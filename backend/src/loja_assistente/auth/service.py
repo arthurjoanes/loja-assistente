@@ -93,7 +93,11 @@ def require_csrf(
     require_origin(request)
     session = current_session(request, db)
     supplied = request.headers.get("x-csrf-token", "")
-    if not supplied.isascii() or not secrets.compare_digest(supplied, session.csrf_token):
+    if (
+        not supplied
+        or not supplied.isascii()
+        or not secrets.compare_digest(supplied, session.csrf_token)
+    ):
         raise HTTPException(status_code=403, detail="Token CSRF inválido. Recarregue a página.")
     return principal
 

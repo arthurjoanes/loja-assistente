@@ -11,19 +11,28 @@ from loja_assistente.models import LoginSession
 
 
 @pytest.mark.parametrize(
-    "token,accepted",
-    [(b"\xff", False), (b"incorrect", False), (b"", False), (b"expected-token", True)],
+    "token,stored_token,accepted",
+    [
+        (b"\xff", "expected-token", False),
+        (b"incorrect", "expected-token", False),
+        (b"", "expected-token", False),
+        (b"expected-token", "expected-token", True),
+        (None, "", False),
+        (b"", "", False),
+    ],
 )
-def test_csrf_header_validation(token: bytes, accepted: bool) -> None:
+def test_csrf_header_validation(token: bytes | None, stored_token: str, accepted: bool) -> None:
+    headers = [
+        (b"origin", settings.allowed_origins[0].encode()),
+        (b"cookie", b"la_session=synthetic-session"),
+    ]
+    if token is not None:
+        headers.append((b"x-csrf-token", token))
     request = Request(
         {
             "type": "http",
             "method": "POST",
-            "headers": [
-                (b"origin", settings.allowed_origins[0].encode()),
-                (b"cookie", b"la_session=synthetic-session"),
-                (b"x-csrf-token", token),
-            ],
+            "headers": headers,
         }
     )
     db = Mock(spec=Session)
@@ -31,7 +40,7 @@ def test_csrf_header_validation(token: bytes, accepted: bool) -> None:
         id="synthetic-digest",
         tenant_id="tenant",
         user_id="user",
-        csrf_token="expected-token",
+        csrf_token=stored_token,
         expires_at=datetime.now(UTC) + timedelta(hours=1),
     )
     principal = Principal("user", "tenant", "User", "user@example.com", "manager")
