@@ -34,6 +34,41 @@ async function ask(page: Page, question: string): Promise<Answer> {
   return answer;
 }
 
+test("gráfico diário permite consultar valores pelo teclado", async ({
+  page,
+}) => {
+  await login(page);
+  const answer = await ask(
+    page,
+    "Mostre a evolução diária da receita nos últimos 7 dias",
+  );
+  expect(answer.result?.intent).toBe("daily");
+  const columns = page
+    .getByRole("group", { name: "Evolução diária", exact: true })
+    .getByRole("button");
+  await expect(columns).toHaveCount(7);
+  await columns.last().focus();
+  await page.keyboard.press("Home");
+  await expect(columns.first()).toBeFocused();
+  await expect(columns.first()).toHaveAttribute("aria-pressed", "true");
+  await page.keyboard.press("ArrowRight");
+  await expect(columns.nth(1)).toBeFocused();
+  await expect(page.locator(".daily-selection")).toContainText("11/08");
+  await page.keyboard.press("End");
+  await expect(columns.last()).toBeFocused();
+  await expect(page.locator(".daily-selection")).toContainText("16/08");
+  await expect(page.locator('.daily-column[tabindex="0"]')).toHaveCount(1);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  expect(
+    Number.parseFloat(
+      await page
+        .locator(".daily-bar")
+        .first()
+        .evaluate((element) => getComputedStyle(element).transitionDuration),
+    ),
+  ).toBeLessThanOrEqual(0.00001);
+});
+
 test("gestor consulta receita, evidência, ranking, comparação e continuação", async ({
   page,
 }, testInfo) => {
@@ -113,7 +148,7 @@ test("gestor consulta receita, evidência, ranking, comparação e continuação
     dailyCard.getByRole("heading", { name: daily.question, exact: true }),
   ).toBeVisible();
   await expect(
-    dailyCard.getByRole("img", { name: /^Evolução diária\./ }),
+    dailyCard.getByRole("group", { name: "Evolução diária", exact: true }),
   ).toBeVisible();
   await dailyCard.getByRole("button", { name: "Tabela", exact: true }).click();
   await expect(
@@ -318,6 +353,8 @@ test("celular permite teclado, filtros e leitura sem overflow horizontal", async
   await page.setViewportSize({ width: 390, height: 844 });
   await login(page, "Supervisor · Aurora Casa");
   await expect(page.getByRole("button", { name: "Abrir menu" })).toBeVisible();
+  await page.getByRole("button", { name: "Abrir menu" }).click();
+  await page.getByRole("button", { name: "Nova análise", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Nova consulta", exact: true }),
   ).toBeVisible();

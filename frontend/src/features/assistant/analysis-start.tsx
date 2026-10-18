@@ -49,10 +49,9 @@ export function AnalysisStart({
   return (
     <section className="welcome">
       <span className="eyebrow">Consultas disponíveis</span>
-      <h2>Comece por uma pergunta de negócio.</h2>
+      <h2>Como foram as vendas?</h2>
       <p className="welcome-description">
-        Escolha uma consulta abaixo ou use o campo Pergunta. O resultado reúne o
-        indicador, seu recorte e o cálculo que permite conferir os números.
+        Escolha uma consulta ou escreva sua pergunta.
       </p>
 
       <div className="suggestions">

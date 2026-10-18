@@ -1,6 +1,6 @@
 # Loja Assistente
 
-Assistente para consultar vendas em português e conferir quais lojas, período e cálculo a resposta usou. Desenvolvi a interpretação das perguntas, a autorização e as consultas, além da interface, com vendas fictícias. O modo Demo funciona sem chamadas a um modelo.
+Consultas de vendas em português, com receita, pedidos, ticket médio e ranking de produtos. Cada resultado mostra as lojas, o período e o cálculo usado. A demonstração usa vendas fictícias e funciona sem um modelo de IA.
 
 <!-- Navegação do README -->
 <p>
@@ -28,11 +28,13 @@ O código separa [interpretação](backend/src/loja_assistente/assistant/interpr
 
 ## Demonstração
 
-![Indicadores e gráfico da receita diária da loja Centro no modo Demo](docs/screenshots/uiux-20261012/after-chromium-resultado-1440.png)
+![Receita diária da loja Centro](docs/readme/sales-analysis.png)
 
-_Aplicação real em Demo, com vendas fictícias de Centro e referência analítica de 17/08/2026. A [comparação antes/depois](docs/uiux-20261012.md) e a [galeria](docs/image-captures.md) identificam fontes, estados, viewports e limites de cada captura. As imagens históricas conservam seus arquivos e hashes._
+Selecione loja e período para acompanhar a receita diária. Toque em uma coluna para consultar o valor ou abra a tabela. Dias sem cobertura aparecem como lacunas; vendas zero continuam sendo zero. No ranking, a participação dos produtos usa a receita total do período.
 
-Esta captura de 12/10/2026 mostra os indicadores e o gráfico de 10–16/08. A [captura com Cálculo aberto](docs/screenshots/uiux-20261012/after-chromium-resultado-1440-focus.png) mostra a fórmula, a cobertura 7/7 e as sete linhas diárias que somam R$ 10.810,95.
+![Consulta de vendas no celular](docs/readme/sales-analysis-mobile.png)
+
+[Data, ambiente e arquivos das capturas](docs/image-captures.md).
 
 <a id="uma-conta-pequena-e-um-caso-de-consulta"></a>
 
@@ -52,17 +54,9 @@ Na interface, peça **Mostre a evolução diária da receita nos últimos 7 dias
 
 Salve um cálculo válido em **Favoritos** para repetir seu plano nas mesmas datas absolutas. **Abrir cálculo registrado** conserva a evidência original; **Executar novamente** consulta a base atual e registra outra resposta. O servidor confere as permissões a cada acesso. Se perguntar **Receita da loja Centro** sem período, escolha o período no esclarecimento: o indicador e a loja permanecem selecionados, inclusive após atualizar a página. [Contratos e estados](docs/api-contract.md#favoritos-e-esclarecimentos).
 
-A escolha pendente aparece antes da resposta e permanece disponível quando o editor da próxima consulta está recolhido no celular. O escopo destaca nomes das lojas e dias incluídos; IDs e fim exclusivo ficam em detalhe conferível. Erros conservam a pergunta e, após conflito de renomeação, recarregar mantém o nome digitado. [Jornadas, decisões e validação de UI/UX](docs/uiux-20261012.md).
+Os filtros oferecem ontem, últimos 7 ou 30 dias e datas personalizadas. Comparações usam períodos de igual duração. Receita e ticket consideram pedidos concluídos; a cobertura informa quando faltam dados de alguma loja.
 
-A [revisão de UI/UX de 12/10/2026](docs/verification.md#uiux-de-12102026) reúne a rodada principal de evidências históricas. O [recibo](docs/evidence/uiux-20261012/index.json) identifica a versão testada e as capturas; os resultados abaixo não abrangem alterações posteriores.
-
-| Rodada histórica | Escopo registrado | Proveniência |
-| --- | --- | --- |
-| UI/UX · 12/10/2026 | 477 backend; 57/57 offline; 85 Playwright (41 puros/proxy e 44 navegador/HTTP) | [Recibo principal](docs/evidence/uiux-20261012/index.json) |
-| Favoritos e esclarecimentos · 12/10/2026 | 477 backend; 57/57 offline; 79 Playwright | [Verificação da evolução](docs/verification.md#evolução-de-12102026) |
-| CI · 22/09/2026 | 69 Playwright: 39 puros e 30 navegador/HTTP | [Recibo do CI](docs/evidence/frontend-ci-20260922.json) |
-
-As rodadas têm commits e escopos próprios; suas contagens não são somadas. O [guia de verificação](docs/verification.md) centraliza comandos, versões e limites. O [comando isolado](docs/local-setup.md#verificação-isolada-da-evolução) prepara fontes, imagens e bancos exclusivos por rodada.
+[Testes e comandos](docs/verification.md) · [Navegação e acessibilidade](docs/uiux-20261012.md).
 
 ## Arquitetura
 
@@ -145,7 +139,7 @@ Docker Desktop com containers Linux e PowerShell 7+; na raiz:
 
 Após o [setup](scripts/dev.ps1), abra a [interface](http://localhost:3102) ou a [API](http://localhost:8102/docs). O [seed](backend/src/loja_assistente/seed.py) cria a conta fictícia `gerente.a@demo.local`, senha `LojaDemo!2026`; a [configuração](backend/src/loja_assistente/config.py) exige `DEMO_MODE=true`. O relógio analítico padrão é 17/08/2026.
 
-Demo dispensa chave e chamadas pagas; a execução local continua consumindo recursos do computador. [Linux e operação](docs/local-setup.md). O modo LLM exige [configuração do provedor](docs/llm-integration.md) e [orçamento por organização](docs/provider-budget.md); pode gerar cobrança.
+O modo Demo dispensa chave de API. O modo LLM exige [configurar o provedor](docs/llm-integration.md) e o [orçamento por organização](docs/provider-budget.md). [Instalação no Linux](docs/local-setup.md).
 
 <a id="dá-pra-conferir-sem-rodar"></a>
 <a id="testes"></a>
@@ -167,7 +161,7 @@ As três etapas registraram **55 chamadas e 48.788 tokens**. O custo **estimado 
 .\scripts\dev.ps1 e2e
 ```
 
-Consulte a tabela de rodadas acima e o [guia de verificação](docs/verification.md) para relacionar cada resultado ao seu commit e escopo.
+O [guia de verificação](docs/verification.md) registra os resultados por versão.
 
 <a id="limites-e-manutenção"></a>
 <a id="limites"></a>
@@ -178,7 +172,7 @@ Consulte a tabela de rodadas acima e o [guia de verificação](docs/verification
 - Comparações exigem [cobertura completa](backend/src/loja_assistente/analytics/queries.py); dia ausente não vira venda zero.
 - Lucro, estoque, imposto e reembolso parcial não são modelados.
 - A [política de orçamento](backend/src/loja_assistente/assistant/budget_policy.py) controla admissão; não garante cobrança monetária do provedor.
-- A demonstração não comprova produtividade, capacidade de produção, acessibilidade integral ou segurança universal. Publicação exige identidade, HTTPS e proteção operacional próprios.
+- A configuração local usa loopback e contas fictícias. Para publicar, configure identidade, HTTPS e os controles do [guia de segurança](docs/security.md).
 
 O guia de [segurança](docs/security.md) detalha os limites de rede e das verificações. A [revisão de 03/10/2026](docs/SECURITY-REVIEW-2026-10-03.md) registra os 18 itens do checklist, as correções e a dependência de desenvolvimento que ainda aguarda correção do fornecedor.
 
@@ -199,7 +193,7 @@ Para diagnosticar, confira `dev.ps1 status`, `dev.ps1 logs` e o `request_id` de 
 
 ## Autor e licença
 
-Desenvolvido por **Arthur Joanes**. Para conversar sobre análise de vendas, interpretação e dados verificáveis:
+Desenvolvido por **Arthur Joanes**.
 
 <p>
   <a href="https://www.linkedin.com/in/arthur-joanes-6a2967373/">

@@ -1,5 +1,13 @@
 # Capturas da interface
 
+## Apresentação atual
+
+As imagens [desktop](readme/sales-analysis.png) e [mobile](readme/sales-analysis-mobile.png) foram capturadas em 18/10/2026 UTC, no Chromium 153.0.8010.12. A aplicação usa build de produção, API local e PostgreSQL 17.11 portátil. O perfil é Gerente da Aurora Casa, com o seed fictício `synthetic-v1` e referência de 17/08/2026.
+
+O desktop é uma captura da viewport de 1440 × 1100; o mobile é uma captura nativa da análise em 390 × 844. Os arquivos não receberam edição de pixels. [Arquivos e hashes](readme/capture.json).
+
+## Capturas anteriores
+
 As capturas da rodada de [12/10/2026](uiux-20261012.md) têm comparação pareada em `screenshots/uiux-20261012/`, com a aplicação real em Demo. O recibo em `evidence/uiux-20261012/` registra hashes, origem, jornadas, geometria e scanner; as capturas de setembro abaixo conservam seu contexto histórico. Elas documentam aquelas fontes; alterações posteriores precisam de uma nova captura para comprovar sua aparência.
 
 | Estado | Antes | Depois |

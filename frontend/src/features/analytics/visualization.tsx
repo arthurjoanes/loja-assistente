@@ -2,6 +2,7 @@
 import { useState, type CSSProperties } from "react";
 import { Icon } from "@/components/icon";
 import { dailySeries } from "./daily-series";
+import { rankingRevenueShare } from "./ranking-share";
 import type { Result, Row } from "@/lib/contracts";
 import {
   dateLabel,
@@ -14,6 +15,7 @@ import {
 export function ResultChart({ result }: { result: Result }) {
   const [view, setView] = useState<"chart" | "table">("chart");
   const ranking = result.intent === "ranking";
+  const revenueShare = rankingRevenueShare(result);
   // Number só calcula a geometria. Rótulos usam centavos decimais.
   const max = Math.max(
     1,
@@ -51,6 +53,18 @@ export function ResultChart({ result }: { result: Result }) {
           </button>
         </div>
       </header>
+      {revenueShare !== null && (
+        <p className="ranking-concentration">
+          <strong>{revenueShare}%</strong> da receita vem{" "}
+          {result.rows.length === 1
+            ? "deste produto"
+            : `destes ${result.rows.length} produtos`}
+          .
+          {result.coverage.status === "partial"
+            ? " Considera apenas os dados carregados."
+            : ""}
+        </p>
+      )}
       {view === "table" ? (
         <DataTable
           rows={result.rows}
@@ -120,6 +134,7 @@ export function ResultChart({ result }: { result: Result }) {
   );
 }
 function DailyChart({ result }: { result: Result }) {
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const { points, axisIndices, maximumValue } = dailySeries(
     result.rows,
     result.metric,
@@ -127,13 +142,11 @@ function DailyChart({ result }: { result: Result }) {
   );
   const pointLabel = (point: (typeof points)[number]) =>
     `${dateLabel(point.date)}: ${point.row ? metricValue(point.value, result.metric) : "Sem dados carregados"}`;
+  const selected =
+    points.find((point) => point.date === selectedDate) ?? points.at(-1);
   return (
     <figure className="daily-overview">
-      <div
-        className="daily-chart"
-        role="img"
-        aria-label={"Evolução diária. " + points.map(pointLabel).join("; ")}
-      >
+      <div className="daily-chart" role="group" aria-label="Evolução diária">
         <div className="daily-scale" aria-hidden="true">
           <span>Base: {metricValue(0, result.metric)}</span>
           <strong>
@@ -145,23 +158,49 @@ function DailyChart({ result }: { result: Result }) {
         <div
           className="daily-bars"
           style={{ "--points": points.length } as CSSProperties}
-          aria-hidden="true"
         >
-          {points.map((point) => (
-            <div
-              className="daily-column"
+          {points.map((point, index) => (
+            <button
+              type="button"
+              className={
+                "daily-column" +
+                (point.date === selected?.date ? " selected" : "")
+              }
               key={point.date}
-              title={pointLabel(point)}
+              aria-label={pointLabel(point)}
+              aria-pressed={point.date === selected?.date}
+              tabIndex={point.date === selected?.date ? 0 : -1}
+              onClick={() => setSelectedDate(point.date)}
+              onFocus={() => setSelectedDate(point.date)}
+              onKeyDown={(event) => {
+                const next =
+                  event.key === "ArrowRight"
+                    ? Math.min(points.length - 1, index + 1)
+                    : event.key === "ArrowLeft"
+                      ? Math.max(0, index - 1)
+                      : event.key === "Home"
+                        ? 0
+                        : event.key === "End"
+                          ? points.length - 1
+                          : null;
+                if (next === null) return;
+                event.preventDefault();
+                const button =
+                  event.currentTarget.parentElement?.children.item(next);
+                if (button instanceof HTMLButtonElement) button.focus();
+              }}
             >
               {point.value === null ? (
                 <span className="daily-missing" />
               ) : (
                 <span
                   className="daily-bar"
-                  style={{ height: point.height + "%" }}
+                  style={
+                    { "--column-scale": point.height / 100 } as CSSProperties
+                  }
                 />
               )}
-            </div>
+            </button>
           ))}
         </div>
         <div className="daily-axis" aria-hidden="true">
@@ -171,10 +210,20 @@ function DailyChart({ result }: { result: Result }) {
             </span>
           ))}
         </div>
+        {selected && (
+          <p className="daily-selection" aria-live="polite">
+            <span>{dateLabel(selected.date)}</span>
+            <strong>
+              {selected.row
+                ? metricValue(selected.value, result.metric)
+                : "Sem dados carregados"}
+            </strong>
+          </p>
+        )}
       </div>
       <figcaption>
-        {points.length === 1 ? "1 dia" : `${points.length} dias`} · Colunas a
-        partir de zero. Valores exatos em Tabela.
+        {points.length === 1 ? "1 dia" : `${points.length} dias`} · Selecione
+        uma coluna para ver o valor.
         {points.some(({ value }) => value === null) &&
           " Traço: dado ausente ou valor indisponível."}
       </figcaption>

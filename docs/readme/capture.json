@@ -1,0 +1,28 @@
+{
+  "repo": "loja-assistente",
+  "captured_at": "2026-10-18T02:56:39.483Z",
+  "runtime": "PostgreSQL 17.11 portÃ¡til; API e frontend locais; seed do projeto; dados fictÃ­cios; sem interceptaÃ§Ã£o de HTTP",
+  "reference_date": "2026-08-17",
+  "browser": "153.0.8010.12",
+  "images": [
+    {
+      "file": "docs/readme/sales-analysis.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "sha256": "6763fe29874dc2121c604121dcc13013d6e500c18219dfdeb3953e9ab141e002",
+      "axe_violations": 0
+    },
+    {
+      "file": "docs/readme/sales-analysis-mobile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f824397e6158defc49bb42551c4a25c5bf4e6ffc98ef4a20902cf1b8c29c006c",
+      "axe_violations": 0
+    }
+  ],
+  "page_errors": []
+}

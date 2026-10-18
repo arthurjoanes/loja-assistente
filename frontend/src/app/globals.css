@@ -34,6 +34,11 @@ select,
 textarea {
   font: inherit;
 }
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
 .favorites-panel {
   max-width: 1050px;
   padding: 24px;
@@ -1407,6 +1412,15 @@ a:focus-visible {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+.ranking-concentration {
+  margin: 14px 16px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.ranking-concentration strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
 .daily-overview {
   margin: 0;
   padding: 20px 16px 8px;
@@ -1439,12 +1453,44 @@ a:focus-visible {
   align-items: end;
   justify-content: center;
   min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.daily-column:hover,
+.daily-column.selected {
+  background: var(--accent-soft, #edf2f8);
+}
+.daily-column:focus-visible {
+  outline-offset: -3px;
+}
+.daily-selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+.daily-selection span {
+  color: var(--muted);
 }
 .daily-bar {
   width: 72%;
   max-width: 44px;
   background: var(--chart);
   border-radius: 2px 2px 0 0;
+  height: 100%;
+  transform: scaleY(var(--column-scale));
+  transform-origin: bottom;
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  @starting-style {
+    .daily-bar {
+      transform: scaleY(0);
+    }
+  }
 }
 .daily-missing {
   width: 72%;
@@ -2386,7 +2432,18 @@ summary {
     color 140ms ease;
 }
 .bar {
-  transition: background-color 140ms ease;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition:
+    transform 240ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 140ms ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @starting-style {
+    .bar {
+      transform: scaleX(0);
+    }
+  }
 }
 .chart-row:hover .bar {
   background: var(--accent-dark);
