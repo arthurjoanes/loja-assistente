@@ -4,7 +4,7 @@
 
 As imagens [desktop](readme/sales-analysis.png) e [mobile](readme/sales-analysis-mobile.png) foram capturadas em 18/10/2026 UTC, no Chromium 153.0.8010.12. A aplicação usa build de produção, API local e PostgreSQL 17.11 portátil. O perfil é Gerente da Aurora Casa, com o seed fictício `synthetic-v1` e referência de 17/08/2026.
 
-O desktop é uma captura da viewport de 1440 × 1100; o mobile é uma captura nativa da análise em 390 × 844. Os arquivos não receberam edição de pixels. [Arquivos e hashes](readme/capture.json).
+Desktop e mobile mostram as viewports completas de 1440 × 1100 e 390 × 844. O [detalhe da análise no celular](readme/sales-analysis-detail-mobile.png) é um recorte nativo de 346 × 748. Os arquivos não receberam edição de pixels. [Dimensões, recortes e hashes](readme/capture.json).
 
 ## Capturas anteriores
 

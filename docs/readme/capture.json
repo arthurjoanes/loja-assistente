@@ -1,27 +1,61 @@
 {
   "repo": "loja-assistente",
-  "captured_at": "2026-10-18T02:56:39.483Z",
-  "runtime": "PostgreSQL 17.11 portÃ¡til; API e frontend locais; seed do projeto; dados fictÃ­cios; sem interceptaÃ§Ã£o de HTTP",
+  "captured_at": "2026-10-18T03:00:42.408Z",
+  "runtime": "PostgreSQL 17.11 portátil; API e frontend locais; seed do projeto; dados fictícios; sem interceptação de HTTP",
   "reference_date": "2026-08-17",
   "browser": "153.0.8010.12",
   "images": [
     {
       "file": "docs/readme/sales-analysis.png",
+      "capture": "viewport",
       "viewport": {
         "width": 1440,
         "height": 1100
       },
-      "sha256": "6763fe29874dc2121c604121dcc13013d6e500c18219dfdeb3953e9ab141e002",
+      "dimensions": {
+        "width": 1440,
+        "height": 1100
+      },
+      "clip": null,
+      "sha256": "172a516d9eddbb248372c700327cb90f925a013dbe40a194674bdd556fba5405",
       "axe_violations": 0
     },
     {
       "file": "docs/readme/sales-analysis-mobile.png",
+      "capture": "viewport",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "sha256": "f824397e6158defc49bb42551c4a25c5bf4e6ffc98ef4a20902cf1b8c29c006c",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "clip": null,
+      "sha256": "a77e6f36d28ef50c27368472a2a087fdf2f6fcf8c698fafbfba47c3787d11468",
       "axe_violations": 0
+    },
+    {
+      "file": "docs/readme/sales-analysis-detail-mobile.png",
+      "capture": "element",
+      "selector": ".analysis-reading",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dimensions": {
+        "width": 346,
+        "height": 748
+      },
+      "clip": {
+        "x": 22,
+        "y": 96,
+        "width": 346,
+        "height": 747.5
+      },
+      "sha256": "f824397e6158defc49bb42551c4a25c5bf4e6ffc98ef4a20902cf1b8c29c006c",
+      "axe_violations": 0,
+      "clip_coordinate_space": "viewport CSS pixels"
     }
   ],
   "page_errors": []
