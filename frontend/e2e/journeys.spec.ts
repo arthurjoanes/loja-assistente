@@ -69,6 +69,42 @@ test("gráfico diário permite consultar valores pelo teclado", async ({
   ).toBeLessThanOrEqual(0.00001);
 });
 
+test("histórico lento não atrasa o foco no resultado nem interrompe o gráfico", async ({
+  page,
+}) => {
+  await login(page);
+  await expect(
+    page.getByText("Carregando histórico…", { exact: true }),
+  ).toHaveCount(0);
+  let releaseHistory!: () => void;
+  const historyGate = new Promise<void>((resolve) => {
+    releaseHistory = resolve;
+  });
+  await page.route("**/api/conversations/page", async (route) => {
+    await historyGate;
+    await route.continue();
+  });
+  try {
+    await ask(page, "Mostre a evolução diária da receita nos últimos 7 dias");
+    await expect(page.locator(".analysis-result-focus").last()).toBeFocused();
+    const columns = page
+      .getByRole("group", { name: "Evolução diária", exact: true })
+      .getByRole("button");
+    await columns.last().focus();
+    await page.keyboard.press("Home");
+    await expect(columns.first()).toBeFocused();
+    releaseHistory();
+    await expect(
+      page.getByText("Carregando histórico…", { exact: true }),
+    ).toHaveCount(0);
+    await expect(columns.first()).toBeFocused();
+    await page.keyboard.press("ArrowRight");
+    await expect(columns.nth(1)).toBeFocused();
+  } finally {
+    releaseHistory();
+  }
+});
+
 test("gestor consulta receita, evidência, ranking, comparação e continuação", async ({
   page,
 }, testInfo) => {

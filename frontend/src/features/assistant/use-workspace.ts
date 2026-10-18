@@ -529,20 +529,13 @@ export function useWorkspace() {
       queryIntent.current = null;
       setConflict(false);
       const revision = ++historyRevision.current;
-      try {
-        const conversations = await fetchHistory(currentGeneration, revision);
-        if (
-          generation.current === currentGeneration &&
-          revision === historyRevision.current
-        )
-          setHistory(conversations);
-      } catch (error) {
+      void fetchHistory(currentGeneration, revision).catch((error) => {
         if (
           generation.current === currentGeneration &&
           revision === historyRevision.current
         )
           handleError(error);
-      }
+      });
       if (generation.current === currentGeneration) return answer;
     } catch (error) {
       if (currentGeneration === generation.current) {
