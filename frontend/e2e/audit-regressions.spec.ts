@@ -105,6 +105,56 @@ async function mock(page: Page, clarification = false) {
   });
 }
 
+for (const field of ["question", "period"] as const) {
+  test(`esclarecimento antigo não substitui edição de ${field}`, async ({
+    page,
+  }) => {
+    await mock(page, true);
+    let release = () => {};
+    const held = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    let requested = () => {};
+    const ready = new Promise<void>((resolve) => {
+      requested = resolve;
+    });
+    await page.route("**/api/conversations/c", async (route) => {
+      requested();
+      await held;
+      await route.fallback();
+    });
+    await page.goto("/");
+    await ready;
+    if (field === "question")
+      await page
+        .getByLabel("Pergunta", { exact: true })
+        .fill("Receita da semana");
+    else await page.getByLabel("Período", { exact: true }).selectOption("week");
+    const restored = page.waitForResponse((response) =>
+      response.url().endsWith("/conversations/c"),
+    );
+    release();
+    await restored;
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
+    if (field === "question")
+      await expect(page.getByLabel("Pergunta", { exact: true })).toHaveValue(
+        "Receita da semana",
+      );
+    else
+      await expect(page.getByLabel("Período", { exact: true })).toHaveValue(
+        "week",
+      );
+    await expect(
+      page.getByRole("heading", { name: "Qual período deseja consultar?" }),
+    ).toHaveCount(0);
+  });
+}
+
 test("LOJ-02: favorites failure preserves history and pending clarification", async ({
   page,
 }) => {

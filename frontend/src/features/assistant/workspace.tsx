@@ -178,6 +178,7 @@ export function Workspace() {
           className="query-collapse icon-button"
           hidden={!hasResponse}
           aria-label="Recolher próxima consulta"
+          disabled={busy}
           onClick={() => {
             setQueryExpanded(false);
             editQuestionButton.current?.focus();
@@ -429,6 +430,7 @@ export function Workspace() {
                     className="prepare-question"
                     ref={editQuestionButton}
                     aria-controls="query-controls"
+                    disabled={busy}
                     onClick={editQuestion}
                   >
                     Editar pergunta <Icon name="arrow" size={14} />

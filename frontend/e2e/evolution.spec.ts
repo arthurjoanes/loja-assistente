@@ -35,6 +35,10 @@ async function navigation(page: Page, name: string) {
   const trigger = page.getByRole("button", { name: "Abrir menu", exact: true });
   if (await trigger.isVisible()) await trigger.click();
   await page.getByRole("button", { name, exact: true }).click();
+  if (name === "Favoritos")
+    await expect(
+      page.getByRole("region", { name: "Consultas favoritas" }),
+    ).toHaveAttribute("aria-busy", "false");
 }
 async function ask(page: Page, question: string): Promise<Answer> {
   if (!(await page.getByLabel("Pergunta", { exact: true }).isVisible()))

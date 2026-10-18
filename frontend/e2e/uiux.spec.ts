@@ -7,6 +7,10 @@ async function navigation(page: Page, name: string) {
   const opener = page.getByRole("button", { name: "Abrir menu", exact: true });
   if (await opener.isVisible()) await opener.click();
   await page.getByRole("button", { name, exact: true }).click();
+  if (name === "Favoritos")
+    await expect(
+      page.getByRole("region", { name: "Consultas favoritas" }),
+    ).toHaveAttribute("aria-busy", "false");
 }
 async function login(page: Page, account = /Gerente · Aurora Casa/) {
   await page.goto("/");

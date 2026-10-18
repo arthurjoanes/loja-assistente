@@ -60,11 +60,22 @@ export function useWorkspace() {
   const queryIntent = useRef<{ key: string; body: object } | null>(null);
   const requestActive = useRef(false);
   const [operationsStale, setOperationsStale] = useState(false);
-  const setQuestion = (value: string) => dispatch({ type: "question", value });
-  const setMode = (value: Mode) => dispatch({ type: "mode", value });
-  const setStoreIds = (value: string[]) => dispatch({ type: "stores", value });
-  const setPeriod = (value: Period) =>
+  const setQuestion = (value: string) => {
+    analysisRevision.current += 1;
+    dispatch({ type: "question", value });
+  };
+  const setMode = (value: Mode) => {
+    analysisRevision.current += 1;
+    dispatch({ type: "mode", value });
+  };
+  const setStoreIds = (value: string[]) => {
+    analysisRevision.current += 1;
+    dispatch({ type: "stores", value });
+  };
+  const setPeriod = (value: Period) => {
+    analysisRevision.current += 1;
     dispatch({ type: "period", value, preset: "custom" });
+  };
 
   const fetchHistory = useCallback(
     async (
@@ -354,7 +365,6 @@ export function useWorkspace() {
     setConflict(false);
     setSession(current);
     setNotice(null);
-    setStoreIds(current.user.stores.map((store) => store.id));
     try {
       const favoritesRequest = fetchFavorites(
         currentGeneration,
@@ -580,6 +590,7 @@ export function useWorkspace() {
   }
   function choosePeriod(value: string) {
     if (!session) return;
+    analysisRevision.current += 1;
     dispatch({
       type: "period",
       value: selectPeriod(value, session.reference_date, period),
